@@ -68,6 +68,12 @@ public class TestScoreCalculations {
 		total += 40;
 		scoreBoard.calcTotalScore(userChoice);
 		assertEquals(total, scoreBoard.getTotalScore());
+		
+		userChoice = ScoreCategory.FULL_HOUSE;
+		scoreBoard.setFullHousePossiblePoints(25);
+		total += 25;
+		scoreBoard.calcTotalScore(userChoice);
+		assertEquals(total, scoreBoard.getTotalScore());
 			
 	}
 
