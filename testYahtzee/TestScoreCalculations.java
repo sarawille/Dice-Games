@@ -40,8 +40,16 @@ public class TestScoreCalculations {
 	@Test
 	public void testAssignScoreCategory() {
 		System.out.println("Testing assign score category");
+		//enter 7
 		//enter 1
+		System.out.println("Enter 7, then 1");
 		assertEquals(ScoreCategory.ONES, scoreBoard.assignScoreCategory());
+		//enter 3k
+		System.out.println("Enter 3k");
+		assertEquals(ScoreCategory.THREE_OF_A_KIND, scoreBoard.assignScoreCategory());
+		//enter Y
+		System.out.println("Enter Y");
+		assertEquals(ScoreCategory.YAHTZEE, scoreBoard.assignScoreCategory());
 	}
 
 }
