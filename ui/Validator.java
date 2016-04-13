@@ -26,28 +26,20 @@ public class Validator implements Validatable {
 	 * @param s
 	 * @return userInteger
 	 */
-//	public int getInt(String prompt) {
-//		while (true) {
-//			try {
-//				screen.display(prompt);
-//				userInput = RequestInformation.getInfo();
-//				userInteger = isValidInt(userInput);
-//			}
-//			catch (NumberFormatException e) {
-//				screen.displayln("Error! Invalid integer value. Try again.");
-//			}
-//			
-//			
-//			return userInteger;
-//		}
-//	}
 	public int getInt(String prompt) {
 		while (true) {
-			userInput = RequestInformation.getInfo();
-			userInteger = isValidInt(userInput);
+			try {
+				screen.display(prompt);
+				userInput = RequestInformation.getInfo();
+				userInteger = isValidInt(userInput);
+			}
+			catch (NumberFormatException e) {
+				screen.displayln("Error! Invalid integer value. Try again.");
+			}
 			return userInteger;
 		}
 	}
+	
 	
 
 	/**

@@ -13,24 +13,12 @@ import ui.IOFactory;
  */
 public interface Validatable {
 	Displayable screen = IOFactory.getDisplayable();
-	//TODO pass main displayable into validator and use that to print anything (instead of print in validatable)
-	//dependency inversion pattern
-//	default int isValidInt(String s) {
-//		return Integer.parseInt(s);
-//	}
 	
 	default int isValidInt(String s) {
-		while(true) {
-			try {
-				screen.display(s);
-				int userInteger = Integer.parseInt(s);
-				return userInteger;
-			}
-			catch (NumberFormatException e) {
-				screen.displayln("Error! Invalid integer value. Try again.");
-			}
-		}
+		return Integer.parseInt(s);
 	}
+	
+	
 	
 	default boolean isInRange(int userInt, int min, int max)
 	{
