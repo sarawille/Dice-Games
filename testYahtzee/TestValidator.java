@@ -80,5 +80,14 @@ public class TestValidator {
 		//type "string"
 		assertEquals("string", checker.getString("Enter some words "));
 	}
+	
+	@Test
+	public void testGetStringOfLength() {
+		System.out.println("\nTesting getString() OF LENGTH");
+		//hit enter
+		//type "tree"
+		//type "dog"
+		assertEquals("dog", checker.getString("Enter 3 letters ", 3));
+	}
 
 }
