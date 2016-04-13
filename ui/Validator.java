@@ -100,10 +100,20 @@ public class Validator implements Validatable {
 	 */
 	public double getDouble(String prompt, double min, double max) {
 		while (true) {
-			userInput = RequestInformation.getInfo();
-			userDouble = isValidDouble(userInput);
-			if (isInRange(userDouble, min, max)) {
-				return userDouble;
+			try {
+				screen.display(prompt);
+				userInput = RequestInformation.getInfo();
+				userDouble = isValidDouble(userInput);
+				if (isInRange(userDouble, min, max)) {
+					return userDouble;
+				}
+				else
+				{
+					continue;
+				}
+			}
+			catch (NumberFormatException e) {
+				screen.displayln("Error! Invalid number value. Try again.");
 			}
 		}
 	}
