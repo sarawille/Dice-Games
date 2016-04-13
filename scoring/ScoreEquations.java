@@ -33,7 +33,7 @@ public class ScoreEquations extends ScoreVariables
 		}
 		if (possiblePoints > 0) 
 		{
-			scoreChoices.append(numberChecking + " \t " + name + " \t\t\t" + possiblePoints + " points\n");
+			scoreChoices.append(numberChecking + " \t " + name + "\t\t\t" + possiblePoints + " points\n");
 		}
 		return possiblePoints;
 	}
