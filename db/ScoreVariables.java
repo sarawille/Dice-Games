@@ -2,6 +2,7 @@ package db;
 
 public abstract class ScoreVariables 
 {
+	//TODO make total score into an array?
 	//Upper Section Scoring Variables
 	protected int onesPoints = -1;
 	protected int twosPoints = -1;
@@ -35,7 +36,7 @@ public abstract class ScoreVariables
 	protected int chancePossiblePoints = 0;
 
 	protected int totalScore = 0;
-
+	
 	protected StringBuilder scoreChoices = new StringBuilder("Which category do you want to score? \n");
 	
 	public int getOnesPoints() {
@@ -145,5 +146,59 @@ public abstract class ScoreVariables
 	public int getTotalScore() {
 		return totalScore;
 	}
+
+	public void setOnesPossiblePoints(int onesPossiblePoints) {
+		this.onesPossiblePoints = onesPossiblePoints;
+	}
+
+	public void setTwosPossiblePoints(int twosPossiblePoints) {
+		this.twosPossiblePoints = twosPossiblePoints;
+	}
+
+	public void setThreesPossiblePoints(int threesPossiblePoints) {
+		this.threesPossiblePoints = threesPossiblePoints;
+	}
+
+	public void setFoursPossiblePoints(int foursPossiblePoints) {
+		this.foursPossiblePoints = foursPossiblePoints;
+	}
+
+	public void setFivesPossiblePoints(int fivesPossiblePoints) {
+		this.fivesPossiblePoints = fivesPossiblePoints;
+	}
+
+	public void setSixesPossiblePoints(int sixesPossiblePoints) {
+		this.sixesPossiblePoints = sixesPossiblePoints;
+	}
+
+	public void setThreeOfAKindPossiblePoints(int threeOfAKindPossiblePoints) {
+		this.threeOfAKindPossiblePoints = threeOfAKindPossiblePoints;
+	}
+
+	public void setFourOfAKindPossiblePoints(int fourOfAKindPossiblePoints) {
+		this.fourOfAKindPossiblePoints = fourOfAKindPossiblePoints;
+	}
+
+	public void setLargeStraightPossiblePoints(int largeStraightPossiblePoints) {
+		this.largeStraightPossiblePoints = largeStraightPossiblePoints;
+	}
+
+	public void setSmallStraightPossiblePoints(int smallStraightPossiblePoints) {
+		this.smallStraightPossiblePoints = smallStraightPossiblePoints;
+	}
+
+	public void setFullHousePossiblePoints(int fullHousePossiblePoints) {
+		this.fullHousePossiblePoints = fullHousePossiblePoints;
+	}
+
+	public void setYahtzeePossiblePoints(int yahtzeePossiblePoints) {
+		this.yahtzeePossiblePoints = yahtzeePossiblePoints;
+	}
+
+	public void setChancePossiblePoints(int chancePossiblePoints) {
+		this.chancePossiblePoints = chancePossiblePoints;
+	}
+	
+	
 
 }
