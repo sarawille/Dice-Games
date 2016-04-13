@@ -72,5 +72,13 @@ public class TestValidator {
 		//type in 5
 		assertEquals(5, checker.getDouble("Enter double between 1 and 10 ", 1, 10), .0005);
 	}
+	
+	@Test 
+	public void testGetString() {
+		System.out.println("\nTesting getString()");
+		//hit enter
+		//type "string"
+		assertEquals("string", checker.getString("Enter some words "));
+	}
 
 }
