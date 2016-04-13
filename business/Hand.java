@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class Hand implements Readable, Sortable, Rollable
+public class Hand implements Readable, Sortable
 {
 	public ArrayList<Die> fiveDice = new ArrayList<>(5);
 	
@@ -15,13 +15,7 @@ public class Hand implements Readable, Sortable, Rollable
 			fiveDice.add(new Die());
 		}
 	}
-
-	@Override
-	public void roll() 
-	{
-	}
 	
-	@Override
 	public void roll(int dieNumber) 
 	{
 		fiveDice.get(dieNumber).roll();

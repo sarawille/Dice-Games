@@ -13,10 +13,6 @@ public class Die implements Readable, Rollable {
 		faceUp = (int) ((Math.random() * SIDES + 1));
 	}
 	
-	public void roll(int dieNumber) 
-	{
-	}
-	
 	@Override
 	public int readFaceUp()
 	{
