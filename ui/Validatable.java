@@ -48,12 +48,15 @@ public interface Validatable {
 		return true;
 	}
 	
-	default String isValidString(String s) {
+	default boolean isValidString(String s) {
 		while (true) {
-			if (s.length() > 0) {
-				return s;
-			} else {
-				screen.displayln("Error! This entry is required. Try again.");
+			if (s.length() > 0) 
+			{
+				return true;
+			} 
+			else
+			{
+				return false;
 			}
 		}
 	}
