@@ -185,9 +185,17 @@ public class Validator implements Validatable {
 	 */
 	public String getString(String prompt, String option1, String option2) {
 		while (true) {
+			screen.display(prompt);
 			userInput = RequestInformation.getInfo();
-			userString = isValidString(userInput, option1, option2);
-			return userString;
+			if (isValidString(userInput, option1, option2))
+			{
+				userString = userInput;
+				return userString;
+			}
+			else 
+			{
+				screen.displayln("Error! Please enter " + option1 + " or " + option2 + ". Try again.");
+			}
 		}
 	}
 }
