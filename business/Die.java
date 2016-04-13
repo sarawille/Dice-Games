@@ -10,7 +10,7 @@ public class Die implements Readable, Rollable {
 	
 	public void roll() 
 	{
-		faceUp = (int) ((Math.random() * SIDES + 1));
+		faceUp = (int) ((Math.random() * SIDES + 1)); 
 	}
 	
 	@Override

@@ -2,6 +2,6 @@ package business;
 
 public interface Rollable {
 	
-	void roll();
+	void roll(); 
 
 }

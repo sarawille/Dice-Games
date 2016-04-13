@@ -15,7 +15,7 @@ public class Hand implements Readable, Sortable
 			fiveDice.add(new Die());
 		}
 	}
-	
+ 	
 	public void roll(int dieNumber) 
 	{
 		fiveDice.get(dieNumber).roll();
