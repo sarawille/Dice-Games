@@ -41,7 +41,7 @@ public class TestScoreCalculations {
 	public void testAssignScoreCategory() {
 		System.out.println("Testing assign score category");
 		//enter 1
-		assertEquals(ScoreCategory.ONES, ScoreCalculations.assignScoreCategory());
+		assertEquals(ScoreCategory.ONES, scoreBoard.assignScoreCategory());
 	}
 
 }
