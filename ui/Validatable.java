@@ -20,9 +20,11 @@ public interface Validatable {
 	
 	default boolean isInRange(int userInt, int min, int max)
 	{
-		if (userInt < min) {
+		if (userInt < min) 
+		{
 			return false;
-		} else if (userInt > max) {
+		} else if (userInt > max) 
+		{
 			return false;
 		} 
 		return true;
@@ -34,13 +36,11 @@ public interface Validatable {
 	
 	default boolean isInRange(double userDouble, double min, double max)
 	{
-		if (userDouble < min) {
-			screen.displayln("Error! Number must be greater than "
-							+ min);
+		if (userDouble < min)
+		{
 			return false;
-		} else if (userDouble > max) {
-			screen.displayln("Error! Number must be less than "
-					+ max);
+		} else if (userDouble > max) 
+		{
 			return false;
 		} 
 		return true;
