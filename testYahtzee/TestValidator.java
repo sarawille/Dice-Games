@@ -47,7 +47,7 @@ public class TestValidator {
 	
 	@Test
 	public void testGetIntInRange() {
-		System.out.println("\nTesting getInt() within range");
+		System.out.println("\nTesting getInt() IN RANGE");
 		//type in a
 		//type in 0
 		//type in 11
@@ -65,7 +65,7 @@ public class TestValidator {
 	
 	@Test
 	public void testGetDoubleInRange() {
-		System.out.println("\nTesting getDouble() within range");
+		System.out.println("\nTesting getDouble() IN RANGE");
 		//type in a
 		//type in 0
 		//type in 11
