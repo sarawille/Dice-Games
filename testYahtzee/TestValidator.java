@@ -36,26 +36,35 @@ public class TestValidator {
 	public void tearDown() throws Exception {
 	}
 
+	//TODO best practices for testing when method requires user input
 	@Test
 	public void testGetInt() {
+		System.out.println("\nTesting getInt()");
+		//type in a
 		//type in 5
 		assertEquals(5, checker.getInt("Enter integer "));
 	}
 	
 	@Test
 	public void testGetIntInRange() {
+		System.out.println("\nTesting getInt() within a range");
+		//type in a
 		//type in 5
 		assertEquals(5, checker.getInt("Enter integer between 1 and 10 ", 1, 10));
 	}
 	
 	@Test
 	public void testGetDouble() {
+		System.out.println("\nTesting getDouble()");
+		//type in a
 		//type in 5
 		assertEquals(5, checker.getDouble("Enter double "), .0005);
 	}
 	
 	@Test
 	public void testGetDoubleInRange() {
+		System.out.println("\nTesting getDouble() within range");
+		//type in a
 		//type in 5
 		assertEquals(5, checker.getDouble("Enter double between 1 and 10 ", 1, 10), .0005);
 	}
