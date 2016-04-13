@@ -20,12 +20,11 @@ public class YatzeeApp {
 		Hand thisHand; 
 		
 		while (turn <= 5) {
-			int numberOfRolls = 1;
 			screen.displayln("TURN " + turn);
 			thisHand = new Hand();
 			thisHand.rollAll();
 			screen.displayln(thisHand.printHand());
-			numberOfRolls = rerollHand(numberOfRolls, thisHand);
+			rerollHand(thisHand);
 			myScore.scoreHand(thisHand);
 			myScore.printTotalScore();
 			turn++;
@@ -34,21 +33,18 @@ public class YatzeeApp {
 		
 	}
 
-	private static int rerollHand(int numberOfRolls, Hand myHand) {
+	private static void rerollHand(Hand myHand) {
 		String userInput;
-		while (numberOfRolls < 3) {
+		while (myHand.numberOfRolls < 3) {
 			userInput = theValidator.getString("\nWould you like to roll again? (y/n) ", "y", "n");
-
 			if (userInput.equalsIgnoreCase("y")) {
 				rollAgain(myHand);
 				screen.displayln(myHand.printHand());
-				numberOfRolls++;
 			} else {
-				myHand.printHand();
+				screen.displayln(myHand.printHand());
 				break;
 			}
 		}
-		return numberOfRolls;
 	}
 	
 	private static void rollAgain(Hand newHand) 
