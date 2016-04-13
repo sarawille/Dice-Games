@@ -1,8 +1,5 @@
 package ui;
 
-import ui.Displayable;
-import ui.IOFactory;
-
 /**
  * @author Sara Wille
  * The Validatable interface confirms whether user input
@@ -12,7 +9,6 @@ import ui.IOFactory;
  *
  */
 public interface Validatable {
-	Displayable screen = IOFactory.getDisplayable();
 	
 	default int isValidInt(String s) {
 		return Integer.parseInt(s);
