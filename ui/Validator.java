@@ -114,8 +114,14 @@ public class Validator implements Validatable {
 				if (isInRange(userDouble, min, max)) {
 					return userDouble;
 				}
+				else if (userDouble < min)
+				{
+					System.out.println("Error! Number must be greater than " + min + ". Try again.");
+					continue;
+				}
 				else
 				{
+					System.out.println("Error! Number must be less than " + max + ". Try again.");
 					continue;
 				}
 			}

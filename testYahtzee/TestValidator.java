@@ -67,6 +67,8 @@ public class TestValidator {
 	public void testGetDoubleInRange() {
 		System.out.println("\nTesting getDouble() within range");
 		//type in a
+		//type in 0
+		//type in 11
 		//type in 5
 		assertEquals(5, checker.getDouble("Enter double between 1 and 10 ", 1, 10), .0005);
 	}
