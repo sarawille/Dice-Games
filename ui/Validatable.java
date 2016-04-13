@@ -49,22 +49,20 @@ public interface Validatable {
 	}
 	
 	default boolean isValidString(String s) {
-		while (true) {
-			if (s.length() > 0) 
-			{
-				return true;
-			} 
-			else
-			{
-				return false;
-			}
+		if (s.length() > 0) 
+		{
+			return true;
+		} 
+		else
+		{
+			return false;
 		}
 	}
 
-	default String isValidString(String s, int len) {
+	default boolean isValidString(String s, int len) {
 		while (true) {
 			if (s.length() == len) {
-				return s;
+				return true;
 			} else {
 				screen.displayln("Error! This entry is required to be length "
 								+ len + ". Try again.");

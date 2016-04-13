@@ -133,7 +133,7 @@ public class Validator implements Validatable {
 
 	
 	/**
-	 * getString - ask the user for a String, confirm that they entered something
+	 * getString - ask the user for a String, confirm that they did not enter an empty line
 	 * @param prompt
 	 * @return userString
 	 */
@@ -161,9 +161,17 @@ public class Validator implements Validatable {
 	 */
 	public String getString(String prompt, int len) {
 		while (true) {
+			screen.display(prompt);
 			userInput = RequestInformation.getInfo();
-			userString = isValidString(userInput, len);
-			return userString;
+			if (isValidString(userInput))
+			{
+				userString = userInput;
+				return userString;
+			}
+			else 
+			{
+				screen.displayln("Error! This entry is required. Try again.");
+			}
 		}
 	}
 	
