@@ -29,17 +29,7 @@ public interface Validatable {
 	}
 	
 	default double isValidDouble(String s) {
-		while(true)
-		{
-			try {
-				screen.display(s);
-				double userDouble = Double.parseDouble(s);
-				return userDouble;
-			}
-			catch (NumberFormatException e) {
-				screen.display("Error! Invalid decimal value. Try again.");
-			}
-		}
+		return Double.parseDouble(s);
 	}
 	
 	default boolean isInRange(double userDouble, double min, double max)
