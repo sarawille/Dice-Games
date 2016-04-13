@@ -51,5 +51,24 @@ public class TestScoreCalculations {
 		System.out.println("Enter Y");
 		assertEquals(ScoreCategory.YAHTZEE, scoreBoard.assignScoreCategory());
 	}
+	
+	@Test
+	public void testCalcTotalScore() {
+		ScoreCategory userChoice;
+		int total;
+		
+		userChoice = ScoreCategory.ONES;
+		scoreBoard.setOnesPossiblePoints(5);
+		total = 5;
+		scoreBoard.calcTotalScore(userChoice);
+		assertEquals(total, scoreBoard.getTotalScore());
+		
+		userChoice = ScoreCategory.LARGE_STRAIGHT;
+		scoreBoard.setLargeStraightPossiblePoints(40);
+		total += 40;
+		scoreBoard.calcTotalScore(userChoice);
+		assertEquals(total, scoreBoard.getTotalScore());
+			
+	}
 
 }
