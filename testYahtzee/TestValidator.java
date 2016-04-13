@@ -37,8 +37,13 @@ public class TestValidator {
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testGetInt() {
+		assertEquals(5, checker.getInt("Enter integer "));
+	}
+	
+	@Test
+	public void testGetIntInRange() {
+		assertEquals(5, checker.getInt("Enter integer ", 1, 10));
 	}
 
 }
