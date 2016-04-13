@@ -26,6 +26,7 @@ public class YatzeeApp {
 			newHand.rollAll();
 			numberOfRolls = rerollHand(numberOfRolls, newHand);
 			myScore.scoreHand(newHand);
+			myScore.printTotalScore();
 			turn++;
 		}
 		screen.displayln("--------------------------------------------------");
