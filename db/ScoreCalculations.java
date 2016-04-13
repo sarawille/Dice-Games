@@ -32,7 +32,7 @@ public class ScoreCalculations extends ScoreEquations implements Scorable {
 //		calcTotalScore(scoreCategoryForThisHand);
 //	}
 	
-	private ScoreCategory assignScoreCategory() {
+	public ScoreCategory assignScoreCategory() {
 		String userInput = "";
 		while (true) 
 		{
