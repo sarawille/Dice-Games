@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Hand implements Readable, Sortable
 {
 	public ArrayList<Die> fiveDice = new ArrayList<>(5);
+	public int numberOfRolls = 0;
 	
 	public Hand() 
 	{
@@ -17,6 +18,7 @@ public class Hand implements Readable, Sortable
 	public void roll(int dieNumber) 
 	{
 		fiveDice.get(dieNumber).roll();
+		numberOfRolls++;
 	}
 
 	public void rollAll() 
@@ -26,6 +28,7 @@ public class Hand implements Readable, Sortable
 		roll(2);
 		roll(3);
 		roll(4);	
+		numberOfRolls++;
 		printHand();
 	}
 	
