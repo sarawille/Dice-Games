@@ -52,11 +52,22 @@ public class Validator implements Validatable {
 	 */
 	public int getInt(String prompt, int min, int max) {
 		while (true) {
-			userInput = RequestInformation.getInfo();
-			userInteger = isValidInt(userInput);
-			if (isInRange(userInteger, min, max)) {
-				return userInteger;
+			try {
+				screen.display(prompt);
+				userInput = RequestInformation.getInfo();
+				userInteger = isValidInt(userInput);
+				if (isInRange(userInteger, min, max)) {
+					return userInteger;
+				}
+				else
+				{
+					continue;
+				}
 			}
+			catch (NumberFormatException e) {
+				screen.displayln("Error! Invalid integer value. Try again.");
+			}
+			return userInteger;
 		}
 	}
 	

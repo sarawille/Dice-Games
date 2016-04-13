@@ -18,17 +18,11 @@ public interface Validatable {
 		return Integer.parseInt(s);
 	}
 	
-	
-	
 	default boolean isInRange(int userInt, int min, int max)
 	{
 		if (userInt < min) {
-			screen.displayln("Error! Number must be greater than "
-							+ min);
 			return false;
 		} else if (userInt > max) {
-			screen.displayln("Error! Number must be less than "
-					+ max);
 			return false;
 		} 
 		return true;
