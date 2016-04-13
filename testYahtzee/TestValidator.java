@@ -38,12 +38,26 @@ public class TestValidator {
 
 	@Test
 	public void testGetInt() {
+		//type in 5
 		assertEquals(5, checker.getInt("Enter integer "));
 	}
 	
 	@Test
 	public void testGetIntInRange() {
-		assertEquals(5, checker.getInt("Enter integer ", 1, 10));
+		//type in 5
+		assertEquals(5, checker.getInt("Enter integer between 1 and 10 ", 1, 10));
+	}
+	
+	@Test
+	public void testGetDouble() {
+		//type in 5
+		assertEquals(5, checker.getDouble("Enter double "), .0005);
+	}
+	
+	@Test
+	public void testGetDoubleInRange() {
+		//type in 5
+		assertEquals(5, checker.getDouble("Enter double between 1 and 10 ", 1, 10), .0005);
 	}
 
 }
