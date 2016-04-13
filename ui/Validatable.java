@@ -29,7 +29,7 @@ public interface Validatable {
 	}
 	
 	default double isValidDouble(String s) {
-		return Double.parseDouble(s);
+		return Double.parseDouble(s); 
 	}
 	
 	default boolean isInRange(double userDouble, double min, double max)
