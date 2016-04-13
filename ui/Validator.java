@@ -67,7 +67,6 @@ public class Validator implements Validatable {
 			catch (NumberFormatException e) {
 				screen.displayln("Error! Invalid integer value. Try again.");
 			}
-			return userInteger;
 		}
 	}
 	
