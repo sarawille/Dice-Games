@@ -60,14 +60,15 @@ public interface Validatable {
 	}
 
 	default boolean isValidString(String s, int len) {
-		while (true) {
-			if (s.length() == len) {
-				return true;
-			} else {
-				screen.displayln("Error! This entry is required to be length "
-								+ len + ". Try again.");
-			}
+		if (s.length() == len) 
+		{
+			return true;
+		} 
+		else 
+		{
+			return false;
 		}
+		
 	}
 
 	default String isValidString(String s, String option1, String option2) {

@@ -163,14 +163,15 @@ public class Validator implements Validatable {
 		while (true) {
 			screen.display(prompt);
 			userInput = RequestInformation.getInfo();
-			if (isValidString(userInput))
+			if (isValidString(userInput, len))
 			{
 				userString = userInput;
 				return userString;
 			}
 			else 
 			{
-				screen.displayln("Error! This entry is required. Try again.");
+				screen.displayln("Error! This entry is required to be length "
+						+ len + ". Try again.");
 			}
 		}
 	}
