@@ -8,10 +8,21 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import ui.Displayable;
+import ui.IOFactory;
+import ui.Validator;
+import db.ScoreCalculations;
+import db.ScoreCategory;
+
 public class TestScoreCalculations {
+	
+	static ScoreCalculations scoreBoard;
+	static Displayable screen = IOFactory.getDisplayable();
+	static Validator theValidator = new Validator(screen);
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		scoreBoard = new ScoreCalculations(screen, theValidator);
 	}
 
 	@AfterClass
@@ -27,8 +38,10 @@ public class TestScoreCalculations {
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testAssignScoreCategory() {
+		System.out.println("Testing assign score category");
+		//enter 1
+		assertEquals(ScoreCategory.ONES, ScoreCalculations.assignScoreCategory());
 	}
 
 }
