@@ -35,6 +35,7 @@ public class Validator implements Validatable {
 			}
 			catch (NumberFormatException e) {
 				screen.displayln("Error! Invalid integer value. Try again.");
+				continue;
 			}
 			return userInteger;
 		}
@@ -84,6 +85,7 @@ public class Validator implements Validatable {
 			}
 			catch (NumberFormatException e) {
 				screen.displayln("Error! Invalid number value. Try again.");
+				continue;
 			}
 			return userDouble;
 		}
