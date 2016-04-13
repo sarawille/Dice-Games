@@ -78,8 +78,14 @@ public class Validator implements Validatable {
 	 */
 	public double getDouble(String prompt) {
 		while (true) {
-			userInput = RequestInformation.getInfo();
-			userDouble = isValidDouble(userInput);
+			try {
+				screen.display(prompt);
+				userInput = RequestInformation.getInfo();
+				userDouble = isValidDouble(userInput);
+			}
+			catch (NumberFormatException e) {
+				screen.displayln("Error! Invalid number value. Try again.");
+			}
 			return userDouble;
 		}
 	}
