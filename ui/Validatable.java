@@ -23,7 +23,8 @@ public interface Validatable {
 		if (userInt < min) 
 		{
 			return false;
-		} else if (userInt > max) 
+		} 
+		else if (userInt > max) 
 		{
 			return false;
 		} 
@@ -39,7 +40,8 @@ public interface Validatable {
 		if (userDouble < min)
 		{
 			return false;
-		} else if (userDouble > max) 
+		} 
+		else if (userDouble > max) 
 		{
 			return false;
 		} 
