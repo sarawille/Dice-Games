@@ -71,13 +71,14 @@ public interface Validatable {
 		
 	}
 
-	default String isValidString(String s, String option1, String option2) {
-		while (true) {
-			if (s.equalsIgnoreCase(option1) || s.equalsIgnoreCase(option2)) {
-				return s;
-			} else {
-				screen.displayln("Error! Please enter " + option1 + " or " + option2 + ". Try again.");
-			}
+	default boolean isValidString(String s, String option1, String option2) {
+		if (s.equalsIgnoreCase(option1) || s.equalsIgnoreCase(option2)) 
+		{
+			return true;
+		} 
+		else 
+		{
+			return false;
 		}
 	}
 
