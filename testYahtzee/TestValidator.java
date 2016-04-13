@@ -47,8 +47,10 @@ public class TestValidator {
 	
 	@Test
 	public void testGetIntInRange() {
-		System.out.println("\nTesting getInt() within a range");
+		System.out.println("\nTesting getInt() within range");
 		//type in a
+		//type in 0
+		//type in 11
 		//type in 5
 		assertEquals(5, checker.getInt("Enter integer between 1 and 10 ", 1, 10));
 	}
