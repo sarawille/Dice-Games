@@ -89,5 +89,13 @@ public class TestValidator {
 		//type "dog"
 		assertEquals("dog", checker.getString("Enter 3 letters ", 3));
 	}
+	
+	@Test
+	public void testGetStringOptions() {
+		System.out.println("\nTesting getString() FOR TWO INPUT OPTIONS");
+		//type "z"
+		//type "X"
+		assertEquals("X", checker.getString("Enter x or y ", "x", "y"));
+	}
 
 }
