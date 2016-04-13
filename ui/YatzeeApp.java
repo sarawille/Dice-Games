@@ -33,9 +33,8 @@ public class YatzeeApp {
 	}
 
 	private static void rerollHand(Hand myHand) {
-		String userInput;
+		String userInput= theValidator.getString("\nWould you like to roll again? (y/n) ", "y", "n");
 		while (myHand.getNumberOfRolls() < 3) {
-			userInput = theValidator.getString("\nWould you like to roll again? (y/n) ", "y", "n");
 			if (userInput.equalsIgnoreCase("y")) {
 				rollAgain(myHand);
 				screen.displayln(myHand.printHand());
