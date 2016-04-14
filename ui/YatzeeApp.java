@@ -10,6 +10,9 @@ import business.Hand;
 
 public class YatzeeApp {
 	
+	//TODO add comments and javaDoc notes
+	//try making this into a GUI or using pre-written GUI code to drop into IOFactory
+	
 	static int turn = 1;
 	static Displayable screen = IOFactory.getDisplayable();
 	static Validator theValidator = new Validator(screen);
