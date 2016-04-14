@@ -20,7 +20,7 @@ public class TestDie {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		myDie = new Die();
+		myDie = new Die(6);
 	}
 
 	@AfterClass
