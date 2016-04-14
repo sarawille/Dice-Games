@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Hand implements Readable, Sortable
 {
-	private ArrayList<Die> fiveDice = new ArrayList<>(5);
+	public ArrayList<Die> fiveDice = new ArrayList<>(5);
 	
 	public Hand() 
 	{
