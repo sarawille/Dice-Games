@@ -164,20 +164,19 @@ public class ScoreEquations extends ScoreVariables
 	public int calcYahtzee(Hand newHand) 
 	{
 		setYahtzeePossiblePoints(0);
-		if (getYahtzeePoints() < 0) {
-			if (newHand.readFaceUp(0) == newHand.readFaceUp(1) && newHand.readFaceUp(1) == newHand.readFaceUp(2) && 
-					newHand.readFaceUp(2) == newHand.readFaceUp(3) && newHand.readFaceUp(3) == newHand.readFaceUp(4)) 
-			{	
-				if (getYahtzeePoints() >= 50) {
-					setYahtzeePossiblePoints(100);
-					scoreChoices.append("Y \t Another YAHTZEE! \t\t" + getYahtzeePossiblePoints() + " points\n");
-				}
-				else {
-					setYahtzeePossiblePoints(50);
-					scoreChoices.append("Y \t YAHTZEE! \t\t" + getYahtzeePossiblePoints() + " points\n");
-				}
-			} 
-		}
+		if (newHand.readFaceUp(0) == newHand.readFaceUp(1) && newHand.readFaceUp(1) == newHand.readFaceUp(2) && 
+				newHand.readFaceUp(2) == newHand.readFaceUp(3) && newHand.readFaceUp(3) == newHand.readFaceUp(4)) 
+		{	
+			if (getYahtzeePoints() >= 50) {
+				setYahtzeePossiblePoints(100);
+				scoreChoices.append("Y \t Another YAHTZEE! \t\t" + getYahtzeePossiblePoints() + " points\n");
+			}
+			else {
+				setYahtzeePossiblePoints(50);
+				scoreChoices.append("Y \t YAHTZEE! \t\t" + getYahtzeePossiblePoints() + " points\n");
+			}
+		} 
+		
 		return getYahtzeePossiblePoints();
 	}
 
