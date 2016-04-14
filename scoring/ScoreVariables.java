@@ -143,6 +143,58 @@ public abstract class ScoreVariables
 		return chancePossiblePoints;
 	}
 
+	public void setOnesPoints(int onesPoints) {
+		this.onesPoints = onesPoints;
+	}
+
+	public void setTwosPoints(int twosPoints) {
+		this.twosPoints = twosPoints;
+	}
+
+	public void setThreesPoints(int threesPoints) {
+		this.threesPoints = threesPoints;
+	}
+
+	public void setFoursPoints(int foursPoints) {
+		this.foursPoints = foursPoints;
+	}
+
+	public void setFivesPoints(int fivesPoints) {
+		this.fivesPoints = fivesPoints;
+	}
+
+	public void setSixesPoints(int sixesPoints) {
+		this.sixesPoints = sixesPoints;
+	}
+
+	public void setThreeOfAKindPoints(int threeOfAKindPoints) {
+		this.threeOfAKindPoints = threeOfAKindPoints;
+	}
+
+	public void setFourOfAKindPoints(int fourOfAKindPoints) {
+		this.fourOfAKindPoints = fourOfAKindPoints;
+	}
+
+	public void setSmallStraightPoints(int smallStraightPoints) {
+		this.smallStraightPoints = smallStraightPoints;
+	}
+
+	public void setLargeStraightPoints(int largeStraightPoints) {
+		this.largeStraightPoints = largeStraightPoints;
+	}
+
+	public void setFullHousePoints(int fullHousePoints) {
+		this.fullHousePoints = fullHousePoints;
+	}
+
+	public void setYahtzeePoints(int yahtzeePoints) {
+		this.yahtzeePoints = yahtzeePoints;
+	}
+
+	public void setChancePoints(int chancePoints) {
+		this.chancePoints = chancePoints;
+	}
+
 	public void setOnesPossiblePoints(int onesPossiblePoints) {
 		this.onesPossiblePoints = onesPossiblePoints;
 	}
