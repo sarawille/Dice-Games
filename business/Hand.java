@@ -6,9 +6,9 @@ public class Hand implements Readable, Sortable
 {
 	public ArrayList<Die> fiveDice = new ArrayList<>(5);
 	
-	public Hand(int sides) 
+	public Hand(int numberOfDice, int sides) 
 	{
-		for (int i = 0; i < 5; i++)
+		for (int i = 0; i < numberOfDice; i++)
 		{
 			fiveDice.add(new Die(sides));
 		}
