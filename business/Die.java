@@ -11,7 +11,7 @@ import business.Rollable;
 
 public class Die implements Readable, Rollable {
 	
-	protected int sides = 6;
+	protected int sides = 0;
 	protected int faceUp = 0;
 	
 	public Die(int sides) {
