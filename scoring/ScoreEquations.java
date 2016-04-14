@@ -43,7 +43,7 @@ public class ScoreEquations extends ScoreVariables
 	public int calcThreeOfAKind(Hand newHand) 
 	{
 		setThreeOfAKindPossiblePoints(0);
-		if (threeOfAKindPoints < 0) 
+		if (getThreeOfAKindPoints() < 0) 
 		{
 			if (
 					(newHand.readFaceUp(0) == newHand.readFaceUp(1) &&
@@ -68,8 +68,8 @@ public class ScoreEquations extends ScoreVariables
 
 	public int calcFourOfAKind(Hand newHand) 
 	{
-		fourOfAKindPossiblePoints = 0;
-		if (fourOfAKindPoints < 0) 
+		setFourOfAKindPossiblePoints(0);
+		if (getFourOfAKindPoints() < 0) 
 		{
 			if ((newHand.readFaceUp(0) == newHand.readFaceUp(1) &&
 					newHand.readFaceUp(1) == newHand.readFaceUp(2) &&
@@ -79,21 +79,21 @@ public class ScoreEquations extends ScoreVariables
 					newHand.readFaceUp(2) == newHand.readFaceUp(3) &&
 					newHand.readFaceUp(3) == newHand.readFaceUp(4)) )
 			{
-				fourOfAKindPossiblePoints = newHand.readFaceUp(0) +
-											newHand.readFaceUp(1) +
-											newHand.readFaceUp(2) +
-											newHand.readFaceUp(3) +
-											newHand.readFaceUp(4);
-				scoreChoices.append("4K \t 4 of a Kind \t\t" + fourOfAKindPossiblePoints +" points\n");
+				setFourOfAKindPossiblePoints(newHand.readFaceUp(0) +
+											 newHand.readFaceUp(1) +
+											 newHand.readFaceUp(2) +
+											 newHand.readFaceUp(3) +
+											 newHand.readFaceUp(4));
+				scoreChoices.append("4K \t 4 of a Kind \t\t" + getFourOfAKindPossiblePoints() +" points\n");
 			} 
 		}
-		return fourOfAKindPossiblePoints;
+		return getFourOfAKindPossiblePoints();
 	}
 
 	public int calcFullHouse(Hand newHand) 
 	{
-		fullHousePossiblePoints = 0;
-		if (fullHousePoints < 0) 
+		setFullHousePossiblePoints(0);
+		if (getFullHousePoints() < 0) 
 		{
 			if ((newHand.readFaceUp(0) == newHand.readFaceUp(1) &&
 					newHand.readFaceUp(1) == newHand.readFaceUp(2) &&
@@ -105,17 +105,17 @@ public class ScoreEquations extends ScoreVariables
 					newHand.readFaceUp(3) == newHand.readFaceUp(4) &&
 					newHand.readFaceUp(1) != newHand.readFaceUp(2)) )
 			{
-				fullHousePossiblePoints = 25;
-				scoreChoices.append("F \t Full House \t\t" + fullHousePossiblePoints + " points\n");
+				setFullHousePossiblePoints(25);
+				scoreChoices.append("F \t Full House \t\t" + getFullHousePossiblePoints() + " points\n");
 			}
 		}
-		return fullHousePossiblePoints;
+		return getFullHousePossiblePoints();
 	}
 
 	public int calcSmallStraight(Hand newHand) 
 	{
-		smallStraightPossiblePoints = 0;
-		if (smallStraightPoints < 0) 
+		setSmallStraightPossiblePoints(0);
+		if (getSmallStraightPoints() < 0) 
 		{
 			if ((newHand.readFaceUp(1) == newHand.readFaceUp(0) + 1 &&	
 				 newHand.readFaceUp(2) == newHand.readFaceUp(1) + 1 &&
@@ -125,60 +125,60 @@ public class ScoreEquations extends ScoreVariables
 				 newHand.readFaceUp(3) == newHand.readFaceUp(2) + 1 &&
 				 newHand.readFaceUp(4) == newHand.readFaceUp(3) + 1) )
 			{
-				smallStraightPossiblePoints = 30;
-				scoreChoices.append("S \t Small Straight \t" + smallStraightPossiblePoints + " points\n");
+				setSmallStraightPossiblePoints(30);
+				scoreChoices.append("S \t Small Straight \t" + getSmallStraightPossiblePoints() + " points\n");
 			}
 		}
-		return smallStraightPossiblePoints;
+		return getSmallStraightPossiblePoints();
 	}
 
 	public int calcLargeStraight(Hand newHand) 
 	{
-		largeStraightPossiblePoints = 0;
-		if (largeStraightPoints <0) 
+		setLargeStraightPossiblePoints(0);
+		if (getLargeStraightPoints() <0) 
 		{
 			if (newHand.readFaceUp(1) == newHand.readFaceUp(0) + 1 &&	
 				newHand.readFaceUp(2) == newHand.readFaceUp(1) + 1 &&
 				newHand.readFaceUp(3) == newHand.readFaceUp(2) + 1 &&
 				newHand.readFaceUp(4) == newHand.readFaceUp(3) + 1)
 			{
-				largeStraightPossiblePoints = 40;
-				scoreChoices.append("L \t Large Straight \t" + largeStraightPossiblePoints + " points\n");
+				setLargeStraightPossiblePoints(40);
+				scoreChoices.append("L \t Large Straight \t" + getLargeStraightPossiblePoints() + " points\n");
 			}
 		}
-		return largeStraightPossiblePoints;
+		return getLargeStraightPossiblePoints();
 	}
 
 	public int calcChance(Hand newHand) 
 	{
-		chancePossiblePoints = 0;
-		if (chancePoints < 0)
+		setChancePossiblePoints(0);
+		if (getChancePoints() < 0)
 		{
-			chancePossiblePoints = newHand.readFaceUp(0) + newHand.readFaceUp(1) + newHand.readFaceUp(2) + 
-					newHand.readFaceUp(3) + newHand.readFaceUp(4);	
-			scoreChoices.append("C \t Chance \t\t" + chancePossiblePoints + " points\n");
+			setChancePossiblePoints(newHand.readFaceUp(0) + newHand.readFaceUp(1) + newHand.readFaceUp(2) + 
+					newHand.readFaceUp(3) + newHand.readFaceUp(4));	
+			scoreChoices.append("C \t Chance \t\t" + getChancePossiblePoints() + " points\n");
 		} 
-		return chancePossiblePoints;
+		return getChancePossiblePoints();
 	}
 
 	public int calcYahtzee(Hand newHand) 
 	{
-		yahtzeePossiblePoints = 0;
-		if (yahtzeePoints < 0) {
+		setYahtzeePossiblePoints(0);
+		if (getYahtzeePoints() < 0) {
 			if (newHand.readFaceUp(0) == newHand.readFaceUp(1) && newHand.readFaceUp(1) == newHand.readFaceUp(2) && 
 					newHand.readFaceUp(2) == newHand.readFaceUp(3) && newHand.readFaceUp(3) == newHand.readFaceUp(4)) 
 			{	
-				if (yahtzeePoints >= 50) {
-					yahtzeePossiblePoints = 100;
-					scoreChoices.append("Y \t Another YAHTZEE! \t\t" + yahtzeePossiblePoints + " points\n");
+				if (getYahtzeePoints() >= 50) {
+					setYahtzeePossiblePoints(100);
+					scoreChoices.append("Y \t Another YAHTZEE! \t\t" + getYahtzeePossiblePoints() + " points\n");
 				}
 				else {
-					yahtzeePossiblePoints = 50;
-					scoreChoices.append("Y \t YAHTZEE! \t\t" + yahtzeePossiblePoints + " points\n");
+					setYahtzeePossiblePoints(50);
+					scoreChoices.append("Y \t YAHTZEE! \t\t" + getYahtzeePossiblePoints() + " points\n");
 				}
 			} 
 		}
-		return yahtzeePossiblePoints;
+		return getYahtzeePossiblePoints();
 	}
 
 }
