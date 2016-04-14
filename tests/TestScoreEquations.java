@@ -457,5 +457,17 @@ public class TestScoreEquations {
 			myHand.roll(4);
 		}
 		assertEquals(100, test.calcYahtzee(myHand));
+		
+		//make sure it works for a third yahtzee
+		assertEquals(100, test.calcYahtzee(myHand));
+		
+		//make sure first yahtzee still works
+		test.setYahtzeePoints(0);
+		assertEquals(50, test.calcYahtzee(myHand));
+		//force to NOT yahtzee
+		while (myHand.fiveDice.get(0).readFaceUp() != 2){
+			myHand.roll(0);
+		}
+		assertEquals(0, test.calcYahtzee(myHand));
 	}
 }
