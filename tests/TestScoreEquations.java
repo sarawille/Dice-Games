@@ -343,26 +343,37 @@ public class TestScoreEquations {
 
 		assertEquals(0, test.calcFullHouse(myHand));
 	}
-//	
-//	@Test
-//	public void testCalcSmallStraight() {
-//		int points = 0;
-//		for (int i = 0; i < myHand.fiveDice.size(); i++)
-//		{
-//			if (die2 == die1 + 1 &&	
-//				die3 == die2 + 1 &&
-//				die4 == die3 + 1 ||
-//				
-//				die3 == die2 + 1 &&	
-//				die4 == die3 + 1 &&
-//				die5 == die4 + 1 )
-//			{
-//				points = 30;
-//			}
-//		}
-//		assertEquals(points, test.calcSmallStraight(myHand));
-//	}
-//	
+	
+	@Test
+	public void testCalcSmallStraight() {
+		//force to small straight
+		while (myHand.fiveDice.get(0).readFaceUp() != 1){
+			myHand.roll(0);
+		}
+		while (myHand.fiveDice.get(1).readFaceUp() != 2){
+			myHand.roll(1);
+		}
+		while (myHand.fiveDice.get(2).readFaceUp() != 3){
+			myHand.roll(2);
+		}
+		while (myHand.fiveDice.get(3).readFaceUp() != 4){
+			myHand.roll(3);
+		}
+		while (myHand.fiveDice.get(4).readFaceUp() != 4){
+			myHand.roll(4);
+		}
+		assertEquals(30, test.calcSmallStraight(myHand));
+		
+		//force to another small straight
+		while (myHand.fiveDice.get(0).readFaceUp() != 5){
+			myHand.roll(0);
+		}
+		while (myHand.fiveDice.get(4).readFaceUp() != 5){
+			myHand.roll(4);
+		}
+		assertEquals(30, test.calcSmallStraight(myHand));
+	}
+	
 	@Test
 	public void testCalcLargeStraight() {
 		
