@@ -27,7 +27,7 @@ public class TestScoreEquations {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		test = new ScoreEquations();
-		myHand = new Hand();
+		myHand = new Hand(5, 6);
 	}
 
 	@AfterClass
