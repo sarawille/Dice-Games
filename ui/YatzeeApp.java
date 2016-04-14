@@ -12,7 +12,7 @@ public class YatzeeApp {
 	
 	//TODO add comments and javaDoc notes
 	//TODO use same code to make another dice game
-	//try making this into a GUI or using pre-written GUI code to drop into IOFactory
+	//TODO try making this into a GUI or using pre-written GUI code to drop into IOFactory
 	
 	static int turn = 1;
 	static Displayable screen = IOFactory.getDisplayable();
