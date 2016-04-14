@@ -2,7 +2,7 @@ package business;
 
 import java.util.ArrayList;
 
-public class Hand implements Readable, Sortable
+public class Hand implements Sortable
 {
 	public ArrayList<Die> fiveDice = new ArrayList<>(5);
 	
@@ -29,14 +29,7 @@ public class Hand implements Readable, Sortable
 		printHand();
 	}
 	
-	@Override
-	public int readFaceUp() 
-	{
-		return 0;
-	}
-	
-	@Override
-	public int readFaceUp(int dieNumber) 
+	public int readDie(int dieNumber) 
 	{
 		return fiveDice.get(dieNumber).readFaceUp();
 	}
@@ -56,6 +49,12 @@ public class Hand implements Readable, Sortable
 		}
 	}
 	
+	//TODO make a printer/eyes class to do this part?
+	/**
+	 * The Hand object is then used to compile a String of dice that display
+	 *  side by side depending on how many dice are in the hand.
+	 * @return
+	 */
 	public String printHand() 
 	{
 		String header = "\t  Die 1\t\t  Die 2\t\t  Die 3\t\t  Die 4\t\t  Die 5\n";
