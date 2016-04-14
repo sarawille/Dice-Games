@@ -11,6 +11,7 @@ import business.Hand;
 public class YatzeeApp {
 	
 	//TODO add comments and javaDoc notes
+	//TODO use same code to make another dice game
 	//try making this into a GUI or using pre-written GUI code to drop into IOFactory
 	
 	static int turn = 1;
@@ -24,10 +25,8 @@ public class YatzeeApp {
 		
 		while (turn <= 5) {
 			screen.displayln("TURN " + turn);
-			thisHand = new Hand();
-			thisHand.rollAll();
-			screen.displayln(thisHand.printHand());
-			rerollHand(thisHand);
+			thisHand = new Hand(5, 6);
+			rollHand(thisHand);
 			//TODO why doesnt total score keep adding over multiple turns?
 			myScore.scoreHand(thisHand);
 			myScore.printTotalScore();
@@ -36,9 +35,11 @@ public class YatzeeApp {
 		}
 	}
 
-	private static void rerollHand(Hand myHand) {
+	private static void rollHand(Hand myHand) {
 		String userInput;
 		int numberOfRolls = 1;
+		myHand.rollAll();
+		screen.displayln(myHand.printHand());
 		while (numberOfRolls < 3) {
 			userInput= theValidator.getString("\nWould you like to roll again? (y/n) ", "y", "n");
 			if (userInput.equalsIgnoreCase("y")) {
