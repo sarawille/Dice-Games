@@ -46,17 +46,6 @@ public class Die implements Readable, Rollable {
 	{
 		return faceUp;
 	}
-
-	/**
-	 * readFaceUp(int i) - Overrides the readFaceUp() method implemented from Readable.
-	 *  This is a method that I want to take out, but need to figure out how to do that with Readable interface.
-	 *  @param i
-	 *  @return 0
-	 */
-	@Override
-	public int readFaceUp(int i) {
-		return 0;
-	}
 	
 	/** 
 	 * dieVisual1() - Creates the first line of a three line visual
