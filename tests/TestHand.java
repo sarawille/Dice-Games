@@ -19,7 +19,7 @@ public class TestHand {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		myHand = new Hand();
+		myHand = new Hand(5, 6);
 	}
 
 	@AfterClass
