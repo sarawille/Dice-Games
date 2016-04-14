@@ -6,11 +6,11 @@ public class Hand implements Readable, Sortable
 {
 	public ArrayList<Die> fiveDice = new ArrayList<>(5);
 	
-	public Hand() 
+	public Hand(int sides) 
 	{
 		for (int i = 0; i < 5; i++)
 		{
-			fiveDice.add(new Die());
+			fiveDice.add(new Die(sides));
 		}
 	}
 
