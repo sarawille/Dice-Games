@@ -316,31 +316,18 @@ public class TestScoreEquations {
 		while (myHand.fiveDice.get(4).readFaceUp() != 2){
 			myHand.roll(4);
 		}
-		
-		die1 = myHand.readFaceUp(0);
-		die2 = myHand.readFaceUp(1);
-		die3 = myHand.readFaceUp(2);
-		die4 = myHand.readFaceUp(3);
-		die5 = myHand.readFaceUp(4);
-		
 		assertEquals(25, test.calcFullHouse(myHand));
 		
 		//second force to full house
 		while (myHand.fiveDice.get(2).readFaceUp() != 2){
 			myHand.roll(2);
 		}
-				
-		die3 = myHand.readFaceUp(2);
-
 		assertEquals(25, test.calcFullHouse(myHand));
 		
 		//force NOT to full house
 		while (myHand.fiveDice.get(1).readFaceUp() != 2){
 			myHand.roll(1);
 		}
-		
-		die2 = myHand.readFaceUp(1);
-
 		assertEquals(0, test.calcFullHouse(myHand));
 	}
 	
@@ -434,13 +421,6 @@ public class TestScoreEquations {
 		while (myHand.fiveDice.get(4).readFaceUp() != 1){
 			myHand.roll(4);
 		}
-		
-		die1 = myHand.readFaceUp(0);
-		die2 = myHand.readFaceUp(1);
-		die3 = myHand.readFaceUp(2);
-		die4 = myHand.readFaceUp(3);
-		die5 = myHand.readFaceUp(4);
-		
 		assertEquals(50, test.calcYahtzee(myHand));
 	}
 	
@@ -464,12 +444,6 @@ public class TestScoreEquations {
 		while (myHand.fiveDice.get(4).readFaceUp() != 1){
 			myHand.roll(4);
 		}
-		die1 = myHand.readFaceUp(0);
-		die2 = myHand.readFaceUp(1);
-		die3 = myHand.readFaceUp(2);
-		die4 = myHand.readFaceUp(3);
-		die5 = myHand.readFaceUp(4);
-		
 		assertEquals(100, test.calcYahtzee(myHand));
 	}
 }
