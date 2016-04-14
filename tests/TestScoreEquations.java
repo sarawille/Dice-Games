@@ -428,6 +428,12 @@ public class TestScoreEquations {
 			myHand.roll(4);
 		}
 		assertEquals(50, test.calcYahtzee(myHand));
+		
+		//force to NOT yahtzee
+		while (myHand.fiveDice.get(4).readFaceUp() != 2){
+			myHand.roll(4);
+		}
+		assertEquals(0, test.calcYahtzee(myHand));
 	}
 	
 	@Test
