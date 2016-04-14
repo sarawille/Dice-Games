@@ -30,7 +30,7 @@ public class ScoreEquations extends ScoreVariables
 		{
 			for (int counter = 0; counter < 5; counter++)
 			{
-				possiblePoints += (newHand.readFaceUp(counter) == numberChecking) ? numberChecking : 0;
+				possiblePoints += (newHand.readDie(counter) == numberChecking) ? numberChecking : 0;
 			}
 		}
 		if (possiblePoints > 0) 
@@ -46,20 +46,20 @@ public class ScoreEquations extends ScoreVariables
 		if (getThreeOfAKindPoints() < 0) 
 		{
 			if (
-					(newHand.readFaceUp(0) == newHand.readFaceUp(1) &&
-					newHand.readFaceUp(1) == newHand.readFaceUp(2)) ||
+					(newHand.readDie(0) == newHand.readDie(1) &&
+					newHand.readDie(1) == newHand.readDie(2)) ||
 
-					(newHand.readFaceUp(1) == newHand.readFaceUp(2) &&
-					newHand.readFaceUp(2) == newHand.readFaceUp(3)) ||
+					(newHand.readDie(1) == newHand.readDie(2) &&
+					newHand.readDie(2) == newHand.readDie(3)) ||
 
-					(newHand.readFaceUp(2) == newHand.readFaceUp(3)  &&
-					newHand.readFaceUp(3) == newHand.readFaceUp(4)) )
+					(newHand.readDie(2) == newHand.readDie(3)  &&
+					newHand.readDie(3) == newHand.readDie(4)) )
 			{
-				setThreeOfAKindPossiblePoints(newHand.readFaceUp(0) +
-											  newHand.readFaceUp(1) +
-											  newHand.readFaceUp(2) +
-											  newHand.readFaceUp(3) +
-											  newHand.readFaceUp(4));
+				setThreeOfAKindPossiblePoints(newHand.readDie(0) +
+											  newHand.readDie(1) +
+											  newHand.readDie(2) +
+											  newHand.readDie(3) +
+											  newHand.readDie(4));
 				scoreChoices.append("3K \t 3 of a Kind \t\t" + getThreeOfAKindPossiblePoints() + " points\n"); 
 			}
 		}
@@ -71,19 +71,19 @@ public class ScoreEquations extends ScoreVariables
 		setFourOfAKindPossiblePoints(0);
 		if (getFourOfAKindPoints() < 0) 
 		{
-			if ((newHand.readFaceUp(0) == newHand.readFaceUp(1) &&
-					newHand.readFaceUp(1) == newHand.readFaceUp(2) &&
-					newHand.readFaceUp(2) == newHand.readFaceUp(3)) ||
+			if ((newHand.readDie(0) == newHand.readDie(1) &&
+					newHand.readDie(1) == newHand.readDie(2) &&
+					newHand.readDie(2) == newHand.readDie(3)) ||
 
-					(newHand.readFaceUp(1) == newHand.readFaceUp(2) &&
-					newHand.readFaceUp(2) == newHand.readFaceUp(3) &&
-					newHand.readFaceUp(3) == newHand.readFaceUp(4)) )
+					(newHand.readDie(1) == newHand.readDie(2) &&
+					newHand.readDie(2) == newHand.readDie(3) &&
+					newHand.readDie(3) == newHand.readDie(4)) )
 			{
-				setFourOfAKindPossiblePoints(newHand.readFaceUp(0) +
-											 newHand.readFaceUp(1) +
-											 newHand.readFaceUp(2) +
-											 newHand.readFaceUp(3) +
-											 newHand.readFaceUp(4));
+				setFourOfAKindPossiblePoints(newHand.readDie(0) +
+											 newHand.readDie(1) +
+											 newHand.readDie(2) +
+											 newHand.readDie(3) +
+											 newHand.readDie(4));
 				scoreChoices.append("4K \t 4 of a Kind \t\t" + getFourOfAKindPossiblePoints() +" points\n");
 			} 
 		}
@@ -95,15 +95,15 @@ public class ScoreEquations extends ScoreVariables
 		setFullHousePossiblePoints(0);
 		if (getFullHousePoints() < 0) 
 		{
-			if ((newHand.readFaceUp(0) == newHand.readFaceUp(1) &&
-					newHand.readFaceUp(1) == newHand.readFaceUp(2) &&
-					newHand.readFaceUp(3) == newHand.readFaceUp(4) &&
-					newHand.readFaceUp(2) != newHand.readFaceUp(3)) ||
+			if ((newHand.readDie(0) == newHand.readDie(1) &&
+					newHand.readDie(1) == newHand.readDie(2) &&
+					newHand.readDie(3) == newHand.readDie(4) &&
+					newHand.readDie(2) != newHand.readDie(3)) ||
 
-					(newHand.readFaceUp(0) == newHand.readFaceUp(1) &&
-					newHand.readFaceUp(2) == newHand.readFaceUp(3) &&
-					newHand.readFaceUp(3) == newHand.readFaceUp(4) &&
-					newHand.readFaceUp(1) != newHand.readFaceUp(2)) )
+					(newHand.readDie(0) == newHand.readDie(1) &&
+					newHand.readDie(2) == newHand.readDie(3) &&
+					newHand.readDie(3) == newHand.readDie(4) &&
+					newHand.readDie(1) != newHand.readDie(2)) )
 			{
 				setFullHousePossiblePoints(25);
 				scoreChoices.append("F \t Full House \t\t" + getFullHousePossiblePoints() + " points\n");
@@ -117,13 +117,13 @@ public class ScoreEquations extends ScoreVariables
 		setSmallStraightPossiblePoints(0);
 		if (getSmallStraightPoints() < 0) 
 		{
-			if ((newHand.readFaceUp(1) == newHand.readFaceUp(0) + 1 &&	
-				 newHand.readFaceUp(2) == newHand.readFaceUp(1) + 1 &&
-				 newHand.readFaceUp(3) == newHand.readFaceUp(2) + 1) ||
+			if ((newHand.readDie(1) == newHand.readDie(0) + 1 &&	
+				 newHand.readDie(2) == newHand.readDie(1) + 1 &&
+				 newHand.readDie(3) == newHand.readDie(2) + 1) ||
 
-				(newHand.readFaceUp(2) == newHand.readFaceUp(1) + 1 &&
-				 newHand.readFaceUp(3) == newHand.readFaceUp(2) + 1 &&
-				 newHand.readFaceUp(4) == newHand.readFaceUp(3) + 1) )
+				(newHand.readDie(2) == newHand.readDie(1) + 1 &&
+				 newHand.readDie(3) == newHand.readDie(2) + 1 &&
+				 newHand.readDie(4) == newHand.readDie(3) + 1) )
 			{
 				setSmallStraightPossiblePoints(30);
 				scoreChoices.append("S \t Small Straight \t" + getSmallStraightPossiblePoints() + " points\n");
@@ -137,10 +137,10 @@ public class ScoreEquations extends ScoreVariables
 		setLargeStraightPossiblePoints(0);
 		if (getLargeStraightPoints() <0) 
 		{
-			if (newHand.readFaceUp(1) == newHand.readFaceUp(0) + 1 &&	
-				newHand.readFaceUp(2) == newHand.readFaceUp(1) + 1 &&
-				newHand.readFaceUp(3) == newHand.readFaceUp(2) + 1 &&
-				newHand.readFaceUp(4) == newHand.readFaceUp(3) + 1)
+			if (newHand.readDie(1) == newHand.readDie(0) + 1 &&	
+				newHand.readDie(2) == newHand.readDie(1) + 1 &&
+				newHand.readDie(3) == newHand.readDie(2) + 1 &&
+				newHand.readDie(4) == newHand.readDie(3) + 1)
 			{
 				setLargeStraightPossiblePoints(40);
 				scoreChoices.append("L \t Large Straight \t" + getLargeStraightPossiblePoints() + " points\n");
@@ -154,8 +154,8 @@ public class ScoreEquations extends ScoreVariables
 		setChancePossiblePoints(0);
 		if (getChancePoints() < 0)
 		{
-			setChancePossiblePoints(newHand.readFaceUp(0) + newHand.readFaceUp(1) + newHand.readFaceUp(2) + 
-					newHand.readFaceUp(3) + newHand.readFaceUp(4));	
+			setChancePossiblePoints(newHand.readDie(0) + newHand.readDie(1) + newHand.readDie(2) + 
+					newHand.readDie(3) + newHand.readDie(4));	
 			scoreChoices.append("C \t Chance \t\t" + getChancePossiblePoints() + " points\n");
 		} 
 		return getChancePossiblePoints();
@@ -164,8 +164,8 @@ public class ScoreEquations extends ScoreVariables
 	public int calcYahtzee(Hand newHand) 
 	{
 		setYahtzeePossiblePoints(0);
-		if (newHand.readFaceUp(0) == newHand.readFaceUp(1) && newHand.readFaceUp(1) == newHand.readFaceUp(2) && 
-				newHand.readFaceUp(2) == newHand.readFaceUp(3) && newHand.readFaceUp(3) == newHand.readFaceUp(4)) 
+		if (newHand.readDie(0) == newHand.readDie(1) && newHand.readDie(1) == newHand.readDie(2) && 
+				newHand.readDie(2) == newHand.readDie(3) && newHand.readDie(3) == newHand.readDie(4)) 
 		{	
 			if (getYahtzeePoints() >= 50) {
 				setYahtzeePossiblePoints(100);

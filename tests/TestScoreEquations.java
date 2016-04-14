@@ -45,7 +45,7 @@ public class TestScoreEquations {
 		myHand.rollAll();
 		for (int i = 0; i < myHand.fiveDice.size(); i++)
 		{
-			if (myHand.readFaceUp(i) == 1)
+			if (myHand.readDie(i) == 1)
 			{
 				testPoints++;
 			}
@@ -61,7 +61,7 @@ public class TestScoreEquations {
 		myHand.rollAll();
 		for (int i = 0; i < myHand.fiveDice.size(); i++)
 		{
-			if (myHand.readFaceUp(i) == 2)
+			if (myHand.readDie(i) == 2)
 			{
 				testPoints+=2;
 			}
@@ -77,7 +77,7 @@ public class TestScoreEquations {
 		myHand.rollAll();
 		for (int i = 0; i < myHand.fiveDice.size(); i++)
 		{
-			if (myHand.readFaceUp(i) == 3)
+			if (myHand.readDie(i) == 3)
 			{
 				testPoints+=3;
 			}
@@ -93,7 +93,7 @@ public class TestScoreEquations {
 		myHand.rollAll();
 		for (int i = 0; i < myHand.fiveDice.size(); i++)
 		{
-			if (myHand.readFaceUp(i) == 4)
+			if (myHand.readDie(i) == 4)
 			{
 				testPoints+=4;
 			}
@@ -109,7 +109,7 @@ public class TestScoreEquations {
 		myHand.rollAll();
 		for (int i = 0; i < myHand.fiveDice.size(); i++)
 		{
-			if (myHand.readFaceUp(i) == 5)
+			if (myHand.readDie(i) == 5)
 			{
 				testPoints+=5;
 			}
@@ -125,7 +125,7 @@ public class TestScoreEquations {
 		myHand.rollAll();
 		for (int i = 0; i < myHand.fiveDice.size(); i++)
 		{
-			if (myHand.readFaceUp(i) == 6)
+			if (myHand.readDie(i) == 6)
 			{
 				testPoints+=6;
 			}
@@ -149,11 +149,11 @@ public class TestScoreEquations {
 		while (myHand.fiveDice.get(2).readFaceUp() != 1){
 			myHand.roll(2);
 		}
-		int die1 = myHand.readFaceUp(0);
-		int die2 = myHand.readFaceUp(1);
-		int die3 = myHand.readFaceUp(2);
-		int die4 = myHand.readFaceUp(3);
-		int die5 = myHand.readFaceUp(4);
+		int die1 = myHand.readDie(0);
+		int die2 = myHand.readDie(1);
+		int die3 = myHand.readDie(2);
+		int die4 = myHand.readDie(3);
+		int die5 = myHand.readDie(4);
 		
 		if (die1 == die2 && die2 == die3)
 		{
@@ -166,7 +166,7 @@ public class TestScoreEquations {
 		while (myHand.fiveDice.get(3).readFaceUp() != 1){
 			myHand.roll(3);
 		}
-		die4 = myHand.readFaceUp(3);
+		die4 = myHand.readDie(3);
 		
 		
 		if (die2 == die3 && die3 == die4)
@@ -180,7 +180,7 @@ public class TestScoreEquations {
 		while (myHand.fiveDice.get(4).readFaceUp() != 1){
 			myHand.roll(4);
 		}
-		die5 = myHand.readFaceUp(4);
+		die5 = myHand.readDie(4);
 		
 		if (die3 == die4 && die4 == die5)
 		{
@@ -205,11 +205,11 @@ public class TestScoreEquations {
 		while (myHand.fiveDice.get(4).readFaceUp() != 5){
 			myHand.roll(4);
 		}
-		die1 = myHand.readFaceUp(0);
-		die2 = myHand.readFaceUp(1);
-		die3 = myHand.readFaceUp(2);
-		die4 = myHand.readFaceUp(3);
-		die5 = myHand.readFaceUp(4);
+		die1 = myHand.readDie(0);
+		die2 = myHand.readDie(1);
+		die3 = myHand.readDie(2);
+		die4 = myHand.readDie(3);
+		die5 = myHand.readDie(4);
 		
 		if (die1 == die2 && die2 == die3)
 		{
@@ -237,11 +237,11 @@ public class TestScoreEquations {
 		while (myHand.fiveDice.get(3).readFaceUp() != 1){
 			myHand.roll(3);
 		}
-		int die1 = myHand.readFaceUp(0);
-		int die2 = myHand.readFaceUp(1);
-		int die3 = myHand.readFaceUp(2);
-		int die4 = myHand.readFaceUp(3);
-		int die5 = myHand.readFaceUp(4);
+		int die1 = myHand.readDie(0);
+		int die2 = myHand.readDie(1);
+		int die3 = myHand.readDie(2);
+		int die4 = myHand.readDie(3);
+		int die5 = myHand.readDie(4);
 		
 		if (die1 == die2 && die2 == die3 && die3 == die4)
 		{
@@ -254,7 +254,7 @@ public class TestScoreEquations {
 		while (myHand.fiveDice.get(4).readFaceUp() != 1){
 			myHand.roll(4);
 		}
-		die5 = myHand.readFaceUp(4);
+		die5 = myHand.readDie(4);
 		
 		if (die2 == die3 && die3 == die4 && die4 == die5)
 		{
@@ -279,11 +279,11 @@ public class TestScoreEquations {
 		while (myHand.fiveDice.get(4).readFaceUp() != 5){
 			myHand.roll(4);
 		}
-		die1 = myHand.readFaceUp(0);
-		die2 = myHand.readFaceUp(1);
-		die3 = myHand.readFaceUp(2);
-		die4 = myHand.readFaceUp(3);
-		die5 = myHand.readFaceUp(4);
+		die1 = myHand.readDie(0);
+		die2 = myHand.readDie(1);
+		die3 = myHand.readDie(2);
+		die4 = myHand.readDie(3);
+		die5 = myHand.readDie(4);
 		
 		if (die1 == die2 && die2 == die3 && die3 == die4)
 		{
@@ -394,11 +394,11 @@ public class TestScoreEquations {
 	public void testCalcChance() {
 		myHand.rollAll();
 		
-		int die1 = myHand.readFaceUp(0);
-		int die2 = myHand.readFaceUp(1);
-		int die3 = myHand.readFaceUp(2);
-		int die4 = myHand.readFaceUp(3);
-		int die5 = myHand.readFaceUp(4);
+		int die1 = myHand.readDie(0);
+		int die2 = myHand.readDie(1);
+		int die3 = myHand.readDie(2);
+		int die4 = myHand.readDie(3);
+		int die5 = myHand.readDie(4);
 		
 		int points = die1 + die2 + die3 + die4 + die5;
 		assertEquals(points, test.calcChance(myHand));

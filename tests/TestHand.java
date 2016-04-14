@@ -43,19 +43,19 @@ public class TestHand {
 	public void testRollAndReadHand() {
 		int result;
 		myHand.roll(0);
-		result = myHand.readFaceUp(0);
+		result = myHand.readDie(0);
 		assertTrue(result >= 1 && result <= 6);
 		myHand.roll(1);
-		result = myHand.readFaceUp(1);
+		result = myHand.readDie(1);
 		assertTrue(result >= 1 && result <= 6);
 		myHand.roll(2);
-		result = myHand.readFaceUp(2);
+		result = myHand.readDie(2);
 		assertTrue(result >= 1 && result <= 6);
 		myHand.roll(3);
-		result = myHand.readFaceUp(3);
+		result = myHand.readDie(3);
 		assertTrue(result >= 1 && result <= 6);
 		myHand.roll(4);
-		result = myHand.readFaceUp(4);
+		result = myHand.readDie(4);
 		assertTrue(result >= 1 && result <= 6);
 	}
 	
@@ -63,15 +63,15 @@ public class TestHand {
 	public void testRollAllAndReadHand() {
 		int result;
 		myHand.rollAll();
-		result = myHand.readFaceUp(0);
+		result = myHand.readDie(0);
 		assertTrue(result >= 1 && result <= 6);
-		result = myHand.readFaceUp(1);
+		result = myHand.readDie(1);
 		assertTrue(result >= 1 && result <= 6);
-		result = myHand.readFaceUp(2);
+		result = myHand.readDie(2);
 		assertTrue(result >= 1 && result <= 6);
-		result = myHand.readFaceUp(3);
+		result = myHand.readDie(3);
 		assertTrue(result >= 1 && result <= 6);
-		result = myHand.readFaceUp(4);
+		result = myHand.readDie(4);
 		assertTrue(result >= 1 && result <= 6);
 	}
 	
