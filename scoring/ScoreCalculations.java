@@ -83,56 +83,56 @@ public class ScoreCalculations extends ScoreEquations implements Scorable {
 		switch(userChoice)
 		{
 		case ONES:
-			totalScore += onesPossiblePoints;
-			onesPoints = onesPossiblePoints;
+			addToTotalScore(onesPossiblePoints);
+			setOnesPoints(onesPossiblePoints);
 			break;
 		case TWOS:
-			totalScore += twosPossiblePoints;
-			twosPoints = twosPossiblePoints;
+			addToTotalScore(twosPossiblePoints);
+			setTwosPoints(twosPossiblePoints);
 			break;
 		case THREES:
-			totalScore += threesPossiblePoints;
-			threesPoints = threesPossiblePoints;
+			addToTotalScore(threesPossiblePoints);
+			setThreesPoints(threesPossiblePoints);
 			break;
 		case FOURS:
-			totalScore += foursPossiblePoints;
-			foursPoints = foursPossiblePoints;
+			addToTotalScore(foursPossiblePoints);
+			setFoursPoints(foursPossiblePoints);
 			break;
 		case FIVES:
-			totalScore += fivesPossiblePoints;
-			fivesPoints = fivesPossiblePoints;
+			addToTotalScore(fivesPossiblePoints);
+			setFivesPoints(fivesPossiblePoints);
 			break;
 		case SIXES:
-			totalScore += sixesPossiblePoints;
-			sixesPoints = sixesPossiblePoints;
+			addToTotalScore(sixesPossiblePoints);
+			setSixesPoints(sixesPossiblePoints);
 			break;
 		case THREE_OF_A_KIND:
-			totalScore += threeOfAKindPossiblePoints;
-			threeOfAKindPoints = threeOfAKindPossiblePoints;
+			addToTotalScore(threeOfAKindPossiblePoints);
+			setThreeOfAKindPoints(threeOfAKindPossiblePoints);
 			break;
 		case FOUR_OF_A_KIND:
-			totalScore += fourOfAKindPossiblePoints;
-			fourOfAKindPoints = fourOfAKindPossiblePoints;
+			addToTotalScore(fourOfAKindPossiblePoints);
+			setFourOfAKindPoints(fourOfAKindPossiblePoints);
 			break;
 		case FULL_HOUSE:
-			totalScore += fullHousePossiblePoints;
-			fullHousePoints = fullHousePossiblePoints;
+			addToTotalScore(fullHousePossiblePoints);
+			setFullHousePoints(fullHousePossiblePoints);
 			break;
 		case SMALL_STRAIGHT:
-			totalScore += smallStraightPossiblePoints;
-			smallStraightPoints = smallStraightPossiblePoints;
+			addToTotalScore(smallStraightPossiblePoints);
+			setSmallStraightPoints(smallStraightPossiblePoints);
 			break;
 		case LARGE_STRAIGHT:
-			totalScore += largeStraightPossiblePoints;
-			largeStraightPoints = largeStraightPossiblePoints;
+			addToTotalScore(largeStraightPossiblePoints);
+			setLargeStraightPoints(largeStraightPossiblePoints);
 			break;
 		case CHANCE:
-			totalScore += chancePossiblePoints;
-			chancePoints = chancePossiblePoints;
+			addToTotalScore(chancePossiblePoints);
+			setChancePoints(chancePossiblePoints);
 			break;
 		case YAHTZEE:
-			totalScore += yahtzeePossiblePoints;
-			yahtzeePoints += yahtzeePossiblePoints;
+			addToTotalScore(yahtzeePossiblePoints);
+			setYahtzeePoints(yahtzeePossiblePoints);
 			break;
 		default:
 			break;
@@ -141,7 +141,7 @@ public class ScoreCalculations extends ScoreEquations implements Scorable {
 
 	@Override
 	public void printTotalScore() {
-		screen.displayln("Your total score is " + totalScore);
+		screen.displayln("Your total score is " + getTotalScore());
 	}
 
 }
