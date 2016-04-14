@@ -59,23 +59,23 @@ public class Hand implements Sortable
 	{
 		String header = "\t  Die 1\t\t  Die 2\t\t  Die 3\t\t  Die 4\t\t  Die 5\n";
 		String printRow1 =
-				"\t  " + Die.dieVisual1(readFaceUp(0)) + "   " +
-				"\t  " + Die.dieVisual1(readFaceUp(1)) + "   " +
-				"\t  " + Die.dieVisual1(readFaceUp(2)) + "   " +
-				"\t  " + Die.dieVisual1(readFaceUp(3)) + "   " +
-				"\t  " + Die.dieVisual1(readFaceUp(4)) + "   ";
+				"\t  " + Die.dieVisual1(readDie(0)) + "   " +
+				"\t  " + Die.dieVisual1(readDie(1)) + "   " +
+				"\t  " + Die.dieVisual1(readDie(2)) + "   " +
+				"\t  " + Die.dieVisual1(readDie(3)) + "   " +
+				"\t  " + Die.dieVisual1(readDie(4)) + "   ";
 		String printRow2 =
-				"\t  " + Die.dieVisual2(readFaceUp(0)) + "   " +
-				"\t  " + Die.dieVisual2(readFaceUp(1)) + "   " +
-				"\t  " + Die.dieVisual2(readFaceUp(2)) + "   " +
-				"\t  " + Die.dieVisual2(readFaceUp(3)) + "   " +
-				"\t  " + Die.dieVisual2(readFaceUp(4)) + "   ";
+				"\t  " + Die.dieVisual2(readDie(0)) + "   " +
+				"\t  " + Die.dieVisual2(readDie(1)) + "   " +
+				"\t  " + Die.dieVisual2(readDie(2)) + "   " +
+				"\t  " + Die.dieVisual2(readDie(3)) + "   " +
+				"\t  " + Die.dieVisual2(readDie(4)) + "   ";
 		String printRow3 =
-				"\t  " + Die.dieVisual3(readFaceUp(0)) + "   " +
-				"\t  " + Die.dieVisual3(readFaceUp(1)) + "   " +
-				"\t  " + Die.dieVisual3(readFaceUp(2)) + "   " +
-				"\t  " + Die.dieVisual3(readFaceUp(3)) + "   " +
-				"\t  " + Die.dieVisual3(readFaceUp(4)) + "   ";
+				"\t  " + Die.dieVisual3(readDie(0)) + "   " +
+				"\t  " + Die.dieVisual3(readDie(1)) + "   " +
+				"\t  " + Die.dieVisual3(readDie(2)) + "   " +
+				"\t  " + Die.dieVisual3(readDie(3)) + "   " +
+				"\t  " + Die.dieVisual3(readDie(4)) + "   ";
 		return("\n" + header + "\n" + printRow1 + "\n" + printRow2 + "\n" + printRow3 + "\n");
 	}
 }
