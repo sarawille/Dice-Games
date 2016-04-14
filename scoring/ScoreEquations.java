@@ -6,6 +6,7 @@ public class ScoreEquations extends ScoreVariables
 {
 	
 	public void execute(Hand newHand) {
+		scoreChoices = new StringBuilder("Which category do you want to score? \n");
 		calcSingleNumbers(newHand, onesPossiblePoints, onesPoints, 1, "Ones");
 		calcSingleNumbers(newHand, twosPossiblePoints, twosPoints, 2, "Twos");
 		calcSingleNumbers(newHand, threesPossiblePoints, threesPoints, 3, "Threes");

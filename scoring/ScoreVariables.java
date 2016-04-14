@@ -37,7 +37,7 @@ public abstract class ScoreVariables
 
 	protected int totalScore = 0;
 	
-	protected StringBuilder scoreChoices = new StringBuilder("Which category do you want to score? \n");
+	protected StringBuilder scoreChoices;
 	
 	public int getOnesPoints() {
 		return onesPoints;
