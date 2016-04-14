@@ -267,7 +267,7 @@ public class TestScoreEquations {
 		}
 		assertEquals(points, test.calcFourOfAKind(myHand));
 		
-		//force to NOT get three of a kind
+		//force to NOT get four of a kind
 		points = 0;
 		while (myHand.fiveDice.get(0).readFaceUp() != 1){
 			myHand.roll(0);
@@ -300,7 +300,7 @@ public class TestScoreEquations {
 	@Test
 	public void testCalcFullHouse() {
 		
-		//first force to fullhouse
+		//first force to full house
 		while (myHand.fiveDice.get(0).readFaceUp() != 1){
 			myHand.roll(0);
 		}
@@ -351,14 +351,20 @@ public class TestScoreEquations {
 		}
 		assertEquals(30, test.calcSmallStraight(myHand));
 		
-		//force to another small straight
-		while (myHand.fiveDice.get(0).readFaceUp() != 5){
+		//second force to small straight
+		while (myHand.fiveDice.get(0).readFaceUp() != 2){
 			myHand.roll(0);
 		}
 		while (myHand.fiveDice.get(4).readFaceUp() != 5){
 			myHand.roll(4);
 		}
 		assertEquals(30, test.calcSmallStraight(myHand));
+		
+		//force not to small straight
+		while (myHand.fiveDice.get(4).readFaceUp() != 4){
+			myHand.roll(4);
+		}
+		assertEquals(0, test.calcSmallStraight(myHand));
 	}
 	
 	@Test
