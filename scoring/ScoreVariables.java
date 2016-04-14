@@ -143,10 +143,6 @@ public abstract class ScoreVariables
 		return chancePossiblePoints;
 	}
 
-	public int getTotalScore() {
-		return totalScore;
-	}
-
 	public void setOnesPossiblePoints(int onesPossiblePoints) {
 		this.onesPossiblePoints = onesPossiblePoints;
 	}
@@ -199,6 +195,12 @@ public abstract class ScoreVariables
 		this.chancePossiblePoints = chancePossiblePoints;
 	}
 	
-	
+	public int getTotalScore() {
+		return totalScore;
+	}
+
+	public void addToTotalScore(int newScore) {
+		totalScore += newScore;
+	}
 
 }
