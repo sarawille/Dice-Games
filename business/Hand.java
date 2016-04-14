@@ -2,6 +2,15 @@ package business;
 
 import java.util.ArrayList;
 
+/**
+ * @author Sara Wille
+ * The Hand object is a collection of die.  
+ * The number of dice and number of sides on the dice must be set when the Hand is instantiated.
+ * All dice in the hand will have the same number of sides.
+ * Through the hand, the user can roll a single die, roll all dice, 
+ * read the face up side on an individual die, and the face up visuals side by side.
+ */
+
 public class Hand implements Sortable
 {
 	public ArrayList<Die> fiveDice = new ArrayList<>(5);
