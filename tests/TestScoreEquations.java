@@ -18,11 +18,6 @@ public class TestScoreEquations {
 	
 	static ScoreEquations test;
 	static Hand myHand;
-	static int die1;
-	static int die2;
-	static int die3;
-	static int die4;
-	static int die5;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -154,11 +149,11 @@ public class TestScoreEquations {
 		while (myHand.fiveDice.get(2).readFaceUp() != 1){
 			myHand.roll(2);
 		}
-		die1 = myHand.readFaceUp(0);
-		die2 = myHand.readFaceUp(1);
-		die3 = myHand.readFaceUp(2);
-		die4 = myHand.readFaceUp(3);
-		die5 = myHand.readFaceUp(4);
+		int die1 = myHand.readFaceUp(0);
+		int die2 = myHand.readFaceUp(1);
+		int die3 = myHand.readFaceUp(2);
+		int die4 = myHand.readFaceUp(3);
+		int die5 = myHand.readFaceUp(4);
 		
 		if (die1 == die2 && die2 == die3)
 		{
@@ -242,11 +237,11 @@ public class TestScoreEquations {
 		while (myHand.fiveDice.get(3).readFaceUp() != 1){
 			myHand.roll(3);
 		}
-		die1 = myHand.readFaceUp(0);
-		die2 = myHand.readFaceUp(1);
-		die3 = myHand.readFaceUp(2);
-		die4 = myHand.readFaceUp(3);
-		die5 = myHand.readFaceUp(4);
+		int die1 = myHand.readFaceUp(0);
+		int die2 = myHand.readFaceUp(1);
+		int die3 = myHand.readFaceUp(2);
+		int die4 = myHand.readFaceUp(3);
+		int die5 = myHand.readFaceUp(4);
 		
 		if (die1 == die2 && die2 == die3 && die3 == die4)
 		{
@@ -399,11 +394,11 @@ public class TestScoreEquations {
 	public void testCalcChance() {
 		myHand.rollAll();
 		
-		die1 = myHand.readFaceUp(0);
-		die2 = myHand.readFaceUp(1);
-		die3 = myHand.readFaceUp(2);
-		die4 = myHand.readFaceUp(3);
-		die5 = myHand.readFaceUp(4);
+		int die1 = myHand.readFaceUp(0);
+		int die2 = myHand.readFaceUp(1);
+		int die3 = myHand.readFaceUp(2);
+		int die4 = myHand.readFaceUp(3);
+		int die5 = myHand.readFaceUp(4);
 		
 		int points = die1 + die2 + die3 + die4 + die5;
 		assertEquals(points, test.calcChance(myHand));
