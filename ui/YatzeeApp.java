@@ -51,26 +51,31 @@ public class YatzeeApp {
 	private static void rollAgain(Hand newHand) 
 	{
 		String prompt = "\nWhich die do you want to re-roll? (Type die numbers without spaces) ";
-		int userInput = theValidator.getInt(prompt, 1, 5);
+		String userInput = theValidator.getString(prompt);
+		int counter = 0;
 		
-		switch (userInput) {
-			case 1:
-				newHand.roll(0);
-				break;
-			case 2:
-				newHand.roll(1);
-				break;
-			case 3:
-				newHand.roll(2);
-				break;
-			case 4:
-				newHand.roll(3);
-				break;
-			case 5:
-				newHand.roll(4);
-				break;
-			default:
-				break;
+		//ycles through the user-entered string, looking at each character as an individual input
+		while (counter < userInput.length()) {
+			switch (userInput.charAt(counter)) {
+				case '1':
+					newHand.roll(0);
+					break;
+				case '2':
+					newHand.roll(1);
+					break;
+				case '3':
+					newHand.roll(2);
+					break;
+				case '4':
+					newHand.roll(3);
+					break;
+				case '5':
+					newHand.roll(4);
+					break;
+				default:
+					break;
+			}
+			counter++;
 		}
 	}
 	
