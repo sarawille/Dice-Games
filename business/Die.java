@@ -3,14 +3,28 @@ package business;
 import business.Readable;
 import business.Rollable;
 
+/**
+ * @author Sara Wille
+ * The Die is 
+ * 
+ */
+
 public class Die implements Readable, Rollable {
 	
-	final int SIDES = 6;
-	int faceUp = 0;
+	protected int sides = 6;
+	protected int faceUp = 0;
+	
+	public Die(int sides) {
+		setSides(sides);
+	}
+	
+	public void setSides(int sides) {
+		this.sides = sides;
+	}
 	
 	public void roll() 
 	{
-		faceUp = (int) ((Math.random() * SIDES + 1)); 
+		faceUp = (int) ((Math.random() * sides + 1)); 
 	}
 	
 	@Override
