@@ -6,7 +6,8 @@ public class ScoreEquations extends ScoreVariables
 {
 	
 	public void execute(Hand newHand) {
-		scoreChoices = new StringBuilder("Which category do you want to score? \n");
+		scoreChoices.setLength(0);
+		scoreChoices.append("Which category do you want to score? \n");
 		calcSingleNumbers(newHand, onesPossiblePoints, onesPoints, 1, "Ones");
 		calcSingleNumbers(newHand, twosPossiblePoints, twosPoints, 2, "Twos");
 		calcSingleNumbers(newHand, threesPossiblePoints, threesPoints, 3, "Threes");
@@ -41,7 +42,7 @@ public class ScoreEquations extends ScoreVariables
 
 	public int calcThreeOfAKind(Hand newHand) 
 	{
-		threeOfAKindPossiblePoints = 0;
+		setThreeOfAKindPossiblePoints(0);
 		if (threeOfAKindPoints < 0) 
 		{
 			if (
@@ -54,15 +55,15 @@ public class ScoreEquations extends ScoreVariables
 					(newHand.readFaceUp(2) == newHand.readFaceUp(3)  &&
 					newHand.readFaceUp(3) == newHand.readFaceUp(4)) )
 			{
-				threeOfAKindPossiblePoints = newHand.readFaceUp(0) +
-											 newHand.readFaceUp(1) +
-											 newHand.readFaceUp(2) +
-											 newHand.readFaceUp(3) +
-											 newHand.readFaceUp(4);
-				scoreChoices.append("3K \t 3 of a Kind \t\t" + threeOfAKindPossiblePoints + " points\n"); 
+				setThreeOfAKindPossiblePoints(newHand.readFaceUp(0) +
+											  newHand.readFaceUp(1) +
+											  newHand.readFaceUp(2) +
+											  newHand.readFaceUp(3) +
+											  newHand.readFaceUp(4));
+				scoreChoices.append("3K \t 3 of a Kind \t\t" + getThreeOfAKindPossiblePoints() + " points\n"); 
 			}
 		}
-		return threeOfAKindPossiblePoints;
+		return getThreeOfAKindPossiblePoints();
 	}
 
 	public int calcFourOfAKind(Hand newHand) 
