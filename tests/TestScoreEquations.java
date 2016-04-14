@@ -393,21 +393,12 @@ public class TestScoreEquations {
 		while (myHand.fiveDice.get(4).readFaceUp() != 5){
 			myHand.roll(4);
 		}
-		
-		die1 = myHand.readFaceUp(0);
-		die2 = myHand.readFaceUp(1);
-		die3 = myHand.readFaceUp(2);
-		die4 = myHand.readFaceUp(3);
-		die5 = myHand.readFaceUp(4);
-		
 		assertEquals(40, test.calcLargeStraight(myHand));
 		
 		//force NOT to large straight
 		while (myHand.fiveDice.get(4).readFaceUp() != 5){
 			myHand.roll(4);
 		}
-		die5 = myHand.readFaceUp(4);
-		
 		assertEquals(40, test.calcLargeStraight(myHand));
 	}
 
