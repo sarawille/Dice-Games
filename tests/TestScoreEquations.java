@@ -414,24 +414,60 @@ public class TestScoreEquations {
 		assertEquals(points, test.calcChance(myHand));
 	}
 	
-//	@Test
-//	public void testYahtzee() {
-//		int points = 0;
-//		
-//		for (int i = 0; i < myHand.fiveDice.size(); i++)
-//		{
-//			if (die1 == die2 &&	die2 == die3 && die3 == die4 && die4 == die5)
-//			{
-//				points = 50;
-//			}
-//		}
-//		assertEquals(points, test.calcYahtzee(myHand));
-//		points = 100;
-//		assertEquals(points, test.calcYahtzee(myHand));
-//	}
+	@Test
+	public void testYahtzee() {
+		//force to yahtzee
+		while (myHand.fiveDice.get(0).readFaceUp() != 1){
+			myHand.roll(0);
+		}
+		while (myHand.fiveDice.get(1).readFaceUp() != 1){
+			myHand.roll(1);
+		}
+		while (myHand.fiveDice.get(2).readFaceUp() != 1){
+			myHand.roll(2);
+		}
+		while (myHand.fiveDice.get(3).readFaceUp() != 1){
+			myHand.roll(3);
+		}
+		while (myHand.fiveDice.get(4).readFaceUp() != 1){
+			myHand.roll(4);
+		}
+		
+		die1 = myHand.readFaceUp(0);
+		die2 = myHand.readFaceUp(1);
+		die3 = myHand.readFaceUp(2);
+		die4 = myHand.readFaceUp(3);
+		die5 = myHand.readFaceUp(4);
+		
+		assertEquals(50, test.calcYahtzee(myHand));
+	}
 	
 	@Test
 	public void testAnotherYahtzee() {
+		//force to yahtzee
+		test.setYahtzeePoints(50);
+		//force to another yahtzee
+		while (myHand.fiveDice.get(0).readFaceUp() != 1){
+			myHand.roll(0);
+		}
+		while (myHand.fiveDice.get(1).readFaceUp() != 1){
+			myHand.roll(1);
+		}
+		while (myHand.fiveDice.get(2).readFaceUp() != 1){
+			myHand.roll(2);
+		}
+		while (myHand.fiveDice.get(3).readFaceUp() != 1){
+			myHand.roll(3);
+		}
+		while (myHand.fiveDice.get(4).readFaceUp() != 1){
+			myHand.roll(4);
+		}
+		die1 = myHand.readFaceUp(0);
+		die2 = myHand.readFaceUp(1);
+		die3 = myHand.readFaceUp(2);
+		die4 = myHand.readFaceUp(3);
+		die5 = myHand.readFaceUp(4);
 		
+		assertEquals(100, test.calcYahtzee(myHand));
 	}
 }
