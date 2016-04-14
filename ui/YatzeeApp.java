@@ -25,6 +25,7 @@ public class YatzeeApp {
 			thisHand.rollAll();
 			screen.displayln(thisHand.printHand());
 			rerollHand(thisHand);
+			//TODO why doesnt total score keep adding over multiple turns?
 			myScore.scoreHand(thisHand);
 			myScore.printTotalScore();
 			turn++;
