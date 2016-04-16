@@ -483,6 +483,7 @@ public class TestScoreEquations {
 		test.setFullHousePoints(25);
 		test.setSmallStraightPoints(30);
 		test.setChancePoints(10);
+		test.setYahtzeePoints(50);
 		
 		myHand.rollAll();
 		while (myHand.fiveDice.get(0).readFaceUp() != 2){
@@ -517,6 +518,7 @@ public class TestScoreEquations {
 		test.setFullHousePoints(-1);
 		test.setSmallStraightPoints(-1);
 		test.setChancePoints(-1);
+		test.setYahtzeePoints(-1);
 		
 	}
 }
