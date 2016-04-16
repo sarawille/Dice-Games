@@ -24,7 +24,7 @@ public class YatzeeApp {
 		ScoreCalculations myScore = new ScoreCalculations(screen, theValidator);
 		Hand thisHand; 
 		
-		while (turn <= 3) {
+		while (turn <= 1) {
 			screen.displayln("TURN " + turn);
 			thisHand = new Hand(5, 6);
 			rollHand(thisHand);
@@ -35,7 +35,9 @@ public class YatzeeApp {
 			screen.displayln("--------------------------------------------------\n");
 			turn++;
 		}
-
+		screen.displayln("GAME OVER!");
+		screen.display("Your final score is ");
+		screen.displayln(myScore.printTotalScore());
 		
 	}
 
