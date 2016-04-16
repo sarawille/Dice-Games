@@ -20,8 +20,8 @@ public class ScoreEquations extends ScoreVariables
 	
 	private String getZeros() {
 		StringBuilder addZerosToScoreChoices = new StringBuilder();
-		addZerosToScoreChoices.append("Sorry, no score categories are available!");
-		addZerosToScoreChoices.append("You must choose a category to score with 0 points.");
+		addZerosToScoreChoices.append("Sorry, no score categories are available!\n");
+		addZerosToScoreChoices.append("You must choose a category to score with 0 points.\n");
 		if (onesPoints <0 ){
 			addZerosToScoreChoices.append("1 \t Ones \t\t\t 0 points\n");
 		}
@@ -50,10 +50,10 @@ public class ScoreEquations extends ScoreVariables
 			addZerosToScoreChoices.append("F \t Full House \t\t 0  points\n");
 		}
 		if (smallStraightPoints <0 ){
-			addZerosToScoreChoices.append("S \t Small Straight \t\t 0  points\n");
+			addZerosToScoreChoices.append("S \t Small Straight \t 0  points\n");
 		}
 		if (largeStraightPoints <0 ){
-			addZerosToScoreChoices.append("L \t Large Straight \t\t 0  points\n");
+			addZerosToScoreChoices.append("L \t Large Straight \t 0  points\n");
 		}
 		if (chancePoints <0 ){
 			addZerosToScoreChoices.append("C \t Chance \t\t 0  points\n");
