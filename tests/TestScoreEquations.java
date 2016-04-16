@@ -471,4 +471,52 @@ public class TestScoreEquations {
 		}
 		assertEquals(0, test.calcYahtzee(myHand));
 	}
+	
+	@Test
+	public void testGetZeros() {
+		test.setOnesPoints(5);
+		test.setTwosPoints(10);
+		test.setThreesPoints(10);
+		test.setFoursPoints(10);
+		test.setThreeOfAKindPoints(9);
+		test.setFourOfAKindPoints(0);
+		test.setFullHousePoints(25);
+		test.setSmallStraightPoints(30);
+		test.setChancePoints(10);
+		
+		myHand.rollAll();
+		while (myHand.fiveDice.get(0).readFaceUp() != 2){
+			myHand.roll(0);
+		}
+		while (myHand.fiveDice.get(1).readFaceUp() != 2){
+			myHand.roll(1);
+		}
+		while (myHand.fiveDice.get(2).readFaceUp() != 2){
+			myHand.roll(2);
+		}
+		while (myHand.fiveDice.get(3).readFaceUp() != 1){
+			myHand.roll(3);
+		}
+		while (myHand.fiveDice.get(4).readFaceUp() != 1){
+			myHand.roll(4);
+		}
+		String expectedString = "Which category do you want to score? \n" +
+								"Sorry, no score categories are available!\n" +
+								"You must choose a category to score with 0 points.\n" +
+								"5 \t Fives \t\t\t 0  points\n" +
+								"6 \t Sixes \t\t\t 0  points\n" +
+								"L \t Large Straight \t 0  points\n";
+		assertEquals(expectedString, test.getScoreChoices(myHand));
+		
+		test.setOnesPoints(-1);
+		test.setTwosPoints(-1);
+		test.setThreesPoints(-1);
+		test.setFoursPoints(-1);
+		test.setThreeOfAKindPoints(-1);
+		test.setFourOfAKindPoints(-1);
+		test.setFullHousePoints(-1);
+		test.setSmallStraightPoints(-1);
+		test.setChancePoints(-1);
+		
+	}
 }
