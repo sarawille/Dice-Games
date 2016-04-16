@@ -30,7 +30,7 @@ public class Hand implements Sortable
 	 *  The die number is equal to the die index + 1. 
 	 * @param dieNumber
 	 */
-	public void roll(int dieNumber) 
+	public void rollDie(int dieNumber) 
 	{
 		fiveDice.get(dieNumber).roll();
 	}
@@ -42,7 +42,7 @@ public class Hand implements Sortable
 	{
 		for (int i = 0; i < fiveDice.size(); i++)
 		{
-			roll(i);
+			rollDie(i);
 		}
 	}
 	
