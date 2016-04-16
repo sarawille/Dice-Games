@@ -40,11 +40,10 @@ public class Hand implements Sortable
 	 */
 	public void rollAll() 
 	{
-		roll(0);
-		roll(1);
-		roll(2);
-		roll(3);
-		roll(4);	
+		for (int i = 0; i < fiveDice.size(); i++)
+		{
+			roll(i);
+		}
 	}
 	
 	/**
