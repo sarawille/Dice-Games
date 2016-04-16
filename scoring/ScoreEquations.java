@@ -5,15 +5,15 @@ import business.Hand;
 public class ScoreEquations extends ScoreVariables
 {
 	
-	public void execute(Hand newHand) {
+	public String getScoreChoices(Hand newHand) {
 		scoreChoices.setLength(0);
 		scoreChoices.append("Which category do you want to score? \n");
-		calcSingleNumbers(newHand, onesPossiblePoints, onesPoints, 1, "Ones");
-		calcSingleNumbers(newHand, twosPossiblePoints, twosPoints, 2, "Twos");
-		calcSingleNumbers(newHand, threesPossiblePoints, threesPoints, 3, "Threes");
-		calcSingleNumbers(newHand, foursPossiblePoints, foursPoints, 4, "Fours");
-		calcSingleNumbers(newHand, fivesPossiblePoints, fivesPoints, 5, "Fives");
-		calcSingleNumbers(newHand, sixesPossiblePoints, sixesPoints, 6, "Sixes");
+		calcOnes(newHand);
+		calcTwos(newHand);
+		calcThrees(newHand);
+		calcFours(newHand);
+		calcFives(newHand);
+		calcSixes(newHand);
 		calcThreeOfAKind(newHand);
 		calcFourOfAKind(newHand);
 		calcFullHouse(newHand);
@@ -21,23 +21,109 @@ public class ScoreEquations extends ScoreVariables
 		calcLargeStraight(newHand);
 		calcChance(newHand);
 		calcYahtzee(newHand);
+		return scoreChoices.toString();
 	}
 	
-	public int calcSingleNumbers(Hand newHand, int possiblePoints, int points, int numberChecking, String name) 
+	public int calcOnes(Hand newHand) 
 	{
-		possiblePoints = 0;
-		if (points < 0) 
+		onesPossiblePoints = 0;
+		if (onesPoints < 0) 
 		{
 			for (int counter = 0; counter < 5; counter++)
 			{
-				possiblePoints += (newHand.readDie(counter) == numberChecking) ? numberChecking : 0;
+				onesPossiblePoints += (newHand.readDie(counter) == 1) ? 1 : 0;
 			}
 		}
-		if (possiblePoints > 0) 
+		if (onesPossiblePoints > 0) 
 		{
-			scoreChoices.append(numberChecking + " \t " + name + "\t\t\t" + possiblePoints + " points\n");
+			scoreChoices.append("1 \t Ones \t\t\t" + onesPossiblePoints + " points\n");
 		}
-		return possiblePoints;
+		return onesPossiblePoints;
+	}
+	
+	public int calcTwos(Hand newHand) 
+	{
+		twosPossiblePoints = 0;
+		if (twosPoints < 0) 
+		{
+			for (int counter = 0; counter < 5; counter++)
+			{
+				twosPossiblePoints += (newHand.readDie(counter) == 2) ? 2 : 0;
+			}
+		}
+		if (twosPossiblePoints > 0) 
+		{
+			scoreChoices.append("2 \t Twos \t\t\t" + twosPossiblePoints + " points\n");
+		}
+		return twosPossiblePoints;
+	}
+	
+	public int calcThrees(Hand newHand) 
+	{
+		threesPossiblePoints = 0;
+		if (threesPoints < 0) 
+		{
+			for (int counter = 0; counter < 5; counter++)
+			{
+				threesPossiblePoints += (newHand.readDie(counter) == 3) ? 3 : 0;
+			}
+		}
+		if (threesPossiblePoints > 0) 
+		{
+			scoreChoices.append("3 \t Threes \t\t\t" + threesPossiblePoints + " points\n");
+		}
+		return threesPossiblePoints;
+	}
+	
+	public int calcFours(Hand newHand) 
+	{
+		foursPossiblePoints = 0;
+		if (foursPoints < 0) 
+		{
+			for (int counter = 0; counter < 5; counter++)
+			{
+				foursPossiblePoints += (newHand.readDie(counter) == 4) ? 4 : 0;
+			}
+		}
+		if (foursPossiblePoints > 0) 
+		{
+			scoreChoices.append("4 \t Fours \t\t\t" + foursPossiblePoints + " points\n");
+		}
+		return foursPossiblePoints;
+	}
+	
+	public int calcFives(Hand newHand) 
+	{
+		fivesPossiblePoints = 0;
+		if (fivesPoints < 0) 
+		{
+			for (int counter = 0; counter < 5; counter++)
+			{
+				fivesPossiblePoints += (newHand.readDie(counter) == 5) ? 5 : 0;
+			}
+		}
+		if (fivesPossiblePoints > 0) 
+		{
+			scoreChoices.append("5 \t Fives \t\t\t" + fivesPossiblePoints + " points\n");
+		}
+		return fivesPossiblePoints;
+	}
+	
+	public int calcSixes(Hand newHand) 
+	{
+		sixesPossiblePoints = 0;
+		if (sixesPoints < 0) 
+		{
+			for (int counter = 0; counter < 5; counter++)
+			{
+				sixesPossiblePoints += (newHand.readDie(counter) == 6) ? 6 : 0;
+			}
+		}
+		if (sixesPossiblePoints > 0) 
+		{
+			scoreChoices.append("6 \t Sixes \t\t\t" + sixesPossiblePoints + " points\n");
+		}
+		return sixesPossiblePoints;
 	}
 
 	public int calcThreeOfAKind(Hand newHand) 
