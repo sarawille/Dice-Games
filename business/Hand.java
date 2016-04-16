@@ -81,14 +81,16 @@ public class Hand implements Sortable
 	/**
 	 * printHand() - Creates a String that is a visual, side-by-side representation of 
 	 *  the face up side of all dice in the Hand.  
-	 * @return visual
+	 * @return diceVisual
 	 */
 	public String printHand() 
 	{
-		String visual = "\t  Die 1\t\t  Die 2\t\t  Die 3\t\t  Die 4\t\t  Die 5\n";
-		
 		StringBuilder diceVisual = new StringBuilder();
-		diceVisual.append("\n");
+		for (int i = 0; i < fiveDice.size(); i++)
+		{
+			diceVisual.append("\t  Die " + (i+1) + "\t");
+		}
+		diceVisual.append("\n\n");
 		for (int i = 0; i < fiveDice.size(); i++)
 		{
 				diceVisual.append("\t  " + Die.dieVisual1(readDie(i)) + "   ");
@@ -105,7 +107,6 @@ public class Hand implements Sortable
 		}
 		diceVisual.append("\n");
 		
-		visual += diceVisual.toString();
-		return visual;
+		return diceVisual.toString();
 	}
 }
