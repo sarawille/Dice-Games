@@ -41,8 +41,6 @@ public abstract class ScoreVariables
 
 	protected int totalScore = 0;
 	
-	protected StringBuilder scoreChoices = new StringBuilder();
-	
 	public int getOnesPoints() {
 		return onesPoints;
 	}

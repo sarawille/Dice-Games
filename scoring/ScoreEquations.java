@@ -5,6 +5,8 @@ import business.Hand;
 public class ScoreEquations extends ScoreVariables
 {
 	
+	protected StringBuilder scoreChoices = new StringBuilder();
+	
 	public String getScoreChoices(Hand newHand) {
 		String stringOfScoreChoices = "";
 		scoreChoices.setLength(0);
@@ -313,7 +315,7 @@ public class ScoreEquations extends ScoreVariables
 				setYahtzeePossiblePoints(100);
 				scoreChoices.append("Y \t Another YAHTZEE! \t\t" + getYahtzeePossiblePoints() + " points\n");
 			}
-			else if (getYahtzeePoints() < 0){	//does not allow yahtzee score if player has scored category as a 0
+			else if (getYahtzeePoints() < 0){	//does not allow yahtzee score if category is scored as a 0
 				setYahtzeePossiblePoints(50);
 				scoreChoices.append("Y \t YAHTZEE! \t\t" + getYahtzeePossiblePoints() + " points\n");
 			}
