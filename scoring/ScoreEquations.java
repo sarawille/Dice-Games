@@ -58,6 +58,9 @@ public class ScoreEquations extends ScoreVariables
 		if (chancePoints <0 ){
 			addZerosToScoreChoices.append("C \t Chance \t\t 0  points\n");
 		}
+		if (yahtzeePoints <0 ){
+			addZerosToScoreChoices.append("Y \t Yahtzee \t\t 0  points\n");
+		}
 		return addZerosToScoreChoices.toString();
 	}
 
