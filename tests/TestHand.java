@@ -42,19 +42,19 @@ public class TestHand {
 	@Test
 	public void testRollAndReadHand() {
 		int result;
-		myHand.roll(0);
+		myHand.rollDie(0);
 		result = myHand.readDie(0);
 		assertTrue(result >= 1 && result <= 6);
-		myHand.roll(1);
+		myHand.rollDie(1);
 		result = myHand.readDie(1);
 		assertTrue(result >= 1 && result <= 6);
-		myHand.roll(2);
+		myHand.rollDie(2);
 		result = myHand.readDie(2);
 		assertTrue(result >= 1 && result <= 6);
-		myHand.roll(3);
+		myHand.rollDie(3);
 		result = myHand.readDie(3);
 		assertTrue(result >= 1 && result <= 6);
-		myHand.roll(4);
+		myHand.rollDie(4);
 		result = myHand.readDie(4);
 		assertTrue(result >= 1 && result <= 6);
 	}
@@ -84,12 +84,6 @@ public class TestHand {
 		assertTrue(myHand.fiveDice.get(1).readFaceUp() <= myHand.fiveDice.get(2).readFaceUp());
 		assertTrue(myHand.fiveDice.get(2).readFaceUp() <= myHand.fiveDice.get(3).readFaceUp());
 		assertTrue(myHand.fiveDice.get(3).readFaceUp() <= myHand.fiveDice.get(4).readFaceUp());
-	}
-	
-	//TODO complete print hand test
-	@Test
-	public void testPrintHand() {
-		
 	}
 
 }
