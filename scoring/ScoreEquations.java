@@ -6,8 +6,62 @@ public class ScoreEquations extends ScoreVariables
 {
 	
 	public String getScoreChoices(Hand newHand) {
+		String stringOfScoreChoices = "";
 		scoreChoices.setLength(0);
 		scoreChoices.append("Which category do you want to score? \n");
+		executeCalculations(newHand);
+		stringOfScoreChoices = scoreChoices.toString();
+		if (stringOfScoreChoices.endsWith("Which category do you want to score? \n"))
+		{
+			stringOfScoreChoices += getZeros();
+		}
+		return stringOfScoreChoices;
+	}
+	
+	private String getZeros() {
+		StringBuilder addZerosToScoreChoices = new StringBuilder();
+		addZerosToScoreChoices.append("Sorry, no score categories are available!");
+		addZerosToScoreChoices.append("You must choose a category to score with 0 points.");
+		if (onesPoints <0 ){
+			addZerosToScoreChoices.append("1 \t Ones \t\t\t 0 points\n");
+		}
+		if (twosPoints <0 ){
+			addZerosToScoreChoices.append("2 \t Twos \t\t\t 0 points\n");
+		}
+		if (threesPoints <0 ){
+			addZerosToScoreChoices.append("3 \t Threes \t\t 0  points\n");
+		}
+		if (foursPoints <0 ){
+			addZerosToScoreChoices.append("4 \t Fours \t\t\t 0  points\n");
+		}
+		if (fivesPoints <0 ){
+			addZerosToScoreChoices.append("5 \t Fives \t\t\t 0  points\n");
+		}
+		if (sixesPoints <0 ){
+			addZerosToScoreChoices.append("6 \t Sixes \t\t\t 0  points\n");
+		}
+		if (threeOfAKindPoints <0 ){
+			addZerosToScoreChoices.append("3K \t 3 of a Kind \t\t 0  points\n");
+		}
+		if (fourOfAKindPoints <0 ){
+			addZerosToScoreChoices.append("4K \t 4 of a Kind \t\t 0  points\n");
+		}
+		if (fullHousePoints <0 ){
+			addZerosToScoreChoices.append("F \t Full House \t\t 0  points\n");
+		}
+		if (smallStraightPoints <0 ){
+			addZerosToScoreChoices.append("S \t Small Straight \t\t 0  points\n");
+		}
+		if (largeStraightPoints <0 ){
+			addZerosToScoreChoices.append("L \t Large Straight \t\t 0  points\n");
+		}
+		if (chancePoints <0 ){
+			addZerosToScoreChoices.append("C \t Chance \t\t 0  points\n");
+		}
+		return addZerosToScoreChoices.toString();
+	}
+
+	private void executeCalculations(Hand newHand) {
 		calcOnes(newHand);
 		calcTwos(newHand);
 		calcThrees(newHand);
@@ -21,7 +75,6 @@ public class ScoreEquations extends ScoreVariables
 		calcLargeStraight(newHand);
 		calcChance(newHand);
 		calcYahtzee(newHand);
-		return scoreChoices.toString();
 	}
 	
 	public int calcOnes(Hand newHand) 
