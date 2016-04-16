@@ -62,10 +62,30 @@ public class YatzeeApp {
 	private static void rollAgain(Hand newHand) 
 	{
 		String prompt = "\nWhich die do you want to re-roll? (Type die numbers without spaces) ";
-		String userInput = theValidator.getString(prompt);
+		int testInteger;
+		String userInput = "";
 		int counter = 0;
 		
-		//ycles through the user-entered string, looking at each character as an individual input
+		while (true) {
+			//make sure the user input is only numbers
+			testInteger = theValidator.getInt(prompt);
+			//convert user input to a string, then confirm it contains only numbers 1-5
+			userInput = "" + testInteger;
+			if (userInput.length() > 5)
+			{
+				screen.display("Please do not enter more than 5 numbers.\n");
+				continue;
+			}
+			else if (userInput.contains("6") || userInput.contains("7")
+					|| userInput.contains("8") || userInput.contains("9")
+					|| userInput.contains("0")) {
+				screen.display("Please enter numbers 1-5, corresponding to the dice you want to roll.\n");
+				continue;
+			} else {
+				break;
+			}
+		}
+		//cycle through the user-entered string, looking at each character as an individual input
 		while (counter < userInput.length()) {
 			switch (userInput.charAt(counter)) {
 				case '1':
