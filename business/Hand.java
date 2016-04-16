@@ -81,29 +81,31 @@ public class Hand implements Sortable
 	/**
 	 * printHand() - Creates a String that is a visual, side-by-side representation of 
 	 *  the face up side of all dice in the Hand.  
-	 * @return header + printRow1 + printRow2 + printRow3
+	 * @return visual
 	 */
 	public String printHand() 
 	{
-		String header = "\t  Die 1\t\t  Die 2\t\t  Die 3\t\t  Die 4\t\t  Die 5\n";
-		String printRow1 =
-				"\t  " + Die.dieVisual1(readDie(0)) + "   " +
-				"\t  " + Die.dieVisual1(readDie(1)) + "   " +
-				"\t  " + Die.dieVisual1(readDie(2)) + "   " +
-				"\t  " + Die.dieVisual1(readDie(3)) + "   " +
-				"\t  " + Die.dieVisual1(readDie(4)) + "   ";
-		String printRow2 =
-				"\t  " + Die.dieVisual2(readDie(0)) + "   " +
-				"\t  " + Die.dieVisual2(readDie(1)) + "   " +
-				"\t  " + Die.dieVisual2(readDie(2)) + "   " +
-				"\t  " + Die.dieVisual2(readDie(3)) + "   " +
-				"\t  " + Die.dieVisual2(readDie(4)) + "   ";
-		String printRow3 =
-				"\t  " + Die.dieVisual3(readDie(0)) + "   " +
-				"\t  " + Die.dieVisual3(readDie(1)) + "   " +
-				"\t  " + Die.dieVisual3(readDie(2)) + "   " +
-				"\t  " + Die.dieVisual3(readDie(3)) + "   " +
-				"\t  " + Die.dieVisual3(readDie(4)) + "   ";
-		return("\n" + header + "\n" + printRow1 + "\n" + printRow2 + "\n" + printRow3 + "\n");
+		String visual = "\t  Die 1\t\t  Die 2\t\t  Die 3\t\t  Die 4\t\t  Die 5\n";
+		
+		StringBuilder diceVisual = new StringBuilder();
+		diceVisual.append("\n");
+		for (int i = 0; i < fiveDice.size(); i++)
+		{
+				diceVisual.append("\t  " + Die.dieVisual1(readDie(i)) + "   ");
+		}
+		diceVisual.append("\n");
+		for (int i = 0; i < fiveDice.size(); i++)
+		{
+			diceVisual.append("\t  " + Die.dieVisual2(readDie(i)) + "   ");
+		}
+		diceVisual.append("\n");
+		for (int i = 0; i < fiveDice.size(); i++)
+		{
+			diceVisual.append("\t  " + Die.dieVisual3(readDie(i)) + "   ");
+		}
+		diceVisual.append("\n");
+		
+		visual += diceVisual.toString();
+		return visual;
 	}
 }
