@@ -439,9 +439,7 @@ public class TestScoreEquations {
 	
 	@Test
 	public void testAnotherYahtzee() {
-		//force to yahtzee
-		test.setYahtzeePoints(50);
-		//force to another yahtzee
+		//set dice to be a yahtzee
 		while (myHand.fiveDice.get(0).readFaceUp() != 1){
 			myHand.roll(0);
 		}
@@ -457,16 +455,25 @@ public class TestScoreEquations {
 		while (myHand.fiveDice.get(4).readFaceUp() != 1){
 			myHand.roll(4);
 		}
-		assertEquals(100, test.calcYahtzee(myHand));
 		
-		//make sure it works for a third yahtzee
-		assertEquals(100, test.calcYahtzee(myHand));
-		
-		//make sure first yahtzee still works
-		test.setYahtzeePoints(0);
+		//test points for first yahtzee
+		test.setYahtzeePoints(-1);
 		assertEquals(50, test.calcYahtzee(myHand));
+		
+		//test points second yahtzee
+		test.setYahtzeePoints(50);
+		assertEquals(100, test.calcYahtzee(myHand));
+		
+		//test points for third yahtzee
+		test.setYahtzeePoints(150);
+		assertEquals(100, test.calcYahtzee(myHand));
+		
+		//make sure no points are given if yahtzee category has already been scored as 0
+		test.setYahtzeePoints(0);
+		assertEquals(0, test.calcYahtzee(myHand));
+		
 		//force to NOT yahtzee
-		while (myHand.fiveDice.get(0).readFaceUp() != 2){
+		while (myHand.fiveDice.get(0).readFaceUp() != 5){
 			myHand.roll(0);
 		}
 		assertEquals(0, test.calcYahtzee(myHand));
