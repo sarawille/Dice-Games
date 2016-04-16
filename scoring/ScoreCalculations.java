@@ -22,10 +22,9 @@ public class ScoreCalculations extends ScoreEquations implements Scorable {
 		ScoreCategory scoreCategoryForThisHand = null;
 
 		//determine which categories are eligible for scoring based on the hand
-		execute(newHand);
+		screen.displayln(getScoreChoices(newHand));
 		
-		//print the eligible score categories and ask the user to pick one
-		screen.displayln("\n" + scoreChoices);
+		//ask the user to pick a category to score
 		scoreCategoryForThisHand = assignScoreCategory();
 		
 		//incorporate the score for this hand into the total score
@@ -83,55 +82,55 @@ public class ScoreCalculations extends ScoreEquations implements Scorable {
 		switch(userChoice)
 		{
 		case ONES:
-			addToTotalScore(onesPossiblePoints);
+			setTotalScore(onesPossiblePoints);
 			setOnesPoints(onesPossiblePoints);
 			break;
 		case TWOS:
-			addToTotalScore(twosPossiblePoints);
+			setTotalScore(twosPossiblePoints);
 			setTwosPoints(twosPossiblePoints);
 			break;
 		case THREES:
-			addToTotalScore(threesPossiblePoints);
+			setTotalScore(threesPossiblePoints);
 			setThreesPoints(threesPossiblePoints);
 			break;
 		case FOURS:
-			addToTotalScore(foursPossiblePoints);
+			setTotalScore(foursPossiblePoints);
 			setFoursPoints(foursPossiblePoints);
 			break;
 		case FIVES:
-			addToTotalScore(fivesPossiblePoints);
+			setTotalScore(fivesPossiblePoints);
 			setFivesPoints(fivesPossiblePoints);
 			break;
 		case SIXES:
-			addToTotalScore(sixesPossiblePoints);
+			setTotalScore(sixesPossiblePoints);
 			setSixesPoints(sixesPossiblePoints);
 			break;
 		case THREE_OF_A_KIND:
-			addToTotalScore(threeOfAKindPossiblePoints);
+			setTotalScore(threeOfAKindPossiblePoints);
 			setThreeOfAKindPoints(threeOfAKindPossiblePoints);
 			break;
 		case FOUR_OF_A_KIND:
-			addToTotalScore(fourOfAKindPossiblePoints);
+			setTotalScore(fourOfAKindPossiblePoints);
 			setFourOfAKindPoints(fourOfAKindPossiblePoints);
 			break;
 		case FULL_HOUSE:
-			addToTotalScore(fullHousePossiblePoints);
+			setTotalScore(fullHousePossiblePoints);
 			setFullHousePoints(fullHousePossiblePoints);
 			break;
 		case SMALL_STRAIGHT:
-			addToTotalScore(smallStraightPossiblePoints);
+			setTotalScore(smallStraightPossiblePoints);
 			setSmallStraightPoints(smallStraightPossiblePoints);
 			break;
 		case LARGE_STRAIGHT:
-			addToTotalScore(largeStraightPossiblePoints);
+			setTotalScore(largeStraightPossiblePoints);
 			setLargeStraightPoints(largeStraightPossiblePoints);
 			break;
 		case CHANCE:
-			addToTotalScore(chancePossiblePoints);
+			setTotalScore(chancePossiblePoints);
 			setChancePoints(chancePossiblePoints);
 			break;
 		case YAHTZEE:
-			addToTotalScore(yahtzeePossiblePoints);
+			setTotalScore(yahtzeePossiblePoints);
 			setYahtzeePoints(yahtzeePossiblePoints);
 			break;
 		default:
