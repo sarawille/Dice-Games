@@ -139,9 +139,9 @@ public class ScoreCalculations extends ScoreEquations implements Scorable {
 	}
 
 	@Override
-	public void printTotalScore() {
+	public String printTotalScore() {
 		String total = "" + getTotalScore();
-		screen.displayln(total);
+		return total;
 	}
 
 }
