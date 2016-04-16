@@ -82,55 +82,55 @@ public class ScoreCalculations extends ScoreEquations implements Scorable {
 		switch(userChoice)
 		{
 		case ONES:
-			setTotalScore(onesPossiblePoints);
+			addTotalScore(onesPossiblePoints);
 			setOnesPoints(onesPossiblePoints);
 			break;
 		case TWOS:
-			setTotalScore(twosPossiblePoints);
+			addTotalScore(twosPossiblePoints);
 			setTwosPoints(twosPossiblePoints);
 			break;
 		case THREES:
-			setTotalScore(threesPossiblePoints);
+			addTotalScore(threesPossiblePoints);
 			setThreesPoints(threesPossiblePoints);
 			break;
 		case FOURS:
-			setTotalScore(foursPossiblePoints);
+			addTotalScore(foursPossiblePoints);
 			setFoursPoints(foursPossiblePoints);
 			break;
 		case FIVES:
-			setTotalScore(fivesPossiblePoints);
+			addTotalScore(fivesPossiblePoints);
 			setFivesPoints(fivesPossiblePoints);
 			break;
 		case SIXES:
-			setTotalScore(sixesPossiblePoints);
+			addTotalScore(sixesPossiblePoints);
 			setSixesPoints(sixesPossiblePoints);
 			break;
 		case THREE_OF_A_KIND:
-			setTotalScore(threeOfAKindPossiblePoints);
+			addTotalScore(threeOfAKindPossiblePoints);
 			setThreeOfAKindPoints(threeOfAKindPossiblePoints);
 			break;
 		case FOUR_OF_A_KIND:
-			setTotalScore(fourOfAKindPossiblePoints);
+			addTotalScore(fourOfAKindPossiblePoints);
 			setFourOfAKindPoints(fourOfAKindPossiblePoints);
 			break;
 		case FULL_HOUSE:
-			setTotalScore(fullHousePossiblePoints);
+			addTotalScore(fullHousePossiblePoints);
 			setFullHousePoints(fullHousePossiblePoints);
 			break;
 		case SMALL_STRAIGHT:
-			setTotalScore(smallStraightPossiblePoints);
+			addTotalScore(smallStraightPossiblePoints);
 			setSmallStraightPoints(smallStraightPossiblePoints);
 			break;
 		case LARGE_STRAIGHT:
-			setTotalScore(largeStraightPossiblePoints);
+			addTotalScore(largeStraightPossiblePoints);
 			setLargeStraightPoints(largeStraightPossiblePoints);
 			break;
 		case CHANCE:
-			setTotalScore(chancePossiblePoints);
+			addTotalScore(chancePossiblePoints);
 			setChancePoints(chancePossiblePoints);
 			break;
 		case YAHTZEE:
-			setTotalScore(yahtzeePossiblePoints);
+			addTotalScore(yahtzeePossiblePoints);
 			setYahtzeePoints(yahtzeePossiblePoints);
 			break;
 		default:
