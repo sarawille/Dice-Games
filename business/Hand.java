@@ -36,8 +36,7 @@ public class Hand implements Sortable
 	}
 
 	/**
-	 * rollAll() - Rolls all die in the Hand by calling the Die.roll() method, then
-	 *  prints a visual of the face up side of all the dice in the Hand.
+	 * rollAll() - Rolls all die in the Hand by calling the Die.roll() method.
 	 */
 	public void rollAll() 
 	{
@@ -46,7 +45,6 @@ public class Hand implements Sortable
 		roll(2);
 		roll(3);
 		roll(4);	
-		printHand();
 	}
 	
 	/**
