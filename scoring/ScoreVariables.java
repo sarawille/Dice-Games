@@ -1,6 +1,6 @@
 package scoring;
 
-/*
+/**
  * @author Sara Wille
  * The abstract ScoreVariables class store the variables required for scoring the game Yahtzee.
  * Other classes can inherit ScoreVariables and have access to all variables via getters and setters.

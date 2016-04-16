@@ -1,6 +1,6 @@
 package scoring;
 
-/*
+/**
  * @author Sara Wille
  * The ScoreCategory enumerators represent each of the available score categories for the game Yahtzee.
  */
