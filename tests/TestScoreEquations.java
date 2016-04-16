@@ -39,10 +39,11 @@ public class TestScoreEquations {
 
 	@Test
 	public void testCalcOnes() {
-		int onesPossiblePoints = test.getOnesPossiblePoints();
-		int onesPoints = test.getOnesPoints();
 		int testPoints = 0;
 		myHand.rollAll();
+		while (myHand.fiveDice.get(0).readFaceUp() != 1){
+			myHand.roll(0);
+		}
 		for (int i = 0; i < myHand.fiveDice.size(); i++)
 		{
 			if (myHand.readDie(i) == 1)
@@ -50,15 +51,16 @@ public class TestScoreEquations {
 				testPoints++;
 			}
 		}
-		assertEquals(testPoints, test.calcSingleNumbers(myHand, onesPossiblePoints, onesPoints, 1, "Ones"));
+		assertEquals(testPoints, test.calcOnes(myHand));
 	}
 	
 	@Test
 	public void testCalcTwos() {
-		int twosPossiblePoints = test.getTwosPossiblePoints();
-		int twosPoints = test.getTwosPoints();
 		int testPoints = 0;
 		myHand.rollAll();
+		while (myHand.fiveDice.get(0).readFaceUp() != 2){
+			myHand.roll(0);
+		}
 		for (int i = 0; i < myHand.fiveDice.size(); i++)
 		{
 			if (myHand.readDie(i) == 2)
@@ -66,15 +68,16 @@ public class TestScoreEquations {
 				testPoints+=2;
 			}
 		}
-		assertEquals(testPoints, test.calcSingleNumbers(myHand, twosPossiblePoints, twosPoints, 2, "Twos"));
+		assertEquals(testPoints, test.calcTwos(myHand));
 	}
 	
 	@Test
 	public void testCalcThrees() {
-		int threesPossiblePoints = test.getThreesPossiblePoints();
-		int threesPoints = test.getThreesPoints();
 		int testPoints = 0;
 		myHand.rollAll();
+		while (myHand.fiveDice.get(0).readFaceUp() != 3){
+			myHand.roll(0);
+		}
 		for (int i = 0; i < myHand.fiveDice.size(); i++)
 		{
 			if (myHand.readDie(i) == 3)
@@ -82,15 +85,16 @@ public class TestScoreEquations {
 				testPoints+=3;
 			}
 		}
-		assertEquals(testPoints, test.calcSingleNumbers(myHand, threesPossiblePoints, threesPoints, 3, "Threes"));
+		assertEquals(testPoints, test.calcThrees(myHand));
 	}
 	
 	@Test
 	public void testCalcFours() {
-		int foursPossiblePoints = test.getFoursPossiblePoints();
-		int foursPoints = test.getFoursPoints();
 		int testPoints = 0;
 		myHand.rollAll();
+		while (myHand.fiveDice.get(0).readFaceUp() != 4){
+			myHand.roll(0);
+		}
 		for (int i = 0; i < myHand.fiveDice.size(); i++)
 		{
 			if (myHand.readDie(i) == 4)
@@ -98,15 +102,16 @@ public class TestScoreEquations {
 				testPoints+=4;
 			}
 		}
-		assertEquals(testPoints, test.calcSingleNumbers(myHand, foursPossiblePoints, foursPoints, 4, "Fours"));
+		assertEquals(testPoints, test.calcFours(myHand));
 	}
 	
 	@Test
 	public void testCalcFives() {
-		int fivesPossiblePoints = test.getFivesPossiblePoints();
-		int fivesPoints = test.getFivesPoints();
 		int testPoints = 0;
 		myHand.rollAll();
+		while (myHand.fiveDice.get(0).readFaceUp() != 5){
+			myHand.roll(0);
+		}
 		for (int i = 0; i < myHand.fiveDice.size(); i++)
 		{
 			if (myHand.readDie(i) == 5)
@@ -114,15 +119,16 @@ public class TestScoreEquations {
 				testPoints+=5;
 			}
 		}
-		assertEquals(testPoints, test.calcSingleNumbers(myHand, fivesPossiblePoints, fivesPoints, 5, "Fives"));
+		assertEquals(testPoints, test.calcFives(myHand));
 	}
 	
 	@Test
 	public void testCalcSixes() {
-		int sixesPossiblePoints = test.getSixesPossiblePoints();
-		int sixesPoints = test.getSixesPoints();
 		int testPoints = 0;
 		myHand.rollAll();
+		while (myHand.fiveDice.get(0).readFaceUp() != 6){
+			myHand.roll(0);
+		}
 		for (int i = 0; i < myHand.fiveDice.size(); i++)
 		{
 			if (myHand.readDie(i) == 6)
@@ -130,7 +136,7 @@ public class TestScoreEquations {
 				testPoints+=6;
 			}
 		}
-		assertEquals(testPoints, test.calcSingleNumbers(myHand, sixesPossiblePoints, sixesPoints, 6, "Sixes"));
+		assertEquals(testPoints, test.calcSixes(myHand));
 	}
 	
 	@Test
