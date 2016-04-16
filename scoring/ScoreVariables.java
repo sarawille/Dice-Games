@@ -251,7 +251,7 @@ public abstract class ScoreVariables
 		return totalScore;
 	}
 
-	public void addToTotalScore(int newScore) {
+	public void setTotalScore(int newScore) {
 		totalScore += newScore;
 	}
 
