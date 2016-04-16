@@ -313,7 +313,7 @@ public class ScoreEquations extends ScoreVariables
 				setYahtzeePossiblePoints(100);
 				scoreChoices.append("Y \t Another YAHTZEE! \t\t" + getYahtzeePossiblePoints() + " points\n");
 			}
-			else {
+			else if (getYahtzeePoints() < 0){	//does not allow yahtzee score if player has scored category as a 0
 				setYahtzeePossiblePoints(50);
 				scoreChoices.append("Y \t YAHTZEE! \t\t" + getYahtzeePossiblePoints() + " points\n");
 			}
