@@ -70,7 +70,7 @@ public class ScoreEquations extends ScoreVariables
 		}
 		if (threesPossiblePoints > 0) 
 		{
-			scoreChoices.append("3 \t Threes \t\t\t" + threesPossiblePoints + " points\n");
+			scoreChoices.append("3 \t Threes \t\t" + threesPossiblePoints + " points\n");
 		}
 		return threesPossiblePoints;
 	}
@@ -146,7 +146,7 @@ public class ScoreEquations extends ScoreVariables
 											  newHand.readDie(2) +
 											  newHand.readDie(3) +
 											  newHand.readDie(4));
-				scoreChoices.append("3K \t 3 of a Kind \t\t" + getThreeOfAKindPossiblePoints() + " points\n"); 
+				scoreChoices.append("3K \t 3 of a Kind  \t\t" + getThreeOfAKindPossiblePoints() + " points\n"); 
 			}
 		}
 		return getThreeOfAKindPossiblePoints();
