@@ -1,9 +1,18 @@
 package scoring;
 
+/*
+ * @author Sara Wille
+ * The ScoreCategory enumerators represent each of the available score categories for the game Yahtzee.
+ */
 public enum ScoreCategory {
 	ONES, TWOS, THREES, FOURS, FIVES, SIXES, 
 	THREE_OF_A_KIND, FOUR_OF_A_KIND, FULL_HOUSE, SMALL_STRAIGHT, LARGE_STRAIGHT, CHANCE, YAHTZEE;
 	
+	/**
+	 * toString() - Overrides toString() so that enums are displayed 
+	 *  as separate words (space vs. underscore) with the first letter of each word capitalized.
+	 *  @return s
+	 */
 	@Override
 	public String toString() 
 	{
