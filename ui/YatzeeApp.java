@@ -13,6 +13,7 @@ public class YatzeeApp {
 	//TODO add comments and javaDoc notes
 	//TODO use same code to make another dice game
 	//TODO try making this into a GUI or using pre-written GUI code to drop into IOFactory
+	//TODO ask chuck - automatically generate a webpage that is text based - like a blog - use a database?
 	
 	static int turn = 1;
 	static Displayable screen = IOFactory.getDisplayable();
@@ -23,16 +24,19 @@ public class YatzeeApp {
 		ScoreCalculations myScore = new ScoreCalculations(screen, theValidator);
 		Hand thisHand; 
 		
-		while (turn <= 5) {
+		while (turn <= 3) {
 			screen.displayln("TURN " + turn);
 			thisHand = new Hand(5, 6);
 			rollHand(thisHand);
 			//TODO why doesnt total score keep adding over multiple turns?
 			myScore.scoreHand(thisHand);
-			myScore.printTotalScore();
+			screen.display("Your total score is ");
+			screen.displayln(myScore.printTotalScore());
+			screen.displayln("--------------------------------------------------\n");
 			turn++;
-			screen.displayln("--------------------------------------------------");
 		}
+
+		
 	}
 
 	private static void rollHand(Hand myHand) {
