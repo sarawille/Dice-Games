@@ -20,7 +20,8 @@ public class Die implements Readable, Rollable {
 	}
 	
 	/**
-	 * setSides() - setter for variable int sides
+	 * setSides() - Setter for integer variable sides.
+	 * @param sides
 	 */
 	public void setSides(int sides) {
 		this.sides = sides;
@@ -31,6 +32,7 @@ public class Die implements Readable, Rollable {
 	 *  The Die is "rolled": the face up side is set to a random number,
 	 *  assuming each side of the die is a number from 1 to the number of sides.
 	 */
+	@Override
 	public void roll() 
 	{
 		faceUp = (int) ((Math.random() * sides + 1)); 
@@ -39,7 +41,7 @@ public class Die implements Readable, Rollable {
 	/**
 	 * readFaceUp() - Overrides the readFaceUp() method implemented from Readable.
 	 *  The Die's face up side is returned as an integer.
-	 *  @return faceUp
+	 * @return faceUp
 	 */
 	@Override
 	public int readFaceUp()
