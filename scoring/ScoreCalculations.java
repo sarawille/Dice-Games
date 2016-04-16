@@ -140,7 +140,7 @@ public class ScoreCalculations extends ScoreEquations implements Scorable {
 
 	@Override
 	public String printTotalScore() {
-		String total = "" + getTotalScore();
+		String total = getTotalScore() + " points";
 		return total;
 	}
 
