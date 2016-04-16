@@ -1,8 +1,12 @@
 package scoring;
 
+/*
+ * @author Sara Wille
+ * The abstract ScoreVariables class store the variables required for scoring the game Yahtzee.
+ * Other classes can inherit ScoreVariables and have access to all variables via getters and setters.
+ */
 public abstract class ScoreVariables 
 {
-	//TODO make total score into an array?
 	//Upper Section Scoring Variables
 	protected int onesPoints = -1;
 	protected int twosPoints = -1;
@@ -251,7 +255,11 @@ public abstract class ScoreVariables
 		return totalScore;
 	}
 
-	public void setTotalScore(int newScore) {
+	/**
+	 * addTotalScore() - The integer passed in is added to totalScore.
+	 * @param newScore
+	 */
+	public void addTotalScore(int newScore) {
 		totalScore += newScore;
 	}
 
