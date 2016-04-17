@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import business.Hand;
 
-public class ScoreEquations2 extends ScoreBoard{
+public class ScoreEquations2 extends DiceGameScore{
 	
 	
 	public HashMap<ScoreCategory, Integer> scoreCategoryOptions = new HashMap<>();
