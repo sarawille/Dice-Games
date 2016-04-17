@@ -12,12 +12,12 @@ import org.junit.Test;
 
 import business.Hand;
 import scoring.ScoreCategory;
-import scoring.ScoreEquations2;
+import scoring.YahtzeeGameScore;
 
 public class TestScore2 {
 	
 	static Hand testHand;
-	static ScoreEquations2 newTest;
+	static YahtzeeGameScore newTest;
 	static HashMap<String, Integer> testHandValues;
 	static HashMap<ScoreCategory, Integer> testScoreCategoryOptions;
 	static HashMap<ScoreCategory, Integer> testScoreBoard;
@@ -25,7 +25,7 @@ public class TestScore2 {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		testHand = new Hand(5, 6);
-		newTest = new ScoreEquations2(testHand);
+		newTest = new YahtzeeGameScore(testHand);
 		testHandValues = new HashMap<>();
 		testScoreCategoryOptions = new HashMap<>();
 		testScoreBoard = new HashMap<>();
