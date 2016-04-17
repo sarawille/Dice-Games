@@ -101,6 +101,7 @@ public class TestScore2 {
 		while (testHand.diceInHand.get(4).readFaceUp() != 5){
 			testHand.rollDie(4);
 		}
+		newTest.resetScoreBoard();
 		newTest.countHandValues(testHand);
 		newTest.calcUpperScores(testHand);
 		

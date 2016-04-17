@@ -15,7 +15,7 @@ public class ScoreEquations2 {
 	public ScoreEquations2(Hand newHand) {
 		theHand = newHand;
 		setScoreCategoryOptions();
-		setScoreBoard();
+		resetScoreBoard();
 	}
 
 	private void setScoreCategoryOptions() {
@@ -34,7 +34,7 @@ public class ScoreEquations2 {
 		scoreCategoryOptions.put(ScoreCategory.YAHTZEE, 0);
 	}
 	
-	private void setScoreBoard() {
+	public void resetScoreBoard() {
 		scoreBoard.put(ScoreCategory.ONES, -1);
 		scoreBoard.put(ScoreCategory.TWOS, -1);
 		scoreBoard.put(ScoreCategory.THREES, -1);
@@ -65,11 +65,23 @@ public class ScoreEquations2 {
 	}
 
 	public void calcUpperScores(Hand newHand) {
-		scoreCategoryOptions.put(ScoreCategory.ONES, handValues.get("1") * 1);
-		scoreCategoryOptions.put(ScoreCategory.TWOS,  handValues.get("2") * 2);
-		scoreCategoryOptions.put(ScoreCategory.THREES,  handValues.get("3") * 3);
-		scoreCategoryOptions.put(ScoreCategory.FOURS,  handValues.get("4") * 4);
-		scoreCategoryOptions.put(ScoreCategory.FIVES,  handValues.get("5") * 5);
-		scoreCategoryOptions.put(ScoreCategory.SIXES,  handValues.get("6") * 6);
+		if (scoreBoard.get(ScoreCategory.ONES)==-1) {
+			scoreCategoryOptions.put(ScoreCategory.ONES, handValues.get("1") * 1);
+		}
+		if (scoreBoard.get(ScoreCategory.TWOS)==-1) {
+			scoreCategoryOptions.put(ScoreCategory.TWOS,  handValues.get("2") * 2);
+		}
+		if (scoreBoard.get(ScoreCategory.THREES)==-1) {
+			scoreCategoryOptions.put(ScoreCategory.THREES,  handValues.get("3") * 3);
+		}
+		if (scoreBoard.get(ScoreCategory.FOURS)==-1) {
+			scoreCategoryOptions.put(ScoreCategory.FOURS,  handValues.get("4") * 4);
+		}
+		if (scoreBoard.get(ScoreCategory.FIVES)==-1) {
+			scoreCategoryOptions.put(ScoreCategory.FIVES,  handValues.get("5") * 5);
+		}
+		if (scoreBoard.get(ScoreCategory.SIXES)==-1) {
+			scoreCategoryOptions.put(ScoreCategory.SIXES,  handValues.get("6") * 6);
+		}
 	}
 }
