@@ -10,7 +10,7 @@ public abstract class DiceGameScore {
 	public HashMap<String, Integer> handValues = new HashMap<>();
 	public int totalScore = 0;
 	
-	private DiceGameScore() {}
+	public DiceGameScore() {}
 
 	public int getTotalScore() {
 		return totalScore;

@@ -10,8 +10,7 @@ public class YahtzeeGameScore extends DiceGameScore{
 	public HashMap<ScoreCategory, Integer> scoreBoard = new HashMap<>();
 	protected StringBuilder scoreChoices = new StringBuilder();
 	
-	public YahtzeeGameScore(Hand newHand) {
-		super(newHand);
+	public YahtzeeGameScore() {
 		setScoreCategoryOptions();
 		resetScoreBoard();
 	}
