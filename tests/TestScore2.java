@@ -60,7 +60,7 @@ public class TestScore2 {
 		while (testHand.diceInHand.get(4).readFaceUp() != 5){
 			testHand.rollDie(4);
 		}
-		newTest.countHand(testHand);
+		newTest.countHandValues(testHand);
 		
 		assertEquals(testHandValues.get("1"), newTest.handValues.get("1"));
 		assertEquals(testHandValues.get("2"), newTest.handValues.get("2"));

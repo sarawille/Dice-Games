@@ -15,7 +15,7 @@ public class ScoreEquations2 {
 		theHand = newHand;
 	}
 	
-	public void countHand(Hand newHand) {
+	public void countHandValues(Hand newHand) {
 		int instances = 0;
 		for (int faceUp = 1; faceUp <= newHand.diceInHand.size(); faceUp++) {
 			instances = 0;
