@@ -13,14 +13,14 @@ import java.util.ArrayList;
 
 public class Hand implements Sortable
 {
-	public ArrayList<Die> fiveDice;
+	public ArrayList<Die> diceInHand;
 	
 	public Hand(int numberOfDice, int sides) 
 	{
-		fiveDice = new ArrayList<>(numberOfDice);
+		diceInHand = new ArrayList<>(numberOfDice);
 		for (int i = 0; i < numberOfDice; i++)
 		{
-			fiveDice.add(new Die(sides));
+			diceInHand.add(new Die(sides));
 		}
 	}
 
@@ -32,7 +32,7 @@ public class Hand implements Sortable
 	 */
 	public void rollDie(int dieNumber) 
 	{
-		fiveDice.get(dieNumber).roll();
+		diceInHand.get(dieNumber).roll();
 	}
 
 	/**
@@ -40,7 +40,7 @@ public class Hand implements Sortable
 	 */
 	public void rollAll() 
 	{
-		for (int i = 0; i < fiveDice.size(); i++)
+		for (int i = 0; i < diceInHand.size(); i++)
 		{
 			rollDie(i);
 		}
@@ -55,7 +55,7 @@ public class Hand implements Sortable
 	 */
 	public int readDie(int dieNumber) 
 	{
-		return fiveDice.get(dieNumber).readFaceUp();
+		return diceInHand.get(dieNumber).readFaceUp();
 	}
 	
 	/**
@@ -66,13 +66,13 @@ public class Hand implements Sortable
 	@Override
 	public void sortItems() 
 	{
-		for (int m = fiveDice.size(); m >= 0; m--) {
-            for (int i = 0; i < fiveDice.size() - 1; i++) {
-				if (fiveDice.get(i).readFaceUp() > fiveDice.get(i+1).readFaceUp())
+		for (int m = diceInHand.size(); m >= 0; m--) {
+            for (int i = 0; i < diceInHand.size() - 1; i++) {
+				if (diceInHand.get(i).readFaceUp() > diceInHand.get(i+1).readFaceUp())
 				{
-					Die temp = fiveDice.get(i+1);
-					fiveDice.remove(i+1);
-					fiveDice.add(i, temp);
+					Die temp = diceInHand.get(i+1);
+					diceInHand.remove(i+1);
+					diceInHand.add(i, temp);
 				}
 			}
 		}
@@ -86,22 +86,22 @@ public class Hand implements Sortable
 	public String printHand() 
 	{
 		StringBuilder diceVisual = new StringBuilder();
-		for (int i = 0; i < fiveDice.size(); i++)
+		for (int i = 0; i < diceInHand.size(); i++)
 		{
 			diceVisual.append("\t  Die " + (i+1) + "\t");
 		}
 		diceVisual.append("\n\n");
-		for (int i = 0; i < fiveDice.size(); i++)
+		for (int i = 0; i < diceInHand.size(); i++)
 		{
 				diceVisual.append("\t  " + Die.dieVisual1(readDie(i)) + "   ");
 		}
 		diceVisual.append("\n");
-		for (int i = 0; i < fiveDice.size(); i++)
+		for (int i = 0; i < diceInHand.size(); i++)
 		{
 			diceVisual.append("\t  " + Die.dieVisual2(readDie(i)) + "   ");
 		}
 		diceVisual.append("\n");
-		for (int i = 0; i < fiveDice.size(); i++)
+		for (int i = 0; i < diceInHand.size(); i++)
 		{
 			diceVisual.append("\t  " + Die.dieVisual3(readDie(i)) + "   ");
 		}
