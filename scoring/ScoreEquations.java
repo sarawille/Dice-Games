@@ -16,6 +16,7 @@ public class ScoreEquations extends ScoreVariables
 {
 	
 	protected StringBuilder scoreChoices = new StringBuilder();
+	int diceSum;
 	
 	/**
 	 * getScoreChoices() - This is the primary method called from ScoreCalculations
@@ -33,6 +34,7 @@ public class ScoreEquations extends ScoreVariables
 		scoreChoices.setLength(0);
 		scoreChoices.append("Which category do you want to score? \n");
 		executeScoreEquations(newHand);
+		createScoreMenu();
 		stringOfScoreChoices = scoreChoices.toString();
 		if (stringOfScoreChoices.endsWith("Which category do you want to score? \n"))
 		{
@@ -104,6 +106,11 @@ public class ScoreEquations extends ScoreVariables
 	 * @param newHand
 	 */
 	private void executeScoreEquations(Hand newHand) {
+		diceSum = newHand.readDie(0) +
+			 	newHand.readDie(1) +
+			 	newHand.readDie(2) +
+			 	newHand.readDie(3) +
+			 	newHand.readDie(4);
 		newHand.sortItems();
 		calcOnes(newHand);
 		calcTwos(newHand);
@@ -118,6 +125,23 @@ public class ScoreEquations extends ScoreVariables
 		calcLargeStraight(newHand);
 		calcChance(newHand);
 		calcYahtzee(newHand);
+	}
+	
+	/**
+	 * 
+	 * @param number
+	 * @return instance
+	 */
+	private int countInstances(int number, Hand newHand) {
+		int instance = 0;
+		for (int counter = 0; counter < 5; counter++)
+		{
+			if (newHand.readDie(counter) == number)
+			{
+				instance++;
+			}
+		}
+		return instance;
 	}
 	
 	/**
@@ -136,16 +160,11 @@ public class ScoreEquations extends ScoreVariables
 		onesPossiblePoints = 0;
 		if (onesPoints < 0) 
 		{
-			for (int counter = 0; counter < 5; counter++)
-			{
-				onesPossiblePoints += (newHand.readDie(counter) == 1) ? 1 : 0;
-			}
+			setOnesPossiblePoints(countInstances(1, newHand) * 1);
 		}
 		return onesPossiblePoints;
 	}
 
-	
-	
 	/**
 	 * calcTwos() - If the Twos category has not yet been scored, the calcTwos method 
 	 *  checks whether the Hand includes dice with a 2 facing up.  If the Hand 
@@ -162,10 +181,7 @@ public class ScoreEquations extends ScoreVariables
 		twosPossiblePoints = 0;
 		if (twosPoints < 0) 
 		{
-			for (int counter = 0; counter < 5; counter++)
-			{
-				twosPossiblePoints += (newHand.readDie(counter) == 2) ? 2 : 0;
-			}
+			setTwosPossiblePoints(countInstances(2, newHand) * 2);
 		}
 		return twosPossiblePoints;
 	}
@@ -186,10 +202,7 @@ public class ScoreEquations extends ScoreVariables
 		threesPossiblePoints = 0;
 		if (threesPoints < 0) 
 		{
-			for (int counter = 0; counter < 5; counter++)
-			{
-				threesPossiblePoints += (newHand.readDie(counter) == 3) ? 3 : 0;
-			}
+			setThreesPossiblePoints(countInstances(3, newHand) * 3);
 		}
 		return threesPossiblePoints;
 	}
@@ -210,10 +223,7 @@ public class ScoreEquations extends ScoreVariables
 		foursPossiblePoints = 0;
 		if (foursPoints < 0) 
 		{
-			for (int counter = 0; counter < 5; counter++)
-			{
-				foursPossiblePoints += (newHand.readDie(counter) == 4) ? 4 : 0;
-			}
+			setFoursPossiblePoints(countInstances(4, newHand) * 4);
 		}
 		return foursPossiblePoints;
 	}
@@ -234,10 +244,7 @@ public class ScoreEquations extends ScoreVariables
 		fivesPossiblePoints = 0;
 		if (fivesPoints < 0) 
 		{
-			for (int counter = 0; counter < 5; counter++)
-			{
-				fivesPossiblePoints += (newHand.readDie(counter) == 5) ? 5 : 0;
-			}
+			setFivesPossiblePoints(countInstances(5, newHand) * 5);
 		}
 		return fivesPossiblePoints;
 	}
@@ -258,10 +265,7 @@ public class ScoreEquations extends ScoreVariables
 		sixesPossiblePoints = 0;
 		if (sixesPoints < 0) 
 		{
-			for (int counter = 0; counter < 5; counter++)
-			{
-				sixesPossiblePoints += (newHand.readDie(counter) == 6) ? 6 : 0;
-			}
+			setSixesPossiblePoints(countInstances(6, newHand) * 6);
 		}
 		return sixesPossiblePoints;
 	}
@@ -293,11 +297,6 @@ public class ScoreEquations extends ScoreVariables
 					(newHand.readDie(2) == newHand.readDie(3)  &&
 					newHand.readDie(3) == newHand.readDie(4)) )
 			{
-				int diceSum = newHand.readDie(0) +
-					 	newHand.readDie(1) +
-					 	newHand.readDie(2) +
-					 	newHand.readDie(3) +
-					 	newHand.readDie(4);
 				setThreeOfAKindPossiblePoints(diceSum);
 			}
 		}
@@ -329,11 +328,6 @@ public class ScoreEquations extends ScoreVariables
 					newHand.readDie(2) == newHand.readDie(3) &&
 					newHand.readDie(3) == newHand.readDie(4)) )
 			{
-				int diceSum = newHand.readDie(0) +
-						 	newHand.readDie(1) +
-						 	newHand.readDie(2) +
-						 	newHand.readDie(3) +
-						 	newHand.readDie(4);
 				setFourOfAKindPossiblePoints(diceSum);
 			} 
 		}
@@ -449,8 +443,6 @@ public class ScoreEquations extends ScoreVariables
 		setChancePossiblePoints(0);
 		if (getChancePoints() < 0)
 		{
-			int diceSum = newHand.readDie(0) + newHand.readDie(1) + newHand.readDie(2) + 
-						  newHand.readDie(3) + newHand.readDie(4);
 			setChancePossiblePoints(diceSum);	
 		} 
 		return getChancePossiblePoints();
@@ -488,63 +480,63 @@ public class ScoreEquations extends ScoreVariables
 		return getYahtzeePossiblePoints();
 	}
 
-}
-
-private void createScoringMenu() {
-	if (onesPossiblePoints > 0) 
+	private void createScoreMenu() 
 	{
-		scoreChoices.append("1 \t Ones \t\t\t" + onesPossiblePoints + " points\n");
-	}
-	if (twosPossiblePoints > 0) 
-	{
-		scoreChoices.append("2 \t Twos \t\t\t" + twosPossiblePoints + " points\n");
-	}
-	if (threesPossiblePoints > 0) 
-	{
-		scoreChoices.append("3 \t Threes \t\t" + threesPossiblePoints + " points\n");
-	}
-	if (foursPossiblePoints > 0) 
-	{
-		scoreChoices.append("4 \t Fours \t\t\t" + foursPossiblePoints + " points\n");
-	}
-	if (fivesPossiblePoints > 0) 
-	{
-		scoreChoices.append("5 \t Fives \t\t\t" + fivesPossiblePoints + " points\n");
-	}
-	if (sixesPossiblePoints > 0) 
-	{
-		scoreChoices.append("6 \t Sixes \t\t\t" + sixesPossiblePoints + " points\n");
-	}
-	if (threeOfAKindPossiblePoints > 0)
-	{
-		scoreChoices.append("3K \t 3 of a Kind  \t\t" + getThreeOfAKindPossiblePoints() + " points\n");
-	}
-	if (fourOfAKindPossiblePoints > 0)
-	{
-		scoreChoices.append("4K \t 4 of a Kind \t\t" + getFourOfAKindPossiblePoints() +" points\n");
-	}
-	if (fullHousePossiblePoints > 0)
-	{
-		scoreChoices.append("F \t Full House \t\t" + getFullHousePossiblePoints() + " points\n");
-	}
-	if (smallStraightPossiblePoints > 0)
-	{
-		scoreChoices.append("S \t Small Straight \t" + getSmallStraightPossiblePoints() + " points\n");
-	}
-	if (largeStraightPossiblePoints > 0)
-	{
-		scoreChoices.append("L \t Large Straight \t" + getLargeStraightPossiblePoints() + " points\n");
-	}
-	if (chancePossiblePoints > 0)
-	{
-		scoreChoices.append("C \t Chance \t\t" + getChancePossiblePoints() + " points\n");
-	}
-	if (yahtzeePossiblePoints == 50)
-	{
-		scoreChoices.append("Y \t YAHTZEE! \t\t" + getYahtzeePossiblePoints() + " points\n");
-	}
-	else if (yahtzeePossiblePoints == 100) 
-	{
-		scoreChoices.append("Y \t Another YAHTZEE! \t\t" + getYahtzeePossiblePoints() + " points\n");
+		if (onesPossiblePoints > 0) 
+		{
+			scoreChoices.append("1 \t Ones \t\t\t" + onesPossiblePoints + " points\n");
+		}
+		if (twosPossiblePoints > 0) 
+		{
+			scoreChoices.append("2 \t Twos \t\t\t" + twosPossiblePoints + " points\n");
+		}
+		if (threesPossiblePoints > 0) 
+		{
+			scoreChoices.append("3 \t Threes \t\t" + threesPossiblePoints + " points\n");
+		}
+		if (foursPossiblePoints > 0) 
+		{
+			scoreChoices.append("4 \t Fours \t\t\t" + foursPossiblePoints + " points\n");
+		}
+		if (fivesPossiblePoints > 0) 
+		{
+			scoreChoices.append("5 \t Fives \t\t\t" + fivesPossiblePoints + " points\n");
+		}
+		if (sixesPossiblePoints > 0) 
+		{
+			scoreChoices.append("6 \t Sixes \t\t\t" + sixesPossiblePoints + " points\n");
+		}
+		if (threeOfAKindPossiblePoints > 0)
+		{
+			scoreChoices.append("3K \t 3 of a Kind  \t\t" + getThreeOfAKindPossiblePoints() + " points\n");
+		}
+		if (fourOfAKindPossiblePoints > 0)
+		{
+			scoreChoices.append("4K \t 4 of a Kind \t\t" + getFourOfAKindPossiblePoints() +" points\n");
+		}
+		if (fullHousePossiblePoints > 0)
+		{
+			scoreChoices.append("F \t Full House \t\t" + getFullHousePossiblePoints() + " points\n");
+		}
+		if (smallStraightPossiblePoints > 0)
+		{
+			scoreChoices.append("S \t Small Straight \t" + getSmallStraightPossiblePoints() + " points\n");
+		}
+		if (largeStraightPossiblePoints > 0)
+		{
+			scoreChoices.append("L \t Large Straight \t" + getLargeStraightPossiblePoints() + " points\n");
+		}
+		if (chancePossiblePoints > 0)
+		{
+			scoreChoices.append("C \t Chance \t\t" + getChancePossiblePoints() + " points\n");
+		}
+		if (yahtzeePossiblePoints == 50)
+		{
+			scoreChoices.append("Y \t YAHTZEE! \t\t" + getYahtzeePossiblePoints() + " points\n");
+		}
+		else if (yahtzeePossiblePoints == 100) 
+		{
+			scoreChoices.append("Y \t Another YAHTZEE! \t\t" + getYahtzeePossiblePoints() + " points\n");
+		}
 	}
 }
