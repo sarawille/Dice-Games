@@ -169,10 +169,34 @@ public class TestScore2 {
 		newTest.countHandValues(testHand);
 		newTest.calcThreeOfAKind();
 		
-		int counter = 5;
-		System.out.println(""+counter);
-		
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.THREE_OF_A_KIND), 
 		 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.THREE_OF_A_KIND));
+	}
+	
+	@Test
+	public void testCalcFourOfAKind() {
+		testScoreCategoryOptions.put(ScoreCategory.FOUR_OF_A_KIND, 20);
+		
+		while (testHand.diceInHand.get(0).readFaceUp() != 5){
+			testHand.rollDie(0);
+		}
+		while (testHand.diceInHand.get(1).readFaceUp() != 5){
+			testHand.rollDie(1);
+		}
+		while (testHand.diceInHand.get(2).readFaceUp() != 4){
+			testHand.rollDie(2);
+		}
+		while (testHand.diceInHand.get(3).readFaceUp() != 5){
+			testHand.rollDie(3);
+		}
+		while (testHand.diceInHand.get(4).readFaceUp() != 5){
+			testHand.rollDie(4);
+		}
+		newTest.resetScoreBoard();
+		newTest.countHandValues(testHand);
+		newTest.calcFourOfAKind();
+		
+		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FOUR_OF_A_KIND), 
+		 	 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.FOUR_OF_A_KIND));
 	}
 }

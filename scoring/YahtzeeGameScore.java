@@ -69,14 +69,6 @@ public class YahtzeeGameScore extends DiceGameScore{
 		}
 	}
 
-	public void calcFullHouse() {
-		if (scoreBoard.get(ScoreCategory.FULL_HOUSE)==-1) {
-			if (handValues.containsValue(2) && handValues.containsValue(3)) {
-				scoreCategoryOptions.put(ScoreCategory.FULL_HOUSE,  25);
-			}
-		}
-	}
-	
 	public void calcThreeOfAKind() {
 		if (scoreBoard.get(ScoreCategory.THREE_OF_A_KIND)==-1) {
 
@@ -99,6 +91,32 @@ public class YahtzeeGameScore extends DiceGameScore{
 		}
 	}
 
+	public void calcFourOfAKind() {
+		if (scoreBoard.get(ScoreCategory.FOUR_OF_A_KIND)==-1) {
+
+			for (int counter = 1; counter <= 5; counter++)
+			{
+				String value = ""+counter;
+				if (handValues.get(value)==5)
+				{
+					scoreCategoryOptions.put(ScoreCategory.FOUR_OF_A_KIND, counter*5);
+				}
+				else if (handValues.get(value)==4)
+				{
+					scoreCategoryOptions.put(ScoreCategory.FOUR_OF_A_KIND, counter*4);
+				}
+			}
+		}
+	}
+	
+	public void calcFullHouse() {
+		if (scoreBoard.get(ScoreCategory.FULL_HOUSE)==-1) {
+			if (handValues.containsValue(2) && handValues.containsValue(3)) {
+				scoreCategoryOptions.put(ScoreCategory.FULL_HOUSE,  25);
+			}
+		}
+	}
+	
 	@Override
 	public void calculateScore() {
 		calcUpperScores();
