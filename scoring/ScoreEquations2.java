@@ -64,8 +64,12 @@ public class ScoreEquations2 {
 		}
 	}
 
-	public void calcUpperScores(Hand testHand) {
-		
-		
+	public void calcUpperScores(Hand newHand) {
+		scoreCategoryOptions.put(ScoreCategory.ONES, handValues.get("1") * 1);
+		scoreCategoryOptions.put(ScoreCategory.TWOS,  handValues.get("2") * 2);
+		scoreCategoryOptions.put(ScoreCategory.THREES,  handValues.get("3") * 3);
+		scoreCategoryOptions.put(ScoreCategory.FOURS,  handValues.get("4") * 4);
+		scoreCategoryOptions.put(ScoreCategory.FIVES,  handValues.get("5") * 5);
+		scoreCategoryOptions.put(ScoreCategory.SIXES,  handValues.get("6") * 6);
 	}
 }

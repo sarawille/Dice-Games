@@ -79,11 +79,12 @@ public class TestScore2 {
 	
 	@Test
 	public void testCalcUpperScores() {
-		testHandValues.put("1", 1);
-		testHandValues.put("2", 1);
-		testHandValues.put("3", 1);
-		testHandValues.put("4", 0);
-		testHandValues.put("5", 2);
+		testScoreCategoryOptions.put(ScoreCategory.ONES, 1*1);
+		testScoreCategoryOptions.put(ScoreCategory.TWOS, 1*2);
+		testScoreCategoryOptions.put(ScoreCategory.THREES, 1*3);
+		testScoreCategoryOptions.put(ScoreCategory.FOURS, 0*4);
+		testScoreCategoryOptions.put(ScoreCategory.FIVES, 2*5);
+		testScoreCategoryOptions.put(ScoreCategory.SIXES, 0*6);
 		
 		while (testHand.diceInHand.get(0).readFaceUp() != 1){
 			testHand.rollDie(0);
@@ -101,7 +102,20 @@ public class TestScore2 {
 			testHand.rollDie(4);
 		}
 		newTest.countHandValues(testHand);
+		newTest.calcUpperScores(testHand);
 		
+		assertEquals(testScoreCategoryOptions.get(ScoreCategory.ONES), 
+					 newTest.scoreCategoryOptions.get(ScoreCategory.ONES));
+		assertEquals(testScoreCategoryOptions.get(ScoreCategory.TWOS), 
+				 	 newTest.scoreCategoryOptions.get(ScoreCategory.TWOS));
+		assertEquals(testScoreCategoryOptions.get(ScoreCategory.THREES), 
+			 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.THREES));
+		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FOURS), 
+					 newTest.scoreCategoryOptions.get(ScoreCategory.FOURS));
+		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FIVES), 
+					 newTest.scoreCategoryOptions.get(ScoreCategory.FIVES));
+		assertEquals(testScoreCategoryOptions.get(ScoreCategory.SIXES), 
+			 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.SIXES));
 	}
 
 }
