@@ -69,10 +69,17 @@ public class YahtzeeGameScore extends DiceGameScore{
 		}
 	}
 
+	public void calcFullHouse(Hand testHand) {
+		if (scoreBoard.get(ScoreCategory.FULL_HOUSE)==-1) {
+			if (handValues.containsValue(2) && handValues.containsValue(3)) {
+				scoreCategoryOptions.put(ScoreCategory.FULL_HOUSE,  25);
+			}
+		}
+	}
+
 	@Override
 	public void calculateScore() {
 		calcUpperScores(theHand);
 		
 	}
-
 }
