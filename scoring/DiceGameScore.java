@@ -20,14 +20,16 @@ public abstract class DiceGameScore {
 		this.totalScore = totalScore;
 	}
 	
+
+	
 	public void countHandValues(Hand newHand) {
 		theHand = newHand;
 		int instances = 0;
-		for (int faceUp = 1; faceUp <= newHand.getSides(); faceUp++) {
+		for (int faceUp = 1; faceUp <= theHand.getSides(); faceUp++) {
 			instances = 0;
-			for (int dieNumber = 0; dieNumber < newHand.diceInHand.size(); dieNumber++)
+			for (int dieNumber = 0; dieNumber < theHand.diceInHand.size(); dieNumber++)
 			{
-				if (newHand.readDie(dieNumber) == faceUp){
+				if (theHand.readDie(dieNumber) == faceUp){
 					instances++;
 				}
 			}
