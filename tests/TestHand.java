@@ -80,10 +80,10 @@ public class TestHand {
 		myHand.rollAll();
 		myHand.sortItems();
 		
-		assertTrue(myHand.fiveDice.get(0).readFaceUp() <= myHand.fiveDice.get(1).readFaceUp());
-		assertTrue(myHand.fiveDice.get(1).readFaceUp() <= myHand.fiveDice.get(2).readFaceUp());
-		assertTrue(myHand.fiveDice.get(2).readFaceUp() <= myHand.fiveDice.get(3).readFaceUp());
-		assertTrue(myHand.fiveDice.get(3).readFaceUp() <= myHand.fiveDice.get(4).readFaceUp());
+		assertTrue(myHand.diceInHand.get(0).readFaceUp() <= myHand.diceInHand.get(1).readFaceUp());
+		assertTrue(myHand.diceInHand.get(1).readFaceUp() <= myHand.diceInHand.get(2).readFaceUp());
+		assertTrue(myHand.diceInHand.get(2).readFaceUp() <= myHand.diceInHand.get(3).readFaceUp());
+		assertTrue(myHand.diceInHand.get(3).readFaceUp() <= myHand.diceInHand.get(4).readFaceUp());
 	}
 
 }

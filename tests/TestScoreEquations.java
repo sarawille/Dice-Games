@@ -41,10 +41,10 @@ public class TestScoreEquations {
 	public void testCalcOnes() {
 		int testPoints = 0;
 		myHand.rollAll();
-		while (myHand.fiveDice.get(0).readFaceUp() != 1){
+		while (myHand.diceInHand.get(0).readFaceUp() != 1){
 			myHand.rollDie(0);
 		}
-		for (int i = 0; i < myHand.fiveDice.size(); i++)
+		for (int i = 0; i < myHand.diceInHand.size(); i++)
 		{
 			if (myHand.readDie(i) == 1)
 			{
@@ -58,10 +58,10 @@ public class TestScoreEquations {
 	public void testCalcTwos() {
 		int testPoints = 0;
 		myHand.rollAll();
-		while (myHand.fiveDice.get(0).readFaceUp() != 2){
+		while (myHand.diceInHand.get(0).readFaceUp() != 2){
 			myHand.rollDie(0);
 		}
-		for (int i = 0; i < myHand.fiveDice.size(); i++)
+		for (int i = 0; i < myHand.diceInHand.size(); i++)
 		{
 			if (myHand.readDie(i) == 2)
 			{
@@ -75,10 +75,10 @@ public class TestScoreEquations {
 	public void testCalcThrees() {
 		int testPoints = 0;
 		myHand.rollAll();
-		while (myHand.fiveDice.get(0).readFaceUp() != 3){
+		while (myHand.diceInHand.get(0).readFaceUp() != 3){
 			myHand.rollDie(0);
 		}
-		for (int i = 0; i < myHand.fiveDice.size(); i++)
+		for (int i = 0; i < myHand.diceInHand.size(); i++)
 		{
 			if (myHand.readDie(i) == 3)
 			{
@@ -92,10 +92,10 @@ public class TestScoreEquations {
 	public void testCalcFours() {
 		int testPoints = 0;
 		myHand.rollAll();
-		while (myHand.fiveDice.get(0).readFaceUp() != 4){
+		while (myHand.diceInHand.get(0).readFaceUp() != 4){
 			myHand.rollDie(0);
 		}
-		for (int i = 0; i < myHand.fiveDice.size(); i++)
+		for (int i = 0; i < myHand.diceInHand.size(); i++)
 		{
 			if (myHand.readDie(i) == 4)
 			{
@@ -109,10 +109,10 @@ public class TestScoreEquations {
 	public void testCalcFives() {
 		int testPoints = 0;
 		myHand.rollAll();
-		while (myHand.fiveDice.get(0).readFaceUp() != 5){
+		while (myHand.diceInHand.get(0).readFaceUp() != 5){
 			myHand.rollDie(0);
 		}
-		for (int i = 0; i < myHand.fiveDice.size(); i++)
+		for (int i = 0; i < myHand.diceInHand.size(); i++)
 		{
 			if (myHand.readDie(i) == 5)
 			{
@@ -126,10 +126,10 @@ public class TestScoreEquations {
 	public void testCalcSixes() {
 		int testPoints = 0;
 		myHand.rollAll();
-		while (myHand.fiveDice.get(0).readFaceUp() != 6){
+		while (myHand.diceInHand.get(0).readFaceUp() != 6){
 			myHand.rollDie(0);
 		}
-		for (int i = 0; i < myHand.fiveDice.size(); i++)
+		for (int i = 0; i < myHand.diceInHand.size(); i++)
 		{
 			if (myHand.readDie(i) == 6)
 			{
@@ -146,13 +146,13 @@ public class TestScoreEquations {
 		//first force to get three of a kind
 		int points = 0;
 		
-		while (myHand.fiveDice.get(0).readFaceUp() != 1){
+		while (myHand.diceInHand.get(0).readFaceUp() != 1){
 			myHand.rollDie(0);
 		}
-		while (myHand.fiveDice.get(1).readFaceUp() != 1){
+		while (myHand.diceInHand.get(1).readFaceUp() != 1){
 			myHand.rollDie(1);
 		}
-		while (myHand.fiveDice.get(2).readFaceUp() != 1){
+		while (myHand.diceInHand.get(2).readFaceUp() != 1){
 			myHand.rollDie(2);
 		}
 		int die1 = myHand.readDie(0);
@@ -169,7 +169,7 @@ public class TestScoreEquations {
 		
 		//second force to get three of a kind
 		points = 0;
-		while (myHand.fiveDice.get(3).readFaceUp() != 1){
+		while (myHand.diceInHand.get(3).readFaceUp() != 1){
 			myHand.rollDie(3);
 		}
 		die4 = myHand.readDie(3);
@@ -183,7 +183,7 @@ public class TestScoreEquations {
 		
 		//third force to get three of a kind
 		points = 0;
-		while (myHand.fiveDice.get(4).readFaceUp() != 1){
+		while (myHand.diceInHand.get(4).readFaceUp() != 1){
 			myHand.rollDie(4);
 		}
 		die5 = myHand.readDie(4);
@@ -196,19 +196,19 @@ public class TestScoreEquations {
 		
 		//force to NOT get three of a kind
 		points = 0;
-		while (myHand.fiveDice.get(0).readFaceUp() != 1){
+		while (myHand.diceInHand.get(0).readFaceUp() != 1){
 			myHand.rollDie(0);
 		}
-		while (myHand.fiveDice.get(1).readFaceUp() != 2){
+		while (myHand.diceInHand.get(1).readFaceUp() != 2){
 			myHand.rollDie(1);
 		}
-		while (myHand.fiveDice.get(2).readFaceUp() != 3){
+		while (myHand.diceInHand.get(2).readFaceUp() != 3){
 			myHand.rollDie(2);
 		}
-		while (myHand.fiveDice.get(3).readFaceUp() != 4){
+		while (myHand.diceInHand.get(3).readFaceUp() != 4){
 			myHand.rollDie(3);
 		}
-		while (myHand.fiveDice.get(4).readFaceUp() != 5){
+		while (myHand.diceInHand.get(4).readFaceUp() != 5){
 			myHand.rollDie(4);
 		}
 		die1 = myHand.readDie(0);
@@ -231,16 +231,16 @@ public class TestScoreEquations {
 		//first force to be 4 of a kind
 		int points = 0;
 		
-		while (myHand.fiveDice.get(0).readFaceUp() != 1){
+		while (myHand.diceInHand.get(0).readFaceUp() != 1){
 			myHand.rollDie(0);
 		}
-		while (myHand.fiveDice.get(1).readFaceUp() != 1){
+		while (myHand.diceInHand.get(1).readFaceUp() != 1){
 			myHand.rollDie(1);
 		}
-		while (myHand.fiveDice.get(2).readFaceUp() != 1){
+		while (myHand.diceInHand.get(2).readFaceUp() != 1){
 			myHand.rollDie(2);
 		}
-		while (myHand.fiveDice.get(3).readFaceUp() != 1){
+		while (myHand.diceInHand.get(3).readFaceUp() != 1){
 			myHand.rollDie(3);
 		}
 		int die1 = myHand.readDie(0);
@@ -257,7 +257,7 @@ public class TestScoreEquations {
 		
 		//second force to be 4 of a kind
 		points = 0;
-		while (myHand.fiveDice.get(4).readFaceUp() != 1){
+		while (myHand.diceInHand.get(4).readFaceUp() != 1){
 			myHand.rollDie(4);
 		}
 		die5 = myHand.readDie(4);
@@ -270,19 +270,19 @@ public class TestScoreEquations {
 		
 		//force to NOT get four of a kind
 		points = 0;
-		while (myHand.fiveDice.get(0).readFaceUp() != 1){
+		while (myHand.diceInHand.get(0).readFaceUp() != 1){
 			myHand.rollDie(0);
 		}
-		while (myHand.fiveDice.get(1).readFaceUp() != 2){
+		while (myHand.diceInHand.get(1).readFaceUp() != 2){
 			myHand.rollDie(1);
 		}
-		while (myHand.fiveDice.get(2).readFaceUp() != 3){
+		while (myHand.diceInHand.get(2).readFaceUp() != 3){
 			myHand.rollDie(2);
 		}
-		while (myHand.fiveDice.get(3).readFaceUp() != 4){
+		while (myHand.diceInHand.get(3).readFaceUp() != 4){
 			myHand.rollDie(3);
 		}
-		while (myHand.fiveDice.get(4).readFaceUp() != 5){
+		while (myHand.diceInHand.get(4).readFaceUp() != 5){
 			myHand.rollDie(4);
 		}
 		die1 = myHand.readDie(0);
@@ -302,31 +302,31 @@ public class TestScoreEquations {
 	public void testCalcFullHouse() {
 		
 		//first force to full house
-		while (myHand.fiveDice.get(0).readFaceUp() != 1){
+		while (myHand.diceInHand.get(0).readFaceUp() != 1){
 			myHand.rollDie(0);
 		}
-		while (myHand.fiveDice.get(1).readFaceUp() != 1){
+		while (myHand.diceInHand.get(1).readFaceUp() != 1){
 			myHand.rollDie(1);
 		}
-		while (myHand.fiveDice.get(2).readFaceUp() != 1){
+		while (myHand.diceInHand.get(2).readFaceUp() != 1){
 			myHand.rollDie(2);
 		}
-		while (myHand.fiveDice.get(3).readFaceUp() != 2){
+		while (myHand.diceInHand.get(3).readFaceUp() != 2){
 			myHand.rollDie(3);
 		}
-		while (myHand.fiveDice.get(4).readFaceUp() != 2){
+		while (myHand.diceInHand.get(4).readFaceUp() != 2){
 			myHand.rollDie(4);
 		}
 		assertEquals(25, test.calcFullHouse(myHand));
 		
 		//second force to full house
-		while (myHand.fiveDice.get(2).readFaceUp() != 2){
+		while (myHand.diceInHand.get(2).readFaceUp() != 2){
 			myHand.rollDie(2);
 		}
 		assertEquals(25, test.calcFullHouse(myHand));
 		
 		//force NOT to full house
-		while (myHand.fiveDice.get(1).readFaceUp() != 2){
+		while (myHand.diceInHand.get(1).readFaceUp() != 2){
 			myHand.rollDie(1);
 		}
 		assertEquals(0, test.calcFullHouse(myHand));
@@ -335,34 +335,34 @@ public class TestScoreEquations {
 	@Test
 	public void testCalcSmallStraight() {
 		//force to small straight
-		while (myHand.fiveDice.get(0).readFaceUp() != 1){
+		while (myHand.diceInHand.get(0).readFaceUp() != 1){
 			myHand.rollDie(0);
 		}
-		while (myHand.fiveDice.get(1).readFaceUp() != 2){
+		while (myHand.diceInHand.get(1).readFaceUp() != 2){
 			myHand.rollDie(1);
 		}
-		while (myHand.fiveDice.get(2).readFaceUp() != 3){
+		while (myHand.diceInHand.get(2).readFaceUp() != 3){
 			myHand.rollDie(2);
 		}
-		while (myHand.fiveDice.get(3).readFaceUp() != 4){
+		while (myHand.diceInHand.get(3).readFaceUp() != 4){
 			myHand.rollDie(3);
 		}
-		while (myHand.fiveDice.get(4).readFaceUp() != 4){
+		while (myHand.diceInHand.get(4).readFaceUp() != 4){
 			myHand.rollDie(4);
 		}
 		assertEquals(30, test.calcSmallStraight(myHand));
 		
 		//second force to small straight
-		while (myHand.fiveDice.get(0).readFaceUp() != 2){
+		while (myHand.diceInHand.get(0).readFaceUp() != 2){
 			myHand.rollDie(0);
 		}
-		while (myHand.fiveDice.get(4).readFaceUp() != 5){
+		while (myHand.diceInHand.get(4).readFaceUp() != 5){
 			myHand.rollDie(4);
 		}
 		assertEquals(30, test.calcSmallStraight(myHand));
 		
 		//force not to small straight
-		while (myHand.fiveDice.get(4).readFaceUp() != 4){
+		while (myHand.diceInHand.get(4).readFaceUp() != 4){
 			myHand.rollDie(4);
 		}
 		assertEquals(0, test.calcSmallStraight(myHand));
@@ -372,25 +372,25 @@ public class TestScoreEquations {
 	public void testCalcLargeStraight() {
 		
 		//force to large straight
-		while (myHand.fiveDice.get(0).readFaceUp() != 1){
+		while (myHand.diceInHand.get(0).readFaceUp() != 1){
 			myHand.rollDie(0);
 		}
-		while (myHand.fiveDice.get(1).readFaceUp() != 2){
+		while (myHand.diceInHand.get(1).readFaceUp() != 2){
 			myHand.rollDie(1);
 		}
-		while (myHand.fiveDice.get(2).readFaceUp() != 3){
+		while (myHand.diceInHand.get(2).readFaceUp() != 3){
 			myHand.rollDie(2);
 		}
-		while (myHand.fiveDice.get(3).readFaceUp() != 4){
+		while (myHand.diceInHand.get(3).readFaceUp() != 4){
 			myHand.rollDie(3);
 		}
-		while (myHand.fiveDice.get(4).readFaceUp() != 5){
+		while (myHand.diceInHand.get(4).readFaceUp() != 5){
 			myHand.rollDie(4);
 		}
 		assertEquals(40, test.calcLargeStraight(myHand));
 		
 		//force NOT to large straight
-		while (myHand.fiveDice.get(4).readFaceUp() != 5){
+		while (myHand.diceInHand.get(4).readFaceUp() != 5){
 			myHand.rollDie(4);
 		}
 		assertEquals(40, test.calcLargeStraight(myHand));
@@ -413,25 +413,25 @@ public class TestScoreEquations {
 	@Test
 	public void testYahtzee() {
 		//force to yahtzee
-		while (myHand.fiveDice.get(0).readFaceUp() != 1){
+		while (myHand.diceInHand.get(0).readFaceUp() != 1){
 			myHand.rollDie(0);
 		}
-		while (myHand.fiveDice.get(1).readFaceUp() != 1){
+		while (myHand.diceInHand.get(1).readFaceUp() != 1){
 			myHand.rollDie(1);
 		}
-		while (myHand.fiveDice.get(2).readFaceUp() != 1){
+		while (myHand.diceInHand.get(2).readFaceUp() != 1){
 			myHand.rollDie(2);
 		}
-		while (myHand.fiveDice.get(3).readFaceUp() != 1){
+		while (myHand.diceInHand.get(3).readFaceUp() != 1){
 			myHand.rollDie(3);
 		}
-		while (myHand.fiveDice.get(4).readFaceUp() != 1){
+		while (myHand.diceInHand.get(4).readFaceUp() != 1){
 			myHand.rollDie(4);
 		}
 		assertEquals(50, test.calcYahtzee(myHand));
 		
 		//force to NOT yahtzee
-		while (myHand.fiveDice.get(4).readFaceUp() != 2){
+		while (myHand.diceInHand.get(4).readFaceUp() != 2){
 			myHand.rollDie(4);
 		}
 		assertEquals(0, test.calcYahtzee(myHand));
@@ -440,19 +440,19 @@ public class TestScoreEquations {
 	@Test
 	public void testAnotherYahtzee() {
 		//set dice to be a yahtzee
-		while (myHand.fiveDice.get(0).readFaceUp() != 1){
+		while (myHand.diceInHand.get(0).readFaceUp() != 1){
 			myHand.rollDie(0);
 		}
-		while (myHand.fiveDice.get(1).readFaceUp() != 1){
+		while (myHand.diceInHand.get(1).readFaceUp() != 1){
 			myHand.rollDie(1);
 		}
-		while (myHand.fiveDice.get(2).readFaceUp() != 1){
+		while (myHand.diceInHand.get(2).readFaceUp() != 1){
 			myHand.rollDie(2);
 		}
-		while (myHand.fiveDice.get(3).readFaceUp() != 1){
+		while (myHand.diceInHand.get(3).readFaceUp() != 1){
 			myHand.rollDie(3);
 		}
-		while (myHand.fiveDice.get(4).readFaceUp() != 1){
+		while (myHand.diceInHand.get(4).readFaceUp() != 1){
 			myHand.rollDie(4);
 		}
 		
@@ -473,7 +473,7 @@ public class TestScoreEquations {
 		assertEquals(0, test.calcYahtzee(myHand));
 		
 		//force to NOT yahtzee
-		while (myHand.fiveDice.get(0).readFaceUp() != 5){
+		while (myHand.diceInHand.get(0).readFaceUp() != 5){
 			myHand.rollDie(0);
 		}
 		assertEquals(0, test.calcYahtzee(myHand));
@@ -493,19 +493,19 @@ public class TestScoreEquations {
 		test.setYahtzeePoints(50);
 		
 		myHand.rollAll();
-		while (myHand.fiveDice.get(0).readFaceUp() != 2){
+		while (myHand.diceInHand.get(0).readFaceUp() != 2){
 			myHand.rollDie(0);
 		}
-		while (myHand.fiveDice.get(1).readFaceUp() != 2){
+		while (myHand.diceInHand.get(1).readFaceUp() != 2){
 			myHand.rollDie(1);
 		}
-		while (myHand.fiveDice.get(2).readFaceUp() != 2){
+		while (myHand.diceInHand.get(2).readFaceUp() != 2){
 			myHand.rollDie(2);
 		}
-		while (myHand.fiveDice.get(3).readFaceUp() != 1){
+		while (myHand.diceInHand.get(3).readFaceUp() != 1){
 			myHand.rollDie(3);
 		}
-		while (myHand.fiveDice.get(4).readFaceUp() != 1){
+		while (myHand.diceInHand.get(4).readFaceUp() != 1){
 			myHand.rollDie(4);
 		}
 		String expectedString = "Which category do you want to score? \n" +
