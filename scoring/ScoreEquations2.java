@@ -8,7 +8,8 @@ public class ScoreEquations2 {
 	
 	protected Hand theHand;
 	public HashMap<String, Integer> handValues = new HashMap<>();
-	protected HashMap<String, Integer> scoreCategoryOptions = new HashMap<>();
+	protected HashMap<ScoreCategory, Integer> scoreCategoryOptions = new HashMap<>();
+	public HashMap<ScoreCategory, Integer> scoreBoard = new HashMap<>();
 	protected StringBuilder scoreChoices = new StringBuilder();
 	
 	public ScoreEquations2(Hand newHand) {
