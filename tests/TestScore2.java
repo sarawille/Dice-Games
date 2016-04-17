@@ -103,7 +103,7 @@ public class TestScore2 {
 		}
 		newTest.resetScoreBoard();
 		newTest.countHandValues(testHand);
-		newTest.calcUpperScores(testHand);
+		newTest.calcUpperScores();
 		
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.ONES), 
 					 newTest.scoreCategoryOptions.get(ScoreCategory.ONES));
@@ -140,7 +140,7 @@ public class TestScore2 {
 		}
 		newTest.resetScoreBoard();
 		newTest.countHandValues(testHand);
-		newTest.calcFullHouse(testHand);
+		newTest.calcFullHouse();
 		
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FULL_HOUSE), 
 		 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.FULL_HOUSE));
@@ -167,7 +167,7 @@ public class TestScore2 {
 		}
 		newTest.resetScoreBoard();
 		newTest.countHandValues(testHand);
-		newTest.calcThreeOfAKind(testHand);
+		newTest.calcThreeOfAKind();
 		
 		int counter = 5;
 		System.out.println(""+counter);

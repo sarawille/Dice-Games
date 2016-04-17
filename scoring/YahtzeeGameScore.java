@@ -48,7 +48,7 @@ public class YahtzeeGameScore extends DiceGameScore{
 		scoreBoard.put(ScoreCategory.YAHTZEE, -1);
 	}
 	
-	public void calcUpperScores(Hand newHand) {
+	public void calcUpperScores() {
 		if (scoreBoard.get(ScoreCategory.ONES)==-1) {
 			scoreCategoryOptions.put(ScoreCategory.ONES, handValues.get("1") * 1);
 		}
@@ -69,7 +69,7 @@ public class YahtzeeGameScore extends DiceGameScore{
 		}
 	}
 
-	public void calcFullHouse(Hand testHand) {
+	public void calcFullHouse() {
 		if (scoreBoard.get(ScoreCategory.FULL_HOUSE)==-1) {
 			if (handValues.containsValue(2) && handValues.containsValue(3)) {
 				scoreCategoryOptions.put(ScoreCategory.FULL_HOUSE,  25);
@@ -77,7 +77,7 @@ public class YahtzeeGameScore extends DiceGameScore{
 		}
 	}
 	
-	public void calcThreeOfAKind(Hand testHand) {
+	public void calcThreeOfAKind() {
 		if (scoreBoard.get(ScoreCategory.THREE_OF_A_KIND)==-1) {
 
 			for (int counter = 1; counter <= 5; counter++)
@@ -101,7 +101,7 @@ public class YahtzeeGameScore extends DiceGameScore{
 
 	@Override
 	public void calculateScore() {
-		calcUpperScores(theHand);
+		calcUpperScores();
 		
 	}
 
