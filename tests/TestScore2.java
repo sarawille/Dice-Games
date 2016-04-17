@@ -11,6 +11,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import business.Hand;
+import scoring.ScoreCategory;
 import scoring.ScoreEquations2;
 
 public class TestScore2 {
@@ -18,12 +19,16 @@ public class TestScore2 {
 	static Hand testHand;
 	static ScoreEquations2 newTest;
 	static HashMap<String, Integer> testHandValues;
+	static HashMap<ScoreCategory, Integer> testScoreCategoryOptions;
+	static HashMap<ScoreCategory, Integer> testScoreBoard;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		testHand = new Hand(5, 6);
 		newTest = new ScoreEquations2(testHand);
 		testHandValues = new HashMap<>();
+		testScoreCategoryOptions = new HashMap<>();
+		testScoreBoard = new HashMap<>();
 	}
 
 	@AfterClass
@@ -45,6 +50,7 @@ public class TestScore2 {
 		testHandValues.put("3", 1);
 		testHandValues.put("4", 0);
 		testHandValues.put("5", 2);
+		testHandValues.put("6", 0);
 		
 		while (testHand.diceInHand.get(0).readFaceUp() != 1){
 			testHand.rollDie(0);
@@ -68,10 +74,33 @@ public class TestScore2 {
 		assertEquals(testHandValues.get("3"), newTest.handValues.get("3"));
 		assertEquals(testHandValues.get("4"), newTest.handValues.get("4"));
 		assertEquals(testHandValues.get("5"), newTest.handValues.get("5"));
+		assertEquals(testHandValues.get("6"), newTest.handValues.get("6"));
 	}
 	
 	@Test
 	public void testCalcUpperScores() {
+		testHandValues.put("1", 1);
+		testHandValues.put("2", 1);
+		testHandValues.put("3", 1);
+		testHandValues.put("4", 0);
+		testHandValues.put("5", 2);
+		
+		while (testHand.diceInHand.get(0).readFaceUp() != 1){
+			testHand.rollDie(0);
+		}
+		while (testHand.diceInHand.get(1).readFaceUp() != 2){
+			testHand.rollDie(1);
+		}
+		while (testHand.diceInHand.get(2).readFaceUp() != 3){
+			testHand.rollDie(2);
+		}
+		while (testHand.diceInHand.get(3).readFaceUp() != 5){
+			testHand.rollDie(3);
+		}
+		while (testHand.diceInHand.get(4).readFaceUp() != 5){
+			testHand.rollDie(4);
+		}
+		newTest.countHandValues(testHand);
 		
 	}
 

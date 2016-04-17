@@ -18,7 +18,7 @@ public class ScoreEquations2 {
 	
 	public void countHandValues(Hand newHand) {
 		int instances = 0;
-		for (int faceUp = 1; faceUp <= newHand.diceInHand.size(); faceUp++) {
+		for (int faceUp = 1; faceUp <= newHand.getSides(); faceUp++) {
 			instances = 0;
 			for (int dieNumber = 0; dieNumber < newHand.diceInHand.size(); dieNumber++)
 			{
