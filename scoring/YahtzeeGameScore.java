@@ -76,10 +76,34 @@ public class YahtzeeGameScore extends DiceGameScore{
 			}
 		}
 	}
+	
+	public void calcThreeOfAKind(Hand testHand) {
+		if (scoreBoard.get(ScoreCategory.THREE_OF_A_KIND)==-1) {
+
+			for (int counter = 1; counter <= 5; counter++)
+			{
+				String value = ""+counter;
+				if (handValues.get(value)==5)
+				{
+					scoreCategoryOptions.put(ScoreCategory.THREE_OF_A_KIND, counter*5);
+				}
+				else if (handValues.get(value)==4)
+				{
+					scoreCategoryOptions.put(ScoreCategory.THREE_OF_A_KIND, counter*4);
+				}
+				else if (handValues.get(value)==3)
+				{
+					scoreCategoryOptions.put(ScoreCategory.THREE_OF_A_KIND, counter*3);
+				}
+			}
+		}
+	}
 
 	@Override
 	public void calculateScore() {
 		calcUpperScores(theHand);
 		
 	}
+
+
 }
