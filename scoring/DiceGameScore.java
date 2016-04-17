@@ -37,6 +37,5 @@ public abstract class DiceGameScore {
 	}
 
 	public abstract void calculateScore();
-	public abstract int getScore();
 	
 }
