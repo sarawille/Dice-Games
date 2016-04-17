@@ -14,14 +14,16 @@ import business.Hand;
 import scoring.ScoreEquations2;
 
 public class TestScore2 {
-	static ScoreEquations2 newTest;
+	
 	static Hand testHand;
+	static ScoreEquations2 newTest;
+	static HashMap<String, Integer> testHandValues;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		testHand = new Hand(5, 6);
 		newTest = new ScoreEquations2(testHand);
-		
+		testHandValues = new HashMap<>();
 	}
 
 	@AfterClass
@@ -38,7 +40,6 @@ public class TestScore2 {
 
 	@Test
 	public void testCountHand() {
-		HashMap<String, Integer> testHandValues = new HashMap<>();
 		testHandValues.put("1", 1);
 		testHandValues.put("2", 1);
 		testHandValues.put("3", 1);
@@ -67,6 +68,11 @@ public class TestScore2 {
 		assertEquals(testHandValues.get("3"), newTest.handValues.get("3"));
 		assertEquals(testHandValues.get("4"), newTest.handValues.get("4"));
 		assertEquals(testHandValues.get("5"), newTest.handValues.get("5"));
+	}
+	
+	@Test
+	public void testCalcUpperScores() {
+		
 	}
 
 }
