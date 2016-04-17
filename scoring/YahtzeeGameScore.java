@@ -111,9 +111,43 @@ public class YahtzeeGameScore extends DiceGameScore{
 	public void calcFullHouse() {
 		if (scoreBoard.get(ScoreCategory.FULL_HOUSE)==-1) {
 			if (handValues.containsValue(2) && handValues.containsValue(3)) {
-				scoreCategoryOptions.put(ScoreCategory.FULL_HOUSE,  25);
+				scoreCategoryOptions.put(ScoreCategory.FULL_HOUSE, 25);
 			}
 		}
+	}
+	
+
+	public void calcSmallStraight() {
+		if (scoreBoard.get(ScoreCategory.SMALL_STRAIGHT)==-1) {
+			if (findMaxValue() == 2)
+			{
+				if ((handValues.get("1") == 0 && handValues.get("2") == 0) ||
+					(handValues.get("5") == 0 && handValues.get("6") == 0)) 
+				{
+					scoreCategoryOptions.put(ScoreCategory.SMALL_STRAIGHT, 30);
+				}
+			}
+			if (findMaxValue() == 1)
+			{
+				if (handValues.get("1") == 0 || handValues.get("6") == 0) 
+				{
+					scoreCategoryOptions.put(ScoreCategory.SMALL_STRAIGHT, 30);
+				}
+			}
+		}
+	}
+	
+	public int findMaxValue() {
+		int maxValue = 0;
+		for (int counter = 1; counter <= 5; counter++)
+		{
+			String value = ""+counter;
+			if (handValues.get(value) > maxValue)
+			{
+				maxValue = handValues.get(value);
+			}
+		}
+		return maxValue;
 	}
 	
 	@Override
@@ -121,6 +155,7 @@ public class YahtzeeGameScore extends DiceGameScore{
 		calcUpperScores();
 		
 	}
+
 
 
 }
