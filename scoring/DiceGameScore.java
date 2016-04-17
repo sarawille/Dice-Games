@@ -10,9 +10,7 @@ public abstract class DiceGameScore {
 	public HashMap<String, Integer> handValues = new HashMap<>();
 	public int totalScore = 0;
 	
-	public DiceGameScore(Hand newHand) {
-		theHand = newHand;
-	}
+	private DiceGameScore() {}
 
 	public int getTotalScore() {
 		return totalScore;
@@ -23,6 +21,7 @@ public abstract class DiceGameScore {
 	}
 	
 	public void countHandValues(Hand newHand) {
+		theHand = newHand;
 		int instances = 0;
 		for (int faceUp = 1; faceUp <= newHand.getSides(); faceUp++) {
 			instances = 0;
