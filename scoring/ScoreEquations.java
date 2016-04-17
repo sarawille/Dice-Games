@@ -96,12 +96,15 @@ public class ScoreEquations extends ScoreVariables
 	}
 
 	/**
-	 * executeScoreEquations() - This method is called by getScoreChoices(). It 
-	 *  runs all methods in the ScoreEquations class whose purpose is to calculate
+	 * executeScoreEquations() - This method is called by getScoreChoices(). It
+	 *  sorts the Die from lowest to highest value (necessary for determining whether
+	 *  categories of Full House, Small Straight and Large straight are applicable). Then 
+	 *  it runs all methods in the ScoreEquations class whose purpose is to calculate
 	 *  possible points for a scoring category.
 	 * @param newHand
 	 */
 	private void executeScoreEquations(Hand newHand) {
+		newHand.sortItems();
 		calcOnes(newHand);
 		calcTwos(newHand);
 		calcThrees(newHand);
@@ -121,8 +124,7 @@ public class ScoreEquations extends ScoreVariables
 	 * calcOnes() - If the Ones category has not yet been scored, the calcOnes method 
 	 *  checks whether the Hand includes dice with a 1 facing up.  If the Hand 
 	 *  includes 1s, the method determines the points that could be scored for the Ones category.  
-	 *  Then, it appends a menu line for Ones to the scoreChoices StringBuilder and 
-	 *  returns the possible points to be scored in the Ones category.
+	 *  Then, it returns the possible points to be scored in the Ones category.
 	 *    
 	 *  The Ones category is scored by adding up the value of all dice with 1 facing up.
 	 *  
@@ -139,19 +141,16 @@ public class ScoreEquations extends ScoreVariables
 				onesPossiblePoints += (newHand.readDie(counter) == 1) ? 1 : 0;
 			}
 		}
-		if (onesPossiblePoints > 0) 
-		{
-			scoreChoices.append("1 \t Ones \t\t\t" + onesPossiblePoints + " points\n");
-		}
 		return onesPossiblePoints;
 	}
+
+	
 	
 	/**
 	 * calcTwos() - If the Twos category has not yet been scored, the calcTwos method 
 	 *  checks whether the Hand includes dice with a 2 facing up.  If the Hand 
 	 *  includes 2s, the method determines the points that could be scored for the Twos category.  
-	 *  Then, it appends a menu line for Twos to the scoreChoices StringBuilder and 
-	 *  returns the possible points to be scored in the Twos category.
+	 *  Then, it returns the possible points to be scored in the Twos category.
 	 *    
 	 *  The Twos category is scored by adding up the value of all dice with 2 facing up.
 	 *  
@@ -168,10 +167,6 @@ public class ScoreEquations extends ScoreVariables
 				twosPossiblePoints += (newHand.readDie(counter) == 2) ? 2 : 0;
 			}
 		}
-		if (twosPossiblePoints > 0) 
-		{
-			scoreChoices.append("2 \t Twos \t\t\t" + twosPossiblePoints + " points\n");
-		}
 		return twosPossiblePoints;
 	}
 	
@@ -179,8 +174,7 @@ public class ScoreEquations extends ScoreVariables
 	 * calcThrees() - If the Threes category has not yet been scored, the calcThrees method 
 	 *  checks whether the Hand includes dice with a 3 facing up.  If the Hand 
 	 *  includes 3s, the method determines the points that could be scored for the Threes category.  
-	 *  Then, it appends a menu line for Threes to the scoreChoices StringBuilder and 
-	 *  returns the possible points to be scored in the Threes category.
+	 *  Then, it returns the possible points to be scored in the Threes category.
 	 *    
 	 *  The Threes category is scored by adding up the value of all dice with 3 facing up.
 	 *  
@@ -197,10 +191,6 @@ public class ScoreEquations extends ScoreVariables
 				threesPossiblePoints += (newHand.readDie(counter) == 3) ? 3 : 0;
 			}
 		}
-		if (threesPossiblePoints > 0) 
-		{
-			scoreChoices.append("3 \t Threes \t\t" + threesPossiblePoints + " points\n");
-		}
 		return threesPossiblePoints;
 	}
 	
@@ -208,8 +198,7 @@ public class ScoreEquations extends ScoreVariables
 	 * calcFours() - If the Fours category has not yet been scored, the calcFours method 
 	 *  checks whether the Hand includes dice with a 4 facing up.  If the Hand 
 	 *  includes 4s, the method determines the points that could be scored for the Fours category.  
-	 *  Then, it appends a menu line for Fours to the scoreChoices StringBuilder and 
-	 *  returns the possible points to be scored in the Fours category.
+	 *  Then, it returns the possible points to be scored in the Fours category.
 	 *    
 	 *  The Fours category is scored by adding up the value of all dice with 4 facing up.
 	 *  
@@ -226,10 +215,6 @@ public class ScoreEquations extends ScoreVariables
 				foursPossiblePoints += (newHand.readDie(counter) == 4) ? 4 : 0;
 			}
 		}
-		if (foursPossiblePoints > 0) 
-		{
-			scoreChoices.append("4 \t Fours \t\t\t" + foursPossiblePoints + " points\n");
-		}
 		return foursPossiblePoints;
 	}
 	
@@ -237,8 +222,7 @@ public class ScoreEquations extends ScoreVariables
 	 * calcFives() - If the Fives category has not yet been scored, the calcFives method 
 	 *  checks whether the Hand includes dice with a 5 facing up.  If the Hand 
 	 *  includes 5s, the method determines the points that could be scored for the Fives category.  
-	 *  Then, it appends a menu line for Fives to the scoreChoices StringBuilder and 
-	 *  returns the possible points to be scored in the Fives category.
+	 *  Then, it returns the possible points to be scored in the Fives category.
 	 *    
 	 *  The Fives category is scored by adding up the value of all dice with 5 facing up.
 	 *  
@@ -255,10 +239,6 @@ public class ScoreEquations extends ScoreVariables
 				fivesPossiblePoints += (newHand.readDie(counter) == 5) ? 5 : 0;
 			}
 		}
-		if (fivesPossiblePoints > 0) 
-		{
-			scoreChoices.append("5 \t Fives \t\t\t" + fivesPossiblePoints + " points\n");
-		}
 		return fivesPossiblePoints;
 	}
 	
@@ -266,8 +246,7 @@ public class ScoreEquations extends ScoreVariables
 	 * calcSixes() - If the Sixes category has not yet been scored, the calcSixes method 
 	 *  checks whether the Hand includes dice with a 6 facing up.  If the Hand 
 	 *  includes 6s, the method determines the points that could be scored for the Sixes category.  
-	 *  Then, it appends a menu line for Sixes to the scoreChoices StringBuilder and 
-	 *  returns the possible points to be scored in the Sixes category.
+	 *  Then, it returns the possible points to be scored in the Sixes category.
 	 *    
 	 *  The Sixes category is scored by adding up the value of all dice with 6 facing up.
 	 *  
@@ -284,10 +263,6 @@ public class ScoreEquations extends ScoreVariables
 				sixesPossiblePoints += (newHand.readDie(counter) == 6) ? 6 : 0;
 			}
 		}
-		if (sixesPossiblePoints > 0) 
-		{
-			scoreChoices.append("6 \t Sixes \t\t\t" + sixesPossiblePoints + " points\n");
-		}
 		return sixesPossiblePoints;
 	}
 
@@ -295,8 +270,7 @@ public class ScoreEquations extends ScoreVariables
 	 * calcThreeOfAKind() - If the Three of a Kind category has not yet been scored, the method 
 	 *  checks whether the Hand qualifies to be scored as Three of a Kind.  If the Hand qualifies,
 	 *  the method determines the possible points that could be scored for the Three of a Kind category.  
-	 *  Then, it appends a menu line for Three of a Kind to the scoreChoices StringBuilder and 
-	 *  returns the possible points to be scored in the Three of a Kind category.
+	 *  Then, it returns the possible points to be scored in the Three of a Kind category.
 	 *    
 	 *  The Three of a Kind category is scored by adding up the value of all dice in the Hand
 	 *  if at least 3 dice have the same face up value.
@@ -319,12 +293,12 @@ public class ScoreEquations extends ScoreVariables
 					(newHand.readDie(2) == newHand.readDie(3)  &&
 					newHand.readDie(3) == newHand.readDie(4)) )
 			{
-				setThreeOfAKindPossiblePoints(newHand.readDie(0) +
-											  newHand.readDie(1) +
-											  newHand.readDie(2) +
-											  newHand.readDie(3) +
-											  newHand.readDie(4));
-				scoreChoices.append("3K \t 3 of a Kind  \t\t" + getThreeOfAKindPossiblePoints() + " points\n"); 
+				int diceSum = newHand.readDie(0) +
+					 	newHand.readDie(1) +
+					 	newHand.readDie(2) +
+					 	newHand.readDie(3) +
+					 	newHand.readDie(4);
+				setThreeOfAKindPossiblePoints(diceSum);
 			}
 		}
 		return getThreeOfAKindPossiblePoints();
@@ -334,8 +308,7 @@ public class ScoreEquations extends ScoreVariables
 	 * calcFourOfAKind() - If the Four of a Kind category has not yet been scored, the method 
 	 *  checks whether the Hand qualifies to be scored as Four of a Kind.  If the Hand qualifies,
 	 *  the method determines the possible points that could be scored for the Four of a Kind category.  
-	 *  Then, it appends a menu line for Four of a Kind to the scoreChoices StringBuilder and 
-	 *  returns the possible points to be scored in the Four of a Kind category.
+	 *  Then, it returns the possible points to be scored in the Four of a Kind category.
 	 *    
 	 *  The Four of a Kind category is scored by adding up the value of all dice in the Hand
 	 *  if at least 4 dice have the same face up value.
@@ -356,12 +329,12 @@ public class ScoreEquations extends ScoreVariables
 					newHand.readDie(2) == newHand.readDie(3) &&
 					newHand.readDie(3) == newHand.readDie(4)) )
 			{
-				setFourOfAKindPossiblePoints(newHand.readDie(0) +
-											 newHand.readDie(1) +
-											 newHand.readDie(2) +
-											 newHand.readDie(3) +
-											 newHand.readDie(4));
-				scoreChoices.append("4K \t 4 of a Kind \t\t" + getFourOfAKindPossiblePoints() +" points\n");
+				int diceSum = newHand.readDie(0) +
+						 	newHand.readDie(1) +
+						 	newHand.readDie(2) +
+						 	newHand.readDie(3) +
+						 	newHand.readDie(4);
+				setFourOfAKindPossiblePoints(diceSum);
 			} 
 		}
 		return getFourOfAKindPossiblePoints();
@@ -370,9 +343,8 @@ public class ScoreEquations extends ScoreVariables
 	/**
 	 * calcFullHouse() - If the Full House category has not yet been scored, the method 
 	 *  checks whether the Hand qualifies to be scored as a Full House.  If the Hand qualifies,
-	 *  the method sets the possible points to be scored for Full House to 25.  Then, it appends 
-	 *  a menu line for Full House to the scoreChoices StringBuilder and returns the possible 
-	 *  points to be scored in the Full House category.
+	 *  the method sets the possible points to be scored for Full House to 25.  Then, it  
+	 *  returns the possible points to be scored in the Full House category.
 	 *    
 	 *  The Full House category is worth 25 points when the Hand contains a matching pair and 
 	 *  Three of a Kind (2 dice of matching face up values with 3 dice of matching face up values).
@@ -396,7 +368,6 @@ public class ScoreEquations extends ScoreVariables
 					newHand.readDie(1) != newHand.readDie(2)) )
 			{
 				setFullHousePossiblePoints(25);
-				scoreChoices.append("F \t Full House \t\t" + getFullHousePossiblePoints() + " points\n");
 			}
 		}
 		return getFullHousePossiblePoints();
@@ -405,9 +376,8 @@ public class ScoreEquations extends ScoreVariables
 	/**
 	 * calcSmallStraight() - If the Small Straight category has not yet been scored, the method 
 	 *  checks whether the Hand qualifies to be scored as a Small Straight.  If the Hand qualifies,
-	 *  the method sets the possible points to be scored for Small Straight to 30.  Then, it appends 
-	 *  a menu line for Small Straight to the scoreChoices StringBuilder and returns the possible 
-	 *  points to be scored in the Small Straight category.
+	 *  the method sets the possible points to be scored for Small Straight to 30.  Then, it  
+	 *  returns the possible points to be scored in the Small Straight category.
 	 *    
 	 *  The Small Straight category is worth 30 points when the Hand contains a run of at least 
 	 *  4 dice with consecutive face up values.
@@ -429,7 +399,6 @@ public class ScoreEquations extends ScoreVariables
 				 newHand.readDie(4) == newHand.readDie(3) + 1) )
 			{
 				setSmallStraightPossiblePoints(30);
-				scoreChoices.append("S \t Small Straight \t" + getSmallStraightPossiblePoints() + " points\n");
 			}
 		}
 		return getSmallStraightPossiblePoints();
@@ -438,9 +407,8 @@ public class ScoreEquations extends ScoreVariables
 	/**
 	 * calcLargeStraight() - If the Large Straight category has not yet been scored, the method 
 	 *  checks whether the Hand qualifies to be scored as a Large Straight.  If the Hand qualifies,
-	 *  the method sets the possible points to be scored for Large Straight to 40.  Then, it appends 
-	 *  a menu line for Large Straight to the scoreChoices StringBuilder and returns the possible 
-	 *  points to be scored in the Large Straight category.
+	 *  the method sets the possible points to be scored for Large Straight to 40.  Then, it 
+	 *  returns the possible points to be scored in the Large Straight category.
 	 *    
 	 *  The Large Straight category is worth 40 points when the Hand contains a run of all 5 dice 
 	 *  with consecutive face up values.
@@ -459,7 +427,6 @@ public class ScoreEquations extends ScoreVariables
 				newHand.readDie(4) == newHand.readDie(3) + 1)
 			{
 				setLargeStraightPossiblePoints(40);
-				scoreChoices.append("L \t Large Straight \t" + getLargeStraightPossiblePoints() + " points\n");
 			}
 		}
 		return getLargeStraightPossiblePoints();
@@ -468,8 +435,7 @@ public class ScoreEquations extends ScoreVariables
 	/**
 	 * calcChance() - If the Chance category has not yet been scored, the method sets the 
 	 *  possible points to be scored for Chance equal to the sum of all 5 face up values.
-	 *  Then, it appends a menu line for Chance to the scoreChoices StringBuilder and returns the 
-	 *  possible points to be scored in the Chance category.
+	 *  Then, it returns the possible points to be scored in the Chance category.
 	 *    
 	 *  The Chance category is scored by adding up the face up values of all dice in the Hand. It
 	 *  can be scored on any turn regardless of what the face up values are, but like other categories
@@ -483,9 +449,9 @@ public class ScoreEquations extends ScoreVariables
 		setChancePossiblePoints(0);
 		if (getChancePoints() < 0)
 		{
-			setChancePossiblePoints(newHand.readDie(0) + newHand.readDie(1) + newHand.readDie(2) + 
-					newHand.readDie(3) + newHand.readDie(4));	
-			scoreChoices.append("C \t Chance \t\t" + getChancePossiblePoints() + " points\n");
+			int diceSum = newHand.readDie(0) + newHand.readDie(1) + newHand.readDie(2) + 
+						  newHand.readDie(3) + newHand.readDie(4);
+			setChancePossiblePoints(diceSum);	
 		} 
 		return getChancePossiblePoints();
 	}
@@ -494,8 +460,7 @@ public class ScoreEquations extends ScoreVariables
 	 * calcYahtzee() - If the Yahtzee category has not yet been scored, the method 
 	 *  checks whether the Hand qualifies to be scored as a Yahtzee.  If the Hand qualifies,
 	 *  the method sets the possible points to be scored for the Yahtzee category.
-	 *  Then, it appends a menu line for Yahtzee to the scoreChoices StringBuilder 
-	 *  and returns the possible points to be scored in the Yahtzee category.
+	 *  Then, it returns the possible points to be scored in the Yahtzee category.
 	 *  
 	 *  The Yahtzee category is worth 50 points when the Hand contains all 5 dice with the same
 	 *  face up value. Any additional Yahtzee after the first is worth 100 points each.
@@ -511,17 +476,75 @@ public class ScoreEquations extends ScoreVariables
 		if (newHand.readDie(0) == newHand.readDie(1) && newHand.readDie(1) == newHand.readDie(2) && 
 				newHand.readDie(2) == newHand.readDie(3) && newHand.readDie(3) == newHand.readDie(4)) 
 		{	
-			if (getYahtzeePoints() >= 50) {
+			if (getYahtzeePoints() >= 50) 
+			{
 				setYahtzeePossiblePoints(100);
-				scoreChoices.append("Y \t Another YAHTZEE! \t\t" + getYahtzeePossiblePoints() + " points\n");
 			}
-			else if (getYahtzeePoints() < 0){	//does not allow yahtzee score if category is scored as a 0
+			else if (getYahtzeePoints() < 0)	//does not allow yahtzee score if category already scored as a 0
+			{	
 				setYahtzeePossiblePoints(50);
-				scoreChoices.append("Y \t YAHTZEE! \t\t" + getYahtzeePossiblePoints() + " points\n");
 			}
 		} 
-		
 		return getYahtzeePossiblePoints();
 	}
 
+}
+
+private void createScoringMenu() {
+	if (onesPossiblePoints > 0) 
+	{
+		scoreChoices.append("1 \t Ones \t\t\t" + onesPossiblePoints + " points\n");
+	}
+	if (twosPossiblePoints > 0) 
+	{
+		scoreChoices.append("2 \t Twos \t\t\t" + twosPossiblePoints + " points\n");
+	}
+	if (threesPossiblePoints > 0) 
+	{
+		scoreChoices.append("3 \t Threes \t\t" + threesPossiblePoints + " points\n");
+	}
+	if (foursPossiblePoints > 0) 
+	{
+		scoreChoices.append("4 \t Fours \t\t\t" + foursPossiblePoints + " points\n");
+	}
+	if (fivesPossiblePoints > 0) 
+	{
+		scoreChoices.append("5 \t Fives \t\t\t" + fivesPossiblePoints + " points\n");
+	}
+	if (sixesPossiblePoints > 0) 
+	{
+		scoreChoices.append("6 \t Sixes \t\t\t" + sixesPossiblePoints + " points\n");
+	}
+	if (threeOfAKindPossiblePoints > 0)
+	{
+		scoreChoices.append("3K \t 3 of a Kind  \t\t" + getThreeOfAKindPossiblePoints() + " points\n");
+	}
+	if (fourOfAKindPossiblePoints > 0)
+	{
+		scoreChoices.append("4K \t 4 of a Kind \t\t" + getFourOfAKindPossiblePoints() +" points\n");
+	}
+	if (fullHousePossiblePoints > 0)
+	{
+		scoreChoices.append("F \t Full House \t\t" + getFullHousePossiblePoints() + " points\n");
+	}
+	if (smallStraightPossiblePoints > 0)
+	{
+		scoreChoices.append("S \t Small Straight \t" + getSmallStraightPossiblePoints() + " points\n");
+	}
+	if (largeStraightPossiblePoints > 0)
+	{
+		scoreChoices.append("L \t Large Straight \t" + getLargeStraightPossiblePoints() + " points\n");
+	}
+	if (chancePossiblePoints > 0)
+	{
+		scoreChoices.append("C \t Chance \t\t" + getChancePossiblePoints() + " points\n");
+	}
+	if (yahtzeePossiblePoints == 50)
+	{
+		scoreChoices.append("Y \t YAHTZEE! \t\t" + getYahtzeePossiblePoints() + " points\n");
+	}
+	else if (yahtzeePossiblePoints == 100) 
+	{
+		scoreChoices.append("Y \t Another YAHTZEE! \t\t" + getYahtzeePossiblePoints() + " points\n");
+	}
 }
