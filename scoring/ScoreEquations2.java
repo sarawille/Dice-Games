@@ -4,16 +4,15 @@ import java.util.HashMap;
 
 import business.Hand;
 
-public class ScoreEquations2 {
+public class ScoreEquations2 extends ScoreBoard{
 	
-	protected Hand theHand;
-	public HashMap<String, Integer> handValues = new HashMap<>();
+	
 	public HashMap<ScoreCategory, Integer> scoreCategoryOptions = new HashMap<>();
 	public HashMap<ScoreCategory, Integer> scoreBoard = new HashMap<>();
 	protected StringBuilder scoreChoices = new StringBuilder();
 	
 	public ScoreEquations2(Hand newHand) {
-		theHand = newHand;
+		super(newHand);
 		setScoreCategoryOptions();
 		resetScoreBoard();
 	}
@@ -50,19 +49,7 @@ public class ScoreEquations2 {
 		scoreBoard.put(ScoreCategory.YAHTZEE, -1);
 	}
 	
-	public void countHandValues(Hand newHand) {
-		int instances = 0;
-		for (int faceUp = 1; faceUp <= newHand.getSides(); faceUp++) {
-			instances = 0;
-			for (int dieNumber = 0; dieNumber < newHand.diceInHand.size(); dieNumber++)
-			{
-				if (newHand.readDie(dieNumber) == faceUp){
-					instances++;
-				}
-			}
-			handValues.put("" + faceUp, instances);
-		}
-	}
+	
 
 	public void calcUpperScores(Hand newHand) {
 		if (scoreBoard.get(ScoreCategory.ONES)==-1) {
@@ -83,5 +70,17 @@ public class ScoreEquations2 {
 		if (scoreBoard.get(ScoreCategory.SIXES)==-1) {
 			scoreCategoryOptions.put(ScoreCategory.SIXES,  handValues.get("6") * 6);
 		}
+	}
+
+	@Override
+	public void calculateScore() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getScore() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
