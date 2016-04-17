@@ -14,14 +14,20 @@ import java.util.ArrayList;
 public class Hand implements Sortable
 {
 	public ArrayList<Die> diceInHand;
+	public int sides;
 	
 	public Hand(int numberOfDice, int sides) 
 	{
+		this.sides = sides;
 		diceInHand = new ArrayList<>(numberOfDice);
 		for (int i = 0; i < numberOfDice; i++)
 		{
 			diceInHand.add(new Die(sides));
 		}
+	}
+	
+	public int getSides() {
+		return sides;
 	}
 
 	/**
