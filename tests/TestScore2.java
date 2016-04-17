@@ -25,7 +25,7 @@ public class TestScore2 {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		testHand = new Hand(5, 6);
-		newTest = new YahtzeeGameScore(testHand);
+		newTest = new YahtzeeGameScore();
 		testHandValues = new HashMap<>();
 		testScoreCategoryOptions = new HashMap<>();
 		testScoreBoard = new HashMap<>();
