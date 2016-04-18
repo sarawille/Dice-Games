@@ -123,36 +123,42 @@ public class TestScore2 {
 		newTest.scoreCategoryOptions.put(ScoreCategory.ONES, 0);  //reset possible points
 		newTest.scoreBoard.put(ScoreCategory.ONES, 10);  //player already scored Ones
 		testScoreCategoryOptions.put(ScoreCategory.ONES,0);  //expect 0
+		newTest.calcUpperScores();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.ONES), 
 				 newTest.scoreCategoryOptions.get(ScoreCategory.ONES));
 		
 		newTest.scoreCategoryOptions.put(ScoreCategory.TWOS, 0);  //reset possible points
 		newTest.scoreBoard.put(ScoreCategory.TWOS, 10);  //player already scored Twos
 		testScoreCategoryOptions.put(ScoreCategory.TWOS,0);  //expect 0
+		newTest.calcUpperScores();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.TWOS), 
 				 newTest.scoreCategoryOptions.get(ScoreCategory.TWOS));
 		
 		newTest.scoreCategoryOptions.put(ScoreCategory.THREES, 0);  //reset possible points
 		newTest.scoreBoard.put(ScoreCategory.THREES, 10);  //player already scored Threes
 		testScoreCategoryOptions.put(ScoreCategory.THREES ,0);  //expect 0
+		newTest.calcUpperScores();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.THREES), 
 				 newTest.scoreCategoryOptions.get(ScoreCategory.THREES));
 		
 		newTest.scoreCategoryOptions.put(ScoreCategory.FOURS, 0);  //reset possible points
 		newTest.scoreBoard.put(ScoreCategory.FOURS, 10);  //player already scored Fours
 		testScoreCategoryOptions.put(ScoreCategory.FOURS ,0);  //expect 0
+		newTest.calcUpperScores();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FOURS), 
 				 newTest.scoreCategoryOptions.get(ScoreCategory.FOURS));
 		
 		newTest.scoreCategoryOptions.put(ScoreCategory.FIVES, 0);  //reset possible points
 		newTest.scoreBoard.put(ScoreCategory.FIVES, 10);  //player already scored Fives
 		testScoreCategoryOptions.put(ScoreCategory.FIVES ,0);  //expect 0
+		newTest.calcUpperScores();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FIVES), 
 				 newTest.scoreCategoryOptions.get(ScoreCategory.FIVES));
 		
 		newTest.scoreCategoryOptions.put(ScoreCategory.SIXES, 0);  //reset possible points
 		newTest.scoreBoard.put(ScoreCategory.SIXES, 10);  //player already scored Sixes
 		testScoreCategoryOptions.put(ScoreCategory.SIXES ,0);  //expect 0
+		newTest.calcUpperScores();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.SIXES), 
 				 newTest.scoreCategoryOptions.get(ScoreCategory.SIXES));
 	}
@@ -188,7 +194,7 @@ public class TestScore2 {
 		newTest.scoreCategoryOptions.put(ScoreCategory.THREE_OF_A_KIND, 0);  //reset possible points
 		newTest.scoreBoard.put(ScoreCategory.THREE_OF_A_KIND, 10);  //player already scored 3K
 		testScoreCategoryOptions.put(ScoreCategory.THREE_OF_A_KIND ,0);  //expect 0
-		
+		newTest.calcThreeOfAKind();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.THREE_OF_A_KIND), 
 		 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.THREE_OF_A_KIND));
 	}
@@ -224,7 +230,7 @@ public class TestScore2 {
 		newTest.scoreCategoryOptions.put(ScoreCategory.FOUR_OF_A_KIND, 0);  //reset possible points
 		newTest.scoreBoard.put(ScoreCategory.FOUR_OF_A_KIND, 10);  //player already scored 4K
 		testScoreCategoryOptions.put(ScoreCategory.FOUR_OF_A_KIND ,0);  //expect 0
-		
+		newTest.calcFourOfAKind();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FOUR_OF_A_KIND), 
 	 	 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.FOUR_OF_A_KIND));
 	}
@@ -260,7 +266,7 @@ public class TestScore2 {
 		newTest.scoreCategoryOptions.put(ScoreCategory.FULL_HOUSE, 0);  //reset possible points
 		newTest.scoreBoard.put(ScoreCategory.FULL_HOUSE, 25);  //player already scored FH
 		testScoreCategoryOptions.put(ScoreCategory.FULL_HOUSE ,0);  //expect 0
-			
+		newTest.calcFullHouse();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FULL_HOUSE), 
 		 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.FULL_HOUSE));
 	}
@@ -297,7 +303,7 @@ public class TestScore2 {
 		newTest.scoreCategoryOptions.put(ScoreCategory.SMALL_STRAIGHT, 0);  //reset possible points
 		newTest.scoreBoard.put(ScoreCategory.SMALL_STRAIGHT, 30);  //player already scored SS
 		testScoreCategoryOptions.put(ScoreCategory.SMALL_STRAIGHT ,0);  //expect 0
-		
+		newTest.calcSmallStraight();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.SMALL_STRAIGHT), 
 		 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.SMALL_STRAIGHT));
 }
@@ -333,7 +339,7 @@ public class TestScore2 {
 		newTest.scoreCategoryOptions.put(ScoreCategory.LARGE_STRAIGHT, 0);  //reset possible points
 		newTest.scoreBoard.put(ScoreCategory.LARGE_STRAIGHT, 40);  //player already scored LS
 		testScoreCategoryOptions.put(ScoreCategory.LARGE_STRAIGHT ,0);  //expect 0
-		
+		newTest.calcLargeStraight();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.LARGE_STRAIGHT), 
 		 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.LARGE_STRAIGHT));
 	}
@@ -369,6 +375,7 @@ public class TestScore2 {
 		newTest.scoreCategoryOptions.put(ScoreCategory.CHANCE, 0);  //reset possible points
 		newTest.scoreBoard.put(ScoreCategory.CHANCE, 40);  //player already scored Chance
 		testScoreCategoryOptions.put(ScoreCategory.CHANCE,0);  //expect 0
+		newTest.calcChance();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.CHANCE), 
 	 	 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.CHANCE));
 	}
