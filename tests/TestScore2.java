@@ -374,6 +374,39 @@ public class TestScore2 {
 	}
 	
 	@Test
+	public void testCalcYahtzee() {
+		//Test that Yahtzee will be scored 
+		testScoreCategoryOptions.put(ScoreCategory.YAHTZEE, 50);
+		while (testHand.diceInHand.get(0).readFaceUp() != 1){
+			testHand.rollDie(0);
+		}
+		while (testHand.diceInHand.get(1).readFaceUp() != 1){
+			testHand.rollDie(1);
+		}
+		while (testHand.diceInHand.get(2).readFaceUp() != 1){
+			testHand.rollDie(2);
+		}
+		while (testHand.diceInHand.get(3).readFaceUp() != 1){
+			testHand.rollDie(3);
+		}
+		while (testHand.diceInHand.get(4).readFaceUp() != 1){
+			testHand.rollDie(4);
+		}
+		newTest.resetScoreBoard();
+		newTest.countHandValues(testHand);
+		newTest.calcYahtzee();
+		
+		assertEquals(testScoreCategoryOptions.get(ScoreCategory.YAHTZEE), 
+	 	 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.YAHTZEE));
+		
+		//Test that second Yahtzee will be worth 100 points
+		testScoreCategoryOptions.put(ScoreCategory.YAHTZEE, 100);
+		
+		//Test that Yahtzee cannot be scored if it is already scored as 0
+		testScoreCategoryOptions.put(ScoreCategory.YAHTZEE, 0);
+	}
+	
+	@Test
 	public void testFindMaxValue() {
 		int maxValue = 4;
 		while (testHand.diceInHand.get(0).readFaceUp() != 1){
