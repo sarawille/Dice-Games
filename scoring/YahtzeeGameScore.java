@@ -118,7 +118,7 @@ public class YahtzeeGameScore extends DiceGameScore{
 
 	public void calcSmallStraight() {
 		if (scoreBoard.get(ScoreCategory.SMALL_STRAIGHT)==-1) {
-			if (findMaxValue() == 2)
+			if (findMaxValueCount() == 2)
 			{
 				if ((handValues.get("1") == 0 && handValues.get("2") == 0) ||
 					(handValues.get("5") == 0 && handValues.get("6") == 0)) 
@@ -135,7 +135,7 @@ public class YahtzeeGameScore extends DiceGameScore{
 	
 	public boolean calcLargeStraight() {
 		if (scoreBoard.get(ScoreCategory.LARGE_STRAIGHT)==-1) {
-			if (findMaxValue() == 1)
+			if (findMaxValueCount() == 1)
 			{
 				if (handValues.get("1") == 0 || handValues.get("6") == 0) 
 				{
@@ -159,7 +159,7 @@ public class YahtzeeGameScore extends DiceGameScore{
 		}
 	}
 	
-	public int findMaxValue() {
+	public int findMaxValueCount() {
 		int maxValue = 0;
 		for (int counter = 1; counter <= 5; counter++)
 		{

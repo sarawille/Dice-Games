@@ -367,9 +367,31 @@ public class TestScore2 {
 		
 		//Test that Large Straight cannot be scored more than once
 		newTest.scoreCategoryOptions.put(ScoreCategory.CHANCE, 0);  //reset possible points
-		newTest.scoreBoard.put(ScoreCategory.CHANCE, 40);  //player already scored LS
+		newTest.scoreBoard.put(ScoreCategory.CHANCE, 40);  //player already scored Chance
 		testScoreCategoryOptions.put(ScoreCategory.CHANCE,0);  //expect 0
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.CHANCE), 
 	 	 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.CHANCE));
+	}
+	
+	@Test
+	public void testFindMaxValue() {
+		int maxValue = 4;
+		while (testHand.diceInHand.get(0).readFaceUp() != 1){
+			testHand.rollDie(0);
+		}
+		while (testHand.diceInHand.get(1).readFaceUp() != 2){
+			testHand.rollDie(1);
+		}
+		while (testHand.diceInHand.get(2).readFaceUp() != 1){
+			testHand.rollDie(2);
+		}
+		while (testHand.diceInHand.get(3).readFaceUp() != 1){
+			testHand.rollDie(3);
+		}
+		while (testHand.diceInHand.get(4).readFaceUp() != 1){
+			testHand.rollDie(4);
+		}
+		newTest.countHandValues(testHand);
+		assertEquals(maxValue, newTest.findMaxValueCount());
 	}
 }
