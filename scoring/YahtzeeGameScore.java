@@ -159,6 +159,20 @@ public class YahtzeeGameScore extends DiceGameScore{
 		}
 	}
 	
+	public void calcYahtzee() {
+		if (findMaxValueCount() == 5)
+		{
+			if (scoreBoard.get(ScoreCategory.YAHTZEE)==-1) 
+			{
+				scoreCategoryOptions.put(ScoreCategory.YAHTZEE, 50);
+			} 
+			else if (scoreBoard.get(ScoreCategory.YAHTZEE)>=50)
+			{
+				scoreCategoryOptions.put(ScoreCategory.YAHTZEE, 100);
+			}
+		}
+	}
+	
 	public int findMaxValueCount() {
 		int maxValue = 0;
 		for (int counter = 1; counter <= 5; counter++)
@@ -171,8 +185,6 @@ public class YahtzeeGameScore extends DiceGameScore{
 		}
 		return maxValue;
 	}
-	
-	
 	
 	@Override
 	public void calculateScore() {

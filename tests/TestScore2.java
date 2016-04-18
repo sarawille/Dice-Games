@@ -400,10 +400,20 @@ public class TestScore2 {
 	 	 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.YAHTZEE));
 		
 		//Test that second Yahtzee will be worth 100 points
-		testScoreCategoryOptions.put(ScoreCategory.YAHTZEE, 100);
+		newTest.scoreCategoryOptions.put(ScoreCategory.YAHTZEE, 0);  //reset possible points
+		newTest.scoreBoard.put(ScoreCategory.YAHTZEE, 50);  //player already scored a Yahtzee
+		testScoreCategoryOptions.put(ScoreCategory.YAHTZEE, 100);  //expect 100
+		newTest.calcYahtzee();
+		assertEquals(testScoreCategoryOptions.get(ScoreCategory.YAHTZEE), 
+	 	 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.YAHTZEE));
 		
 		//Test that Yahtzee cannot be scored if it is already scored as 0
-		testScoreCategoryOptions.put(ScoreCategory.YAHTZEE, 0);
+		newTest.scoreCategoryOptions.put(ScoreCategory.YAHTZEE, 0);  //reset possible points
+		newTest.scoreBoard.put(ScoreCategory.YAHTZEE, 0);  //player already scored Yahtzee as 0
+		testScoreCategoryOptions.put(ScoreCategory.YAHTZEE, 0);  //expect 0
+		newTest.calcYahtzee();
+		assertEquals(testScoreCategoryOptions.get(ScoreCategory.YAHTZEE), 
+	 	 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.YAHTZEE));
 	}
 	
 	@Test
