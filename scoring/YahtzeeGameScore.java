@@ -2,15 +2,23 @@ package scoring;
 
 import java.util.HashMap;
 
+import ui.Displayable;
+import ui.IOFactory;
+import ui.Validator;
+
 public class YahtzeeGameScore extends DiceGameScore{
+	
+	private static Displayable screen;
+	private static Validator theValidator;
 	
 	public HashMap<ScoreCategory, Integer> scoreCategoryOptions = new HashMap<>();
 	public HashMap<ScoreCategory, Integer> scoreBoard = new HashMap<>();
-	protected StringBuilder scoreMenu = new StringBuilder();
+	public StringBuilder scoreMenu = new StringBuilder();
 	int newScore = 0;
 	
-	public YahtzeeGameScore() {
-
+	public YahtzeeGameScore(Displayable screen, Validator theValidator) {
+		this.screen = screen;
+		this.theValidator = theValidator;
 	}
 	
 	@Override
@@ -25,11 +33,81 @@ public class YahtzeeGameScore extends DiceGameScore{
 		 calcLargeStraight();
 		 calcChance();
 		 calcYahtzee();
-		 createScoreMenu();
-		 printScoreMenu();
-		 getUserChoice();
-		 newScore = getTotalScore() + getPointsToAdd();
+		 screen.display(createScoreMenu());
+//		 getUserChoice();
+//		 newScore = getTotalScore() + getPointsToAdd();
 		 setTotalScore(newScore);
+	}
+
+	private String createScoreMenu() {
+		String stringOfScoreChoices = "";
+		scoreMenu.setLength(0);
+		scoreMenu.append("Which category do you want to score? \n");
+		listScoringOptions();
+		stringOfScoreChoices = scoreMenu.toString();
+		if (stringOfScoreChoices.endsWith("Which category do you want to score? \n"))
+		{
+//			stringOfScoreChoices += getZeros();
+		}
+		return stringOfScoreChoices;
+		
+	}
+	
+	public void listScoringOptions() //TODO start here
+	{
+		if (scoreCategoryOptions.get(ScoreCategory.ONES) >= 0) 
+		{
+			scoreMenu.append("1 \t Ones \t\t\t" + scoreCategoryOptions.get(ScoreCategory.ONES) + " points\n");
+		}
+		if (scoreCategoryOptions.get(ScoreCategory.TWOS) >= 0) 
+		{
+			scoreMenu.append("2 \t Twos \t\t\t" + scoreCategoryOptions.get(ScoreCategory.TWOS) + " points\n");
+		}
+		if (scoreCategoryOptions.get(ScoreCategory.THREES) > 0) 
+		{
+			scoreMenu.append("3 \t Threes \t\t" + scoreCategoryOptions.get(ScoreCategory.THREES) + " points\n");
+		}
+		if (scoreCategoryOptions.get(ScoreCategory.FOURS) > 0) 
+		{
+			scoreMenu.append("4 \t Fours \t\t\t" + scoreCategoryOptions.get(ScoreCategory.FOURS) + " points\n");
+		}
+		if (scoreCategoryOptions.get(ScoreCategory.FIVES) > 0) 
+		{
+			scoreMenu.append("5 \t Fives \t\t\t" + scoreCategoryOptions.get(ScoreCategory.FIVES) + " points\n");
+		}
+		if (scoreCategoryOptions.get(ScoreCategory.SIXES) > 0) 
+		{
+			scoreMenu.append("6 \t Sixes \t\t\t" + scoreCategoryOptions.get(ScoreCategory.SIXES) + " points\n");
+		}
+		if (scoreCategoryOptions.get(ScoreCategory.THREE_OF_A_KIND) > 0)
+		{
+			scoreMenu.append("3K \t 3 of a Kind  \t\t" + scoreCategoryOptions.get(ScoreCategory.THREE_OF_A_KIND) + " points\n");
+		}
+		if (scoreCategoryOptions.get(ScoreCategory.FOUR_OF_A_KIND) > 0)
+		{
+			scoreMenu.append("4K \t 4 of a Kind \t\t" + scoreCategoryOptions.get(ScoreCategory.FOUR_OF_A_KIND) +" points\n");
+		}
+		if (scoreCategoryOptions.get(ScoreCategory.SIXES) > 0)
+		{
+			scoreMenu.append("F \t Full House \t\t" + scoreCategoryOptions.get(ScoreCategory.FULL_HOUSE) + " points\n");
+		}
+		if (scoreCategoryOptions.get(ScoreCategory.SMALL_STRAIGHT)  > 0)
+		{
+			scoreMenu.append("S \t Small Straight \t" + scoreCategoryOptions.get(ScoreCategory.SMALL_STRAIGHT) + " points\n");
+		}
+		if (scoreCategoryOptions.get(ScoreCategory.LARGE_STRAIGHT)  > 0)
+		{
+			scoreMenu.append("L \t Large Straight \t" + scoreCategoryOptions.get(ScoreCategory.LARGE_STRAIGHT) + " points\n");
+		}
+		if (scoreCategoryOptions.get(ScoreCategory.CHANCE) > 0)
+		{
+			scoreMenu.append("C \t Chance \t\t" +scoreCategoryOptions.get(ScoreCategory.CHANCE) + " points\n");
+		}
+		if (scoreCategoryOptions.get(ScoreCategory.YAHTZEE) > 0)
+		{
+			scoreMenu.append("Y \t YAHTZEE! \t\t" + scoreCategoryOptions.get(ScoreCategory.YAHTZEE) + " points\n");
+		}
+
 	}
 
 	private void resetScoreCategoryOptions() {

@@ -13,6 +13,9 @@ import org.junit.Test;
 import business.Hand;
 import scoring.ScoreCategory;
 import scoring.YahtzeeGameScore;
+import ui.Displayable;
+import ui.IOFactory;
+import ui.Validator;
 
 public class TestScore2 {
 	
@@ -443,5 +446,46 @@ public class TestScore2 {
 		}
 		newTest.countHandValues(testHand);
 		assertEquals(maxValue, newTest.findMaxValueCount());
+	}
+	
+	@Test //TODO start here
+	public void testListScoringOptions() {	
+		while (testHand.diceInHand.get(0).readFaceUp() != 1){
+			testHand.rollDie(0);
+		}
+		while (testHand.diceInHand.get(1).readFaceUp() != 2){
+			testHand.rollDie(1);
+		}
+		while (testHand.diceInHand.get(2).readFaceUp() != 1){
+			testHand.rollDie(2);
+		}
+		while (testHand.diceInHand.get(3).readFaceUp() != 1){
+			testHand.rollDie(3);
+		}
+		while (testHand.diceInHand.get(4).readFaceUp() != 5){
+			testHand.rollDie(4);
+		}
+		newTest.countHandValues(testHand);
+		newTest.calculateScore();
+		newTest.listScoringOptions();
+		
+		String expected = "1 \t Ones \t\t\t" + testScoreCategoryOptions.get(ScoreCategory.ONES) + " points\n" +
+				"2 \t Twos \t\t\t" + testScoreCategoryOptions.get(ScoreCategory.TWOS) + " points\n" +
+				"5 \t Fives \t\t" + testScoreCategoryOptions.get(ScoreCategory.FIVES) + " points\n" +
+				"3K \t 3 of a Kind  \t\t" + testScoreCategoryOptions.get(ScoreCategory.THREE_OF_A_KIND) + " points\n" +
+				"C \t Chance \t\t" +testScoreCategoryOptions.get(ScoreCategory.CHANCE) + " points\n";
+			
+		
+		assertEquals(expected, newTest.scoreMenu);
+	}
+	
+	@Test
+	public void testGetZeros() {
+		
+	}
+	
+	@Test
+	public void testGetUserChoice() {
+		
 	}
 }
