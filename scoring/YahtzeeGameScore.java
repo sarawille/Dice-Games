@@ -6,14 +6,33 @@ public class YahtzeeGameScore extends DiceGameScore{
 	
 	public HashMap<ScoreCategory, Integer> scoreCategoryOptions = new HashMap<>();
 	public HashMap<ScoreCategory, Integer> scoreBoard = new HashMap<>();
-	protected StringBuilder scoreChoices = new StringBuilder();
+	protected StringBuilder scoreMenu = new StringBuilder();
+	int newScore = 0;
 	
 	public YahtzeeGameScore() {
-		setScoreCategoryOptions();
-		resetScoreBoard();
+
+	}
+	
+	@Override
+	public void calculateScore() {
+		 resetScoreCategoryOptions();
+		 resetScoreBoard();
+		 calcUpperScores();
+		 calcThreeOfAKind();
+		 calcFourOfAKind();
+		 calcFullHouse();
+		 calcSmallStraight();
+		 calcLargeStraight();
+		 calcChance();
+		 calcYahtzee();
+		 createScoreMenu();
+		 printScoreMenu();
+		 getUserChoice();
+		 newScore = getTotalScore() + getPointsToAdd();
+		 setTotalScore(newScore);
 	}
 
-	private void setScoreCategoryOptions() {
+	private void resetScoreCategoryOptions() {
 		scoreCategoryOptions.put(ScoreCategory.ONES, 0);
 		scoreCategoryOptions.put(ScoreCategory.TWOS, 0);
 		scoreCategoryOptions.put(ScoreCategory.THREES, 0);
@@ -184,11 +203,6 @@ public class YahtzeeGameScore extends DiceGameScore{
 			}
 		}
 		return maxValue;
-	}
-	
-	@Override
-	public void calculateScore() {
-		
 	}
 
 }
