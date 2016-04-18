@@ -2,8 +2,6 @@ package scoring;
 
 import java.util.HashMap;
 
-import business.Hand;
-
 public class YahtzeeGameScore extends DiceGameScore{
 	
 	public HashMap<ScoreCategory, Integer> scoreCategoryOptions = new HashMap<>();
@@ -69,8 +67,8 @@ public class YahtzeeGameScore extends DiceGameScore{
 	}
 
 	public void calcThreeOfAKind() {
-		if (scoreBoard.get(ScoreCategory.THREE_OF_A_KIND)==-1) {
-
+		if (scoreBoard.get(ScoreCategory.THREE_OF_A_KIND)==-1) 
+		{
 			for (int counter = 1; counter <= 5; counter++)
 			{
 				String value = ""+counter;
@@ -91,7 +89,8 @@ public class YahtzeeGameScore extends DiceGameScore{
 	}
 
 	public void calcFourOfAKind() {
-		if (scoreBoard.get(ScoreCategory.FOUR_OF_A_KIND)==-1) {
+		if (scoreBoard.get(ScoreCategory.FOUR_OF_A_KIND)==-1) 
+		{
 			for (int counter = 1; counter <= 5; counter++)
 			{
 				String value = ""+counter;
@@ -135,15 +134,29 @@ public class YahtzeeGameScore extends DiceGameScore{
 	}
 	
 	public boolean calcLargeStraight() {
-		if (findMaxValue() == 1)
-		{
-			if (handValues.get("1") == 0 || handValues.get("6") == 0) 
+		if (scoreBoard.get(ScoreCategory.LARGE_STRAIGHT)==-1) {
+			if (findMaxValue() == 1)
 			{
-				scoreCategoryOptions.put(ScoreCategory.LARGE_STRAIGHT, 40);
+				if (handValues.get("1") == 0 || handValues.get("6") == 0) 
+				{
+					scoreCategoryOptions.put(ScoreCategory.LARGE_STRAIGHT, 40);
+				}
 			}
 		}
 		return true;
 		
+	}
+	
+	public void calcChance() {
+		if (scoreBoard.get(ScoreCategory.CHANCE)==-1) {
+			int sum = 0;
+			for (int counter = 1; counter <= 5; counter++)
+			{
+				String value = ""+counter;
+				sum += handValues.get(value)*counter;
+			}
+			scoreCategoryOptions.put(ScoreCategory.CHANCE, sum);
+		}
 	}
 	
 	public int findMaxValue() {
@@ -159,14 +172,11 @@ public class YahtzeeGameScore extends DiceGameScore{
 		return maxValue;
 	}
 	
+	
+	
 	@Override
 	public void calculateScore() {
-		calcUpperScores();
 		
 	}
-
-
-
-
 
 }
