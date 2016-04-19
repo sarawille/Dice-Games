@@ -308,7 +308,7 @@ public class TestScore2 {
 	@Test //TODO start here
 	public void testCalcSmallStraightFalse() {
 		//Test that Small Straight will not be scored if it doesn't happen
-		testScoreCategoryOptions.put(ScoreCategory.SMALL_STRAIGHT, 0);
+		testScoreCategoryOptions.put(ScoreCategory.SMALL_STRAIGHT, null);
 		
 		while (testHand.diceInHand.get(0).readFaceUp() != 1){
 			testHand.rollDie(0);
