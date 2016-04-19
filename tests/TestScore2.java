@@ -266,11 +266,30 @@ public class TestScore2 {
 		
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FULL_HOUSE), 
 		 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.FULL_HOUSE));
-		
-		//Test that Small Straight cannot be scored more than once
+	}
+	
+	@Test
+	public void testCalcFullHouseOnlyOnce() {
+		//Test that Full House cannot be scored more than once
+		while (testHand.diceInHand.get(0).readFaceUp() != 1){
+			testHand.rollDie(0);
+		}
+		while (testHand.diceInHand.get(1).readFaceUp() != 2){
+			testHand.rollDie(1);
+		}
+		while (testHand.diceInHand.get(2).readFaceUp() != 1){
+			testHand.rollDie(2);
+		}
+		while (testHand.diceInHand.get(3).readFaceUp() != 2){
+			testHand.rollDie(3);
+		}
+		while (testHand.diceInHand.get(4).readFaceUp() != 2){
+			testHand.rollDie(4);
+		}
 		newTest.scoreCategoryOptions.put(ScoreCategory.FULL_HOUSE, 0);  //reset possible points
 		newTest.scoreBoard.put(ScoreCategory.FULL_HOUSE, 25);  //player already scored FH
 		testScoreCategoryOptions.put(ScoreCategory.FULL_HOUSE ,0);  //expect 0
+		newTest.countHandValues(testHand);
 		newTest.calcFullHouse();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FULL_HOUSE), 
 		 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.FULL_HOUSE));
