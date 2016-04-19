@@ -169,11 +169,40 @@ public class TestScore2 {
 	}
 	
 	@Test
-	public void testCalcThreeOfAKind() {
+	public void testCalcThreeOfAKindTrue() {
 		//Test that Three of a Kind will be scored 
 		testScoreCategoryOptions.put(ScoreCategory.THREE_OF_A_KIND, 12);
 		
 		while (testHand.diceInHand.get(0).readFaceUp() != 4){
+			testHand.rollDie(0);
+		}
+		while (testHand.diceInHand.get(1).readFaceUp() != 2){
+			testHand.rollDie(1);
+		}
+		while (testHand.diceInHand.get(2).readFaceUp() != 4){
+			testHand.rollDie(2);
+		}
+		while (testHand.diceInHand.get(3).readFaceUp() != 2){
+			testHand.rollDie(3);
+		}
+		while (testHand.diceInHand.get(4).readFaceUp() != 4){
+			testHand.rollDie(4);
+		}
+		newTest.resetScoreCategoryOptions();
+		newTest.resetScoreBoard();
+		newTest.countHandValues(testHand);
+		newTest.calcThreeOfAKind();
+		
+		assertEquals(testScoreCategoryOptions.get(ScoreCategory.THREE_OF_A_KIND), 
+		 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.THREE_OF_A_KIND));
+	}
+	
+	@Test
+	public void testCalcThreeOfAKindFalse() {
+		//Test that Three of a Kind will NOT be scored 
+		testScoreCategoryOptions.put(ScoreCategory.THREE_OF_A_KIND, 0);
+		
+		while (testHand.diceInHand.get(0).readFaceUp() != 3){
 			testHand.rollDie(0);
 		}
 		while (testHand.diceInHand.get(1).readFaceUp() != 2){
