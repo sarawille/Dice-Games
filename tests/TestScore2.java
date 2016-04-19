@@ -241,11 +241,39 @@ public class TestScore2 {
 	}
 
 	@Test
-	public void testCalcFullHouse() {
+	public void testCalcFullHouseTrue() {
 		//Test that Full House will be scored 
 		testScoreCategoryOptions.put(ScoreCategory.FULL_HOUSE, 25);
 		
 		while (testHand.diceInHand.get(0).readFaceUp() != 1){
+			testHand.rollDie(0);
+		}
+		while (testHand.diceInHand.get(1).readFaceUp() != 2){
+			testHand.rollDie(1);
+		}
+		while (testHand.diceInHand.get(2).readFaceUp() != 1){
+			testHand.rollDie(2);
+		}
+		while (testHand.diceInHand.get(3).readFaceUp() != 2){
+			testHand.rollDie(3);
+		}
+		while (testHand.diceInHand.get(4).readFaceUp() != 2){
+			testHand.rollDie(4);
+		}
+		newTest.resetScoreBoard();
+		newTest.countHandValues(testHand);
+		newTest.calcFullHouse();
+		
+		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FULL_HOUSE), 
+		 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.FULL_HOUSE));
+	}
+	
+	@Test
+	public void testCalcFullHouseFalse() {
+		//Test that Full House will NOT be scored 
+		testScoreCategoryOptions.put(ScoreCategory.FULL_HOUSE, null);
+		
+		while (testHand.diceInHand.get(0).readFaceUp() != 2){
 			testHand.rollDie(0);
 		}
 		while (testHand.diceInHand.get(1).readFaceUp() != 2){
@@ -326,7 +354,7 @@ public class TestScore2 {
 	
 	@Test 
 	public void testCalcSmallStraightFalse() {
-		//Test that Small Straight will not be scored if it doesn't happen
+		//Test that Small Straight will NOT be scored if it doesn't happen
 		testScoreCategoryOptions.put(ScoreCategory.SMALL_STRAIGHT, null);
 		
 		while (testHand.diceInHand.get(0).readFaceUp() != 1){
@@ -409,7 +437,7 @@ public class TestScore2 {
 	
 	@Test 
 	public void testCalcLargeStraightFalse() {
-		//Test that Small Straight will not be scored if it doesn't happen
+		//Test that Small Straight will NOT be scored if it doesn't happen
 		testScoreCategoryOptions.put(ScoreCategory.LARGE_STRAIGHT, null);
 		
 		while (testHand.diceInHand.get(0).readFaceUp() != 1){
@@ -638,7 +666,7 @@ public class TestScore2 {
 				"C \t Chance \t\t" +testScoreCategoryOptions.get(ScoreCategory.CHANCE) + " points\n";
 			
 		
-		assertEquals(expected, newTest.scoreMenu);
+		assertTrue(expected.equals(newTest.scoreMenu));
 	}
 	
 	@Test
