@@ -468,8 +468,12 @@ public class TestScore2 {
 		
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.CHANCE), 
 		 	 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.CHANCE));
-		
-		//Test that Large Straight cannot be scored more than once
+
+	}
+	
+	@Test
+	public void testCalcChanceOnlyOnce() {
+		//Test that Chance cannot be scored more than once
 		newTest.scoreCategoryOptions.put(ScoreCategory.CHANCE, 0);  //reset possible points
 		newTest.scoreBoard.put(ScoreCategory.CHANCE, 40);  //player already scored Chance
 		testScoreCategoryOptions.put(ScoreCategory.CHANCE,0);  //expect 0
