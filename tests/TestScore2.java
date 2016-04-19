@@ -507,19 +507,57 @@ public class TestScore2 {
 		
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.YAHTZEE), 
 	 	 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.YAHTZEE));
-		
+	}
+	
+	@Test
+	public void testCalcSecondYahtzee() {
 		//Test that second Yahtzee will be worth 100 points
+		while (testHand.diceInHand.get(0).readFaceUp() != 1){
+			testHand.rollDie(0);
+		}
+		while (testHand.diceInHand.get(1).readFaceUp() != 1){
+			testHand.rollDie(1);
+		}
+		while (testHand.diceInHand.get(2).readFaceUp() != 1){
+			testHand.rollDie(2);
+		}
+		while (testHand.diceInHand.get(3).readFaceUp() != 1){
+			testHand.rollDie(3);
+		}
+		while (testHand.diceInHand.get(4).readFaceUp() != 1){
+			testHand.rollDie(4);
+		}
 		newTest.scoreCategoryOptions.put(ScoreCategory.YAHTZEE, 0);  //reset possible points
 		newTest.scoreBoard.put(ScoreCategory.YAHTZEE, 50);  //player already scored a Yahtzee
 		testScoreCategoryOptions.put(ScoreCategory.YAHTZEE, 100);  //expect 100
+		newTest.countHandValues(testHand);
 		newTest.calcYahtzee();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.YAHTZEE), 
 	 	 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.YAHTZEE));
-		
+	}
+	
+	@Test
+	public void testCalcYahtzeeIsZero() {
 		//Test that Yahtzee cannot be scored if it is already scored as 0
+		while (testHand.diceInHand.get(0).readFaceUp() != 1){
+			testHand.rollDie(0);
+		}
+		while (testHand.diceInHand.get(1).readFaceUp() != 1){
+			testHand.rollDie(1);
+		}
+		while (testHand.diceInHand.get(2).readFaceUp() != 1){
+			testHand.rollDie(2);
+		}
+		while (testHand.diceInHand.get(3).readFaceUp() != 1){
+			testHand.rollDie(3);
+		}
+		while (testHand.diceInHand.get(4).readFaceUp() != 1){
+			testHand.rollDie(4);
+		}
 		newTest.scoreCategoryOptions.put(ScoreCategory.YAHTZEE, 0);  //reset possible points
 		newTest.scoreBoard.put(ScoreCategory.YAHTZEE, 0);  //player already scored Yahtzee as 0
 		testScoreCategoryOptions.put(ScoreCategory.YAHTZEE, 0);  //expect 0
+		newTest.countHandValues(testHand);
 		newTest.calcYahtzee();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.YAHTZEE), 
 	 	 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.YAHTZEE));
