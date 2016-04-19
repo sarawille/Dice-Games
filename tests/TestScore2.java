@@ -123,47 +123,60 @@ public class TestScore2 {
 					 newTest.scoreCategoryOptions.get(ScoreCategory.FIVES));
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.SIXES), 
 			 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.SIXES));
-		
+
+	}
+	
+	@Test
+	public void testCalcUpperScoresOnlyOnce() {
 		//Test that Upper Scores cannot be scored more than once
+		while (testHand.diceInHand.get(0).readFaceUp() != 1){
+			testHand.rollDie(0);
+		}
+		while (testHand.diceInHand.get(1).readFaceUp() != 2){
+			testHand.rollDie(1);
+		}
+		while (testHand.diceInHand.get(2).readFaceUp() != 3){
+			testHand.rollDie(2);
+		}
+		while (testHand.diceInHand.get(3).readFaceUp() != 5){
+			testHand.rollDie(3);
+		}
+		while (testHand.diceInHand.get(4).readFaceUp() != 6){
+			testHand.rollDie(4);
+		}
+		newTest.countHandValues(testHand);
+		
 		newTest.resetScoreCategoryOptions();  //reset possible points
+		
 		newTest.scoreBoard.put(ScoreCategory.ONES, 10);  //player already scored Ones
 		testScoreCategoryOptions.put(ScoreCategory.ONES,0);  //expect 0
+		
+		newTest.scoreBoard.put(ScoreCategory.TWOS, 10);  //player already scored Twos
+		testScoreCategoryOptions.put(ScoreCategory.TWOS,0);  //expect 0
+		
+		newTest.scoreBoard.put(ScoreCategory.THREES, 10);  //player already scored Threes
+		testScoreCategoryOptions.put(ScoreCategory.THREES ,0);  //expect 0
+		
+		newTest.scoreBoard.put(ScoreCategory.FOURS, 10);  //player already scored Fours
+		testScoreCategoryOptions.put(ScoreCategory.FOURS ,0);  //expect 0
+		
+		newTest.scoreBoard.put(ScoreCategory.FIVES, 10);  //player already scored Fives
+		testScoreCategoryOptions.put(ScoreCategory.FIVES ,0);  //expect 0
+		
+		newTest.scoreBoard.put(ScoreCategory.SIXES, 10);  //player already scored Sixes
+		testScoreCategoryOptions.put(ScoreCategory.SIXES ,0);  //expect 0
+		
 		newTest.calcUpperScores();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.ONES), 
 				 newTest.scoreCategoryOptions.get(ScoreCategory.ONES));
-		
-		newTest.resetScoreCategoryOptions();  //reset possible points
-		newTest.scoreBoard.put(ScoreCategory.TWOS, 10);  //player already scored Twos
-		testScoreCategoryOptions.put(ScoreCategory.TWOS,0);  //expect 0
-		newTest.calcUpperScores();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.TWOS), 
 				 newTest.scoreCategoryOptions.get(ScoreCategory.TWOS));
-		
-		newTest.resetScoreCategoryOptions();  //reset possible points
-		newTest.scoreBoard.put(ScoreCategory.THREES, 10);  //player already scored Threes
-		testScoreCategoryOptions.put(ScoreCategory.THREES ,0);  //expect 0
-		newTest.calcUpperScores();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.THREES), 
 				 newTest.scoreCategoryOptions.get(ScoreCategory.THREES));
-		
-		newTest.resetScoreCategoryOptions();  //reset possible points
-		newTest.scoreBoard.put(ScoreCategory.FOURS, 10);  //player already scored Fours
-		testScoreCategoryOptions.put(ScoreCategory.FOURS ,0);  //expect 0
-		newTest.calcUpperScores();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FOURS), 
 				 newTest.scoreCategoryOptions.get(ScoreCategory.FOURS));
-		
-		newTest.resetScoreCategoryOptions();  //reset possible points
-		newTest.scoreBoard.put(ScoreCategory.FIVES, 10);  //player already scored Fives
-		testScoreCategoryOptions.put(ScoreCategory.FIVES ,0);  //expect 0
-		newTest.calcUpperScores();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FIVES), 
 				 newTest.scoreCategoryOptions.get(ScoreCategory.FIVES));
-		
-		newTest.resetScoreCategoryOptions();  //reset possible points
-		newTest.scoreBoard.put(ScoreCategory.SIXES, 10);  //player already scored Sixes
-		testScoreCategoryOptions.put(ScoreCategory.SIXES ,0);  //expect 0
-		newTest.calcUpperScores();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.SIXES), 
 				 newTest.scoreCategoryOptions.get(ScoreCategory.SIXES));
 	}
