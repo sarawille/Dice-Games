@@ -20,8 +20,6 @@ public abstract class DiceGameScore {
 		this.totalScore = totalScore;
 	}
 	
-
-	
 	public void countHandValues(Hand newHand) {
 		theHand = newHand;
 		int instances = 0;
@@ -37,6 +35,6 @@ public abstract class DiceGameScore {
 		}
 	}
 
-	public abstract void calculateScore();
+	public abstract void calculateScore(Hand newHand);
 	
 }

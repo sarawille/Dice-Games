@@ -2,6 +2,7 @@ package scoring;
 
 import java.util.HashMap;
 
+import business.Hand;
 import ui.Displayable;
 import ui.IOFactory;
 import ui.Validator;
@@ -18,9 +19,10 @@ public class YahtzeeGameScore extends DiceGameScore{
 	}
 	
 	@Override
-	public void calculateScore() {
+	public void calculateScore(Hand newHand) {
 		 Displayable screen = IOFactory.getDisplayable();
 		 resetScoreCategoryOptions();
+		 countHandValues(newHand);
 		 calcUpperScores();
 		 calcThreeOfAKind();
 		 calcFourOfAKind();
