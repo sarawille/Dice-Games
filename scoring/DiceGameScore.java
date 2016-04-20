@@ -4,21 +4,12 @@ import java.util.HashMap;
 
 import business.Hand;
 
-public abstract class DiceGameScore {
+public abstract class DiceGameScore extends Score {
 	
 	protected Hand theHand;
 	public HashMap<String, Integer> handValues = new HashMap<>();
-	public int totalScore = 0;
 	
 	public DiceGameScore() {}
-
-	public int getTotalScore() {
-		return totalScore;
-	}
-
-	public void setTotalScore(int totalScore) {
-		this.totalScore = totalScore;
-	}
 	
 	public void countHandValues(Hand newHand) {
 		theHand = newHand;
