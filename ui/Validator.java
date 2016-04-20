@@ -15,10 +15,13 @@ public class Validator implements Validatable {
 	static int userInteger = 0;
 	static double userDouble = 0;
 	static String userString = "";
-	Displayable screen;
+	static Displayable screen = IOFactory.getDisplayable();
+	static Validator validator = new Validator();
 	
-	public Validator(Displayable screen) {
-		this.screen = screen;
+	private Validator() {}
+	
+	protected static Validator getInstance() {
+		return validator;
 	}
 	
 	/**
@@ -26,7 +29,7 @@ public class Validator implements Validatable {
 	 * @param s
 	 * @return userInteger
 	 */
-	public int getInt(String prompt) {
+	public static int getInt(String prompt) {
 		while (true) {
 			try {
 				screen.display(prompt);
