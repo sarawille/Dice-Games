@@ -774,7 +774,7 @@ public class TestYahtzeeScore {
 			testHand.rollDie(4);
 		}
 		newTest.countHandValues(testHand);
-		newTest.calculateScoreOptions(testHand);
+		newTest.calculateScoreOptions();
 		newTest.listScoringOptions();
 		
 		String expected = "1 \t Ones \t\t\t" + testScoreCategoryOptions.get(ScoreCategory.ONES) + " points\n" +

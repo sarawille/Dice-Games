@@ -6,19 +6,17 @@ import business.Hand;
 
 public abstract class DiceScore extends Score {
 	
-	protected Hand theHand;
+	protected Hand scoringHand;
 	public HashMap<String, Integer> handValues = new HashMap<>();
-	
-	public DiceScore() {}
-	
+		
 	public void countHandValues(Hand newHand) {
-		theHand = newHand;
+		scoringHand = newHand;
 		int instances = 0;
-		for (int faceUp = 1; faceUp <= theHand.diceInHand.get(0).getSides(); faceUp++) {
+		for (int faceUp = 1; faceUp <= scoringHand.diceInHand.get(0).getSides(); faceUp++) {
 			instances = 0;
-			for (int dieNumber = 0; dieNumber < theHand.diceInHand.size(); dieNumber++)
+			for (int dieNumber = 0; dieNumber < scoringHand.diceInHand.size(); dieNumber++)
 			{
-				if (theHand.readDie(dieNumber) == faceUp){
+				if (scoringHand.readDie(dieNumber) == faceUp){
 					instances++;
 				}
 			}

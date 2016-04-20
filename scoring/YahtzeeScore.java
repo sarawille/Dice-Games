@@ -12,7 +12,6 @@ public class YahtzeeScore extends DiceScore{
 	public HashMap<ScoreCategory, Integer> scoreCategoryOptions = new HashMap<>();
 	public HashMap<ScoreCategory, Integer> scoreBoard = new HashMap<>();
 	public StringBuilder scoreMenu = new StringBuilder();
-	public Hand scoringHand;
 	
 	public YahtzeeScore() {
 		resetScoreBoard();		
@@ -20,7 +19,7 @@ public class YahtzeeScore extends DiceScore{
 	
 	@Override
 	public void updateScore(Hand newHand) {
-		scoringHand = newHand;
+		this.scoringHand = newHand;
 		int newScore = 0;
 		Displayable screen = IOFactory.getDisplayable();
 		calculateScoreOptions();
