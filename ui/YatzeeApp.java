@@ -1,6 +1,6 @@
 package ui;
 
-import scoring.ScoreCalculations;
+import scoring.YahtzeeGameScore;
 import business.Hand;
 
 /*
@@ -21,22 +21,22 @@ public class YatzeeApp {
 	
 	public static void main(String[] args) { 
 		
-		ScoreCalculations myScore = new ScoreCalculations(screen, theValidator);
+		YahtzeeGameScore myScore = new YahtzeeGameScore();
 		Hand thisHand; 
 		
 		while (turn <= 1) {
 			screen.displayln("TURN " + turn);
 			thisHand = new Hand(5, 6);
 			rollHand(thisHand);
-			myScore.scoreHand(thisHand);
+			myScore.calculateScore(thisHand);
 			screen.display("Your total score is ");
-			screen.displayln(myScore.printTotalScore());
+			screen.displayln(""+myScore.getTotalScore());
 			screen.displayln("--------------------------------------------------\n");
 			turn++;
 		}
 		screen.displayln("GAME OVER!");
 		screen.display("Your final score is ");
-		screen.displayln(myScore.printTotalScore());
+		screen.displayln(""+myScore.getTotalScore());
 		
 	}
 
