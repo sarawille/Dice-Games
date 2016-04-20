@@ -19,6 +19,7 @@ public class YahtzeeGameScore extends DiceGameScore{
 	
 	@Override
 	public void calculateScore() {
+		 Displayable screen = IOFactory.getDisplayable();
 		 resetScoreCategoryOptions();
 		 calcUpperScores();
 		 calcThreeOfAKind();
@@ -28,9 +29,9 @@ public class YahtzeeGameScore extends DiceGameScore{
 		 calcLargeStraight();
 		 calcChance();
 		 calcYahtzee();
-		 createScoreMenu();				//how to display this?
+		 screen.display(createScoreMenu());				
 		 newScore = getTotalScore() + getUserChoice();
-//		 setTotalScore(newScore);
+		 setTotalScore(newScore);
 	}
 
 
