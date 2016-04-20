@@ -7,7 +7,7 @@ import business.Hand;
 public abstract class DiceScore extends Score {
 	
 	protected static Hand scoringHand;
-	protected static HashMap<String, Integer> handValues = new HashMap<>();
+	public static HashMap<String, Integer> handValues = new HashMap<>();
 		
 	protected static void setScoringHand(Hand scoringHand) {
 		DiceScore.scoringHand = scoringHand;
