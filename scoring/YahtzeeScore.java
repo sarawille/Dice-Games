@@ -3,9 +3,6 @@ package scoring;
 import java.util.HashMap;
 
 import business.Hand;
-import ui.Displayable;
-import ui.IOFactory;
-import ui.Validator;
 
 public class YahtzeeScore extends DiceScore{
 	
@@ -80,18 +77,27 @@ public class YahtzeeScore extends DiceScore{
 	public static void calcSmallStraight() {
 		if (findMaxValueCount() == 1) {
 			if (handValues.get("1") == 0 ||
-					handValues.get("2") == 0 ||
-					handValues.get("5") == 0 ||
-					handValues.get("6") == 0 ) 
+				handValues.get("2") == 0 ||
+				handValues.get("5") == 0 ||
+				handValues.get("6") == 0 ) 
 			{
 				scoreCategoryOptions.put(ScoreCategory.SMALL_STRAIGHT, 30);
 			}
 		}
 		else if (findMaxValueCount() == 2) {
-			if ((handValues.get("1") == 0 && handValues.get("2") == 0) ||
-					(handValues.get("5") == 0 && handValues.get("6") == 0)) 
+			int twoCounter=0;
+			for (int counter = 1; counter <= 6; counter++)
 			{
-				scoreCategoryOptions.put(ScoreCategory.SMALL_STRAIGHT, 30);
+				if (handValues.get(""+counter)==0) {
+					twoCounter++;
+				}
+			}
+			if (twoCounter < 2) {
+				if ((handValues.get("1") == 0 && handValues.get("2") == 0) ||
+						(handValues.get("5") == 0 && handValues.get("6") == 0)) 
+				{
+					scoreCategoryOptions.put(ScoreCategory.SMALL_STRAIGHT, 30);
+				}
 			}
 		}
 	}
