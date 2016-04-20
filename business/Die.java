@@ -20,6 +20,13 @@ public class Die implements Readable, Rollable {
 	}
 	
 	/**
+	 * getSides() - Getter for integer variable sides.
+	 */
+	public int getSides() {
+		return sides;
+	}
+	
+	/**
 	 * setSides() - Setter for integer variable sides.
 	 * @param sides
 	 */

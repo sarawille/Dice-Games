@@ -14,7 +14,7 @@ public abstract class DiceScore extends Score {
 	public void countHandValues(Hand newHand) {
 		theHand = newHand;
 		int instances = 0;
-		for (int faceUp = 1; faceUp <= theHand.getSides(); faceUp++) {
+		for (int faceUp = 1; faceUp <= theHand.diceInHand.get(0).getSides(); faceUp++) {
 			instances = 0;
 			for (int dieNumber = 0; dieNumber < theHand.diceInHand.size(); dieNumber++)
 			{
