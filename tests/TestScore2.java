@@ -375,7 +375,7 @@ public class TestScore2 {
 		newTest.resetScoreBoard();
 		newTest.countHandValues(testHand);
 		newTest.calcFullHouse();
-		
+				
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FULL_HOUSE), 
 		 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.FULL_HOUSE));
 	}
@@ -385,19 +385,19 @@ public class TestScore2 {
 		//Test that Full House will NOT be scored 
 		testScoreCategoryOptions.put(ScoreCategory.FULL_HOUSE, 0);
 		
-		while (testHand.diceInHand.get(0).readFaceUp() != 2){
+		while (testHand.diceInHand.get(0).readFaceUp() != 5){
 			testHand.rollDie(0);
 		}
-		while (testHand.diceInHand.get(1).readFaceUp() != 2){
+		while (testHand.diceInHand.get(1).readFaceUp() != 1){
 			testHand.rollDie(1);
 		}
-		while (testHand.diceInHand.get(2).readFaceUp() != 1){
+		while (testHand.diceInHand.get(2).readFaceUp() != 3){
 			testHand.rollDie(2);
 		}
-		while (testHand.diceInHand.get(3).readFaceUp() != 2){
+		while (testHand.diceInHand.get(3).readFaceUp() != 1){
 			testHand.rollDie(3);
 		}
-		while (testHand.diceInHand.get(4).readFaceUp() != 2){
+		while (testHand.diceInHand.get(4).readFaceUp() != 6){
 			testHand.rollDie(4);
 		}
 		newTest.resetScoreCategoryOptions();
@@ -490,7 +490,7 @@ public class TestScore2 {
 		newTest.resetScoreBoard();
 		newTest.countHandValues(testHand);
 		newTest.calcSmallStraight();
-		
+				
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.SMALL_STRAIGHT), 
 		 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.SMALL_STRAIGHT));
 	}
@@ -611,7 +611,7 @@ public class TestScore2 {
 	@Test
 	public void testCalcChance() {
 		//Test that Chance will be scored 
-		testScoreCategoryOptions.put(ScoreCategory.CHANCE, 11);
+		testScoreCategoryOptions.put(ScoreCategory.CHANCE, 19);
 		
 		while (testHand.diceInHand.get(0).readFaceUp() != 1){
 			testHand.rollDie(0);
@@ -619,10 +619,10 @@ public class TestScore2 {
 		while (testHand.diceInHand.get(1).readFaceUp() != 2){
 			testHand.rollDie(1);
 		}
-		while (testHand.diceInHand.get(2).readFaceUp() != 1){
+		while (testHand.diceInHand.get(2).readFaceUp() != 6){
 			testHand.rollDie(2);
 		}
-		while (testHand.diceInHand.get(3).readFaceUp() != 3){
+		while (testHand.diceInHand.get(3).readFaceUp() != 6){
 			testHand.rollDie(3);
 		}
 		while (testHand.diceInHand.get(4).readFaceUp() != 4){
@@ -753,7 +753,7 @@ public class TestScore2 {
 		assertEquals(maxValue, newTest.findMaxValueCount());
 	}
 	
-	@Test 
+	@Test //TODO arrange test so that i can see that all are on or all are off (getzeros())
 	public void testListScoringOptions() {	
 		testScoreCategoryOptions.put(ScoreCategory.ONES, 1*3);
 		testScoreCategoryOptions.put(ScoreCategory.TWOS, 2*1);

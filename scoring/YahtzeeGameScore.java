@@ -44,58 +44,70 @@ public class YahtzeeGameScore extends DiceGameScore{
 		Validator validator = IOFactory.getValidator();
 		String userInput = "";
 		int points;
-		userInput = validator.getString("I want to score category: ");
 		while (true) 
 		{
-			userInput = validator.getString("Please choose a valid category.\nI want to score category: ");
+			userInput = validator.getString("I want to score category: ");
 			switch (userInput) 
 			{
 				case "1":
 					points = scoreCategoryOptions.get(ScoreCategory.ONES);
-					return scoreBoard.put(ScoreCategory.ONES, points);
+					scoreBoard.put(ScoreCategory.ONES, points);
+					return scoreBoard.get(ScoreCategory.ONES);
 				case "2":
 					points = scoreCategoryOptions.get(ScoreCategory.TWOS);
-					return scoreBoard.put(ScoreCategory.TWOS, points);
+					scoreBoard.put(ScoreCategory.TWOS, points);
+					return scoreBoard.get(ScoreCategory.TWOS);
 				case "3":
 					points = scoreCategoryOptions.get(ScoreCategory.THREES);
-					return scoreBoard.put(ScoreCategory.THREES, points);
+					scoreBoard.put(ScoreCategory.THREES, points);
+					return scoreBoard.get(ScoreCategory.THREES);
 				case "4":
 					points = scoreCategoryOptions.get(ScoreCategory.FOURS);
-					return scoreBoard.put(ScoreCategory.FOURS, points);
+					scoreBoard.put(ScoreCategory.FOURS, points);
+					return scoreBoard.get(ScoreCategory.FOURS);
 				case "5":
 					points = scoreCategoryOptions.get(ScoreCategory.FIVES);
-					return scoreBoard.put(ScoreCategory.FIVES, points);
+					scoreBoard.put(ScoreCategory.FIVES, points);
+					return scoreBoard.get(ScoreCategory.FIVES);
 				case "6":
 					points = scoreCategoryOptions.get(ScoreCategory.SIXES);
-					return scoreBoard.put(ScoreCategory.SIXES, points);
+					scoreBoard.put(ScoreCategory.SIXES, points);
+					return scoreBoard.get(ScoreCategory.SIXES);
 				case "3K":
 				case "3k":
 					points = scoreCategoryOptions.get(ScoreCategory.THREE_OF_A_KIND);
-					return scoreBoard.put(ScoreCategory.THREE_OF_A_KIND, points);
+					scoreBoard.put(ScoreCategory.THREE_OF_A_KIND, points);
+					return scoreBoard.get(ScoreCategory.THREE_OF_A_KIND);
 				case "4K":
 				case "4k":
 					points = scoreCategoryOptions.get(ScoreCategory.FOUR_OF_A_KIND);
-					return scoreBoard.put(ScoreCategory.FOUR_OF_A_KIND, points);
+					scoreBoard.put(ScoreCategory.FOUR_OF_A_KIND, points);
+					return scoreBoard.get(ScoreCategory.FOUR_OF_A_KIND);
 				case "F":
 				case "f":
 					points = scoreCategoryOptions.get(ScoreCategory.FULL_HOUSE);
-					return scoreBoard.put(ScoreCategory.FULL_HOUSE, points);
+					scoreBoard.put(ScoreCategory.FULL_HOUSE, points);
+					return scoreBoard.get(ScoreCategory.FULL_HOUSE);
 				case "S":
 				case "s":
 					points = scoreCategoryOptions.get(ScoreCategory.SMALL_STRAIGHT);
-					return scoreBoard.put(ScoreCategory.SMALL_STRAIGHT, points);
+					scoreBoard.put(ScoreCategory.SMALL_STRAIGHT, points);
+					return scoreBoard.get(ScoreCategory.SMALL_STRAIGHT);
 				case "L":
 				case "l":
 					points = scoreCategoryOptions.get(ScoreCategory.LARGE_STRAIGHT);
-					return scoreBoard.put(ScoreCategory.LARGE_STRAIGHT, points);
+					scoreBoard.put(ScoreCategory.LARGE_STRAIGHT, points);
+					return scoreBoard.get(ScoreCategory.LARGE_STRAIGHT);
 				case "C":
 				case "c":
 					points = scoreCategoryOptions.get(ScoreCategory.CHANCE);
-					return scoreBoard.put(ScoreCategory.CHANCE, points);
+					scoreBoard.put(ScoreCategory.CHANCE, points);
+					return scoreBoard.get(ScoreCategory.CHANCE);
 				case "Y":
 				case "y":
 					points = scoreCategoryOptions.get(ScoreCategory.YAHTZEE);
-					return scoreBoard.put(ScoreCategory.YAHTZEE, points);
+					scoreBoard.put(ScoreCategory.YAHTZEE, points);
+					return scoreBoard.get(ScoreCategory.YAHTZEE);
 				default:
 					break;
 			}
@@ -117,7 +129,7 @@ public class YahtzeeGameScore extends DiceGameScore{
 		
 	}
 	
-	public void listScoringOptions() //TODO start here
+	public void listScoringOptions() 
 	{
 		if (scoreCategoryOptions.get(ScoreCategory.ONES) > 0) 
 		{
@@ -313,7 +325,7 @@ public class YahtzeeGameScore extends DiceGameScore{
 	public void calcChance() {
 		if (scoreBoard.get(ScoreCategory.CHANCE)==-1) {
 			int sum = 0;
-			for (int counter = 1; counter <= 5; counter++)
+			for (int counter = 1; counter <= 6; counter++)
 			{
 				String value = ""+counter;
 				sum += handValues.get(value)*counter;
