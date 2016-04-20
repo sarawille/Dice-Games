@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import business.Hand;
 import scoring.ScoreCategory;
-import scoring.YahtzeeGameScore;
+import scoring.YahtzeeScore;
 import ui.Displayable;
 import ui.IOFactory;
 import ui.Validator;
@@ -20,7 +20,7 @@ import ui.Validator;
 public class TestYahtzeeGameScore {
 	
 	static Hand testHand;
-	static YahtzeeGameScore newTest;
+	static YahtzeeScore newTest;
 	static HashMap<String, Integer> testHandValues;
 	static HashMap<ScoreCategory, Integer> testScoreCategoryOptions;
 	static HashMap<ScoreCategory, Integer> testScoreBoard;
@@ -30,7 +30,7 @@ public class TestYahtzeeGameScore {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		testHand = new Hand(5, 6);
-		newTest = new YahtzeeGameScore();
+		newTest = new YahtzeeScore();
 		testHandValues = new HashMap<>();
 		testScoreCategoryOptions = new HashMap<>();
 		testScoreBoard = new HashMap<>();

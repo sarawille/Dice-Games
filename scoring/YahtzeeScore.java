@@ -7,14 +7,14 @@ import ui.Displayable;
 import ui.IOFactory;
 import ui.Validator;
 
-public class YahtzeeGameScore extends DiceGameScore{
+public class YahtzeeScore extends DiceScore{
 	
 	public HashMap<ScoreCategory, Integer> scoreCategoryOptions = new HashMap<>();
 	public HashMap<ScoreCategory, Integer> scoreBoard = new HashMap<>();
 	public StringBuilder scoreMenu = new StringBuilder();
 	int newScore = 0;
 	
-	public YahtzeeGameScore() {
+	public YahtzeeScore() {
 		resetScoreBoard();		
 	}
 	

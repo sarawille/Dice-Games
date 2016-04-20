@@ -1,6 +1,6 @@
 package ui;
 
-import scoring.YahtzeeGameScore;
+import scoring.YahtzeeScore;
 import business.Hand;
 
 /*
@@ -21,7 +21,7 @@ public class YatzeeApp {
 	
 	public static void main(String[] args) { 
 		
-		YahtzeeGameScore myScore = new YahtzeeGameScore();
+		YahtzeeScore myScore = new YahtzeeScore();
 		Hand thisHand; 
 		
 		while (turn <= 1) {
