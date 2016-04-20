@@ -8,23 +8,18 @@ import ui.Validator;
 
 public class YahtzeeGameScore extends DiceGameScore{
 	
-	private static Displayable screen;
-	private static Validator theValidator;
-	
 	public HashMap<ScoreCategory, Integer> scoreCategoryOptions = new HashMap<>();
 	public HashMap<ScoreCategory, Integer> scoreBoard = new HashMap<>();
 	public StringBuilder scoreMenu = new StringBuilder();
 	int newScore = 0;
 	
-	public YahtzeeGameScore(Displayable screen, Validator theValidator) {
-		this.screen = screen;
-		this.theValidator = theValidator;
+	public YahtzeeGameScore() {
+		resetScoreBoard();		
 	}
 	
 	@Override
 	public void calculateScore() {
 		 resetScoreCategoryOptions();
-		 resetScoreBoard();
 		 calcUpperScores();
 		 calcThreeOfAKind();
 		 calcFourOfAKind();
@@ -33,10 +28,73 @@ public class YahtzeeGameScore extends DiceGameScore{
 		 calcLargeStraight();
 		 calcChance();
 		 calcYahtzee();
-		 screen.display(createScoreMenu());
-//		 getUserChoice();
-//		 newScore = getTotalScore() + getPointsToAdd();
-		 setTotalScore(newScore);
+		 createScoreMenu();				//how to display this?
+		 newScore = getTotalScore() + getUserChoice();
+//		 setTotalScore(newScore);
+	}
+
+
+	private int getUserChoice() {
+		Validator validator = IOFactory.getValidator();
+		String userInput = "";
+		int points;
+		userInput = validator.getString("I want to score category: ");
+		while (true) 
+		{
+			userInput = validator.getString("Please choose a valid category.\nI want to score category: ");
+			switch (userInput) 
+			{
+				case "1":
+					points = scoreCategoryOptions.get(ScoreCategory.ONES);
+					return scoreBoard.put(ScoreCategory.ONES, points);
+				case "2":
+					points = scoreCategoryOptions.get(ScoreCategory.TWOS);
+					return scoreBoard.put(ScoreCategory.TWOS, points);
+				case "3":
+					points = scoreCategoryOptions.get(ScoreCategory.THREES);
+					return scoreBoard.put(ScoreCategory.THREES, points);
+				case "4":
+					points = scoreCategoryOptions.get(ScoreCategory.FOURS);
+					return scoreBoard.put(ScoreCategory.FOURS, points);
+				case "5":
+					points = scoreCategoryOptions.get(ScoreCategory.FIVES);
+					return scoreBoard.put(ScoreCategory.FIVES, points);
+				case "6":
+					points = scoreCategoryOptions.get(ScoreCategory.SIXES);
+					return scoreBoard.put(ScoreCategory.SIXES, points);
+				case "3K":
+				case "3k":
+					points = scoreCategoryOptions.get(ScoreCategory.THREE_OF_A_KIND);
+					return scoreBoard.put(ScoreCategory.THREE_OF_A_KIND, points);
+				case "4K":
+				case "4k":
+					points = scoreCategoryOptions.get(ScoreCategory.FOUR_OF_A_KIND);
+					return scoreBoard.put(ScoreCategory.FOUR_OF_A_KIND, points);
+				case "F":
+				case "f":
+					points = scoreCategoryOptions.get(ScoreCategory.FULL_HOUSE);
+					return scoreBoard.put(ScoreCategory.FULL_HOUSE, points);
+				case "S":
+				case "s":
+					points = scoreCategoryOptions.get(ScoreCategory.SMALL_STRAIGHT);
+					return scoreBoard.put(ScoreCategory.SMALL_STRAIGHT, points);
+				case "L":
+				case "l":
+					points = scoreCategoryOptions.get(ScoreCategory.LARGE_STRAIGHT);
+					return scoreBoard.put(ScoreCategory.LARGE_STRAIGHT, points);
+				case "C":
+				case "c":
+					points = scoreCategoryOptions.get(ScoreCategory.CHANCE);
+					return scoreBoard.put(ScoreCategory.CHANCE, points);
+				case "Y":
+				case "y":
+					points = scoreCategoryOptions.get(ScoreCategory.YAHTZEE);
+					return scoreBoard.put(ScoreCategory.YAHTZEE, points);
+				default:
+					break;
+			}
+		}
+		
 	}
 
 	private String createScoreMenu() {
@@ -110,7 +168,7 @@ public class YahtzeeGameScore extends DiceGameScore{
 
 	}
 
-	private void resetScoreCategoryOptions() {
+	public void resetScoreCategoryOptions() {
 		scoreCategoryOptions.put(ScoreCategory.ONES, 0);
 		scoreCategoryOptions.put(ScoreCategory.TWOS, 0);
 		scoreCategoryOptions.put(ScoreCategory.THREES, 0);
@@ -215,7 +273,11 @@ public class YahtzeeGameScore extends DiceGameScore{
 
 	public void calcSmallStraight() {
 		if (scoreBoard.get(ScoreCategory.SMALL_STRAIGHT)==-1) {
-			if (findMaxValueCount() == 2)
+			if (calcLargeStraight())
+			{
+				scoreCategoryOptions.put(ScoreCategory.SMALL_STRAIGHT, 30);
+			}
+			else if (findMaxValueCount() == 2)
 			{
 				if ((handValues.get("1") == 0 && handValues.get("2") == 0) ||
 					(handValues.get("5") == 0 && handValues.get("6") == 0)) 
@@ -223,10 +285,7 @@ public class YahtzeeGameScore extends DiceGameScore{
 					scoreCategoryOptions.put(ScoreCategory.SMALL_STRAIGHT, 30);
 				}
 			}
-			if (calcLargeStraight())
-			{
-				scoreCategoryOptions.put(ScoreCategory.SMALL_STRAIGHT, 30);
-			}
+		
 		}
 	}
 	
@@ -237,10 +296,11 @@ public class YahtzeeGameScore extends DiceGameScore{
 				if (handValues.get("1") == 0 || handValues.get("6") == 0) 
 				{
 					scoreCategoryOptions.put(ScoreCategory.LARGE_STRAIGHT, 40);
+					return true;
 				}
 			}
 		}
-		return true;
+		return false;
 		
 	}
 	
