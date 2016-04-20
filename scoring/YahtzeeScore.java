@@ -288,38 +288,38 @@ public class YahtzeeScore extends DiceScore{
 		}
 	}
 	
-
+	//TODO this method doesn't work when 2-4-3-6-6 and doesnt work for 4-1-6-5-3
 	public void calcSmallStraight() {
 		if (scoreBoard.get(ScoreCategory.SMALL_STRAIGHT)==-1) {
-			if (calcLargeStraight())
-			{
-				scoreCategoryOptions.put(ScoreCategory.SMALL_STRAIGHT, 30);
-			}
-			else if (findMaxValueCount() == 2)
-			{
-				if ((handValues.get("1") == 0 && handValues.get("2") == 0) ||
-					(handValues.get("5") == 0 && handValues.get("6") == 0)) 
+			if (findMaxValueCount() == 1) {
+				if (handValues.get("1") == 0 ||
+						handValues.get("2") == 0 ||
+						handValues.get("5") == 0 ||
+						handValues.get("6") == 0 ) 
 				{
 					scoreCategoryOptions.put(ScoreCategory.SMALL_STRAIGHT, 30);
 				}
 			}
-		
+			else if (findMaxValueCount() == 2) {
+				if ((handValues.get("1") == 0 && handValues.get("2") == 0) ||
+						(handValues.get("5") == 0 && handValues.get("6") == 0)) 
+				{
+					scoreCategoryOptions.put(ScoreCategory.SMALL_STRAIGHT, 30);
+				}
+			}
 		}
 	}
 	
-	public boolean calcLargeStraight() {
+	public void calcLargeStraight() {
 		if (scoreBoard.get(ScoreCategory.LARGE_STRAIGHT)==-1) {
 			if (findMaxValueCount() == 1)
 			{
 				if (handValues.get("1") == 0 || handValues.get("6") == 0) 
 				{
 					scoreCategoryOptions.put(ScoreCategory.LARGE_STRAIGHT, 40);
-					return true;
 				}
 			}
 		}
-		return false;
-		
 	}
 	
 	public void calcChance() {
@@ -350,7 +350,7 @@ public class YahtzeeScore extends DiceScore{
 	
 	public int findMaxValueCount() {
 		int maxValue = 0;
-		for (int counter = 1; counter <= 5; counter++)
+		for (int counter = 1; counter <= 6; counter++)
 		{
 			String value = ""+counter;
 			if (handValues.get(value) > maxValue)
