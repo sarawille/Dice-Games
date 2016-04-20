@@ -13,11 +13,12 @@ import org.junit.Test;
 import business.Hand;
 import scoring.ScoreCategory;
 import scoring.YahtzeeScore;
+import scoring.YahtzeeScoreBoard;
 
 public class TestYahtzeeScore {
 	
 	static Hand testHand;
-	static YahtzeeScore newTest;
+	static YahtzeeScoreBoard newTest;
 	static HashMap<String, Integer> testHandValues;
 	static HashMap<ScoreCategory, Integer> testScoreCategoryOptions;
 	static HashMap<ScoreCategory, Integer> testScoreBoard;
@@ -27,7 +28,7 @@ public class TestYahtzeeScore {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		testHand = new Hand(5, 6);
-		newTest = new YahtzeeScore();
+		newTest = new YahtzeeScoreBoard();
 		testHandValues = new HashMap<>();
 		testScoreCategoryOptions = new HashMap<>();
 		testScoreBoard = new HashMap<>();
@@ -106,7 +107,12 @@ public class TestYahtzeeScore {
 		}
 		newTest.resetScoreBoard();
 		newTest.countHandValues(testHand);
-		newTest.calcUpperScores();
+		YahtzeeScore.calcUpperScores(ScoreCategory.ONES, 1);
+		YahtzeeScore.calcUpperScores(ScoreCategory.TWOS, 2);
+		YahtzeeScore.calcUpperScores(ScoreCategory.THREES, 3);
+		YahtzeeScore.calcUpperScores(ScoreCategory.THREES, 4);
+		YahtzeeScore.calcUpperScores(ScoreCategory.FOURS, 5);
+		YahtzeeScore.calcUpperScores(ScoreCategory.SIXES, 6);
 		
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.ONES), 
 					 newTest.scoreCategoryOptions.get(ScoreCategory.ONES));
@@ -165,7 +171,13 @@ public class TestYahtzeeScore {
 		newTest.scoreBoard.put(ScoreCategory.SIXES, 10);  //player already scored Sixes
 		testScoreCategoryOptions.put(ScoreCategory.SIXES ,0);  //expect 0
 		
-		newTest.calcUpperScores();
+		YahtzeeScore.calcUpperScores(ScoreCategory.ONES, 1);
+		YahtzeeScore.calcUpperScores(ScoreCategory.TWOS, 2);
+		YahtzeeScore.calcUpperScores(ScoreCategory.THREES, 3);
+		YahtzeeScore.calcUpperScores(ScoreCategory.THREES, 4);
+		YahtzeeScore.calcUpperScores(ScoreCategory.FOURS, 5);
+		YahtzeeScore.calcUpperScores(ScoreCategory.SIXES, 6);
+		
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.ONES), 
 				 newTest.scoreCategoryOptions.get(ScoreCategory.ONES));
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.TWOS), 
@@ -668,7 +680,7 @@ public class TestYahtzeeScore {
 		newTest.resetScoreCategoryOptions();
 		newTest.resetScoreBoard();
 		newTest.countHandValues(testHand);
-		newTest.calcYahtzee();
+		newTest.calcYahtzee(50);
 		
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.YAHTZEE), 
 	 	 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.YAHTZEE));
@@ -696,7 +708,7 @@ public class TestYahtzeeScore {
 		newTest.scoreBoard.put(ScoreCategory.YAHTZEE, 50);  //player already scored a Yahtzee
 		testScoreCategoryOptions.put(ScoreCategory.YAHTZEE, 100);  //expect 100
 		newTest.countHandValues(testHand);
-		newTest.calcYahtzee();
+		newTest.calcYahtzee(100);
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.YAHTZEE), 
 	 	 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.YAHTZEE));
 	}
@@ -723,7 +735,7 @@ public class TestYahtzeeScore {
 		newTest.scoreBoard.put(ScoreCategory.YAHTZEE, 0);  //player already scored Yahtzee as 0
 		testScoreCategoryOptions.put(ScoreCategory.YAHTZEE, 0);  //expect 0
 		newTest.countHandValues(testHand);
-		newTest.calcYahtzee();
+		newTest.calcYahtzee(0);
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.YAHTZEE), 
 	 	 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.YAHTZEE));
 	}

@@ -1,6 +1,7 @@
 package ui;
 
 import scoring.YahtzeeScore;
+import scoring.YahtzeeScoreBoard;
 import business.Hand;
 
 /*
@@ -20,8 +21,10 @@ public class YatzeeApp {
 	
 	public static void main(String[] args) { 
 		
-		YahtzeeScore myScore = new YahtzeeScore();
+		YahtzeeScoreBoard myScore = new YahtzeeScoreBoard();
 		Hand thisHand; 
+		
+		//TODO major current bug: you can enter a score cateogry that exists but is not available for that turn
 		
 		while (turn <= 13) {
 			screen.displayln("TURN " + turn);
