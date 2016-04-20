@@ -119,11 +119,11 @@ public class YahtzeeGameScore extends DiceGameScore{
 	
 	public void listScoringOptions() //TODO start here
 	{
-		if (scoreCategoryOptions.get(ScoreCategory.ONES) >= 0) 
+		if (scoreCategoryOptions.get(ScoreCategory.ONES) > 0) 
 		{
 			scoreMenu.append("1 \t Ones \t\t\t" + scoreCategoryOptions.get(ScoreCategory.ONES) + " points\n");
 		}
-		if (scoreCategoryOptions.get(ScoreCategory.TWOS) >= 0) 
+		if (scoreCategoryOptions.get(ScoreCategory.TWOS) > 0) 
 		{
 			scoreMenu.append("2 \t Twos \t\t\t" + scoreCategoryOptions.get(ScoreCategory.TWOS) + " points\n");
 		}
@@ -151,7 +151,7 @@ public class YahtzeeGameScore extends DiceGameScore{
 		{
 			scoreMenu.append("4K \t 4 of a Kind \t\t" + scoreCategoryOptions.get(ScoreCategory.FOUR_OF_A_KIND) +" points\n");
 		}
-		if (scoreCategoryOptions.get(ScoreCategory.SIXES) > 0)
+		if (scoreCategoryOptions.get(ScoreCategory.FULL_HOUSE) > 0)
 		{
 			scoreMenu.append("F \t Full House \t\t" + scoreCategoryOptions.get(ScoreCategory.FULL_HOUSE) + " points\n");
 		}
