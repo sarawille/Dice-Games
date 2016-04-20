@@ -13,7 +13,6 @@ public class YatzeeApp {
 	//TODO add comments and javaDoc notes
 	//TODO use same code to make another dice game
 	//TODO try making this into a GUI or using pre-written GUI code to drop into IOFactory
-	//TODO ask chuck - automatically generate a webpage that is text based - like a blog - use a database?
 	
 	static int turn = 1;
 	static Displayable screen = IOFactory.getDisplayable();
@@ -24,7 +23,7 @@ public class YatzeeApp {
 		YahtzeeScore myScore = new YahtzeeScore();
 		Hand thisHand; 
 		
-		while (turn <= 1) {
+		while (turn <= 13) {
 			screen.displayln("TURN " + turn);
 			thisHand = new Hand(5, 6);
 			rollHand(thisHand);
