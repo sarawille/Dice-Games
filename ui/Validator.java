@@ -29,7 +29,7 @@ public class Validator implements Validatable {
 	 * @param s
 	 * @return userInteger
 	 */
-	public static int getInt(String prompt) {
+	public int getInt(String prompt) {
 		while (true) {
 			try {
 				screen.display(prompt);
