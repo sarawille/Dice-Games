@@ -123,7 +123,7 @@ public class YahtzeeScore extends DiceScore{
 		stringOfScoreChoices = scoreMenu.toString();
 		if (stringOfScoreChoices.endsWith("Which category do you want to score? \n"))
 		{
-//			stringOfScoreChoices += getZeros();
+			stringOfScoreChoices += scoreZero();
 		}
 		return stringOfScoreChoices;
 		
@@ -183,7 +183,54 @@ public class YahtzeeScore extends DiceScore{
 		{
 			scoreMenu.append("Y \t YAHTZEE! \t\t" + scoreCategoryOptions.get(ScoreCategory.YAHTZEE) + " points\n");
 		}
+		
 
+	}
+	
+	public String scoreZero() {
+		StringBuilder addZerosToScoreChoices = new StringBuilder();
+		addZerosToScoreChoices.append("Sorry, no score categories are available!  ");
+		addZerosToScoreChoices.append("You must choose a category to score with 0 points.\n");
+		if (scoreBoard.get(ScoreCategory.ONES) < 0){
+		addZerosToScoreChoices.append("1 \t Ones \t\t\t 0 points\n");
+		}
+		if (scoreBoard.get(ScoreCategory.TWOS) < 0){
+			addZerosToScoreChoices.append("2 \t Twos \t\t\t 0 points\n");
+		}
+		if (scoreBoard.get(ScoreCategory.THREES) < 0){
+			addZerosToScoreChoices.append("3 \t Threes \t\t 0  points\n");
+		}
+		if (scoreBoard.get(ScoreCategory.FOURS) < 0){
+			addZerosToScoreChoices.append("4 \t Fours \t\t\t 0  points\n");
+		}
+		if (scoreBoard.get(ScoreCategory.FIVES) < 0){
+			addZerosToScoreChoices.append("5 \t Fives \t\t\t 0  points\n");
+		}
+		if (scoreBoard.get(ScoreCategory.SIXES) < 0){
+			addZerosToScoreChoices.append("6 \t Sixes \t\t\t 0  points\n");
+		}
+		if (scoreBoard.get(ScoreCategory.THREE_OF_A_KIND) < 0){
+			addZerosToScoreChoices.append("3K \t 3 of a Kind \t\t 0  points\n");
+		}
+		if (scoreBoard.get(ScoreCategory.FOUR_OF_A_KIND) < 0){
+			addZerosToScoreChoices.append("4K \t 4 of a Kind \t\t 0  points\n");
+		}
+		if (scoreBoard.get(ScoreCategory.FULL_HOUSE) < 0){
+			addZerosToScoreChoices.append("F \t Full House \t\t 0  points\n");
+		}
+		if (scoreBoard.get(ScoreCategory.SMALL_STRAIGHT) < 0){
+			addZerosToScoreChoices.append("S \t Small Straight \t\t 0  points\n");
+		}
+		if (scoreBoard.get(ScoreCategory.LARGE_STRAIGHT) < 0){
+			addZerosToScoreChoices.append("L \t Large Straight \t\t 0  points\n");
+		}
+		if (scoreBoard.get(ScoreCategory.CHANCE) < 0){
+			addZerosToScoreChoices.append("C \t Chance \t\t 0  points\n");
+		}
+		if (scoreBoard.get(ScoreCategory.YAHTZEE) < 0){
+			addZerosToScoreChoices.append("Y \t Yahtzee \t\t 0  points\n");
+		}
+		return addZerosToScoreChoices.toString();
 	}
 
 	public void resetScoreCategoryOptions() {
@@ -288,7 +335,6 @@ public class YahtzeeScore extends DiceScore{
 		}
 	}
 	
-	//TODO this method doesn't work when 2-4-3-6-6 and doesnt work for 4-1-6-5-3
 	public void calcSmallStraight() {
 		if (scoreBoard.get(ScoreCategory.SMALL_STRAIGHT)==-1) {
 			if (findMaxValueCount() == 1) {
