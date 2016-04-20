@@ -17,7 +17,7 @@ public class YatzeeApp {
 	
 	static int turn = 1;
 	static Displayable screen = IOFactory.getDisplayable();
-	static Validator theValidator = new Validator(screen);
+	static Validator theValidator = IOFactory.getValidator();
 	
 	public static void main(String[] args) { 
 		
@@ -28,7 +28,6 @@ public class YatzeeApp {
 			screen.displayln("TURN " + turn);
 			thisHand = new Hand(5, 6);
 			rollHand(thisHand);
-			//TODO why doesnt total score keep adding over multiple turns?
 			myScore.scoreHand(thisHand);
 			screen.display("Your total score is ");
 			screen.displayln(myScore.printTotalScore());
@@ -89,19 +88,19 @@ public class YatzeeApp {
 		while (counter < userInput.length()) {
 			switch (userInput.charAt(counter)) {
 				case '1':
-					newHand.roll(0);
+					newHand.rollDie(0);
 					break;
 				case '2':
-					newHand.roll(1);
+					newHand.rollDie(1);
 					break;
 				case '3':
-					newHand.roll(2);
+					newHand.rollDie(2);
 					break;
 				case '4':
-					newHand.roll(3);
+					newHand.rollDie(3);
 					break;
 				case '5':
-					newHand.roll(4);
+					newHand.rollDie(4);
 					break;
 				default:
 					break;
