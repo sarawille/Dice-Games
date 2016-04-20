@@ -179,11 +179,14 @@ public class YahtzeeScore extends DiceScore{
 		{
 			scoreMenu.append("C \t Chance \t\t" +scoreCategoryOptions.get(ScoreCategory.CHANCE) + " points\n");
 		}
-		if (scoreCategoryOptions.get(ScoreCategory.YAHTZEE) > 0)
+		if (scoreCategoryOptions.get(ScoreCategory.YAHTZEE) > 0 && scoreCategoryOptions.get(ScoreCategory.YAHTZEE) < 50)
 		{
 			scoreMenu.append("Y \t YAHTZEE! \t\t" + scoreCategoryOptions.get(ScoreCategory.YAHTZEE) + " points\n");
 		}
-		
+		if (scoreCategoryOptions.get(ScoreCategory.YAHTZEE) >= 50)
+		{
+			scoreMenu.append("Y \t ANOTHER YAHTZEE! \t" + scoreCategoryOptions.get(ScoreCategory.YAHTZEE) + " points\n");
+		}
 
 	}
 	
