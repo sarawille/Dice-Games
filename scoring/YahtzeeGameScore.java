@@ -19,9 +19,16 @@ public class YahtzeeGameScore extends DiceGameScore{
 	}
 	
 	@Override
-	public void calculateScore(Hand newHand) {
+	public void updateScore(Hand newHand) {
 		 Displayable screen = IOFactory.getDisplayable();
-		 resetScoreCategoryOptions();
+		 calculateScoreOptions(newHand);
+		 screen.display(createScoreMenu());
+		 newScore = getTotalScore() + getUserChoice();
+		 setTotalScore(newScore);
+	}
+
+	private void calculateScoreOptions(Hand newHand) {
+		resetScoreCategoryOptions();
 		 countHandValues(newHand);
 		 calcUpperScores();
 		 calcThreeOfAKind();
@@ -31,11 +38,7 @@ public class YahtzeeGameScore extends DiceGameScore{
 		 calcLargeStraight();
 		 calcChance();
 		 calcYahtzee();
-		 screen.display(createScoreMenu());				
-		 newScore = getTotalScore() + getUserChoice();
-		 setTotalScore(newScore);
 	}
-
 
 	private int getUserChoice() {
 		Validator validator = IOFactory.getValidator();

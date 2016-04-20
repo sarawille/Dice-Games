@@ -28,7 +28,7 @@ public class YatzeeApp {
 			screen.displayln("TURN " + turn);
 			thisHand = new Hand(5, 6);
 			rollHand(thisHand);
-			myScore.calculateScore(thisHand);
+			myScore.updateScore(thisHand);
 			screen.display("Your total score is ");
 			screen.displayln(""+myScore.getTotalScore());
 			screen.displayln("--------------------------------------------------\n");

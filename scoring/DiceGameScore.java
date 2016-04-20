@@ -35,6 +35,7 @@ public abstract class DiceGameScore {
 		}
 	}
 
-	public abstract void calculateScore(Hand newHand);
+	public abstract void updateScore(Hand newHand);
+
 	
 }
