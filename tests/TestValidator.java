@@ -21,7 +21,7 @@ public class TestValidator {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		screen = IOFactory.getDisplayable();
-		checker = new Validator(screen);
+		checker = IOFactory.getValidator();
 	}
 
 	@AfterClass
