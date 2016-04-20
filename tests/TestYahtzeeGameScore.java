@@ -17,7 +17,7 @@ import ui.Displayable;
 import ui.IOFactory;
 import ui.Validator;
 
-public class TestScore2 {
+public class TestYahtzeeGameScore {
 	
 	static Hand testHand;
 	static YahtzeeGameScore newTest;
