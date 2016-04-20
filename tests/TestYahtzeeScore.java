@@ -13,11 +13,8 @@ import org.junit.Test;
 import business.Hand;
 import scoring.ScoreCategory;
 import scoring.YahtzeeScore;
-import ui.Displayable;
-import ui.IOFactory;
-import ui.Validator;
 
-public class TestYahtzeeGameScore {
+public class TestYahtzeeScore {
 	
 	static Hand testHand;
 	static YahtzeeScore newTest;

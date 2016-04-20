@@ -10,7 +10,6 @@ import org.junit.Test;
 
 import ui.Displayable;
 import ui.IOFactory;
-import ui.SimpleDisplay;
 import ui.Validator;
 
 public class TestValidator {
