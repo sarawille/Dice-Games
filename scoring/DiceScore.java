@@ -7,9 +7,13 @@ import business.Hand;
 public abstract class DiceScore extends Score {
 	
 	protected static Hand scoringHand;
-	public static HashMap<String, Integer> handValues = new HashMap<>();
+	protected static HashMap<String, Integer> handValues = new HashMap<>();
 		
-	public static void countHandValues(Hand newHand) {
+	protected static void setScoringHand(Hand scoringHand) {
+		DiceScore.scoringHand = scoringHand;
+	}
+
+	protected static void countHandValues(Hand newHand) {
 		scoringHand = newHand;
 		int instances = 0;
 		for (int faceUp = 1; faceUp <= scoringHand.diceInHand.get(0).getSides(); faceUp++) {
@@ -24,7 +28,7 @@ public abstract class DiceScore extends Score {
 		}
 	}
 
-	public abstract void updateScore(Hand newHand);
+	protected abstract void updateScore(Hand newHand);
 
 	
 }
