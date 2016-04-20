@@ -126,6 +126,8 @@ public class TestScore2 {
 
 	}
 	
+	//TODO separate out test for upper scores by number
+	
 	@Test
 	public void testCalcUpperScoresOnlyOnce() {
 		//Test that Upper Scores cannot be scored more than once
@@ -775,7 +777,7 @@ public class TestScore2 {
 			testHand.rollDie(4);
 		}
 		newTest.countHandValues(testHand);
-		newTest.calculateScore();
+		newTest.calculateScoreOptions(testHand);
 		newTest.listScoringOptions();
 		
 		String expected = "1 \t Ones \t\t\t" + testScoreCategoryOptions.get(ScoreCategory.ONES) + " points\n" +

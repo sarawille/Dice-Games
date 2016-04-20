@@ -27,8 +27,8 @@ public class YahtzeeGameScore extends DiceGameScore{
 		 setTotalScore(newScore);
 	}
 
-	private void calculateScoreOptions(Hand newHand) {
-		resetScoreCategoryOptions();
+	public void calculateScoreOptions(Hand newHand) {
+		 resetScoreCategoryOptions();
 		 countHandValues(newHand);
 		 calcUpperScores();
 		 calcThreeOfAKind();
