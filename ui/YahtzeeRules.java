@@ -22,9 +22,12 @@ public class YahtzeeRules implements Playable {
 	public void play(Scorable myScore) {
 		String userInput;
 		int turn = 1;
-		int numberOfRolls = 1;
-		while (turn <= 13) {
+		
+		while (turn <= 13) 
+		{
 			thisHand = new Hand(5, 6);
+			int numberOfRolls = 1;
+			
 			screen.displayln("TURN " + turn);
 			thisHand.rollAll();
 			screen.displayln(thisHand.printHand());
@@ -40,6 +43,9 @@ public class YahtzeeRules implements Playable {
 				}
 			}
 			myScore.updateScore(thisHand);
+			screen.display("Your total score is ");
+			screen.displayln(""+myScore.getTotalScore());
+			screen.displayln("--------------------------------------------------\n");
 			turn++;
 		}
 	}

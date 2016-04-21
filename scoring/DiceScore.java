@@ -28,7 +28,7 @@ public abstract class DiceScore extends Score {
 		}
 	}
 
-	protected abstract void updateScore(Hand newHand);
+	public abstract void updateScore(Hand newHand);
 
 	
 }
