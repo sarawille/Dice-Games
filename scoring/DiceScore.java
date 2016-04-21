@@ -13,8 +13,7 @@ public abstract class DiceScore extends Score {
 		DiceScore.scoringHand = scoringHand;
 	}
 
-	public static void countHandValues(Hand newHand) {
-		scoringHand = newHand;
+	public static void countHandValues() {
 		int instances = 0;
 		for (int faceUp = 1; faceUp <= scoringHand.diceInHand.get(0).getSides(); faceUp++) {
 			instances = 0;

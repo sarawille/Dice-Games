@@ -31,7 +31,7 @@ public class YahtzeeScoreBoard extends YahtzeeScore {
 	public void calculateScoreOptions() {
 		ScoreCategory category;
 		YahtzeeScore.resetScoreCategoryOptions();
-		YahtzeeScore.countHandValues(scoringHand);
+		YahtzeeScore.countHandValues();
 		category = ScoreCategory.ONES;
 		if (scoreBoard.get(category)==-1) {
 			YahtzeeScore.calcUpperScores(category, 1);
