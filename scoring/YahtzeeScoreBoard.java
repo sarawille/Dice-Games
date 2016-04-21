@@ -18,10 +18,9 @@ public class YahtzeeScoreBoard extends YahtzeeScore {
 	
 	@Override
 	public void updateScore(Hand newHand) {
-		setScoringHand(newHand);
 		int newScore = 0;
 		Displayable screen = IOFactory.getDisplayable();
-		
+		YahtzeeScore.countHandValues(newHand);
 		calculateScoreOptions();
 		screen.display(createScoreMenu());
 		newScore = getTotalScore() + getUserChoice();
@@ -31,7 +30,7 @@ public class YahtzeeScoreBoard extends YahtzeeScore {
 	public void calculateScoreOptions() {
 		ScoreCategory category;
 		YahtzeeScore.resetScoreCategoryOptions();
-		YahtzeeScore.countHandValues();
+		
 		category = ScoreCategory.ONES;
 		if (scoreBoard.get(category)==-1) {
 			YahtzeeScore.calcUpperScores(category, 1);
