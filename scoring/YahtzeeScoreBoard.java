@@ -5,9 +5,10 @@ import java.util.HashMap;
 import business.Hand;
 import ui.Displayable;
 import ui.IOFactory;
+import ui.Scorable;
 import ui.Validator;
 
-public class YahtzeeScoreBoard extends YahtzeeScore {
+public class YahtzeeScoreBoard extends YahtzeeScore implements Scorable {
 	
 	public HashMap<ScoreCategory, Integer> scoreBoard = new HashMap<>();
 	public StringBuilder scoreMenu = new StringBuilder();
