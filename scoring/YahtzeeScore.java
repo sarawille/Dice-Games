@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 import business.Hand;
 
+//TODO many nested ifs : better to hard code the scoring?
+
 public class YahtzeeScore extends DiceScore{
 	
 	public static HashMap<ScoreCategory, Integer> scoreCategoryOptions = new HashMap<>();
