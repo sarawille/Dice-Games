@@ -11,6 +11,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import business.Hand;
+import scoring.DiceScore;
 import scoring.ScoreCategory;
 import scoring.YahtzeeScore;
 import scoring.YahtzeeScoreBoard;
@@ -70,14 +71,14 @@ public class TestYahtzeeScore {
 		while (testHand.diceInHand.get(4).readFaceUp() != 5){
 			testHand.rollDie(4);
 		}
-		newTest.countHandValues(testHand);
+		YahtzeeScore.countHandValues(testHand);
 		
-		assertEquals(testHandValues.get("1"), newTest.handValues.get("1"));
-		assertEquals(testHandValues.get("2"), newTest.handValues.get("2"));
-		assertEquals(testHandValues.get("3"), newTest.handValues.get("3"));
-		assertEquals(testHandValues.get("4"), newTest.handValues.get("4"));
-		assertEquals(testHandValues.get("5"), newTest.handValues.get("5"));
-		assertEquals(testHandValues.get("6"), newTest.handValues.get("6"));
+		assertEquals(testHandValues.get("1"), YahtzeeScore.handValues.get("1"));
+		assertEquals(testHandValues.get("2"), YahtzeeScore.handValues.get("2"));
+		assertEquals(testHandValues.get("3"), YahtzeeScore.handValues.get("3"));
+		assertEquals(testHandValues.get("4"), YahtzeeScore.handValues.get("4"));
+		assertEquals(testHandValues.get("5"), YahtzeeScore.handValues.get("5"));
+		assertEquals(testHandValues.get("6"), YahtzeeScore.handValues.get("6"));
 	}
 	
 	@Test
@@ -106,7 +107,7 @@ public class TestYahtzeeScore {
 			testHand.rollDie(4);
 		}
 		newTest.resetScoreBoard();
-		newTest.countHandValues(testHand);
+		YahtzeeScore.countHandValues(testHand);
 		YahtzeeScore.calcUpperScores(ScoreCategory.ONES, 1);
 		YahtzeeScore.calcUpperScores(ScoreCategory.TWOS, 2);
 		YahtzeeScore.calcUpperScores(ScoreCategory.THREES, 3);
@@ -115,17 +116,17 @@ public class TestYahtzeeScore {
 		YahtzeeScore.calcUpperScores(ScoreCategory.SIXES, 6);
 		
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.ONES), 
-					 newTest.scoreCategoryOptions.get(ScoreCategory.ONES));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.ONES));
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.TWOS), 
-				 	 newTest.scoreCategoryOptions.get(ScoreCategory.TWOS));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.TWOS));
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.THREES), 
-			 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.THREES));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.THREES));
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FOURS), 
-					 newTest.scoreCategoryOptions.get(ScoreCategory.FOURS));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.FOURS));
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FIVES), 
-					 newTest.scoreCategoryOptions.get(ScoreCategory.FIVES));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.FIVES));
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.SIXES), 
-			 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.SIXES));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.SIXES));
 
 	}
 	
@@ -149,9 +150,9 @@ public class TestYahtzeeScore {
 		while (testHand.diceInHand.get(4).readFaceUp() != 6){
 			testHand.rollDie(4);
 		}
-		newTest.countHandValues(testHand);
+		YahtzeeScore.countHandValues(testHand);
 		
-		newTest.resetScoreCategoryOptions();  //reset possible points
+		YahtzeeScore.resetScoreCategoryOptions();  //reset possible points
 		
 		newTest.scoreBoard.put(ScoreCategory.ONES, 10);  //player already scored Ones
 		testScoreCategoryOptions.put(ScoreCategory.ONES,0);  //expect 0
@@ -179,17 +180,17 @@ public class TestYahtzeeScore {
 		YahtzeeScore.calcUpperScores(ScoreCategory.SIXES, 6);
 		
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.ONES), 
-				 newTest.scoreCategoryOptions.get(ScoreCategory.ONES));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.ONES));
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.TWOS), 
-				 newTest.scoreCategoryOptions.get(ScoreCategory.TWOS));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.TWOS));
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.THREES), 
-				 newTest.scoreCategoryOptions.get(ScoreCategory.THREES));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.THREES));
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FOURS), 
-				 newTest.scoreCategoryOptions.get(ScoreCategory.FOURS));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.FOURS));
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FIVES), 
-				 newTest.scoreCategoryOptions.get(ScoreCategory.FIVES));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.FIVES));
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.SIXES), 
-				 newTest.scoreCategoryOptions.get(ScoreCategory.SIXES));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.SIXES));
 	}
 	
 	@Test
@@ -212,13 +213,13 @@ public class TestYahtzeeScore {
 		while (testHand.diceInHand.get(4).readFaceUp() != 4){
 			testHand.rollDie(4);
 		}
-		newTest.resetScoreCategoryOptions();
+		YahtzeeScore.resetScoreCategoryOptions();
 		newTest.resetScoreBoard();
-		newTest.countHandValues(testHand);
-		newTest.calcThreeOfAKind();
+		YahtzeeScore.countHandValues(testHand);
+		YahtzeeScore.calcThreeOfAKind();
 		
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.THREE_OF_A_KIND), 
-		 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.THREE_OF_A_KIND));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.THREE_OF_A_KIND));
 	}
 	
 	@Test
@@ -241,13 +242,13 @@ public class TestYahtzeeScore {
 		while (testHand.diceInHand.get(4).readFaceUp() != 4){
 			testHand.rollDie(4);
 		}
-		newTest.resetScoreCategoryOptions();
+		YahtzeeScore.resetScoreCategoryOptions();
 		newTest.resetScoreBoard();
-		newTest.countHandValues(testHand);
-		newTest.calcThreeOfAKind();
+		YahtzeeScore.countHandValues(testHand);
+		YahtzeeScore.calcThreeOfAKind();
 		
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.THREE_OF_A_KIND), 
-		 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.THREE_OF_A_KIND));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.THREE_OF_A_KIND));
 	}
 	
 	@Test
@@ -268,12 +269,12 @@ public class TestYahtzeeScore {
 		while (testHand.diceInHand.get(4).readFaceUp() != 4){
 			testHand.rollDie(4);
 		}
-		newTest.resetScoreCategoryOptions();  //reset possible points
+		YahtzeeScore.resetScoreCategoryOptions();  //reset possible points
 		newTest.scoreBoard.put(ScoreCategory.THREE_OF_A_KIND, 10);  //player already scored 3K
 		testScoreCategoryOptions.put(ScoreCategory.THREE_OF_A_KIND ,0);  //expect 0
-		newTest.calcThreeOfAKind();
+		YahtzeeScore.calcThreeOfAKind();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.THREE_OF_A_KIND), 
-		 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.THREE_OF_A_KIND));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.THREE_OF_A_KIND));
 	}
 	
 	@Test
@@ -296,13 +297,13 @@ public class TestYahtzeeScore {
 		while (testHand.diceInHand.get(4).readFaceUp() != 5){
 			testHand.rollDie(4);
 		}
-		newTest.resetScoreCategoryOptions();
+		YahtzeeScore.resetScoreCategoryOptions();
 		newTest.resetScoreBoard();
-		newTest.countHandValues(testHand);
-		newTest.calcFourOfAKind();
+		YahtzeeScore.countHandValues(testHand);
+		YahtzeeScore.calcFourOfAKind();
 		
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FOUR_OF_A_KIND), 
-		 	 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.FOUR_OF_A_KIND));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.FOUR_OF_A_KIND));
 	}
 	
 	@Test
@@ -325,13 +326,13 @@ public class TestYahtzeeScore {
 		while (testHand.diceInHand.get(4).readFaceUp() != 5){
 			testHand.rollDie(4);
 		}
-		newTest.resetScoreCategoryOptions();
+		YahtzeeScore.resetScoreCategoryOptions();
 		newTest.resetScoreBoard();
-		newTest.countHandValues(testHand);
-		newTest.calcFourOfAKind();
+		YahtzeeScore.countHandValues(testHand);
+		YahtzeeScore.calcFourOfAKind();
 		
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FOUR_OF_A_KIND), 
-		 	 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.FOUR_OF_A_KIND));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.FOUR_OF_A_KIND));
 	}
 
 	@Test
@@ -352,12 +353,12 @@ public class TestYahtzeeScore {
 		while (testHand.diceInHand.get(4).readFaceUp() != 5){
 			testHand.rollDie(4);
 		}
-		newTest.resetScoreCategoryOptions();  //reset possible points
+		YahtzeeScore.resetScoreCategoryOptions();  //reset possible points
 		newTest.scoreBoard.put(ScoreCategory.FOUR_OF_A_KIND, 10);  //player already scored 4K
 		testScoreCategoryOptions.put(ScoreCategory.FOUR_OF_A_KIND ,0);  //expect 0
-		newTest.calcFourOfAKind();
+		YahtzeeScore.calcFourOfAKind();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FOUR_OF_A_KIND), 
-	 	 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.FOUR_OF_A_KIND));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.FOUR_OF_A_KIND));
 	}
 	
 	@Test
@@ -380,13 +381,13 @@ public class TestYahtzeeScore {
 		while (testHand.diceInHand.get(4).readFaceUp() != 2){
 			testHand.rollDie(4);
 		}
-		newTest.resetScoreCategoryOptions();
+		YahtzeeScore.resetScoreCategoryOptions();
 		newTest.resetScoreBoard();
-		newTest.countHandValues(testHand);
-		newTest.calcFullHouse();
+		YahtzeeScore.countHandValues(testHand);
+		YahtzeeScore.calcFullHouse();
 				
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FULL_HOUSE), 
-		 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.FULL_HOUSE));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.FULL_HOUSE));
 	}
 	
 	@Test
@@ -409,13 +410,13 @@ public class TestYahtzeeScore {
 		while (testHand.diceInHand.get(4).readFaceUp() != 6){
 			testHand.rollDie(4);
 		}
-		newTest.resetScoreCategoryOptions();
+		YahtzeeScore.resetScoreCategoryOptions();
 		newTest.resetScoreBoard();
-		newTest.countHandValues(testHand);
-		newTest.calcFullHouse();
+		YahtzeeScore.countHandValues(testHand);
+		YahtzeeScore.calcFullHouse();
 		
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FULL_HOUSE), 
-		 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.FULL_HOUSE));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.FULL_HOUSE));
 	}
 	
 	@Test
@@ -436,13 +437,13 @@ public class TestYahtzeeScore {
 		while (testHand.diceInHand.get(4).readFaceUp() != 2){
 			testHand.rollDie(4);
 		}
-		newTest.resetScoreCategoryOptions();  //reset possible points
+		YahtzeeScore.resetScoreCategoryOptions();  //reset possible points
 		newTest.scoreBoard.put(ScoreCategory.FULL_HOUSE, 25);  //player already scored FH
 		testScoreCategoryOptions.put(ScoreCategory.FULL_HOUSE ,0);  //expect 0
-		newTest.countHandValues(testHand);
-		newTest.calcFullHouse();
+		YahtzeeScore.countHandValues(testHand);
+		YahtzeeScore.calcFullHouse();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FULL_HOUSE), 
-		 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.FULL_HOUSE));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.FULL_HOUSE));
 	}
 	
 
@@ -466,13 +467,13 @@ public class TestYahtzeeScore {
 		while (testHand.diceInHand.get(4).readFaceUp() != 4){
 			testHand.rollDie(4);
 		}
-		newTest.resetScoreCategoryOptions();
+		YahtzeeScore.resetScoreCategoryOptions();
 		newTest.resetScoreBoard();
-		newTest.countHandValues(testHand);
-		newTest.calcSmallStraight();
+		YahtzeeScore.countHandValues(testHand);
+		YahtzeeScore.calcSmallStraight();
 		
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.SMALL_STRAIGHT), 
-		 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.SMALL_STRAIGHT));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.SMALL_STRAIGHT));
 }
 	
 	@Test 
@@ -495,13 +496,13 @@ public class TestYahtzeeScore {
 		while (testHand.diceInHand.get(4).readFaceUp() != 6){
 			testHand.rollDie(4);
 		}
-		newTest.resetScoreCategoryOptions();
+		YahtzeeScore.resetScoreCategoryOptions();
 		newTest.resetScoreBoard();
-		newTest.countHandValues(testHand);
-		newTest.calcSmallStraight();
+		YahtzeeScore.countHandValues(testHand);
+		YahtzeeScore.calcSmallStraight();
 						
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.SMALL_STRAIGHT), 
-		 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.SMALL_STRAIGHT));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.SMALL_STRAIGHT));
 	}
 	
 	@Test
@@ -522,13 +523,13 @@ public class TestYahtzeeScore {
 		while (testHand.diceInHand.get(4).readFaceUp() != 5){
 			testHand.rollDie(4);
 		}
-		newTest.resetScoreCategoryOptions();  //reset possible points
+		YahtzeeScore.resetScoreCategoryOptions();  //reset possible points
 		newTest.scoreBoard.put(ScoreCategory.SMALL_STRAIGHT, 30);  //player already scored SS
 		testScoreCategoryOptions.put(ScoreCategory.SMALL_STRAIGHT ,0);  //expect 0
-		newTest.countHandValues(testHand);
-		newTest.calcSmallStraight();
+		YahtzeeScore.countHandValues(testHand);
+		YahtzeeScore.calcSmallStraight();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.SMALL_STRAIGHT), 
-		 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.SMALL_STRAIGHT));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.SMALL_STRAIGHT));
 	}
 	
 	@Test
@@ -551,13 +552,13 @@ public class TestYahtzeeScore {
 		while (testHand.diceInHand.get(4).readFaceUp() != 4){
 			testHand.rollDie(4);
 		}
-		newTest.resetScoreCategoryOptions();
+		YahtzeeScore.resetScoreCategoryOptions();
 		newTest.resetScoreBoard();
-		newTest.countHandValues(testHand);
-		newTest.calcLargeStraight();
+		YahtzeeScore.countHandValues(testHand);
+		YahtzeeScore.calcLargeStraight();
 		
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.LARGE_STRAIGHT), 
-		 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.LARGE_STRAIGHT));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.LARGE_STRAIGHT));
 
 	}
 	
@@ -581,13 +582,13 @@ public class TestYahtzeeScore {
 		while (testHand.diceInHand.get(4).readFaceUp() != 1){
 			testHand.rollDie(4);
 		}
-		newTest.resetScoreCategoryOptions();
+		YahtzeeScore.resetScoreCategoryOptions();
 		newTest.resetScoreBoard();
-		newTest.countHandValues(testHand);
-		newTest.calcLargeStraight();
+		YahtzeeScore.countHandValues(testHand);
+		YahtzeeScore.calcLargeStraight();
 				
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.LARGE_STRAIGHT), 
-		 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.LARGE_STRAIGHT));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.LARGE_STRAIGHT));
 	}
 	
 	@Test
@@ -608,13 +609,13 @@ public class TestYahtzeeScore {
 		while (testHand.diceInHand.get(4).readFaceUp() != 5){
 			testHand.rollDie(4);
 		}
-		newTest.resetScoreCategoryOptions();  //reset possible points
+		YahtzeeScore.resetScoreCategoryOptions();  //reset possible points
 		newTest.scoreBoard.put(ScoreCategory.LARGE_STRAIGHT, 40);  //player already scored LS
 		testScoreCategoryOptions.put(ScoreCategory.LARGE_STRAIGHT ,0);  //expect 0
-		newTest.countHandValues(testHand);
-		newTest.calcLargeStraight();
+		YahtzeeScore.countHandValues(testHand);
+		YahtzeeScore.calcLargeStraight();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.LARGE_STRAIGHT), 
-		 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.LARGE_STRAIGHT));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.LARGE_STRAIGHT));
 	}
 	
 	@Test
@@ -637,25 +638,25 @@ public class TestYahtzeeScore {
 		while (testHand.diceInHand.get(4).readFaceUp() != 4){
 			testHand.rollDie(4);
 		}
-		newTest.resetScoreCategoryOptions();
+		YahtzeeScore.resetScoreCategoryOptions();
 		newTest.resetScoreBoard();
-		newTest.countHandValues(testHand);
-		newTest.calcChance();
+		YahtzeeScore.countHandValues(testHand);
+		YahtzeeScore.calcChance();
 		
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.CHANCE), 
-		 	 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.CHANCE));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.CHANCE));
 
 	}
 	
 	@Test
 	public void testCalcChanceOnlyOnce() {
 		//Test that Chance cannot be scored more than once
-		newTest.resetScoreCategoryOptions();  //reset possible points
+		YahtzeeScore.resetScoreCategoryOptions();  //reset possible points
 		newTest.scoreBoard.put(ScoreCategory.CHANCE, 40);  //player already scored Chance
 		testScoreCategoryOptions.put(ScoreCategory.CHANCE,0);  //expect 0
-		newTest.calcChance();
+		YahtzeeScore.calcChance();
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.CHANCE), 
-	 	 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.CHANCE));
+				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.CHANCE));
 	}
 	
 	@Test
@@ -677,13 +678,13 @@ public class TestYahtzeeScore {
 		while (testHand.diceInHand.get(4).readFaceUp() != 1){
 			testHand.rollDie(4);
 		}
-		newTest.resetScoreCategoryOptions();
+		YahtzeeScore.resetScoreCategoryOptions();
 		newTest.resetScoreBoard();
-		newTest.countHandValues(testHand);
-		newTest.calcYahtzee(50);
+		YahtzeeScore.countHandValues(testHand);
+		YahtzeeScore.calcYahtzee(50);
 		
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.YAHTZEE), 
-	 	 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.YAHTZEE));
+	 	 	 	 YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.YAHTZEE));
 	}
 	
 	@Test
@@ -704,13 +705,13 @@ public class TestYahtzeeScore {
 		while (testHand.diceInHand.get(4).readFaceUp() != 1){
 			testHand.rollDie(4);
 		}
-		newTest.resetScoreCategoryOptions();  //reset possible points
+		YahtzeeScore.resetScoreCategoryOptions();  //reset possible points
 		newTest.scoreBoard.put(ScoreCategory.YAHTZEE, 50);  //player already scored a Yahtzee
 		testScoreCategoryOptions.put(ScoreCategory.YAHTZEE, 100);  //expect 100
-		newTest.countHandValues(testHand);
-		newTest.calcYahtzee(100);
+		YahtzeeScore.countHandValues(testHand);
+		YahtzeeScore.calcYahtzee(100);
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.YAHTZEE), 
-	 	 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.YAHTZEE));
+	 	 	 	 YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.YAHTZEE));
 	}
 	
 	@Test
@@ -731,13 +732,13 @@ public class TestYahtzeeScore {
 		while (testHand.diceInHand.get(4).readFaceUp() != 1){
 			testHand.rollDie(4);
 		}
-		newTest.resetScoreCategoryOptions();  //reset possible points
+		YahtzeeScore.resetScoreCategoryOptions();  //reset possible points
 		newTest.scoreBoard.put(ScoreCategory.YAHTZEE, 0);  //player already scored Yahtzee as 0
 		testScoreCategoryOptions.put(ScoreCategory.YAHTZEE, 0);  //expect 0
-		newTest.countHandValues(testHand);
-		newTest.calcYahtzee(0);
+		YahtzeeScore.countHandValues(testHand);
+		YahtzeeScore.calcYahtzee(0);
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.YAHTZEE), 
-	 	 	 	 newTest.scoreCategoryOptions.get(ScoreCategory.YAHTZEE));
+	 	 	 	 YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.YAHTZEE));
 	}
 	
 	@Test
@@ -758,8 +759,8 @@ public class TestYahtzeeScore {
 		while (testHand.diceInHand.get(4).readFaceUp() != 6){
 			testHand.rollDie(4);
 		}
-		newTest.countHandValues(testHand);
-		assertEquals(maxValue, newTest.findMaxValueCount());
+		YahtzeeScore.countHandValues(testHand);
+		assertEquals(maxValue, YahtzeeScore.findMaxValueCount());
 	}
 	
 	@Test //TODO arrange test so that i can see that all are on or all are off (getzeros())
@@ -785,7 +786,7 @@ public class TestYahtzeeScore {
 		while (testHand.diceInHand.get(4).readFaceUp() != 5){
 			testHand.rollDie(4);
 		}
-		newTest.countHandValues(testHand);
+		YahtzeeScore.countHandValues(testHand);
 		newTest.calculateScoreOptions();
 		newTest.listScoringOptions();
 		
