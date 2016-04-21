@@ -1,9 +1,10 @@
 package scoring;
 
-public abstract class Score {
+public abstract class Score implements Scorable{
 	
 	public int totalScore = 0;
 
+	@Override
 	public int getTotalScore() {
 		return totalScore;
 	}
