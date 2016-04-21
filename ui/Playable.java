@@ -1,7 +1,9 @@
 package ui;
 
+import scoring.Scorable;
+
 public interface Playable {
 
-	void play();
+	void play(Scorable myScore);
 
 }

@@ -5,7 +5,6 @@ import java.util.HashMap;
 import business.Hand;
 import ui.Displayable;
 import ui.IOFactory;
-import ui.Scorable;
 import ui.Validator;
 
 public class YahtzeeScoreBoard extends YahtzeeScore implements Scorable {

@@ -1,5 +1,6 @@
 package ui;
 
+import scoring.Scorable;
 import business.Hand;
 
 /*
@@ -17,7 +18,8 @@ public class YahtzeeRules implements Playable {
 	Validator theValidator = IOFactory.getValidator();
 	Hand thisHand;
 	
-	public void play() {
+	@Override
+	public void play(Scorable myScore) {
 		String userInput;
 		int turn = 1;
 		int numberOfRolls = 1;
