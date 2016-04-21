@@ -7,7 +7,7 @@ import business.Hand;
  * 
  */
 
-public class YahtzeeRules {
+public class YahtzeeRules implements Playable {
 	
 	//TODO add comments and javaDoc notes
 	//TODO use same code to make another dice game
@@ -15,22 +15,30 @@ public class YahtzeeRules {
 	
 	Displayable screen = IOFactory.getDisplayable();
 	Validator theValidator = IOFactory.getValidator();
+	Hand thisHand;
 	
-	public void rollHand(Hand myHand) {
+	public void play() {
 		String userInput;
+		int turn = 1;
 		int numberOfRolls = 1;
-		myHand.rollAll();
-		screen.displayln(myHand.printHand());
-		while (numberOfRolls < 3) {
-			userInput= theValidator.getString("\nWould you like to roll again? (y/n) ", "y", "n");
-			if (userInput.equalsIgnoreCase("y")) {
-				rollAgain(myHand);
-				numberOfRolls++;
-				screen.displayln(myHand.printHand());
-			} else {
-				screen.displayln(myHand.printHand());
-				break;
+		while (turn <= 13) {
+			thisHand = new Hand(5, 6);
+			screen.displayln("TURN " + turn);
+			thisHand.rollAll();
+			screen.displayln(thisHand.printHand());
+			while (numberOfRolls < 3) {
+				userInput= theValidator.getString("\nWould you like to roll again? (y/n) ", "y", "n");
+				if (userInput.equalsIgnoreCase("y")) {
+					rollAgain(thisHand);
+					numberOfRolls++;
+					screen.displayln(thisHand.printHand());
+				} else {
+					screen.displayln(thisHand.printHand());
+					break;
+				}
 			}
+			myScore.updateScore(thisHand);
+			turn++;
 		}
 	}
 	
