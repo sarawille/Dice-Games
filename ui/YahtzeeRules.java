@@ -3,16 +3,14 @@ package ui;
 import scoring.Scorable;
 import business.Hand;
 
-/*
- * @author - Sara Wille
+/**
  * 
+ * @author Sara Wille
+ * The YahtzeeRules class manages play for a game of Yahtzee.
+ * The player can choose to re-roll up to 3 times hor each Hand.  The game lasts for 13 turns.
  */
 
 public class YahtzeeRules implements Playable {
-	
-	//TODO add comments and javaDoc notes
-	//TODO use same code to make another dice game
-	//TODO try making this into a GUI or using pre-written GUI code to drop into IOFactory
 	
 	Displayable screen = IOFactory.getDisplayable();
 	Validator theValidator = IOFactory.getValidator();
@@ -50,6 +48,10 @@ public class YahtzeeRules implements Playable {
 		}
 	}
 	
+	/**
+	 * rollAgain() - Method asks the user which dice they want to re-roll and confirms valid input.
+	 * @param newHand
+	 */
 	public void rollAgain(Hand newHand) 
 	{
 		String prompt = "\nWhich die do you want to re-roll? (Type die numbers without spaces) ";
@@ -76,7 +78,7 @@ public class YahtzeeRules implements Playable {
 				break;
 			}
 		}
-		//cycle through the user-entered string, looking at each character as an individual input
+		//cycle through the user-entered string, looking at each character as a die number
 		while (counter < userInput.length()) {
 			switch (userInput.charAt(counter)) {
 				case '1':

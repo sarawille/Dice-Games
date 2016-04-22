@@ -7,6 +7,18 @@ import ui.Displayable;
 import ui.IOFactory;
 import ui.Validator;
 
+/**
+ * 
+ * @author Sara Wille
+ * The YahtzeeScoreBoard class contains all the methods required to manage the scoring menu display
+ * and get input from the user to score the current Hand for a Yahtzee game.
+ * 
+ * The HashMap scoreBoard contains the ScoreCategory enumerators and the points awarded to the player
+ * for this game (of 13 turns).  
+ * 
+ * The scoreMenu StringBuilder is stored with the scoring options for each hand, and is displayed to the player.
+ *
+ */
 public class YahtzeeScoreBoard extends YahtzeeScore implements Scorable {
 	
 	public HashMap<ScoreCategory, Integer> scoreBoard = new HashMap<>();
@@ -16,6 +28,13 @@ public class YahtzeeScoreBoard extends YahtzeeScore implements Scorable {
 		resetScoreBoard();		
 	}
 	
+	/**
+	 * updateScore() - This is the main method to be run; it executes all required methods within the class.
+	 * It fills the array handValues by running countHandValues(), calculates potential points
+	 * for each score category with calcualteScoreOptions(), displays a menu of available score categories
+	 * to the user with createScoreMenu(), then adds the points for the user-chosen category to totalScore (in Score class);
+	 * @param newHand
+	 */
 	@Override
 	public void updateScore(Hand newHand) {
 		int newScore = 0;
@@ -23,10 +42,14 @@ public class YahtzeeScoreBoard extends YahtzeeScore implements Scorable {
 		YahtzeeScore.countHandValues(newHand);
 		calculateScoreOptions();
 		screen.display(createScoreMenu());
-		newScore = getTotalScore() + getUserChoice();
+		newScore = getTotalScore() + getPlayerChoice();
 		setTotalScore(newScore);
 	}
 
+	/**
+	 * calculateScoreOptions() - The method checks to see whether the category has already been scored.
+	 * If not, it adds the category and possible points to the HashMap scoreBoard.
+	 */
 	public void calculateScoreOptions() {
 		ScoreCategory category;
 		YahtzeeScore.resetScoreCategoryOptions();
@@ -81,7 +104,16 @@ public class YahtzeeScoreBoard extends YahtzeeScore implements Scorable {
 		}
 	}
 	
-	private int getUserChoice() {
+	/**
+	 * getPlayerChoice() - The method asks the user which category they want to score for the
+	 * current Hand.  
+	 * 
+	 * CURRENT BUG: The player can choose to score any valid category on any turn, even if that 
+	 * category is not displayed on the menu (which means it is not available for the current Hand
+	 * or that is has already been scored for this game).
+	 * @return scoreBoard.get(ScoreCategory x)
+	 */
+	private int getPlayerChoice() {
 		Validator validator = IOFactory.getValidator();
 		String userInput = "";
 		int points;
@@ -155,12 +187,22 @@ public class YahtzeeScoreBoard extends YahtzeeScore implements Scorable {
 		}
 	}
 
+	/**
+	 * createScoreMenu() - The method first clears out the scoreMenu StringBuilder so that 
+	 * it starts with an empty menu for each Hand.  Then, it builds the menu String by 
+	 * calling listScoringOptions().  If listScoringOptions() does not add anything to the 
+	 * menu, it is a signal that no categories are available to be scored.  According to the 
+	 * Yahtzee rules, when this happens, an unscored category must be scored as 0.  The method
+	 * calls scoreZero() to get a list of available categories to score as 0 and appends that to 
+	 * the returned String stringOfScoreChoices.
+	 * @return stringOfScoreChoices
+	 */
 	private String createScoreMenu() {
 		String stringOfScoreChoices = "";
 		scoreMenu.setLength(0);
 		scoreMenu.append("Which category do you want to score? \n");
 		listScoringOptions();
-		stringOfScoreChoices = scoreMenu.toString();
+		stringOfScoreChoices = scoreMenu.toString();			//convert to String to be able to use .endsWith()
 		if (stringOfScoreChoices.endsWith("Which category do you want to score? \n"))
 		{
 			stringOfScoreChoices += scoreZero();
@@ -168,6 +210,10 @@ public class YahtzeeScoreBoard extends YahtzeeScore implements Scorable {
 		return stringOfScoreChoices;
 	}
 	
+	/**
+	 * listScoringOptions() - The method checks each category; if it has not been scored yet,
+	 * the scoreMenu is appended with a line including the category name and possible points.
+	 */
 	public void listScoringOptions() 
 	{
 		if (scoreCategoryOptions.get(ScoreCategory.ONES) > 0) 
@@ -228,6 +274,12 @@ public class YahtzeeScoreBoard extends YahtzeeScore implements Scorable {
 		}
 	}
 	
+	/**
+	 * scoreZero() - The method creates a list (via StringBuilder addZerosToScoreChoices) of available 
+	 * categories to score as 0.  This method is called by createScoreMenu when no categories are available 
+	 * to be scored.  According to the Yahtzee rules, when this happens, an unscored category must be scored as 0.  
+	 * @return addZerosToScoreChoices
+	 */
 	public String scoreZero() {
 		StringBuilder addZerosToScoreChoices = new StringBuilder();
 		addZerosToScoreChoices.append("Sorry, no score categories are available!  ");
@@ -274,6 +326,10 @@ public class YahtzeeScoreBoard extends YahtzeeScore implements Scorable {
 		return addZerosToScoreChoices.toString();
 	}
 	
+	/**
+	 * This method resets the HashMap of scores for all categories to -1, signaling that
+	 * no points have been scored for that category.  It should be called at the beginning of each new game.
+	 */
 	public void resetScoreBoard() {
 		scoreBoard.put(ScoreCategory.ONES, -1);
 		scoreBoard.put(ScoreCategory.TWOS, -1);

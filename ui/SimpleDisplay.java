@@ -1,7 +1,8 @@
 package ui;
 
 /**
- *
+ * @author - Sara Wille
+ * The SimpleDisplay class prints to the Console.
  */
 public class SimpleDisplay implements Displayable{
 

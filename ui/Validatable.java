@@ -2,10 +2,12 @@ package ui;
 
 /**
  * @author Sara Wille
- * The Validatable interface confirms whether user input
+ * The Validatable interface contains default methods to confirm whether user input
  * is a valid int, double or String.  It can also check whether
  * the int or double is within a certain range, and whether
- * the String is a given length.
+ * the String is a given length or is a certain value.
+ * 
+ * Validatable is implemeted by Validator.
  *
  */
 public interface Validatable {
