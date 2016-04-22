@@ -15,12 +15,12 @@ import ui.Validator;
 public class TestValidator {
 	
 	static Displayable screen;
-	static Validator checker;
+	static Validator validator;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		screen = IOFactory.getDisplayable();
-		checker = IOFactory.getValidator();
+		validator = IOFactory.getValidator();
 	}
 
 	@AfterClass
@@ -41,7 +41,7 @@ public class TestValidator {
 		System.out.println("\nTesting getInt()");
 		//type in a
 		//type in 5
-		assertEquals(5, checker.getInt("Enter integer "));
+		assertEquals(5, validator.getInt("Enter integer "));
 	}
 	
 	@Test
@@ -51,7 +51,7 @@ public class TestValidator {
 		//type in 0
 		//type in 11
 		//type in 5
-		assertEquals(5, checker.getInt("Enter integer between 1 and 10 ", 1, 10));
+		assertEquals(5, validator.getInt("Enter integer between 1 and 10 ", 1, 10));
 	}
 	
 	@Test
@@ -59,7 +59,7 @@ public class TestValidator {
 		System.out.println("\nTesting getDouble()");
 		//type in a
 		//type in 5
-		assertEquals(5, checker.getDouble("Enter double "), .0005);
+		assertEquals(5, validator.getDouble("Enter double "), .0005);
 	}
 	
 	@Test
@@ -69,7 +69,7 @@ public class TestValidator {
 		//type in 0
 		//type in 11
 		//type in 5
-		assertEquals(5, checker.getDouble("Enter double between 1 and 10 ", 1, 10), .0005);
+		assertEquals(5, validator.getDouble("Enter double between 1 and 10 ", 1, 10), .0005);
 	}
 	
 	@Test 
@@ -77,7 +77,7 @@ public class TestValidator {
 		System.out.println("\nTesting getString()");
 		//hit enter
 		//type "string"
-		assertEquals("string", checker.getString("Enter some words "));
+		assertEquals("string", validator.getString("Enter some words "));
 	}
 	
 	@Test
@@ -86,7 +86,7 @@ public class TestValidator {
 		//hit enter
 		//type "tree"
 		//type "dog"
-		assertEquals("dog", checker.getString("Enter 3 letters ", 3));
+		assertEquals("dog", validator.getString("Enter 3 letters ", 3));
 	}
 	
 	@Test
@@ -94,7 +94,7 @@ public class TestValidator {
 		System.out.println("\nTesting getString() FOR TWO INPUT OPTIONS");
 		//type "z"
 		//type "X"
-		assertEquals("X", checker.getString("Enter x or y ", "x", "y"));
+		assertEquals("X", validator.getString("Enter x or y ", "x", "y"));
 	}
 
 }
