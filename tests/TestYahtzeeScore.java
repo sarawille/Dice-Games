@@ -24,8 +24,6 @@ public class TestYahtzeeScore {
 	static HashMap<ScoreCategory, Integer> testScoreCategoryOptions;
 	static HashMap<ScoreCategory, Integer> testScoreBoard;
 	
-	//TODO extract test for 0 points vs should have points
-
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		testHand = new Hand(5, 6);
@@ -756,7 +754,7 @@ public class TestYahtzeeScore {
 		assertEquals(maxValue, YahtzeeScore.findMaxValueCount());
 	}
 	
-	@Test //TODO arrange test so that i can see that all are on or all are off (getzeros())
+	@Test
 	public void testListScoringOptions() {	
 		testScoreCategoryOptions.put(ScoreCategory.ONES, 1*3);
 		testScoreCategoryOptions.put(ScoreCategory.TWOS, 2*1);

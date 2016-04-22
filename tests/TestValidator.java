@@ -35,7 +35,7 @@ public class TestValidator {
 	public void tearDown() throws Exception {
 	}
 
-	//TODO best practices for testing when method requires user input
+	//TODO best practices for testing when method requires user input?
 	@Test
 	public void testGetInt() {
 		System.out.println("\nTesting getInt()");
