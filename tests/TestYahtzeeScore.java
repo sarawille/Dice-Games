@@ -18,14 +18,12 @@ import scoring.YahtzeeScoreBoard;
 public class TestYahtzeeScore {
 	
 	static Hand testHand;
-	static YahtzeeScoreBoard newTest;
 	static HashMap<String, Integer> testHandValues;
 	static HashMap<ScoreCategory, Integer> testScoreCategoryOptions;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		testHand = new Hand(5, 6);
-		newTest = new YahtzeeScoreBoard();
 		testHandValues = new HashMap<>();
 		testScoreCategoryOptions = new HashMap<>();
 	}
@@ -36,7 +34,6 @@ public class TestYahtzeeScore {
 
 	@Before
 	public void setUp() throws Exception {
-		newTest.resetScoreBoard();
 		YahtzeeScore.resetScoreCategoryOptions();
 	}
 
@@ -577,32 +574,7 @@ public class TestYahtzeeScore {
 	 	 	 	 YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.YAHTZEE));
 	}
 	
-	@Test
-	public void testCalcSecondYahtzee() {
-		//Test that second Yahtzee will be worth 100 points
-		while (testHand.diceInHand.get(0).readFaceUp() != 1){
-			testHand.rollDie(0);
-		}
-		while (testHand.diceInHand.get(1).readFaceUp() != 1){
-			testHand.rollDie(1);
-		}
-		while (testHand.diceInHand.get(2).readFaceUp() != 1){
-			testHand.rollDie(2);
-		}
-		while (testHand.diceInHand.get(3).readFaceUp() != 1){
-			testHand.rollDie(3);
-		}
-		while (testHand.diceInHand.get(4).readFaceUp() != 1){
-			testHand.rollDie(4);
-		}
-
-		newTest.scoreBoard.put(ScoreCategory.YAHTZEE, 50);  //player already scored a Yahtzee
-		testScoreCategoryOptions.put(ScoreCategory.YAHTZEE, 100);  //expect 100
-		YahtzeeScore.countHandValues(testHand);
-		YahtzeeScore.calcYahtzee(100);
-		assertEquals(testScoreCategoryOptions.get(ScoreCategory.YAHTZEE), 
-	 	 	 	 YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.YAHTZEE));
-	}
+	
 	
 	@Test
 	public void testFindMaxValue() {
