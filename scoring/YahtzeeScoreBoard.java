@@ -39,6 +39,7 @@ public class YahtzeeScoreBoard extends YahtzeeScore implements Scorable {
 	public void updateScore(Hand newHand) {
 		int newScore = 0;
 		Displayable screen = IOFactory.getDisplayable();
+		newHand.sortItems();
 		YahtzeeScore.countHandValues(newHand);
 		calculateScoreOptions();
 		screen.display(createScoreMenu());
