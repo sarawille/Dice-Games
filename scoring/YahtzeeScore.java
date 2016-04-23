@@ -130,29 +130,13 @@ public abstract class YahtzeeScore extends DiceScore{
 	 * Points = 30.
 	 */
 	public static void calcSmallStraight() {
-		if (findMaxValueCount() == 1) {
-			if (handValues.get("1") == 0 ||
-				handValues.get("2") == 0 ||
-				handValues.get("5") == 0 ||
-				handValues.get("6") == 0 ) 
-			{
+		int product = 1;
+		for (int start = 1; start <= 3; start++) {
+			for (int die = 1; die <= 4; die++) {
+				product *= handValues.get(""+die);
+			}
+			if (product != 0) {
 				scoreCategoryOptions.put(ScoreCategory.SMALL_STRAIGHT, 30);
-			}
-		}
-		else if (findMaxValueCount() == 2) {
-			int twoCounter=0;
-			for (int counter = 1; counter <= 6; counter++)
-			{
-				if (handValues.get(""+counter)==0) {
-					twoCounter++;
-				}
-			}
-			if (twoCounter < 2) {
-				if ((handValues.get("1") == 0 && handValues.get("2") == 0) ||
-						(handValues.get("5") == 0 && handValues.get("6") == 0)) 
-				{
-					scoreCategoryOptions.put(ScoreCategory.SMALL_STRAIGHT, 30);
-				}
 			}
 		}
 	}

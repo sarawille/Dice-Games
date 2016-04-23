@@ -406,6 +406,7 @@ public class TestYahtzeeScore {
 	@Test
 	public void testCalcSmallStraightTrue() {
 		//Test that Small Straight will be scored 
+		
 		testScoreCategoryOptions.put(ScoreCategory.SMALL_STRAIGHT, 30);
 		
 		while (testHand.diceInHand.get(0).readFaceUp() != 1){
@@ -417,14 +418,21 @@ public class TestYahtzeeScore {
 		while (testHand.diceInHand.get(2).readFaceUp() != 1){
 			testHand.rollDie(2);
 		}
-		while (testHand.diceInHand.get(3).readFaceUp() != 3){
+		while (testHand.diceInHand.get(3).readFaceUp() != 4){
 			testHand.rollDie(3);
 		}
-		while (testHand.diceInHand.get(4).readFaceUp() != 4){
+		while (testHand.diceInHand.get(4).readFaceUp() != 3){
 			testHand.rollDie(4);
 		}
 
+		testHand.sortItems();
 		YahtzeeScore.countHandValues(testHand);
+		
+		
+		System.out.println(testHandValues.get("2"));
+//		System.out.println(testHandValues.get(""+2) + 1); 
+		
+		
 		YahtzeeScore.calcSmallStraight();
 		
 		assertEquals(testScoreCategoryOptions.get(ScoreCategory.SMALL_STRAIGHT), 
