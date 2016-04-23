@@ -11,7 +11,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import business.Hand;
-import scoring.DiceScore;
 import scoring.ScoreCategory;
 import scoring.YahtzeeScore;
 import scoring.YahtzeeScoreBoard;
