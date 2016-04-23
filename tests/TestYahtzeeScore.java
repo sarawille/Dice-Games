@@ -21,7 +21,6 @@ public class TestYahtzeeScore {
 	static YahtzeeScoreBoard newTest;
 	static HashMap<String, Integer> testHandValues;
 	static HashMap<ScoreCategory, Integer> testScoreCategoryOptions;
-	static HashMap<ScoreCategory, Integer> testScoreBoard;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -29,7 +28,6 @@ public class TestYahtzeeScore {
 		newTest = new YahtzeeScoreBoard();
 		testHandValues = new HashMap<>();
 		testScoreCategoryOptions = new HashMap<>();
-		testScoreBoard = new HashMap<>();
 	}
 
 	@AfterClass
