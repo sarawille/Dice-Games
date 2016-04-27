@@ -1,23 +1,48 @@
 package ui;
 
 import scoring.Scorable;
+import utilities.Displayable;
+import utilities.Validator;
 import business.Hand;
 
 /**
- * 
  * @author Sara Wille
  * The YahtzeeRules class manages play for a game of Yahtzee.
- * The player can choose to re-roll up to 3 times hor each Hand.  The game lasts for 13 turns.
+ * 
+ * The player rolls the Hand, then can choose to re-roll any combination of dice up to two more times
+ * on each turn.  The game lasts for 13 turns.
+ * The score is calculated depending on the face up values of each Hand and the user's choice of
+ * which scoring category to use at the end of each turn.
  */
 
 public class YahtzeeRules implements Playable {
 	
-	Displayable screen = IOFactory.getDisplayable();
-	Validator theValidator = IOFactory.getValidator();
+	Displayable screen;
+	Validator theValidator;
+	Scorable myScore;
 	Hand thisHand;
 	
+	public Displayable getScreen() {
+		return screen;
+	}
+	public void setScreen(Displayable screen) {
+		this.screen = screen;
+	}
+	public Validator getTheValidator() {
+		return theValidator;
+	}
+	public void setTheValidator(Validator theValidator) {
+		this.theValidator = theValidator;
+	}
+	public Scorable getMyScore() {
+		return myScore;
+	}
+	public void setMyScore(Scorable myScore) {
+		this.myScore = myScore;
+	}
+
 	@Override
-	public void play(Scorable myScore) {
+	public void play() {
 		String userInput;
 		int turn = 1;
 		
@@ -46,6 +71,9 @@ public class YahtzeeRules implements Playable {
 			screen.displayln("--------------------------------------------------\n");
 			turn++;
 		}
+		screen.displayln("GAME OVER!");
+		screen.display("Your final score is ");
+		screen.displayln(""+myScore.getTotalScore());
 	}
 	
 	/**

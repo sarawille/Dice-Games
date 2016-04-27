@@ -11,7 +11,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import business.Hand;
-import scoring.ScoreCategory;
+import scoring.YahtzeeScoreCategory;
 import scoring.YahtzeeScore;
 import scoring.YahtzeeScoreBoard;
 
@@ -20,8 +20,8 @@ public class TestYahtzeeScoreBoard {
 	static Hand testHand;
 	static YahtzeeScoreBoard newTest;
 	static HashMap<String, Integer> testHandValues;
-	static HashMap<ScoreCategory, Integer> testScoreBoard;
-	static HashMap<ScoreCategory, Integer> testScoreCategoryOptions;
+	static HashMap<YahtzeeScoreCategory, Integer> testScoreBoard;
+	static HashMap<YahtzeeScoreCategory, Integer> testScoreCategoryOptions;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -48,8 +48,8 @@ public class TestYahtzeeScoreBoard {
 	
 	@Test
 	public void testCalcOnesOnlyOnce() {
-		newTest.scoreBoard.put(ScoreCategory.ONES, 500);  //player already scored Ones
-		testScoreCategoryOptions.put(ScoreCategory.ONES,0);  //expect 0
+		newTest.scoreBoard.put(YahtzeeScoreCategory.ONES, 500);  //player already scored Ones
+		testScoreCategoryOptions.put(YahtzeeScoreCategory.ONES,0);  //expect 0
 		
 		while (testHand.diceInHand.get(0).readFaceUp() != 1){
 			testHand.rollDie(0);
@@ -70,14 +70,14 @@ public class TestYahtzeeScoreBoard {
 		YahtzeeScore.countHandValues(testHand);		//count the instances of each face up value
 		newTest.calculateScoreOptions();			//add possible points to scoreCategoryOptions if scoreBoard for that value is empty
 		
-		assertEquals(testScoreCategoryOptions.get(ScoreCategory.ONES), 
-	 	 	 	 YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.ONES));
+		assertEquals(testScoreCategoryOptions.get(YahtzeeScoreCategory.ONES), 
+	 	 	 	 YahtzeeScore.scoreCategoryOptions.get(YahtzeeScoreCategory.ONES));
 	}
 	
 	@Test
 	public void testCalcTwosOnlyOnce() {
-		newTest.scoreBoard.put(ScoreCategory.TWOS, 500);  //player already scored this category
-		testScoreCategoryOptions.put(ScoreCategory.TWOS,0);  //expect 0
+		newTest.scoreBoard.put(YahtzeeScoreCategory.TWOS, 500);  //player already scored this category
+		testScoreCategoryOptions.put(YahtzeeScoreCategory.TWOS,0);  //expect 0
 		
 		while (testHand.diceInHand.get(0).readFaceUp() != 2){
 			testHand.rollDie(0);
@@ -98,14 +98,14 @@ public class TestYahtzeeScoreBoard {
 		YahtzeeScore.countHandValues(testHand);		//count the instances of each face up value
 		newTest.calculateScoreOptions();			//add possible points to scoreCategoryOptions if scoreBoard for that value is empty
 		
-		assertEquals(testScoreCategoryOptions.get(ScoreCategory.TWOS), 
-	 	 	 	 YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.TWOS));
+		assertEquals(testScoreCategoryOptions.get(YahtzeeScoreCategory.TWOS), 
+	 	 	 	 YahtzeeScore.scoreCategoryOptions.get(YahtzeeScoreCategory.TWOS));
 	}
 	
 	@Test 
 	public void testCalcThreesOnlyOnce() {
-		newTest.scoreBoard.put(ScoreCategory.THREES, 500);  //player already scored this category
-		testScoreCategoryOptions.put(ScoreCategory.THREES,0);  //expect 0
+		newTest.scoreBoard.put(YahtzeeScoreCategory.THREES, 500);  //player already scored this category
+		testScoreCategoryOptions.put(YahtzeeScoreCategory.THREES,0);  //expect 0
 		
 		while (testHand.diceInHand.get(0).readFaceUp() != 3){
 			testHand.rollDie(0);
@@ -126,14 +126,14 @@ public class TestYahtzeeScoreBoard {
 		YahtzeeScore.countHandValues(testHand);		//count the instances of each face up value
 		newTest.calculateScoreOptions();			//add possible points to scoreCategoryOptions if scoreBoard for that value is empty
 		
-		assertEquals(testScoreCategoryOptions.get(ScoreCategory.THREES), 
-	 	 	 	 YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.THREES));
+		assertEquals(testScoreCategoryOptions.get(YahtzeeScoreCategory.THREES), 
+	 	 	 	 YahtzeeScore.scoreCategoryOptions.get(YahtzeeScoreCategory.THREES));
 	}
 	
 	@Test
 	public void testCalcFoursOnlyOnce() {		
-		newTest.scoreBoard.put(ScoreCategory.FOURS, 500);  //player already scored this category
-		testScoreCategoryOptions.put(ScoreCategory.FOURS,0);  //expect 0
+		newTest.scoreBoard.put(YahtzeeScoreCategory.FOURS, 500);  //player already scored this category
+		testScoreCategoryOptions.put(YahtzeeScoreCategory.FOURS,0);  //expect 0
 		
 		while (testHand.diceInHand.get(0).readFaceUp() != 4){
 			testHand.rollDie(0);
@@ -154,14 +154,14 @@ public class TestYahtzeeScoreBoard {
 		YahtzeeScore.countHandValues(testHand);		//count the instances of each face up value
 		newTest.calculateScoreOptions();			//add possible points to scoreCategoryOptions if scoreBoard for that value is empty
 		
-		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FOURS), 
-	 	 	 	 YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.FOURS));
+		assertEquals(testScoreCategoryOptions.get(YahtzeeScoreCategory.FOURS), 
+	 	 	 	 YahtzeeScore.scoreCategoryOptions.get(YahtzeeScoreCategory.FOURS));
 	}
 	
 	@Test
 	public void testCalcFivesOnlyOnce() {
-		newTest.scoreBoard.put(ScoreCategory.FIVES, 500);  //player already scored this category
-		testScoreCategoryOptions.put(ScoreCategory.FIVES,0);  //expect 0
+		newTest.scoreBoard.put(YahtzeeScoreCategory.FIVES, 500);  //player already scored this category
+		testScoreCategoryOptions.put(YahtzeeScoreCategory.FIVES,0);  //expect 0
 		
 		while (testHand.diceInHand.get(0).readFaceUp() != 5){
 			testHand.rollDie(0);
@@ -182,15 +182,15 @@ public class TestYahtzeeScoreBoard {
 		YahtzeeScore.countHandValues(testHand);		//count the instances of each face up value
 		newTest.calculateScoreOptions();			//add possible points to scoreCategoryOptions if scoreBoard for that value is empty
 		
-		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FIVES), 
-	 	 	 	 YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.FIVES));
+		assertEquals(testScoreCategoryOptions.get(YahtzeeScoreCategory.FIVES), 
+	 	 	 	 YahtzeeScore.scoreCategoryOptions.get(YahtzeeScoreCategory.FIVES));
 		
 	}
 	
 	@Test
 	public void testCalcSixesOnlyOnce() {		
-		newTest.scoreBoard.put(ScoreCategory.SIXES, 500);  //player already scored this category
-		testScoreCategoryOptions.put(ScoreCategory.SIXES,0);  //expect 0
+		newTest.scoreBoard.put(YahtzeeScoreCategory.SIXES, 500);  //player already scored this category
+		testScoreCategoryOptions.put(YahtzeeScoreCategory.SIXES,0);  //expect 0
 		
 		while (testHand.diceInHand.get(0).readFaceUp() != 6){
 			testHand.rollDie(0);
@@ -211,8 +211,8 @@ public class TestYahtzeeScoreBoard {
 		YahtzeeScore.countHandValues(testHand);		//count the instances of each face up value
 		newTest.calculateScoreOptions();			//add possible points to scoreCategoryOptions if scoreBoard for that value is empty
 		
-		assertEquals(testScoreCategoryOptions.get(ScoreCategory.SIXES), 
-	 	 	 	 YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.SIXES));	}
+		assertEquals(testScoreCategoryOptions.get(YahtzeeScoreCategory.SIXES), 
+	 	 	 	 YahtzeeScore.scoreCategoryOptions.get(YahtzeeScoreCategory.SIXES));	}
 	
 	@Test
 	public void testCalcThreeOfAKindOnlyOnce() {
@@ -233,15 +233,15 @@ public class TestYahtzeeScoreBoard {
 			testHand.rollDie(4);
 		}
 
-		newTest.scoreBoard.put(ScoreCategory.THREE_OF_A_KIND, 10);  //player already scored 3K
-		testScoreCategoryOptions.put(ScoreCategory.THREE_OF_A_KIND ,0);  //expect 0
+		newTest.scoreBoard.put(YahtzeeScoreCategory.THREE_OF_A_KIND, 10);  //player already scored 3K
+		testScoreCategoryOptions.put(YahtzeeScoreCategory.THREE_OF_A_KIND ,0);  //expect 0
 		
 		testHand.sortItems();						//sort the order of dice as ascending values
 		YahtzeeScore.countHandValues(testHand);		//count the instances of each face up value
 		newTest.calculateScoreOptions();			//add possible points to scoreCategoryOptions if scoreBoard for that value is empty
 		
-		assertEquals(testScoreCategoryOptions.get(ScoreCategory.THREE_OF_A_KIND), 
-				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.THREE_OF_A_KIND));
+		assertEquals(testScoreCategoryOptions.get(YahtzeeScoreCategory.THREE_OF_A_KIND), 
+				YahtzeeScore.scoreCategoryOptions.get(YahtzeeScoreCategory.THREE_OF_A_KIND));
 	}
 	
 	@Test
@@ -263,15 +263,15 @@ public class TestYahtzeeScoreBoard {
 			testHand.rollDie(4);
 		}
 
-		newTest.scoreBoard.put(ScoreCategory.FOUR_OF_A_KIND, 10);  //player already scored 4K
-		testScoreCategoryOptions.put(ScoreCategory.FOUR_OF_A_KIND ,0);  //expect 0
+		newTest.scoreBoard.put(YahtzeeScoreCategory.FOUR_OF_A_KIND, 10);  //player already scored 4K
+		testScoreCategoryOptions.put(YahtzeeScoreCategory.FOUR_OF_A_KIND ,0);  //expect 0
 
 		testHand.sortItems();						//sort the order of dice as ascending values
 		YahtzeeScore.countHandValues(testHand);		//count the instances of each face up value
 		newTest.calculateScoreOptions();			//add possible points to scoreCategoryOptions if scoreBoard for that value is empty
 				
-		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FOUR_OF_A_KIND), 
-				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.FOUR_OF_A_KIND));
+		assertEquals(testScoreCategoryOptions.get(YahtzeeScoreCategory.FOUR_OF_A_KIND), 
+				YahtzeeScore.scoreCategoryOptions.get(YahtzeeScoreCategory.FOUR_OF_A_KIND));
 	}
 	
 	@Test
@@ -293,15 +293,15 @@ public class TestYahtzeeScoreBoard {
 			testHand.rollDie(4);
 		}
 
-		newTest.scoreBoard.put(ScoreCategory.FULL_HOUSE, 25);  //player already scored FH
-		testScoreCategoryOptions.put(ScoreCategory.FULL_HOUSE ,0);  //expect 0
+		newTest.scoreBoard.put(YahtzeeScoreCategory.FULL_HOUSE, 25);  //player already scored FH
+		testScoreCategoryOptions.put(YahtzeeScoreCategory.FULL_HOUSE ,0);  //expect 0
 
 		testHand.sortItems();						//sort the order of dice as ascending values
 		YahtzeeScore.countHandValues(testHand);		//count the instances of each face up value
 		newTest.calculateScoreOptions();			//add possible points to scoreCategoryOptions if scoreBoard for that value is empty
 				
-		assertEquals(testScoreCategoryOptions.get(ScoreCategory.FULL_HOUSE), 
-				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.FULL_HOUSE));
+		assertEquals(testScoreCategoryOptions.get(YahtzeeScoreCategory.FULL_HOUSE), 
+				YahtzeeScore.scoreCategoryOptions.get(YahtzeeScoreCategory.FULL_HOUSE));
 	}
 	
 	@Test
@@ -323,15 +323,15 @@ public class TestYahtzeeScoreBoard {
 			testHand.rollDie(4);
 		}
 
-		newTest.scoreBoard.put(ScoreCategory.SMALL_STRAIGHT, 30);  //player already scored SS
-		testScoreCategoryOptions.put(ScoreCategory.SMALL_STRAIGHT ,0);  //expect 0
+		newTest.scoreBoard.put(YahtzeeScoreCategory.SMALL_STRAIGHT, 30);  //player already scored SS
+		testScoreCategoryOptions.put(YahtzeeScoreCategory.SMALL_STRAIGHT ,0);  //expect 0
 		
 		testHand.sortItems();						//sort the order of dice as ascending values
 		YahtzeeScore.countHandValues(testHand);		//count the instances of each face up value
 		newTest.calculateScoreOptions();			//add possible points to scoreCategoryOptions if scoreBoard for that value is empty
 				
-		assertEquals(testScoreCategoryOptions.get(ScoreCategory.SMALL_STRAIGHT), 
-				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.SMALL_STRAIGHT));
+		assertEquals(testScoreCategoryOptions.get(YahtzeeScoreCategory.SMALL_STRAIGHT), 
+				YahtzeeScore.scoreCategoryOptions.get(YahtzeeScoreCategory.SMALL_STRAIGHT));
 	}
 	
 	@Test
@@ -353,30 +353,30 @@ public class TestYahtzeeScoreBoard {
 			testHand.rollDie(4);
 		}
 
-		newTest.scoreBoard.put(ScoreCategory.LARGE_STRAIGHT, 40);  //player already scored LS
-		testScoreCategoryOptions.put(ScoreCategory.LARGE_STRAIGHT ,0);  //expect 0
+		newTest.scoreBoard.put(YahtzeeScoreCategory.LARGE_STRAIGHT, 40);  //player already scored LS
+		testScoreCategoryOptions.put(YahtzeeScoreCategory.LARGE_STRAIGHT ,0);  //expect 0
 		
 		testHand.sortItems();						//sort the order of dice as ascending values
 		YahtzeeScore.countHandValues(testHand);		//count the instances of each face up value
 		newTest.calculateScoreOptions();			//add possible points to scoreCategoryOptions if scoreBoard for that value is empty
 				
-		assertEquals(testScoreCategoryOptions.get(ScoreCategory.LARGE_STRAIGHT), 
-				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.LARGE_STRAIGHT));
+		assertEquals(testScoreCategoryOptions.get(YahtzeeScoreCategory.LARGE_STRAIGHT), 
+				YahtzeeScore.scoreCategoryOptions.get(YahtzeeScoreCategory.LARGE_STRAIGHT));
 	}
 	
 	@Test
 	public void testCalcChanceOnlyOnce() {
 		//Test that Chance cannot be scored more than once
 
-		newTest.scoreBoard.put(ScoreCategory.CHANCE, 40);  //player already scored Chance
-		testScoreCategoryOptions.put(ScoreCategory.CHANCE,0);  //expect 0
+		newTest.scoreBoard.put(YahtzeeScoreCategory.CHANCE, 40);  //player already scored Chance
+		testScoreCategoryOptions.put(YahtzeeScoreCategory.CHANCE,0);  //expect 0
 
 		testHand.sortItems();						//sort the order of dice as ascending values
 		YahtzeeScore.countHandValues(testHand);		//count the instances of each face up value
 		newTest.calculateScoreOptions();			//add possible points to scoreCategoryOptions if scoreBoard for that value is empty
 				
-		assertEquals(testScoreCategoryOptions.get(ScoreCategory.CHANCE), 
-				YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.CHANCE));
+		assertEquals(testScoreCategoryOptions.get(YahtzeeScoreCategory.CHANCE), 
+				YahtzeeScore.scoreCategoryOptions.get(YahtzeeScoreCategory.CHANCE));
 	}
 	
 	@Test
@@ -398,15 +398,15 @@ public class TestYahtzeeScoreBoard {
 			testHand.rollDie(4);
 		}
 
-		newTest.scoreBoard.put(ScoreCategory.YAHTZEE, 50);  //player already scored a Yahtzee
-		testScoreCategoryOptions.put(ScoreCategory.YAHTZEE, 100);  //expect 100
+		newTest.scoreBoard.put(YahtzeeScoreCategory.YAHTZEE, 50);  //player already scored a Yahtzee
+		testScoreCategoryOptions.put(YahtzeeScoreCategory.YAHTZEE, 100);  //expect 100
 		
 		testHand.sortItems();						//sort the order of dice as ascending values
 		YahtzeeScore.countHandValues(testHand);		//count the instances of each face up value
 		newTest.calculateScoreOptions();			//add possible points to scoreCategoryOptions if scoreBoard for that value is empty
 		
-		assertEquals(testScoreCategoryOptions.get(ScoreCategory.YAHTZEE), 
-	 	 	 	 YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.YAHTZEE));
+		assertEquals(testScoreCategoryOptions.get(YahtzeeScoreCategory.YAHTZEE), 
+	 	 	 	 YahtzeeScore.scoreCategoryOptions.get(YahtzeeScoreCategory.YAHTZEE));
 	}
 	
 	@Test
@@ -428,24 +428,24 @@ public class TestYahtzeeScoreBoard {
 			testHand.rollDie(4);
 		}
 
-		newTest.scoreBoard.put(ScoreCategory.YAHTZEE, 0);  //player already scored Yahtzee as 0
-		testScoreCategoryOptions.put(ScoreCategory.YAHTZEE, 0);  //expect 0
+		newTest.scoreBoard.put(YahtzeeScoreCategory.YAHTZEE, 0);  //player already scored Yahtzee as 0
+		testScoreCategoryOptions.put(YahtzeeScoreCategory.YAHTZEE, 0);  //expect 0
 		
 		testHand.sortItems();						//sort the order of dice as ascending values
 		YahtzeeScore.countHandValues(testHand);		//count the instances of each face up value
 		newTest.calculateScoreOptions();			//add possible points to scoreCategoryOptions if scoreBoard for that value is empty
 				
-		assertEquals(testScoreCategoryOptions.get(ScoreCategory.YAHTZEE), 
-	 	 	 	 YahtzeeScore.scoreCategoryOptions.get(ScoreCategory.YAHTZEE));
+		assertEquals(testScoreCategoryOptions.get(YahtzeeScoreCategory.YAHTZEE), 
+	 	 	 	 YahtzeeScore.scoreCategoryOptions.get(YahtzeeScoreCategory.YAHTZEE));
 	}
 	
 	@Test
 	public void testListScoringOptions() {	
-		testScoreCategoryOptions.put(ScoreCategory.ONES, 1*3);
-		testScoreCategoryOptions.put(ScoreCategory.TWOS, 2*1);
-		testScoreCategoryOptions.put(ScoreCategory.FIVES, 5*1);
-		testScoreCategoryOptions.put(ScoreCategory.THREE_OF_A_KIND, 1*3);
-		testScoreCategoryOptions.put(ScoreCategory.CHANCE, 1*3+2+5);
+		testScoreCategoryOptions.put(YahtzeeScoreCategory.ONES, 1*3);
+		testScoreCategoryOptions.put(YahtzeeScoreCategory.TWOS, 2*1);
+		testScoreCategoryOptions.put(YahtzeeScoreCategory.FIVES, 5*1);
+		testScoreCategoryOptions.put(YahtzeeScoreCategory.THREE_OF_A_KIND, 1*3);
+		testScoreCategoryOptions.put(YahtzeeScoreCategory.CHANCE, 1*3+2+5);
 		
 		while (testHand.diceInHand.get(0).readFaceUp() != 1){
 			testHand.rollDie(0);
@@ -466,11 +466,11 @@ public class TestYahtzeeScoreBoard {
 		newTest.calculateScoreOptions();
 		newTest.listScoringOptions();
 		
-		String expected = "1 \t Ones \t\t\t" + testScoreCategoryOptions.get(ScoreCategory.ONES) + " points\n" +
-				"2 \t Twos \t\t\t" + testScoreCategoryOptions.get(ScoreCategory.TWOS) + " points\n" +
-				"5 \t Fives \t\t\t" + testScoreCategoryOptions.get(ScoreCategory.FIVES) + " points\n" +
-				"3K \t 3 of a Kind  \t\t" + testScoreCategoryOptions.get(ScoreCategory.THREE_OF_A_KIND) + " points\n" +
-				"C \t Chance \t\t" +testScoreCategoryOptions.get(ScoreCategory.CHANCE) + " points\n";
+		String expected = "1 \t Ones \t\t\t" + testScoreCategoryOptions.get(YahtzeeScoreCategory.ONES) + " points\n" +
+				"2 \t Twos \t\t\t" + testScoreCategoryOptions.get(YahtzeeScoreCategory.TWOS) + " points\n" +
+				"5 \t Fives \t\t\t" + testScoreCategoryOptions.get(YahtzeeScoreCategory.FIVES) + " points\n" +
+				"3K \t 3 of a Kind  \t\t" + testScoreCategoryOptions.get(YahtzeeScoreCategory.THREE_OF_A_KIND) + " points\n" +
+				"C \t Chance \t\t" +testScoreCategoryOptions.get(YahtzeeScoreCategory.CHANCE) + " points\n";
 		
 		assertTrue(expected.equals(newTest.scoreMenu.toString()));
 	}

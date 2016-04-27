@@ -7,10 +7,11 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import ui.Displayable;
-import ui.IOFactory;
-import ui.Validator;
+import utilities.Displayable;
+import utilities.Validator;
 
 public class TestValidator {
 	
@@ -19,8 +20,12 @@ public class TestValidator {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		screen = IOFactory.getDisplayable();
-		validator = IOFactory.getValidator();
+		ApplicationContext contextXML2 = new ClassPathXmlApplicationContext("DispApplicationContext.xml");
+		screen = (Displayable) contextXML2.getBean("getDisplay");
+		
+		ApplicationContext contextXML = new ClassPathXmlApplicationContext("ValApplicationContext.xml");
+		validator = (Validator) contextXML.getBean("getValidator");
+		
 	}
 
 	@AfterClass

@@ -18,7 +18,7 @@ import business.Hand;
 
 public abstract class YahtzeeScore extends DiceScore{
 	
-	public static HashMap<ScoreCategory, Integer> scoreCategoryOptions = new HashMap<>();
+	public static HashMap<YahtzeeScoreCategory, Integer> scoreCategoryOptions = new HashMap<>();
 	
 	/**
 	 * updateScore() - This abstract method is empty and will be implemented by the ScoreBoard class
@@ -32,19 +32,19 @@ public abstract class YahtzeeScore extends DiceScore{
 	 * for each category.  It should be called before each new Hand of dice is scored.
 	 */
 	public static void resetScoreCategoryOptions() {
-		scoreCategoryOptions.put(ScoreCategory.ONES, 0);
-		scoreCategoryOptions.put(ScoreCategory.TWOS, 0);
-		scoreCategoryOptions.put(ScoreCategory.THREES, 0);
-		scoreCategoryOptions.put(ScoreCategory.FOURS, 0);
-		scoreCategoryOptions.put(ScoreCategory.FIVES, 0);
-		scoreCategoryOptions.put(ScoreCategory.SIXES, 0);
-		scoreCategoryOptions.put(ScoreCategory.THREE_OF_A_KIND, 0);
-		scoreCategoryOptions.put(ScoreCategory.FOUR_OF_A_KIND, 0);
-		scoreCategoryOptions.put(ScoreCategory.FULL_HOUSE, 0);
-		scoreCategoryOptions.put(ScoreCategory.SMALL_STRAIGHT, 0);
-		scoreCategoryOptions.put(ScoreCategory.LARGE_STRAIGHT, 0);
-		scoreCategoryOptions.put(ScoreCategory.CHANCE, 0);
-		scoreCategoryOptions.put(ScoreCategory.YAHTZEE, 0);
+		scoreCategoryOptions.put(YahtzeeScoreCategory.ONES, 0);
+		scoreCategoryOptions.put(YahtzeeScoreCategory.TWOS, 0);
+		scoreCategoryOptions.put(YahtzeeScoreCategory.THREES, 0);
+		scoreCategoryOptions.put(YahtzeeScoreCategory.FOURS, 0);
+		scoreCategoryOptions.put(YahtzeeScoreCategory.FIVES, 0);
+		scoreCategoryOptions.put(YahtzeeScoreCategory.SIXES, 0);
+		scoreCategoryOptions.put(YahtzeeScoreCategory.THREE_OF_A_KIND, 0);
+		scoreCategoryOptions.put(YahtzeeScoreCategory.FOUR_OF_A_KIND, 0);
+		scoreCategoryOptions.put(YahtzeeScoreCategory.FULL_HOUSE, 0);
+		scoreCategoryOptions.put(YahtzeeScoreCategory.SMALL_STRAIGHT, 0);
+		scoreCategoryOptions.put(YahtzeeScoreCategory.LARGE_STRAIGHT, 0);
+		scoreCategoryOptions.put(YahtzeeScoreCategory.CHANCE, 0);
+		scoreCategoryOptions.put(YahtzeeScoreCategory.YAHTZEE, 0);
 	}
 
 	/**
@@ -55,7 +55,7 @@ public abstract class YahtzeeScore extends DiceScore{
 	 * @param category
 	 * @param numberToScore
 	 */
-	public static void calcUpperScores(ScoreCategory category, int numberToScore) {		
+	public static void calcUpperScores(YahtzeeScoreCategory category, int numberToScore) {		
 		scoreCategoryOptions.put(category, handValues.get(""+numberToScore) * numberToScore);
 	}
 
@@ -72,15 +72,15 @@ public abstract class YahtzeeScore extends DiceScore{
 			String value = ""+counter;
 			if (handValues.get(value)==5)
 			{
-				scoreCategoryOptions.put(ScoreCategory.THREE_OF_A_KIND, counter*5);
+				scoreCategoryOptions.put(YahtzeeScoreCategory.THREE_OF_A_KIND, counter*5);
 			}
 			else if (handValues.get(value)==4)
 			{
-				scoreCategoryOptions.put(ScoreCategory.THREE_OF_A_KIND, counter*4);
+				scoreCategoryOptions.put(YahtzeeScoreCategory.THREE_OF_A_KIND, counter*4);
 			}
 			else if (handValues.get(value)==3)
 			{
-				scoreCategoryOptions.put(ScoreCategory.THREE_OF_A_KIND, counter*3);
+				scoreCategoryOptions.put(YahtzeeScoreCategory.THREE_OF_A_KIND, counter*3);
 			}
 		}
 
@@ -99,11 +99,11 @@ public abstract class YahtzeeScore extends DiceScore{
 			String value = ""+counter;
 			if (handValues.get(value)==5)
 			{
-				scoreCategoryOptions.put(ScoreCategory.FOUR_OF_A_KIND, counter*5);
+				scoreCategoryOptions.put(YahtzeeScoreCategory.FOUR_OF_A_KIND, counter*5);
 			}
 			else if (handValues.get(value)==4)
 			{
-				scoreCategoryOptions.put(ScoreCategory.FOUR_OF_A_KIND, counter*4);
+				scoreCategoryOptions.put(YahtzeeScoreCategory.FOUR_OF_A_KIND, counter*4);
 			}
 		}
 	}
@@ -118,7 +118,7 @@ public abstract class YahtzeeScore extends DiceScore{
 	public static void calcFullHouse() {
 		if (handValues.containsValue(2) && handValues.containsValue(3)) 
 		{
-			scoreCategoryOptions.put(ScoreCategory.FULL_HOUSE, 25);
+			scoreCategoryOptions.put(YahtzeeScoreCategory.FULL_HOUSE, 25);
 		}
 	}
 	
@@ -136,7 +136,7 @@ public abstract class YahtzeeScore extends DiceScore{
 				product *= handValues.get(""+die);
 			}
 			if (product != 0) {
-				scoreCategoryOptions.put(ScoreCategory.SMALL_STRAIGHT, 30);
+				scoreCategoryOptions.put(YahtzeeScoreCategory.SMALL_STRAIGHT, 30);
 			}
 		}
 	}
@@ -153,7 +153,7 @@ public abstract class YahtzeeScore extends DiceScore{
 		{
 			if (handValues.get("1") == 0 || handValues.get("6") == 0) 
 			{
-				scoreCategoryOptions.put(ScoreCategory.LARGE_STRAIGHT, 40);
+				scoreCategoryOptions.put(YahtzeeScoreCategory.LARGE_STRAIGHT, 40);
 			}
 		}
 	}
@@ -172,7 +172,7 @@ public abstract class YahtzeeScore extends DiceScore{
 			String value = ""+counter;
 			sum += handValues.get(value)*counter;
 		}
-		scoreCategoryOptions.put(ScoreCategory.CHANCE, sum);
+		scoreCategoryOptions.put(YahtzeeScoreCategory.CHANCE, sum);
 	}
 	
 	//TODO is there a better way to handle Yahtzee points being passed in from the ScoreBoard class?
@@ -190,7 +190,7 @@ public abstract class YahtzeeScore extends DiceScore{
 	public static void calcYahtzee(int points) {
 		if (findMaxValueCount() == 5)
 		{
-			scoreCategoryOptions.put(ScoreCategory.YAHTZEE, points);
+			scoreCategoryOptions.put(YahtzeeScoreCategory.YAHTZEE, points);
 		}
 	}
 	

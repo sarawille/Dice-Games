@@ -1,4 +1,4 @@
-package ui;
+package utilities;
 
 /**
  * @author Sara Wille

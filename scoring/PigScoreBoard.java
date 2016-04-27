@@ -2,18 +2,24 @@ package scoring;
 
 import java.util.HashMap;
 
-import ui.Displayable;
-import ui.IOFactory;
+import utilities.Displayable;
 import business.Hand;
 
 public class PigScoreBoard extends PigScore {
 	
-	public HashMap<ScoreCategory, Integer> scoreBoard = new HashMap<>();
+	public HashMap<YahtzeeScoreCategory, Integer> scoreBoard = new HashMap<>();
 	public StringBuilder scoreMenu = new StringBuilder();
+	Displayable screen;
 	
+	public Displayable getScreen() {
+		return screen;
+	}
+	public void setScreen(Displayable screen) {
+		this.screen = screen;
+	}
+
 	public void updateScore(Hand thisHand) {
 		int newScore = 0;
-		Displayable screen = IOFactory.getDisplayable();
 		PigScore.countHandValues(thisHand);		
 		screen.displayln(createScoreMenu());
 		if (howManyOnes() == 2) {					//potential bug if using howManyOnes before countHandValues is run.

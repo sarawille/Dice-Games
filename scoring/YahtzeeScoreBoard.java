@@ -3,9 +3,8 @@ package scoring;
 import java.util.HashMap;
 
 import business.Hand;
-import ui.Displayable;
-import ui.IOFactory;
-import ui.Validator;
+import utilities.Displayable;
+import utilities.Validator;
 
 /**
  * 
@@ -21,8 +20,23 @@ import ui.Validator;
  */
 public class YahtzeeScoreBoard extends YahtzeeScore implements Scorable {
 	
-	public HashMap<ScoreCategory, Integer> scoreBoard = new HashMap<>();
+	public HashMap<YahtzeeScoreCategory, Integer> scoreBoard = new HashMap<>();
 	public StringBuilder scoreMenu = new StringBuilder();
+	Displayable screen;
+	Validator validator;
+	
+	public Displayable getScreen() {
+		return screen;
+	}
+	public void setScreen(Displayable screen) {
+		this.screen = screen;
+	}
+	public Validator getValidator() {
+		return validator;
+	}
+	public void setValidator(Validator validator) {
+		this.validator = validator;
+	}
 
 	public YahtzeeScoreBoard() {
 		resetScoreBoard();		
@@ -38,7 +52,6 @@ public class YahtzeeScoreBoard extends YahtzeeScore implements Scorable {
 	@Override
 	public void updateScore(Hand newHand) {
 		int newScore = 0;
-		Displayable screen = IOFactory.getDisplayable();
 		newHand.sortItems();
 		YahtzeeScore.countHandValues(newHand);
 		calculateScoreOptions();
@@ -52,55 +65,55 @@ public class YahtzeeScoreBoard extends YahtzeeScore implements Scorable {
 	 * If not, it adds the category and possible points to the HashMap scoreBoard.
 	 */
 	public void calculateScoreOptions() {
-		ScoreCategory category;
+		YahtzeeScoreCategory category;
 		YahtzeeScore.resetScoreCategoryOptions();
 		
-		category = ScoreCategory.ONES;
+		category = YahtzeeScoreCategory.ONES;
 		if (scoreBoard.get(category)==-1) {
 			YahtzeeScore.calcUpperScores(category, 1);
 		}
-		category = ScoreCategory.TWOS;
+		category = YahtzeeScoreCategory.TWOS;
 		if (scoreBoard.get(category)==-1) {
 			YahtzeeScore.calcUpperScores(category, 2);
 		}
-		category = ScoreCategory.THREES;
+		category = YahtzeeScoreCategory.THREES;
 		if (scoreBoard.get(category)==-1) {
 			YahtzeeScore.calcUpperScores(category, 3);
 		}
-		category = ScoreCategory.FOURS;
+		category = YahtzeeScoreCategory.FOURS;
 		if (scoreBoard.get(category)==-1) {
 			YahtzeeScore.calcUpperScores(category, 4);
 		}
-		category = ScoreCategory.FIVES;
+		category = YahtzeeScoreCategory.FIVES;
 		if (scoreBoard.get(category)==-1) {
 			YahtzeeScore.calcUpperScores(category, 5);
 		}
-		category = ScoreCategory.SIXES;
+		category = YahtzeeScoreCategory.SIXES;
 		if (scoreBoard.get(category)==-1) {
 			YahtzeeScore.calcUpperScores(category, 6);
 		 }
-		 if (scoreBoard.get(ScoreCategory.THREE_OF_A_KIND)==-1) {
+		 if (scoreBoard.get(YahtzeeScoreCategory.THREE_OF_A_KIND)==-1) {
 			 YahtzeeScore.calcThreeOfAKind();
 		 }
-		 if (scoreBoard.get(ScoreCategory.FOUR_OF_A_KIND)==-1) {
+		 if (scoreBoard.get(YahtzeeScoreCategory.FOUR_OF_A_KIND)==-1) {
 			 YahtzeeScore.calcFourOfAKind();
 		 }
-		 if (scoreBoard.get(ScoreCategory.FULL_HOUSE)==-1) {
+		 if (scoreBoard.get(YahtzeeScoreCategory.FULL_HOUSE)==-1) {
 			 YahtzeeScore.calcFullHouse();
 		 }
-		 if (scoreBoard.get(ScoreCategory.SMALL_STRAIGHT)==-1) {
+		 if (scoreBoard.get(YahtzeeScoreCategory.SMALL_STRAIGHT)==-1) {
 			 YahtzeeScore.calcSmallStraight();
 		 }
-		 if (scoreBoard.get(ScoreCategory.LARGE_STRAIGHT)==-1) {
+		 if (scoreBoard.get(YahtzeeScoreCategory.LARGE_STRAIGHT)==-1) {
 			 YahtzeeScore.calcLargeStraight();
 		 }
-		 if (scoreBoard.get(ScoreCategory.CHANCE)==-1) {
+		 if (scoreBoard.get(YahtzeeScoreCategory.CHANCE)==-1) {
 			 YahtzeeScore.calcChance();
 		 }
-		 if (scoreBoard.get(ScoreCategory.YAHTZEE)==-1){
+		 if (scoreBoard.get(YahtzeeScoreCategory.YAHTZEE)==-1){
 			 YahtzeeScore.calcYahtzee(50);
 		}
-		else if (scoreBoard.get(ScoreCategory.YAHTZEE)>=50) {
+		else if (scoreBoard.get(YahtzeeScoreCategory.YAHTZEE)>=50) {
 			YahtzeeScore.calcYahtzee(100);
 		}
 	}
@@ -115,7 +128,6 @@ public class YahtzeeScoreBoard extends YahtzeeScore implements Scorable {
 	 * @return scoreBoard.get(ScoreCategory x)
 	 */
 	private int getPlayerChoice() {
-		Validator validator = IOFactory.getValidator();
 		String userInput = "";
 		int points;
 		while (true) 
@@ -124,64 +136,64 @@ public class YahtzeeScoreBoard extends YahtzeeScore implements Scorable {
 			switch (userInput) 
 			{
 				case "1":
-					points = scoreCategoryOptions.get(ScoreCategory.ONES);
-					scoreBoard.put(ScoreCategory.ONES, points);
-					return scoreBoard.get(ScoreCategory.ONES);
+					points = scoreCategoryOptions.get(YahtzeeScoreCategory.ONES);
+					scoreBoard.put(YahtzeeScoreCategory.ONES, points);
+					return scoreBoard.get(YahtzeeScoreCategory.ONES);
 				case "2":
-					points = scoreCategoryOptions.get(ScoreCategory.TWOS);
-					scoreBoard.put(ScoreCategory.TWOS, points);
-					return scoreBoard.get(ScoreCategory.TWOS);
+					points = scoreCategoryOptions.get(YahtzeeScoreCategory.TWOS);
+					scoreBoard.put(YahtzeeScoreCategory.TWOS, points);
+					return scoreBoard.get(YahtzeeScoreCategory.TWOS);
 				case "3":
-					points = scoreCategoryOptions.get(ScoreCategory.THREES);
-					scoreBoard.put(ScoreCategory.THREES, points);
-					return scoreBoard.get(ScoreCategory.THREES);
+					points = scoreCategoryOptions.get(YahtzeeScoreCategory.THREES);
+					scoreBoard.put(YahtzeeScoreCategory.THREES, points);
+					return scoreBoard.get(YahtzeeScoreCategory.THREES);
 				case "4":
-					points = scoreCategoryOptions.get(ScoreCategory.FOURS);
-					scoreBoard.put(ScoreCategory.FOURS, points);
-					return scoreBoard.get(ScoreCategory.FOURS);
+					points = scoreCategoryOptions.get(YahtzeeScoreCategory.FOURS);
+					scoreBoard.put(YahtzeeScoreCategory.FOURS, points);
+					return scoreBoard.get(YahtzeeScoreCategory.FOURS);
 				case "5":
-					points = scoreCategoryOptions.get(ScoreCategory.FIVES);
-					scoreBoard.put(ScoreCategory.FIVES, points);
-					return scoreBoard.get(ScoreCategory.FIVES);
+					points = scoreCategoryOptions.get(YahtzeeScoreCategory.FIVES);
+					scoreBoard.put(YahtzeeScoreCategory.FIVES, points);
+					return scoreBoard.get(YahtzeeScoreCategory.FIVES);
 				case "6":
-					points = scoreCategoryOptions.get(ScoreCategory.SIXES);
-					scoreBoard.put(ScoreCategory.SIXES, points);
-					return scoreBoard.get(ScoreCategory.SIXES);
+					points = scoreCategoryOptions.get(YahtzeeScoreCategory.SIXES);
+					scoreBoard.put(YahtzeeScoreCategory.SIXES, points);
+					return scoreBoard.get(YahtzeeScoreCategory.SIXES);
 				case "3K":
 				case "3k":
-					points = scoreCategoryOptions.get(ScoreCategory.THREE_OF_A_KIND);
-					scoreBoard.put(ScoreCategory.THREE_OF_A_KIND, points);
-					return scoreBoard.get(ScoreCategory.THREE_OF_A_KIND);
+					points = scoreCategoryOptions.get(YahtzeeScoreCategory.THREE_OF_A_KIND);
+					scoreBoard.put(YahtzeeScoreCategory.THREE_OF_A_KIND, points);
+					return scoreBoard.get(YahtzeeScoreCategory.THREE_OF_A_KIND);
 				case "4K":
 				case "4k":
-					points = scoreCategoryOptions.get(ScoreCategory.FOUR_OF_A_KIND);
-					scoreBoard.put(ScoreCategory.FOUR_OF_A_KIND, points);
-					return scoreBoard.get(ScoreCategory.FOUR_OF_A_KIND);
+					points = scoreCategoryOptions.get(YahtzeeScoreCategory.FOUR_OF_A_KIND);
+					scoreBoard.put(YahtzeeScoreCategory.FOUR_OF_A_KIND, points);
+					return scoreBoard.get(YahtzeeScoreCategory.FOUR_OF_A_KIND);
 				case "F":
 				case "f":
-					points = scoreCategoryOptions.get(ScoreCategory.FULL_HOUSE);
-					scoreBoard.put(ScoreCategory.FULL_HOUSE, points);
-					return scoreBoard.get(ScoreCategory.FULL_HOUSE);
+					points = scoreCategoryOptions.get(YahtzeeScoreCategory.FULL_HOUSE);
+					scoreBoard.put(YahtzeeScoreCategory.FULL_HOUSE, points);
+					return scoreBoard.get(YahtzeeScoreCategory.FULL_HOUSE);
 				case "S":
 				case "s":
-					points = scoreCategoryOptions.get(ScoreCategory.SMALL_STRAIGHT);
-					scoreBoard.put(ScoreCategory.SMALL_STRAIGHT, points);
-					return scoreBoard.get(ScoreCategory.SMALL_STRAIGHT);
+					points = scoreCategoryOptions.get(YahtzeeScoreCategory.SMALL_STRAIGHT);
+					scoreBoard.put(YahtzeeScoreCategory.SMALL_STRAIGHT, points);
+					return scoreBoard.get(YahtzeeScoreCategory.SMALL_STRAIGHT);
 				case "L":
 				case "l":
-					points = scoreCategoryOptions.get(ScoreCategory.LARGE_STRAIGHT);
-					scoreBoard.put(ScoreCategory.LARGE_STRAIGHT, points);
-					return scoreBoard.get(ScoreCategory.LARGE_STRAIGHT);
+					points = scoreCategoryOptions.get(YahtzeeScoreCategory.LARGE_STRAIGHT);
+					scoreBoard.put(YahtzeeScoreCategory.LARGE_STRAIGHT, points);
+					return scoreBoard.get(YahtzeeScoreCategory.LARGE_STRAIGHT);
 				case "C":
 				case "c":
-					points = scoreCategoryOptions.get(ScoreCategory.CHANCE);
-					scoreBoard.put(ScoreCategory.CHANCE, points);
-					return scoreBoard.get(ScoreCategory.CHANCE);
+					points = scoreCategoryOptions.get(YahtzeeScoreCategory.CHANCE);
+					scoreBoard.put(YahtzeeScoreCategory.CHANCE, points);
+					return scoreBoard.get(YahtzeeScoreCategory.CHANCE);
 				case "Y":
 				case "y":
-					points = scoreCategoryOptions.get(ScoreCategory.YAHTZEE);
-					scoreBoard.put(ScoreCategory.YAHTZEE, points);
-					return scoreBoard.get(ScoreCategory.YAHTZEE);
+					points = scoreCategoryOptions.get(YahtzeeScoreCategory.YAHTZEE);
+					scoreBoard.put(YahtzeeScoreCategory.YAHTZEE, points);
+					return scoreBoard.get(YahtzeeScoreCategory.YAHTZEE);
 				default:
 					break;
 			}
@@ -217,61 +229,61 @@ public class YahtzeeScoreBoard extends YahtzeeScore implements Scorable {
 	 */
 	public void listScoringOptions() 
 	{
-		if (scoreCategoryOptions.get(ScoreCategory.ONES) > 0) 
+		if (scoreCategoryOptions.get(YahtzeeScoreCategory.ONES) > 0) 
 		{
-			scoreMenu.append("1 \t Ones \t\t\t" + scoreCategoryOptions.get(ScoreCategory.ONES) + " points\n");
+			scoreMenu.append("1 \t Ones \t\t\t" + scoreCategoryOptions.get(YahtzeeScoreCategory.ONES) + " points\n");
 		}
-		if (scoreCategoryOptions.get(ScoreCategory.TWOS) > 0) 
+		if (scoreCategoryOptions.get(YahtzeeScoreCategory.TWOS) > 0) 
 		{
-			scoreMenu.append("2 \t Twos \t\t\t" + scoreCategoryOptions.get(ScoreCategory.TWOS) + " points\n");
+			scoreMenu.append("2 \t Twos \t\t\t" + scoreCategoryOptions.get(YahtzeeScoreCategory.TWOS) + " points\n");
 		}
-		if (scoreCategoryOptions.get(ScoreCategory.THREES) > 0) 
+		if (scoreCategoryOptions.get(YahtzeeScoreCategory.THREES) > 0) 
 		{
-			scoreMenu.append("3 \t Threes \t\t" + scoreCategoryOptions.get(ScoreCategory.THREES) + " points\n");
+			scoreMenu.append("3 \t Threes \t\t" + scoreCategoryOptions.get(YahtzeeScoreCategory.THREES) + " points\n");
 		}
-		if (scoreCategoryOptions.get(ScoreCategory.FOURS) > 0) 
+		if (scoreCategoryOptions.get(YahtzeeScoreCategory.FOURS) > 0) 
 		{
-			scoreMenu.append("4 \t Fours \t\t\t" + scoreCategoryOptions.get(ScoreCategory.FOURS) + " points\n");
+			scoreMenu.append("4 \t Fours \t\t\t" + scoreCategoryOptions.get(YahtzeeScoreCategory.FOURS) + " points\n");
 		}
-		if (scoreCategoryOptions.get(ScoreCategory.FIVES) > 0) 
+		if (scoreCategoryOptions.get(YahtzeeScoreCategory.FIVES) > 0) 
 		{
-			scoreMenu.append("5 \t Fives \t\t\t" + scoreCategoryOptions.get(ScoreCategory.FIVES) + " points\n");
+			scoreMenu.append("5 \t Fives \t\t\t" + scoreCategoryOptions.get(YahtzeeScoreCategory.FIVES) + " points\n");
 		}
-		if (scoreCategoryOptions.get(ScoreCategory.SIXES) > 0) 
+		if (scoreCategoryOptions.get(YahtzeeScoreCategory.SIXES) > 0) 
 		{
-			scoreMenu.append("6 \t Sixes \t\t\t" + scoreCategoryOptions.get(ScoreCategory.SIXES) + " points\n");
+			scoreMenu.append("6 \t Sixes \t\t\t" + scoreCategoryOptions.get(YahtzeeScoreCategory.SIXES) + " points\n");
 		}
-		if (scoreCategoryOptions.get(ScoreCategory.THREE_OF_A_KIND) > 0)
+		if (scoreCategoryOptions.get(YahtzeeScoreCategory.THREE_OF_A_KIND) > 0)
 		{
-			scoreMenu.append("3K \t 3 of a Kind  \t\t" + scoreCategoryOptions.get(ScoreCategory.THREE_OF_A_KIND) + " points\n");
+			scoreMenu.append("3K \t 3 of a Kind  \t\t" + scoreCategoryOptions.get(YahtzeeScoreCategory.THREE_OF_A_KIND) + " points\n");
 		}
-		if (scoreCategoryOptions.get(ScoreCategory.FOUR_OF_A_KIND) > 0)
+		if (scoreCategoryOptions.get(YahtzeeScoreCategory.FOUR_OF_A_KIND) > 0)
 		{
-			scoreMenu.append("4K \t 4 of a Kind \t\t" + scoreCategoryOptions.get(ScoreCategory.FOUR_OF_A_KIND) +" points\n");
+			scoreMenu.append("4K \t 4 of a Kind \t\t" + scoreCategoryOptions.get(YahtzeeScoreCategory.FOUR_OF_A_KIND) +" points\n");
 		}
-		if (scoreCategoryOptions.get(ScoreCategory.FULL_HOUSE) > 0)
+		if (scoreCategoryOptions.get(YahtzeeScoreCategory.FULL_HOUSE) > 0)
 		{
-			scoreMenu.append("F \t Full House \t\t" + scoreCategoryOptions.get(ScoreCategory.FULL_HOUSE) + " points\n");
+			scoreMenu.append("F \t Full House \t\t" + scoreCategoryOptions.get(YahtzeeScoreCategory.FULL_HOUSE) + " points\n");
 		}
-		if (scoreCategoryOptions.get(ScoreCategory.SMALL_STRAIGHT)  > 0)
+		if (scoreCategoryOptions.get(YahtzeeScoreCategory.SMALL_STRAIGHT)  > 0)
 		{
-			scoreMenu.append("S \t Small Straight \t" + scoreCategoryOptions.get(ScoreCategory.SMALL_STRAIGHT) + " points\n");
+			scoreMenu.append("S \t Small Straight \t" + scoreCategoryOptions.get(YahtzeeScoreCategory.SMALL_STRAIGHT) + " points\n");
 		}
-		if (scoreCategoryOptions.get(ScoreCategory.LARGE_STRAIGHT)  > 0)
+		if (scoreCategoryOptions.get(YahtzeeScoreCategory.LARGE_STRAIGHT)  > 0)
 		{
-			scoreMenu.append("L \t Large Straight \t" + scoreCategoryOptions.get(ScoreCategory.LARGE_STRAIGHT) + " points\n");
+			scoreMenu.append("L \t Large Straight \t" + scoreCategoryOptions.get(YahtzeeScoreCategory.LARGE_STRAIGHT) + " points\n");
 		}
-		if (scoreCategoryOptions.get(ScoreCategory.CHANCE) > 0)
+		if (scoreCategoryOptions.get(YahtzeeScoreCategory.CHANCE) > 0)
 		{
-			scoreMenu.append("C \t Chance \t\t" +scoreCategoryOptions.get(ScoreCategory.CHANCE) + " points\n");
+			scoreMenu.append("C \t Chance \t\t" +scoreCategoryOptions.get(YahtzeeScoreCategory.CHANCE) + " points\n");
 		}
-		if (scoreCategoryOptions.get(ScoreCategory.YAHTZEE) > 0 && scoreCategoryOptions.get(ScoreCategory.YAHTZEE) <= 50)
+		if (scoreCategoryOptions.get(YahtzeeScoreCategory.YAHTZEE) > 0 && scoreCategoryOptions.get(YahtzeeScoreCategory.YAHTZEE) <= 50)
 		{
-			scoreMenu.append("Y \t YAHTZEE! \t\t" + scoreCategoryOptions.get(ScoreCategory.YAHTZEE) + " points\n");
+			scoreMenu.append("Y \t YAHTZEE! \t\t" + scoreCategoryOptions.get(YahtzeeScoreCategory.YAHTZEE) + " points\n");
 		}
-		if (scoreCategoryOptions.get(ScoreCategory.YAHTZEE) > 50)
+		if (scoreCategoryOptions.get(YahtzeeScoreCategory.YAHTZEE) > 50)
 		{
-			scoreMenu.append("Y \t ANOTHER YAHTZEE! \t" + scoreCategoryOptions.get(ScoreCategory.YAHTZEE) + " points\n");
+			scoreMenu.append("Y \t ANOTHER YAHTZEE! \t" + scoreCategoryOptions.get(YahtzeeScoreCategory.YAHTZEE) + " points\n");
 		}
 	}
 	
@@ -285,43 +297,43 @@ public class YahtzeeScoreBoard extends YahtzeeScore implements Scorable {
 		StringBuilder addZerosToScoreChoices = new StringBuilder();
 		addZerosToScoreChoices.append("Sorry, no score categories are available!  ");
 		addZerosToScoreChoices.append("You must choose a category to score with 0 points.\n");
-		if (scoreBoard.get(ScoreCategory.ONES) < 0){
+		if (scoreBoard.get(YahtzeeScoreCategory.ONES) < 0){
 		addZerosToScoreChoices.append("1 \t Ones \t\t\t 0 points\n");
 		}
-		if (scoreBoard.get(ScoreCategory.TWOS) < 0){
+		if (scoreBoard.get(YahtzeeScoreCategory.TWOS) < 0){
 			addZerosToScoreChoices.append("2 \t Twos \t\t\t 0 points\n");
 		}
-		if (scoreBoard.get(ScoreCategory.THREES) < 0){
+		if (scoreBoard.get(YahtzeeScoreCategory.THREES) < 0){
 			addZerosToScoreChoices.append("3 \t Threes \t\t 0  points\n");
 		}
-		if (scoreBoard.get(ScoreCategory.FOURS) < 0){
+		if (scoreBoard.get(YahtzeeScoreCategory.FOURS) < 0){
 			addZerosToScoreChoices.append("4 \t Fours \t\t\t 0  points\n");
 		}
-		if (scoreBoard.get(ScoreCategory.FIVES) < 0){
+		if (scoreBoard.get(YahtzeeScoreCategory.FIVES) < 0){
 			addZerosToScoreChoices.append("5 \t Fives \t\t\t 0  points\n");
 		}
-		if (scoreBoard.get(ScoreCategory.SIXES) < 0){
+		if (scoreBoard.get(YahtzeeScoreCategory.SIXES) < 0){
 			addZerosToScoreChoices.append("6 \t Sixes \t\t\t 0  points\n");
 		}
-		if (scoreBoard.get(ScoreCategory.THREE_OF_A_KIND) < 0){
+		if (scoreBoard.get(YahtzeeScoreCategory.THREE_OF_A_KIND) < 0){
 			addZerosToScoreChoices.append("3K \t 3 of a Kind \t\t 0  points\n");
 		}
-		if (scoreBoard.get(ScoreCategory.FOUR_OF_A_KIND) < 0){
+		if (scoreBoard.get(YahtzeeScoreCategory.FOUR_OF_A_KIND) < 0){
 			addZerosToScoreChoices.append("4K \t 4 of a Kind \t\t 0  points\n");
 		}
-		if (scoreBoard.get(ScoreCategory.FULL_HOUSE) < 0){
+		if (scoreBoard.get(YahtzeeScoreCategory.FULL_HOUSE) < 0){
 			addZerosToScoreChoices.append("F \t Full House \t\t 0  points\n");
 		}
-		if (scoreBoard.get(ScoreCategory.SMALL_STRAIGHT) < 0){
+		if (scoreBoard.get(YahtzeeScoreCategory.SMALL_STRAIGHT) < 0){
 			addZerosToScoreChoices.append("S \t Small Straight \t\t 0  points\n");
 		}
-		if (scoreBoard.get(ScoreCategory.LARGE_STRAIGHT) < 0){
+		if (scoreBoard.get(YahtzeeScoreCategory.LARGE_STRAIGHT) < 0){
 			addZerosToScoreChoices.append("L \t Large Straight \t\t 0  points\n");
 		}
-		if (scoreBoard.get(ScoreCategory.CHANCE) < 0){
+		if (scoreBoard.get(YahtzeeScoreCategory.CHANCE) < 0){
 			addZerosToScoreChoices.append("C \t Chance \t\t 0  points\n");
 		}
-		if (scoreBoard.get(ScoreCategory.YAHTZEE) < 0){
+		if (scoreBoard.get(YahtzeeScoreCategory.YAHTZEE) < 0){
 			addZerosToScoreChoices.append("Y \t Yahtzee \t\t 0  points\n");
 		}
 		return addZerosToScoreChoices.toString();
@@ -332,19 +344,19 @@ public class YahtzeeScoreBoard extends YahtzeeScore implements Scorable {
 	 * no points have been scored for that category.  It should be called at the beginning of each new game.
 	 */
 	public void resetScoreBoard() {
-		scoreBoard.put(ScoreCategory.ONES, -1);
-		scoreBoard.put(ScoreCategory.TWOS, -1);
-		scoreBoard.put(ScoreCategory.THREES, -1);
-		scoreBoard.put(ScoreCategory.FOURS, -1);
-		scoreBoard.put(ScoreCategory.FIVES, -1);
-		scoreBoard.put(ScoreCategory.SIXES, -1);
-		scoreBoard.put(ScoreCategory.THREE_OF_A_KIND, -1);
-		scoreBoard.put(ScoreCategory.FOUR_OF_A_KIND, -1);
-		scoreBoard.put(ScoreCategory.FULL_HOUSE, -1);
-		scoreBoard.put(ScoreCategory.SMALL_STRAIGHT, -1);
-		scoreBoard.put(ScoreCategory.LARGE_STRAIGHT, -1);
-		scoreBoard.put(ScoreCategory.CHANCE, -1);
-		scoreBoard.put(ScoreCategory.YAHTZEE, -1);
+		scoreBoard.put(YahtzeeScoreCategory.ONES, -1);
+		scoreBoard.put(YahtzeeScoreCategory.TWOS, -1);
+		scoreBoard.put(YahtzeeScoreCategory.THREES, -1);
+		scoreBoard.put(YahtzeeScoreCategory.FOURS, -1);
+		scoreBoard.put(YahtzeeScoreCategory.FIVES, -1);
+		scoreBoard.put(YahtzeeScoreCategory.SIXES, -1);
+		scoreBoard.put(YahtzeeScoreCategory.THREE_OF_A_KIND, -1);
+		scoreBoard.put(YahtzeeScoreCategory.FOUR_OF_A_KIND, -1);
+		scoreBoard.put(YahtzeeScoreCategory.FULL_HOUSE, -1);
+		scoreBoard.put(YahtzeeScoreCategory.SMALL_STRAIGHT, -1);
+		scoreBoard.put(YahtzeeScoreCategory.LARGE_STRAIGHT, -1);
+		scoreBoard.put(YahtzeeScoreCategory.CHANCE, -1);
+		scoreBoard.put(YahtzeeScoreCategory.YAHTZEE, -1);
 	}
 	
 }

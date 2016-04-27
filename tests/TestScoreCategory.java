@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import scoring.ScoreCategory;
+import scoring.YahtzeeScoreCategory;
 
 public class TestScoreCategory {
 
@@ -30,15 +30,15 @@ public class TestScoreCategory {
 
 	@Test
 	public void testToString() {
-		ScoreCategory threes = ScoreCategory.THREES;
+		YahtzeeScoreCategory threes = YahtzeeScoreCategory.THREES;
 		String threesToString = "Threes";
 		assertEquals(threesToString, threes.toString());
 		
-		ScoreCategory fullHouse = ScoreCategory.FULL_HOUSE;
+		YahtzeeScoreCategory fullHouse = YahtzeeScoreCategory.FULL_HOUSE;
 		String fullHouseToString = "Full House ";
 		assertEquals(fullHouseToString, fullHouse.toString());
 		
-		ScoreCategory threeOfAKind = ScoreCategory.THREE_OF_A_KIND;
+		YahtzeeScoreCategory threeOfAKind = YahtzeeScoreCategory.THREE_OF_A_KIND;
 		String threeOfAKindToString = "Three Of A Kind ";
 		assertEquals(threeOfAKindToString, threeOfAKind.toString());
 	}

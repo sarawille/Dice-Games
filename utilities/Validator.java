@@ -1,6 +1,5 @@
-package ui;
+package utilities;
 
-import ui.RequestInformation;
 
 
 /**
@@ -15,15 +14,24 @@ public class Validator implements Validatable {
 	static int userInteger = 0;
 	static double userDouble = 0;
 	static String userString = "";
-	static Displayable screen = IOFactory.getDisplayable();
-	static Validator validator = new Validator();
-	
+	static Displayable screen;
+	static Validator validator;
+
 	private Validator() {}
 	
-	protected static Validator getInstance() {
+	public static Displayable getScreen() {
+		return screen;
+	}
+	public static void setScreen(Displayable screen) {
+		Validator.screen = screen;
+	}
+	public static Validator getValidator() {
 		return validator;
 	}
-	
+	public static void setValidator(Validator validator) {
+		Validator.validator = validator;
+	}
+
 	/**
 	 * getInt - ask the user for an integer and confirm that it is a valid integer
 	 * @param s

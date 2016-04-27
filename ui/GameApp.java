@@ -1,32 +1,25 @@
 package ui;
 
-import scoring.Scorable;
-import scoring.PigScoreBoard;
-import scoring.YahtzeeScoreBoard;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * 
- * @author Sara Wille
- * The GameApp runs a dice game and displays the final score when the game ends.
+ * The GameApp runs the one-player dice games.
+ * 
+ * To play Yahtzee, pass in "YahtzeeApplicationContext.xml" on line 18.
+ * To play modified version of Pig, pass in "PigApplicationContext.xml" on line 18.
  *
+ * @author Sara Wille
  */
 public class GameApp {
-	
-	static Displayable screen = IOFactory.getDisplayable();
-	
+		
 	public static void main(String[] args) { 
 		
-		Playable game = new YahtzeeRules();
-		Scorable myScore = new YahtzeeScoreBoard();	
+		ApplicationContext contextXML = new ClassPathXmlApplicationContext("PigApplicationContext.xml");
+		Playable game = (Playable) contextXML.getBean("game");
 		
-//		Playable game = new PigRules();
-//		Scorable myScore = new PigScoreBoard();
-		
-		game.play(myScore);
-		
-		screen.displayln("GAME OVER!");
-		screen.display("Your final score is ");
-		screen.displayln(""+myScore.getTotalScore());
+		game.play();
 		
 	}
 }

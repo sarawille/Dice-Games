@@ -1,4 +1,5 @@
-package ui;
+package utilities;
+
 
 /**
  * @author - Sara Wille
@@ -6,13 +7,17 @@ package ui;
  */
 public class SimpleDisplay implements Displayable{
 
-	private static SimpleDisplay displayInstance = new SimpleDisplay();
+	private static SimpleDisplay displayInstance;
 	
-	private SimpleDisplay() {}
-	
-	protected static SimpleDisplay getInstance() {
+	public static SimpleDisplay getDisplayInstance() {
 		return displayInstance;
 	}
+
+	public static void setDisplayInstance(SimpleDisplay displayInstance) {
+		SimpleDisplay.displayInstance = displayInstance;
+	}
+
+	private SimpleDisplay() {}
 	
     @Override
     public void display(String s){
