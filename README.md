@@ -1,5 +1,5 @@
 #Dice Games
-    Play a digital, one-player game of Yahtzee or modified (two-dice) Pig
+    Play a one-player game of Yahtzee or modified (two-dice) Pig
 
 ##Motivation
 I began this project to practice object-oriented design and reinforce concepts I learned during the Cincy Code IT bootcamp at MAX Technical Training in Cincinnati, OH.  My goal for this project is to demonstrate my command of Java, SOLID principles and object-oriented design, including abstraction and dependency injection.
