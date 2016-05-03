@@ -8,17 +8,14 @@ I began this project to practice object-oriented design and reinforce concepts I
 Run ui/GameApp.java to play the game.  
 
 To switch between Yahtzee and Pig, change the dependency-injected file called on line 18 of ui/GameApp.java:
-<ul>
-<li>Yahtzee: "YahtzeeApplicationContext.xml"</li>
-<li>Pig: "PigApplicationContext.xml"</li>
-</ul>
+* Yahtzee: "YahtzeeApplicationContext.xml"</li>
+* Pig: "PigApplicationContext.xml"</li>
+
 
 Dependencies for both games are expressed in the xml files listed above.  
-<ul>
-<li>displayInjection: Controls the output location, whether in the Console or a GUI.</li>
-<li>validatorInjection: Controls how user inputs are evaluated (what is acceptable when asking for an integer, String, etc.).</li>
-<li>scoreInjection: Controls how the game is scored.</li> 
-</ul>
+* displayInjection: Controls the output location, whether in the Console or a GUI.</li>
+* validatorInjection: Controls how user inputs are evaluated (what is acceptable when asking for an integer, String, etc.).</li>
+* scoreInjection: Controls how the game is scored.</li> 
 
 For more information on the program, see the <a href="https://github.com/sarawille/Yahtzee/tree/master/doc">JavaDoc files</a>.
 
