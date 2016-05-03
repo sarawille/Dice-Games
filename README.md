@@ -31,3 +31,6 @@ Modified Pig requires a Hand of two dice.  The player rolls the Hand then choose
 
 ###_Yahtzee_
 Yahtzee requires a Hand of five dice.  The player rolls the Hand then has the option to re-roll any combination of dice up to two more times on each turn. The game lasts for 13 turns. The score is calculated depending on the face up values of each Hand and the user's choice of which scoring category to use at the end of each turn.  See <a href="https://github.com/sarawille/Yahtzee/blob/master/scoring/YahtzeeScore.java">YahtzeeScore.java</a> to learn more about the scoring categories and calculations.
+
+##Author
+<a href="http://www.linkedin.com/in/sarawille">Sara Wille</a>
