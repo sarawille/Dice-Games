@@ -5,6 +5,8 @@
 I began this project to practice object-oriented design and reinforce concepts I learned during the Cincy Code IT bootcamp at MAX Technical Training in Cincinnati, OH.  The goal is to demonstrate my command of Java, SOLID principles and object-oriented design, including abstraction and dependency injection.
 
 ##Project Set-Up
+Before running, make sure to add the Spring and Spring Dependencies JARs.
+
 Run ui/GameApp.java to play the game.  
 
 To switch between Yahtzee and Pig, change the dependency-injected file called on line 18 of ui/GameApp.java:
