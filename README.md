@@ -5,7 +5,7 @@
 I began this project to practice object-oriented design and reinforce concepts I learned during the Cincy Code IT bootcamp at MAX Technical Training in Cincinnati, OH.  The goal is to demonstrate my command of Java, SOLID principles and object-oriented design, including abstraction and dependency injection.
 
 ##Project Set-Up
-Before running, make sure to add the Spring and Spring Dependencies JARs.
+Before running, add the Spring and Spring Dependencies JARs to your Java Build Path (if working in Ecplise).
 
 Run ui/GameApp.java to play the game.  
 
