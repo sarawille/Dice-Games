@@ -18,6 +18,16 @@ public class Hand implements Sortable
 	public Hand(int numberOfDice, int sides) 
 	{
 		diceInHand = new ArrayList<>(numberOfDice);
+		addDiceToHand(numberOfDice, sides);
+	}
+
+	/**
+	 * addDiceToHand() - Fills the diceInHand array with a given number of dice, each of which
+	 *  has a given number of sides.  All dice must have the same number of sides.
+	 * @param numberOfDice
+	 * @param sides
+	 */
+	private void addDiceToHand(int numberOfDice, int sides) {
 		for (int i = 0; i < numberOfDice; i++)
 		{
 			diceInHand.add(new Die(sides));
